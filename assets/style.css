@@ -47,14 +47,47 @@ ul li a{
 
 
 /* Latest Cars Section */
+.btn-all, .btn-new, .btn-used {
+    padding: 8px 14px; 
+    border: 2px solid #111827; 
+    background-color: transparent; 
+    color: #111827; 
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s ease; 
+    text-transform: uppercase; 
+    cursor: pointer; 
+}
+
+.btn-all:hover, .btn-new:hover, .btn-used:hover {
+    background-color: #111827; 
+    color: #fff; 
+    border-color: #111827; 
+}
+
+.btn-all:focus, .btn-new:focus, .btn-used:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+
 .bi-suit-heart, 
 .bi-bell,
 .bi-arrow-repeat{
     border: 1px solid #000;
     padding: 5px 5px 3px 5px;
-    border-radius: 100%;
+    border-radius: 25%;
     cursor: pointer;
 }
+
+.bi-suit-heart:hover,
+.bi-bell:hover,
+.bi-arrow-repeat:hover {
+   background-color: #111827;
+   color: #f9f9f9;
+}
+
 
 .cars-cards{
     /* padding: 3rem 5rem 3rem 5rem; */
@@ -77,3 +110,5 @@ ul li a{
     transform: scale(1.1);
     transition: transform 0.5s ease; 
 }
+
+
