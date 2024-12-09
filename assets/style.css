@@ -6,6 +6,9 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
 
 /* Navbar */
 .navbar{
@@ -26,7 +29,8 @@ ul li a{
     font-size: 24px;
 }
 
-.bi-moon{
+.bi-moon,
+.bi-brightness-high{
     cursor: pointer;
 }
 
@@ -104,6 +108,9 @@ ul li a{
 }
 
 /* Top offers */
+.top-of{
+    padding-top: 5%;
+}
 .img-hover:hover {
     width: 100%;
     overflow: hidden;
@@ -151,3 +158,25 @@ ul li a{
 
 
 
+/* Auto Market */
+.auto-img img{
+    width: 220px;
+}
+
+.auto-market{
+    padding: 5%;
+    background-color: #111827;
+    color: #f9f9f9;
+}
+.btn-shop{
+    padding: 10px 16px; 
+    border: 2px solid #3D7A81; 
+    background-color: #3D7A81 ; 
+    color: #f9f9f9; 
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s ease; 
+    text-transform: uppercase; 
+    cursor: pointer; 
+}
