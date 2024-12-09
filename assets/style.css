@@ -112,3 +112,25 @@ ul li a{
 }
 
 
+/* Auto Market */
+.auto-img img{
+    width: 220px;
+}
+
+.auto-market{
+    padding: 5%;
+    background-color: #111827;
+    color: #f9f9f9;
+}
+.btn-shop{
+    padding: 10px 16px; 
+    border: 2px solid #3D7A81; 
+    background-color: #3D7A81 ; 
+    color: #f9f9f9; 
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s ease; 
+    text-transform: uppercase; 
+    cursor: pointer; 
+}
