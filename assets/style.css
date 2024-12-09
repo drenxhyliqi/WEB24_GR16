@@ -57,7 +57,8 @@ ul li a{
 .PopularcarsContainer {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;     
+    flex-wrap: wrap;    
+    padding: 2%; 
 }
 .card {
     background-color:rgb(247, 249, 250);
