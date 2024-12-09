@@ -36,10 +36,18 @@ ul li a{
     color: #f9f9f9;
 }
 
-/* Top offers */
-.img-hover:hover {
-    width: 100%;
-    overflow: hidden;
-    transform: scale(1.1);
-    transition: transform 0.5s ease; 
+
+
+/* Latest Cars Section */
+.bi-suit-heart, 
+.bi-bell,
+.bi-arrow-repeat{
+    border: 1px solid #000;
+    padding: 5px 5px 3px 5px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.cars-cards{
+    /* padding: 3rem 5rem 3rem 5rem; */
 }
