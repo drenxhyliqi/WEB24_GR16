@@ -49,7 +49,44 @@ ul li a{
     padding: 10%;
 }
 
+/* Banner Section */
+.banner{
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.PopularcarsContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;    
+    padding: 2%; 
+}
+.card {
+    background-color:rgb(247, 249, 250);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
 
+h3 {
+    margin-bottom: 30px;
+}
+
+h4 {
+    text-align: center;
+}
+
+h4:hover {
+    text-decoration-line: underline;
+}
+ p {
+    text-align: center;
+    margin: 10px 0;
+ }
+
+.card img {
+    height:90px;
+    object-fit: cover;
+    
+}
 /* Latest Cars Section */
 .btn-all, .btn-new, .btn-used {
     padding: 8px 14px; 
