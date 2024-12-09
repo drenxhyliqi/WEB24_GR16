@@ -6,6 +6,9 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
 
 /* Navbar */
 .navbar{
@@ -26,7 +29,8 @@ ul li a{
     font-size: 24px;
 }
 
-.bi-moon{
+.bi-moon,
+.bi-brightness-high{
     cursor: pointer;
 }
 
@@ -104,6 +108,9 @@ ul li a{
 }
 
 /* Top offers */
+.top-of{
+    padding-top: 5%;
+}
 .img-hover:hover {
     width: 100%;
     overflow: hidden;

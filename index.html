@@ -42,7 +42,9 @@
                         <a class="nav-link" href="#">Link</a>
                     </li>
                 </ul>
-                <i class="bi bi-moon fs-5 text-white"></i>
+                <i class="bi bi-moon fs-5 text-white" id="bi-moon" onclick="toggleBackgroundColor()"></i>
+                <i class="bi bi-brightness-high text-white fs-5 d-none" id="bi-brightness-high"
+                    onclick="toggleBackgroundColor()"></i>
             </div>
         </div>
     </nav>
@@ -126,14 +128,17 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-danger"><i class="bi bi-search me-2"></i>Search</button>
-                        <a href="" class="text-decoration-none text-light ms-2">Advanced search<i class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="" class="text-decoration-none text-light ms-2">Advanced search<i
+                                class="bi bi-arrow-right ms-2"></i></a>
                     </form>
-                    <p class="p-3 text-light opacity-75 text-center text-md-start">Finder is a <strong>leading digital marketplace</strong> for the automotive industry.</p>
+                    <p class="p-3 text-light opacity-75 text-center text-md-start">Finder is a <strong>leading digital
+                            marketplace</strong> for the automotive industry.</p>
                 </div>
                 <div class="col-12 col-md-5 col-lg-5 p-5 text-center text-md-start order-1 order-md-2">
                     <h1 class="display-4 fw-semibold text-light">Easy way to find the right car</h1>
                     <div class="d-flex align-items-center justify-content-center text-light">
-                        <img src="assets/img/google.png" alt="google" style="width: 30px; height: 30px; object-fit: cover;">
+                        <img src="assets/img/google.png" alt="google"
+                            style="width: 30px; height: 20px; object-fit: cover;">
                         <span class="ms-2">Google</span>
                         <span class="ms-3"><i class="bi bi-star-fill text-warning me-2 h3"></i></span>
                         <span>4.9</span>
@@ -141,13 +146,14 @@
                 </div>
             </div>
             <div class="text-end d-none d-md-block">
-                <img src="assets/img/banner.png" alt="banner" style="position: absolute; bottom: 0; right: 0; width: 350px; object-fit: cover; opacity: 50%;">
+                <img src="assets/img/banner.png" alt="banner"
+                    style="position: absolute; bottom: 0; right: 0; width: 350px; object-fit: cover; opacity: 50%;">
             </div>
         </div>
     </div>
 
     <!-- Top offers -->
-    <section class="container-fluid mt-4 mb-4">
+    <section class="container-fluid mt-4 mb-4 top-of">
         <div class="d-flex justify-content-between align-items-center">
             <h3 class="fw-semibold">Top offers</h3>
             <a href="/products" class="text-decoration-none text-dark">View all<i
