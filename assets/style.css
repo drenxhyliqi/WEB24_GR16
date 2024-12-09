@@ -10,7 +10,10 @@
 /* Navbar */
 .navbar{
     background-color: #111827;
-    /* padding: 1% 10% 1% 10%; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .navbar-nav .nav-link{
@@ -36,6 +39,11 @@ ul li a{
     color: #f9f9f9;
 }
 
+/* Home Section */
+.home{
+    background-color: aquamarine;
+    padding: 10%;
+}
 
 
 /* Latest Cars Section */
