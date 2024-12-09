@@ -3,15 +3,14 @@ function toggleBackgroundColor() {
   const moonIcon = document.getElementById("bi-moon");
   const sunIcon = document.getElementById("bi-brightness-high");
 
-  if (body.style.backgroundColor === "rgb(17, 24, 39)" || body.style.backgroundColor === "") {
-    body.style.backgroundColor = "white";
-    body.style.color = "#000"; 
+  if (body.classList.contains("dark-mode")) {
+    body.classList.remove("dark-mode");
     moonIcon.classList.remove("d-none");
-    sunIcon.classList.add("d-none");
+    sunIcon.classList.add("d-none"); 
   } else {
-    body.style.backgroundColor = "#111827";
-    body.style.color = "#f9f9f9"; 
-    moonIcon.classList.add("d-none");
-    sunIcon.classList.remove("d-none");
+
+    body.classList.add("dark-mode");
+    moonIcon.classList.add("d-none"); 
+    sunIcon.classList.remove("d-none"); 
   }
 }
