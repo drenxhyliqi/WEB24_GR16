@@ -48,7 +48,7 @@
     </nav>
 
     <!-- Main Section -->
-    <div class="container-fluid main-banner">
+    <div class="container-fluid main-banner p-5">
         <div class="p-5">
             <div class="row align-items-center">
                 <div class="col-12 col-md-7 col-lg-7">
@@ -66,6 +66,7 @@
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
                                 <select name="make" id="make" class="form-control shadow-none">
+                                    <option value="">Make</option>
                                     <option value="Audi">Audi</option>
                                     <option value="BMW">BMW</option>
                                     <option value="Mercedes">Mercedes</option>
@@ -74,58 +75,73 @@
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
                                 <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="Audi">Audi</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Mercedes">Mercedes</option>
-                                    <option value="Volkswagen">Volkswagen</option>
+                                    <option value="">Model</option>
+                                    <option value="A-Class">A-Class</option>
+                                    <option value="C-Class">C-Class</option>
+                                    <option value="E-Class">E-Class</option>
+                                    <option value="Brabus">Brabus</option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
                                 <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="Audi">Audi</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Mercedes">Mercedes</option>
-                                    <option value="Volkswagen">Volkswagen</option>
+                                    <option value="">Body type</option>
+                                    <option value="Sedan">Sedan</option>
+                                    <option value="Convertible">Convertible</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Coupe">Coupe</option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
-                                <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="Audi">Audi</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Mercedes">Mercedes</option>
-                                    <option value="Volkswagen">Volkswagen</option>
-                                </select>
+                                <div class="input-group">
+                                    <select name="make" id="make" class="form-control shadow-none">
+                                        <option value="">Year from</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                    </select>
+                                    <select name="make" id="make" class="form-control shadow-none">
+                                        <option value="">Year to</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
                                 <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="Audi">Audi</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Mercedes">Mercedes</option>
-                                    <option value="Volkswagen">Volkswagen</option>
+                                    <option value="">Location</option>
+                                    <option value="San Diego">San Diego</option>
+                                    <option value="Dallas">Dallas</option>
+                                    <option value="San Jose">San Jose</option>
+                                    <option value="Phoenix">Phoenix</option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
-                                <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="Audi">Audi</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Mercedes">Mercedes</option>
-                                    <option value="Volkswagen">Volkswagen</option>
-                                </select>
+                                <div class="input-group">
+                                    <input type="text" placeholder="$ Price from" class="form-control">
+                                    <input type="text" placeholder="$ Price to" class="form-control">
+                                </div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-danger"><i class="bi bi-search me-2"></i>Search</button>
-                        <a href="" class="text-decoration-none text-light ms-2">Advanced search<i
-                                class="bi bi-arrow-right ms-2"></i></a>
+                        <a href="" class="text-decoration-none text-light ms-2">Advanced search<i class="bi bi-arrow-right ms-2"></i></a>
                     </form>
-                    <p class="p-3 text-light opacity-75">Finder is a <strong>leading digital marketplace</strong> for
-                        the automotive industry.</p>
+                    <p class="p-3 text-light opacity-75">Finder is a <strong>leading digital marketplace</strong> for the automotive industry.</p>
                 </div>
                 <div class="col-12 col-md-5 col-lg-5 p-5">
                     <h1 class="display-4 fw-semibold text-light">Easy way to find the right car</h1>
-                    <div class="text-end" style="width: 50px;">
-                        <img src="assets/img/banner.png" alt="" style="width: 100%; object-fit: cover;">
+                    <div class="d-flex align-items-center text-light">
+                        <img src="assets/img/google.png" alt="google" style="width: 30px; height: 30px; object-fit: cover;">
+                        <span class="ms-2">Google</span>
+                        <span class="ms-3"><i class="bi bi-star-fill text-warning me-2 h3"></i></span>
+                        <span>4.9</span>
                     </div>
                 </div>
+            </div>
+            <div class="text-end">
+                <img src="assets/img/banner.png" alt="banner" style="position: absolute; bottom: 0; right: 0; width: 350px; object-fit: cover; opacity: 50%;">
             </div>
         </div>
     </div>
