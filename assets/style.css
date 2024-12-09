@@ -94,6 +94,11 @@ ul li a{
     /* padding: 3rem 5rem 3rem 5rem; */
 }
 
+/* Main Section */
+.main-banner{
+    background-color: #3D7A81;
+}
+
 /* Top offers */
 .img-hover:hover {
     width: 100%;
