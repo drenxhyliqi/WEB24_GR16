@@ -22,13 +22,24 @@ ul li a{
     text-transform: uppercase;
     font-size: 24px;
 }
+
 .bi-moon{
     cursor: pointer;
 }
+
 .navbar-toggler{
     border: none !important;
     box-shadow: none !important;
 }
+
 .navbar-toggler .bi-list {
     color: #f9f9f9;
+}
+
+/* Top offers */
+.img-hover:hover {
+    width: 100%;
+    overflow: hidden;
+    transform: scale(1.1);
+    transition: transform 0.5s ease; 
 }
