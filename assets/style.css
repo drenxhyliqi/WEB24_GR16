@@ -65,6 +65,11 @@ ul li a{
     background-color: #3D7A81;
 }
 
+.half-main-banner{
+    background-color: #4C848B;
+    border-radius: 10px;
+}
+
 /* Top offers */
 .img-hover:hover {
     width: 100%;
