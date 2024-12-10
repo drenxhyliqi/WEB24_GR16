@@ -10,13 +10,13 @@ body{
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 body.dark-mode {
-  background-color: #000;
-  color: #f9f9f9;
-  transition: background-color 0.5s ease, color 0.5s ease;
+    background-color: #000;
+    color: #f9f9f9;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .d-none {
-  display: none;
+    display: none;
 }
 
 .active{
@@ -76,7 +76,7 @@ ul li a{
     padding-top: 5%;
     padding-bottom: 5%;
 }
- .banner .card img {
+.banner .card img {
     height: 120 px;
     object-fit: cover;
 }
@@ -106,7 +106,7 @@ ul li a{
 .banner p {
     text-align: center;
     margin: 10px 0;
- }
+}
 
 
 /* Latest Cars Section */
@@ -147,8 +147,8 @@ ul li a{
 .bi-suit-heart:hover,
 .bi-bell:hover,
 .bi-arrow-repeat:hover {
-   background-color: #111827;
-   color: #f9f9f9;
+    background-color: #111827;
+    color: #f9f9f9;
 }
 
 
