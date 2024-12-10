@@ -257,6 +257,5 @@ ul li a{
 }
 
 .info-content:hover{
-    transform: scale(1.05);
-    
+    transform: scale(1.05);    
 }
