@@ -189,6 +189,7 @@ ul li a{
 
 .car-logos img{
     opacity: 1;
+    width: 100px;
 }
 .car-logos img:hover{
     opacity: 0.6;
@@ -200,7 +201,7 @@ ul li a{
     padding: 5%;
 }
 .car-demands img {
-    width: 260px;
+    width: 160px;
     padding-top: 10%;
     border-radius: 50%;
     transition: transform 0.3s ease-in;
@@ -243,4 +244,19 @@ ul li a{
     transition: all 0.3s ease; 
     text-transform: uppercase; 
     cursor: pointer; 
+}
+
+.info-content {
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.info-content i{
+    font-size: 25px;
+}
+
+.info-content:hover{
+    transform: scale(1.05);
+    
 }
