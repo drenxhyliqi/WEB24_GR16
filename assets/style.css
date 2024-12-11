@@ -259,3 +259,23 @@ ul li a{
 .info-content:hover{
     transform: scale(1.05);    
 }
+.footer-info{
+    background-color: lightgray;
+}
+.footer-lists p{
+    font-size: large;
+}
+.footer-info-content{
+    margin: 5px;
+    padding-top: 15px;    
+    padding-bottom: 15px;    
+}
+
+.footer-lists a{
+    font-size: 10px;
+    color:#000;
+}
+
+.footer-lists a:hover{
+    opacity: 0.7;
+}
