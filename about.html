@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Title Name -->
+    <title>Car ShowRoom | Find your dream car!</title>
+
+    <!-- Bootstrap & Custom CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body.dark-mode {
+            background-color: #000;
+            color: #f9f9f9;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .accordion-button {
+            background-color: transparent !important;
+            color: #f9f9f9 !important;
+            border: none !important;
+        }
+
+        .accordion-button:focus,
+        .accordion-button:active {
+            background-color: transparent !important;
+            color: #f9f9f9 !important;
+        }
+
+        /* Tech Stack Code - Problem i BootStrap */
+        .accordion {
+            --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-item {
+            background-color: #222 !important;
+            border: 1px solid #333;
+        }
+
+        .accordion-button {
+            color: #f9f9f9;
+        }
+
+        .accordion-body p {
+            color: #f9f9f9;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: transparent !important;
+            border: none !important;
+        }
+
+        .accordion-button {
+            background-color: transparent !important;
+            border: none !important;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        .trusted {
+            margin: 10% 0;
+        }
+
+        @media (max-width: 576px) {
+            .card-content {
+                margin-top: 20px;
+            }
+
+            .card-content h4 {
+                margin-top: 2rem;
+            }
+
+            .card-content p {
+                margin-top: 1rem;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="/assets/img/logo.png" alt="logo" width="200px">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="bi bi-list fs-2"></span>
+                <!-- <span class="navbar-toggler-icon text-white"></span> -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto py-1 py-md-0 fs-6 text-start text-md-center ">
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link active" href="#">About</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="#">Cars</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+                <i class="bi bi-moon fs-5 text-white" id="bi-moon" onclick="toggleBackgroundColor()"></i>
+                <i class="bi bi-brightness-high text-white fs-5 d-none" id="bi-brightness-high"
+                    onclick="toggleBackgroundColor()"></i>
+            </div>
+        </div>
+    </nav>
+    <section class="main-about">
+        <div class="container-fluid mt-5">
+            <div class="top-content">
+                <p class="text-center fw-semibold">ABOUT US</p>
+                <h2 class="text-center display-5 display-md-4 mt-3 fw-bold text-left">Easy way to find a perfect <br>
+                    property with
+                    Finder</h2>
+                <div class="video text-center mt-4">
+                    <video src="assets/video/about.mp4" class="rounded-4" autoplay muted
+                        style="height: 100%; width: 100%;"></video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="container mt-5">
+            <h2 class="fw-bold">The values we live by</h2>
+            <div class="card-content mt-5 ">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row mb-5">
+                            <div class="col-12 col-md-3 col-lg-3">
+                                <img src="assets/img/search-img.png" class="img-fluid" alt="search">
+                            </div>
+                            <div class="col-12 col-md-9 col-lg-9">
+                                <h4 class="mb-3">Advanced property search</h4>
+                                <p class="text-left">
+                                    Enable users to filter properties by location, price range, property type, and other
+                                    key criteria for a customized search experience.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-12 col-md-3 col-lg-3">
+                                <img src="assets/img/globe-img.png" class="img-fluid" alt="globe">
+                            </div>
+                            <div class="col-12 col-md-9 col-lg-9">
+                                <h4 class="mb-3">Advanced property search</h4>
+                                <p class="text-left">
+                                    Enable users to filter properties by location, price range, property type, and other
+                                    key criteria for a customized search experience.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row mb-5">
+                            <div class="col-12 col-md-3 col-lg-3">
+                                <img src="assets/img/star-img.png" class="img-fluid" alt="star">
+                            </div>
+                            <div class="col-12 col-md-9 col-lg-9">
+                                <h4 class="mb-3 ">Advanced property search</h4>
+                                <p class="text-left">
+                                    Enable users to filter properties by location, price range, property type, and other
+                                    key criteria for a customized search experience.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-12 col-md-3 col-lg-3">
+                                <img src="assets/img/house-img (1).png" class="img-fluid" alt="house">
+                            </div>
+                            <div class="col-12 col-md-9 col-lg-9">
+                                <h4 class="mb-3">Advanced property search</h4>
+                                <p class="text-left">
+                                    Enable users to filter properties by location, price range, property type, and other
+                                    key criteria for a customized search experience.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="get">
+        <div class="container mt-5 mb-5">
+            <h2>Get your car online today!</h2>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-6">
+                    <img src="assets/img/getcar.jpg" class="img-fluid rounded-4 mt-3" alt="getyourcar">
+                </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="accordion mt-3 mt-lg-0" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How Do I Find the Right Car for Me?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>
+                                        Our website allows you to filter cars based on make, model, year, price,
+                                        mileage, and more. Whether you’re looking for a
+                                        compact car, SUV, or a luxury vehicle, you can easily narrow down your search to
+                                        find the perfect match. You can also
+                                        compare multiple cars side-by-side to make an informed decision.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    What Is the Buying Process?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Buying a car on our website is straightforward. Once you’ve found the car you
+                                        want, you can contact the seller directly
+                                        through our platform to ask questions or schedule a viewing. After confirming
+                                        the car’s condition and price, you can
+                                        proceed with the purchase through secure payment methods. Our team ensures that
+                                        the paperwork and transfer process is
+                                        seamless.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What Happens If I Have Issues After Purchase?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Customer satisfaction is our priority. If you encounter any issues with your car
+                                        after purchase, our team is here to
+                                        assist. We offer support with warranty information, return policies, and any
+                                        additional services that may be required.
+                                        For peace of mind, we also provide vehicle history reports to ensure you’re
+                                        making a confident purchase.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Do You Offer Financing Options?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Yes, we offer financing options through trusted partners. During the checkout
+                                        process, you’ll have the opportunity to
+                                        apply for financing with flexible terms. Our website provides a financing
+                                        calculator to help you estimate monthly
+                                        payments and find the best option for your budget.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="trusted">
+        <div class="container">
+            <div class="row align-items-center justify-content-evenly">
+                <h5 class="col-12 text-center">Trusted By</h5>
+                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
+                    <img src="assets/img/bmwcolored.png" style="width: 80px; height: 80px; object-fit: contain;"
+                        alt="bmw">
+                </div>
+                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
+                    <img src="assets/img/mitsubishi.png" style="width: 80px; height: 80px; object-fit: contain;"
+                        alt="mitsubishi">
+                </div>
+                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
+                    <img src="assets/img/ford.png" style="width: 80px; height: 80px; object-fit: contain;" alt="ford">
+                </div>
+                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
+                    <img src="assets/img/teslacolored.png" style="width: 80px; height: 80px; object-fit: contain;"
+                        alt="tesla">
+                </div>
+                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
+                    <img src="assets/img/ferraricolored.png" style="width: 80px; height: 80px; object-fit: contain;"
+                        alt="ferrari">
+                </div>
+                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
+                    <img src="assets/img/porschelogo.png" style="width: 80px; height: 80px; object-fit: contain;"
+                        alt="porsche">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Script Source Bootsrap JS & Custom JS -->
+    <script src="assets/bootstrap/bootstrap.js"></script>
+    <script src="assets/main.js"></script>
+</body>
+
+</html>
