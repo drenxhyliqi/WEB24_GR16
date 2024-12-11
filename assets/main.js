@@ -8,7 +8,6 @@ function toggleBackgroundColor() {
     moonIcon.classList.remove("d-none");
     sunIcon.classList.add("d-none"); 
   } else {
-
     body.classList.add("dark-mode");
     moonIcon.classList.add("d-none"); 
     sunIcon.classList.remove("d-none"); 
