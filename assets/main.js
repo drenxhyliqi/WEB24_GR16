@@ -13,15 +13,14 @@ function toggleBackgroundColor() {
     sunIcon.classList.remove("d-none"); 
   }
 }
+const getItNow = document.getElementById("get");
+getItNow.addEventListener('click', function () {
+  window.location.href = "contact.html";
+});
 
 const seeMore = document.getElementById("see");
 seeMore.addEventListener('click', function () {
   window.location.href = "product.html";  
-});
-
-const getItNow = document.getElementById("get");
-getItNow.addEventListener('click', function () {
-  window.location.href = "contact.html";
 });
 
 const text = "Easy way to find the perfect car with us!";
