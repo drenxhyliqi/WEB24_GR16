@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <!-- Title Name -->
     <title>Car ShowRoom | Find your dream car!</title>
 
@@ -22,6 +21,30 @@
             color: #f9f9f9;
             transition: background-color 0.5s ease, color 0.5s ease;
         }
+
+        .video {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .playPauseButton {
+            position: absolute;
+            top: 90%;
+            left: 3%;
+            transform: translateX(-50%);
+            background: transparent;
+            border: none;
+            color: #f9f9f9;
+            font-size: 3.5rem;
+            cursor: pointer;
+            z-index: 0;
+        }
+
+        /* .playPauseButton i {
+            pointer-events: none;
+        } */
+
 
         .accordion-button {
             background-color: transparent !important;
@@ -73,6 +96,123 @@
             margin: 10% 0;
         }
 
+        .provide {
+            padding: 10% 0;
+        }
+
+        .provide h5 {
+            font-size: 2.6rem;
+        }
+
+        .provide img {
+            border-radius: 100%;
+            width: 25%;
+        }
+
+        .provide p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 2rem;
+        }
+
+        .provide h6 {
+            font-weight: 700;
+        }
+
+        .info {
+            margin-top: 8%;
+        }
+
+        .info h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .info span {
+            font-size: 1.1rem;
+        }
+
+        .offer-timer {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #countdown-timer p {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #da1a17;
+        }
+
+        #countdown-timer button {
+            background-color: #da1a17;
+            padding: 15px 35px;
+            border: none;
+            color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .footer {
+            background-color: #111;
+            padding: 7% 0%;
+            color: #f9f9f9 !important;
+        }
+
+        .footer ul li {
+            list-style: none;
+            text-align: left;
+        }
+
+        .footer ul {
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .footer ul li {
+            list-style: none;
+            padding-bottom: .75rem;
+        }
+
+        .footer ul li a {
+            display: block;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: capitalize;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #f9f9f9 !important;
+        }
+
+        .footer button {
+            padding: 15px 35px;
+            text-align: center;
+            color: #f9f9f9 !important;
+            border: 1px solid #f9f9f92b;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: transparent;
+        }
+
+        .footer button:hover {
+            border: 1px solid #f9f9f9;
+            transition: ease-in 0.2s;
+        }
+
+        .footer a:hover {
+            color: #da1a17 !important;
+        }
+
+        .icons a {
+            padding: 10px;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+
         @media (max-width: 576px) {
             .card-content {
                 margin-top: 20px;
@@ -86,6 +226,33 @@
                 margin-top: 1rem;
                 font-size: 16px;
             }
+
+            .provide h5 {
+                font-size: 1.6rem;
+            }
+
+            .provide p {
+                font-size: 1rem;
+            }
+
+            .info h3 {
+                font-size: 1.4rem;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            .info span {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .playPauseButton {
+                width: 50px;
+                height: 50px;
+                top: 0;
+                left: 7%;
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -95,7 +262,9 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <img src="/assets/img/logo.png" alt="logo" width="200px">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="bi bi-list fs-2"></span>
                 <!-- <span class="navbar-toggler-icon text-white"></span> -->
             </button>
@@ -118,7 +287,8 @@
                     </li>
                 </ul>
                 <i class="bi bi-moon fs-5 text-white" id="bi-moon" onclick="toggleBackgroundColor()"></i>
-                <i class="bi bi-brightness-high text-white fs-5 d-none" id="bi-brightness-high" onclick="toggleBackgroundColor()"></i>
+                <i class="bi bi-brightness-high text-white fs-5 d-none" id="bi-brightness-high"
+                    onclick="toggleBackgroundColor()"></i>
             </div>
         </div>
     </nav>
@@ -126,9 +296,13 @@
         <div class="container-fluid mt-5">
             <div class="top-content">
                 <p class="text-center fw-semibold">ABOUT US</p>
-                <h2 class="text-center display-5 display-md-4 mt-3 fw-bold text-left">Easy way to find the perfect car with us!</h2>
+                <h2 class="text-center display-5 display-md-4 mt-3 fw-bold text-left"></h2>
                 <div class="video text-center mt-4">
-                    <video src="assets/video/about.mp4" class="rounded-4" autoplay muted loop style="height: auto; width: 100%; object-fit: cover;" playsinline></video>
+                    <video src="assets/video/about.mp4" class="rounded-4" autoplay muted loop
+                        style="height: auto; width: 100%; object-fit: cover;" playsinline></video>
+                    <button class="playPauseButton">
+                        <i class="bi bi-pause"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -206,7 +380,8 @@
                     <div class="accordion mt-3 mt-lg-0" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     How Do I Find the Right Car for Me?
                                 </button>
                             </h2>
@@ -288,7 +463,7 @@
     <section class="trusted">
         <div class="container">
             <div class="row align-items-center justify-content-evenly">
-                <h5 class="col-12 text-center">Trusted By</h5>
+                <h5 class="col-12 text-center mb-5">Trusted By</h5>
                 <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
                     <img src="assets/img/bmwcolored.png" style="width: 80px; height: 80px; object-fit: contain;"
                         alt="bmw">
@@ -315,8 +490,98 @@
             </div>
         </div>
     </section>
+    <section class="provide">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-5">
+                    <h5>We provide a complete service for the sale, purchase or rental of real estate.</h5>
+                </div>
+                <div class="col-12 col-md-7 col-lg-7">
+                    <img src="assets/img/avatar.jpg" alt="person" class="img-fluid">
+                    <p>At Automative, we take pride in our deep understanding of the automotive market and our
+                        commitment to helping
+                        clients find their perfect car, whether it's a luxury model, a reliable family vehicle, or a
+                        high-performance sports
+                        car. With a wide range of options and expert guidance, we ensure every customer drives away with
+                        the car of their
+                        dreams.</p>
+                    <h6>Liza Rogers, CEO of Automative</h6>
+                    <div class="container info">
+                        <div class="row">
+                            <div class="col-4 col-md-4 col-lg-4">
+                                <h3>10+<br><span>Years on the market</span></h3>
+                            </div>
+                            <div class="col-4 col-md-4 col-lg-4">
+                                <h3>600K <br> <span>Buyers per year</span></h3>
+                            </div>
+                            <div class="col-4 col-md-4 col-lg-4">
+                                <h3>90% <br> <span>Satisfied costumers</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="offer-timer">
+        <div class="container text-center">
+            <h2>Special Offer Ends In:</h2>
+            <div id="countdown-timer">
+                <p id="timer"></p>
+                <div class="text-center"><button id="get">Get It Now</button></div>
+            </div>
+        </div>
+    </section>
 
-
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-3 col-lg-3 py-3">
+                    <h4>Automotive</h4>
+                    <a href="mailto:automotive@gmail.com">automotive@support.com</a><br>
+                    <a href="tel:045467051">+383 45 467 051</a>
+                </div>
+                <div class="col-12 col-md-3 col-lg-3 py-3">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Vehicle Customization</a></li>
+                        <li><a href="#">Car Maintenance & Repairs</a></li>
+                        <li><a href="#">Financing Options</a></li>
+                        <li><a href="#">Trade-In Services</a></li>
+                        <li><a href="#">Vehicle Delivery</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-3 col-lg-3 py-3">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Meet the Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Customer Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-3 col-lg-3 text-center py-3">
+                    <h5>Get Exclusive advice</h5>
+                    <div class="text-center"><button id="see">See More</button></div>
+                    <div class="icons my-4">
+                        <a href="https://www.instagram.com/" class="icon" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/" class="icon" target="_blank">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/" class="icon" target="_blank">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="text-center text-secondary pt-5">© All rights reserved. Made by<a
+                        href="https://ecode-ks.com/">
+                        eCode</a></p>
+            </div>
+        </div>
+    </section>
 
     <!-- Script Source Bootsrap JS & Custom JS -->
     <script src="assets/bootstrap/bootstrap.js"></script>
