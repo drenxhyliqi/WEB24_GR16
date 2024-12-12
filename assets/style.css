@@ -182,47 +182,6 @@ ul li a{
 }
 
 
-/* Car Logos Section */
-.car-logos{
-    padding: 5% 3% 4% 3%;
-}
-
-.car-logos img{
-    opacity: 1;
-    width: 100px;
-}
-.car-logos img:hover{
-    opacity: 0.6;
-    cursor: pointer;
-}
-
-/* Car Demand Section */
-.car-demands{
-    padding: 5%;
-}
-.car-demands img {
-    width: 160px;
-    padding-top: 10%;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in;
-}
-
-.car-demands img:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-.car-demands a {
-    color: #555;
-    text-decoration: none;
-    font-size: larger;
-    font-weight: bold;
-    cursor: pointer;
-}
-.car-demands a:hover{
-    border-bottom: 3px solid #000;
-}
-
 /* Auto Market */
 .auto-img img{
     width: 220px;
@@ -246,36 +205,4 @@ ul li a{
     cursor: pointer; 
 }
 
-.info-content {
-    font-weight: 600;
-    padding: 15px;
-    border-radius: 20px;
-}
 
-.info-content i{
-    font-size: 25px;
-}
-
-.info-content:hover{
-    transform: scale(1.05);    
-}
-.footer-info{
-    background-color: lightgray;
-}
-.footer-lists p{
-    font-size: large;
-}
-.footer-info-content{
-    margin: 5px;
-    padding-top: 15px;    
-    padding-bottom: 15px;    
-}
-
-.footer-lists a{
-    font-size: 10px;
-    color:#000;
-}
-
-.footer-lists a:hover{
-    opacity: 0.7;
-}
