@@ -8,19 +8,213 @@
 
         <!-- Bootstrap & Custom CSS -->
         <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="assets/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
-            .margin-top-3{
-                margin-top: 10px;
+            .container-fluid{
+                padding: 0 5%;
             }
+
+            .margin-top-3{
+                margin-top: 20px;
+            }
+
+            .margin-bottom-3{
+                margin-bottom: 20px;
+            }
+
             .no-decoration{
                 text-decoration: none;
             }
+
             .dark-text{
                 color: black;
             }
+
             .bold-text{
                 font-weight: 600;
+            }
+
+            .main-img{
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            .img-hover-product{
+                cursor: pointer;
+            }
+
+            .font-weight-semibold{
+                font-weight: 600;
+            }
+
+            .user-info{
+                background-color: #F5F7FA;
+                padding: 30px 20px 60px 20px;
+                border-radius: 10px;
+            }
+
+            #profile{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin: 20px 0px 20px 0px;
+            }
+
+            #user-img{
+                width: 70px;
+                height: 70px;
+                border-radius: 50px;
+            }
+
+            #link{
+                text-decoration: none;
+                color: black;
+                font-size: 15px;
+                display: block;
+            }
+
+            #link:hover{
+                text-decoration: underline;
+            }
+
+            #email{
+                margin-top: 10px;
+                border: 1px solid #D85151;
+                border-radius: 10px;
+                padding: 10px;
+                background-color: #D85151;
+                text-decoration: none;
+                color: white;
+            }
+
+            #phone{
+                margin-top: 10px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 10px;
+                text-decoration: none;
+                color: black;
+            }
+            
+            #email:hover{
+                border: 1px solid #bb0000;
+                background-color: #bb0000;
+            }
+
+            #phone:hover{
+                border: 1px solid black;
+                background-color: black;
+                color: white;
+            }
+            
+            table {
+                width: 100%;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                overflow-x: auto;
+                display: block;
+            }
+
+            table th, table td {
+                width: 100%;
+                border: 1px solid #ddd;
+                padding: 8px;
+                white-space: nowrap;
+            }
+
+            .info-card{
+                background-color: #ECF2F2;
+                padding: 20px;
+                border-radius: 10px;
+                height: 100%;
+            }
+
+            .info-card-icons{
+                color: #00515a;
+            }
+
+            #extra-content {
+                display: none;
+            }
+            
+            .show-more {
+                color: black;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            #email-me {
+                padding: 20px;
+                background-color: #F5F7FA;
+                border: 0.3px solid rgb(221, 221, 221);
+                border-radius: 10px;
+                width: 100%;
+                margin: 20px auto;
+            }
+    
+            #email-me p {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            #email-me input[type="email"] {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+                color: #333;
+            }
+
+            #email-me input[type="email"]:focus {
+                outline: none;
+            }
+
+            #email-me button {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                color: black;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            #email-me button:hover {
+                border: 1px solid black;
+                background-color: black;
+                color: white;
+            }
+
+            .accordion-btn {
+                padding: 10px;
+                font-size: 18px;
+                background-color: white;
+                border: 0;
+                border-bottom: 1px solid #ccc;
+                width: 100%;
+                text-align: left;
+            }
+
+            /* Accordion Content Style */
+            .accordion-content {
+                padding: 10px;
+                background-color: #f4f4f9;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                margin-top: 10px;
+                font-size: 14px;
+                line-height: 1.6;
+                display: none;
+            }
+
+            .accordion-content ul{
+                margin: 0;
             }
         </style>
     </head>
@@ -35,15 +229,380 @@
             <!-- Product Title -->
             <h2 class="bold-text margin-top-3">Mercedes-Benz A205 Cabriolet</h2>
 
-            <!-- Product Images & Info -->
+            <!-- Product Images -->
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-6"></div>
-                <div class="col-sm-12 col-md-12 col-lg-6"></div>
+                <div class="col-sm-12 col-md-12 col-lg-8">
+                    <img src="/assets/img/prod1.jpg" alt="main-img-1" id="active" class="img-hover-product main-img shadow-sm">
+                    <div class="row mt-4">
+                        <div class="col-3">
+                            <img src="/assets/img/prod1.jpg" alt="main-img-1" id="main-img-1" class="img-hover-product main-img shadow-sm">
+                        </div>
+                        <div class="col-3">
+                            <img src="/assets/img/prod2.jpg" alt="main-img-2" id="main-img-2" class="img-hover-product main-img shadow-sm">
+                        </div>
+                        <div class="col-3">
+                            <img src="/assets/img/prod3.jpg" alt="main-img-3" id="main-img-3" class="img-hover-product main-img shadow-sm">
+                        </div>
+                        <div class="col-3">
+                            <img src="/assets/img/prod4.jpg" alt="main-img-4" id="main-img-4" class="img-hover-product main-img shadow-sm">
+                        </div>
+                    </div>
+                    <hr>
+
+                    <!-- Specifications Table -->
+                    <h3>Specifications</h3>
+                    <div class="table-container">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Manufacturing year:</strong> 2021</td>
+                                    <td><strong>Fuel type:</strong> 2021</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mileage:</strong> 60K miles</td>
+                                    <td><strong>City MPG:</strong> 60K miles</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Body type:</strong> Convertible</td>
+                                    <td><strong>Highway MPG:</strong> Convertible</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Drive type:</strong> 2 wheel drive - rear</td>
+                                    <td><strong>Exterior color:</strong> 2 wheel drive - rear</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Engine:</strong> 6-Cylinder Turbo</td>
+                                    <td><strong>Interior color:</strong> Charcoal</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Transmission:</strong> 7-Speed Shiftable Automatic</td>
+                                    <td><strong>VIN:</strong> 2VW821AU9JM754284</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Infos Card -->
+                    <div class="row margin-top-3">
+                        <div class="col-6 col-md-3 col-lg-3 mb-3">
+                            <div class="info-card">
+                                <h1><i class="bi bi-check-circle info-card-icons"></i></h1>
+                                <small class="font-weight-semibold">Checked and Certified by Finder</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-3 mb-3">
+                            <div class="info-card">
+                                <h1><i class="bi bi-person-circle info-card-icons"></i></h1>
+                                <small class="font-weight-semibold">Single Owner</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-3 mb-3">
+                            <div class="info-card">
+                                <h1><i class="bi bi-tools info-card-icons"></i></h1>
+                                <small class="font-weight-semibold">Well-Equipped</small>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-3 mb-3">
+                            <div class="info-card">
+                                <h1><i class="bi bi-shield-check info-card-icons"></i></h1>
+                                <small class="font-weight-semibold">No Accident / Damage Reported</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <h3>Features</h3>
+                    <button class="accordion-btn" id="accordion-btn1"><i class="bi bi-arrow-right me-2"></i>Exterior</button>
+                    <div class="accordion-content" id="accordion-content1" style="display: none;">
+                        <ul>
+                            <li>Alloy Wheels</li>
+                            <li>Sunroof / Moonroof</li>
+                            <li>Tinged glass</li>
+                            <li>LED Headlights</li>
+                            <li>Foldable Roof</li>
+                            <li>Tow Hitch</li>
+                        </ul>
+                    </div>
+                    <button class="accordion-btn" id="accordion-btn2"><i class="bi bi-arrow-right me-2"></i>Interior</button>
+                    <div class="accordion-content" id="accordion-content2" style="display: none;">
+                        <ul>
+                            <li>Adjustable Steering Wheel</li>
+                            <li>Auto-Dimming Rearview Mirror</li>
+                            <li>Driver Adjustable Lumbar</li>
+                            <li>Driver Illuminated Vanity Mirror</li>
+                            <li>Universal Garage Door Opener</li>
+                            <li>Steering Wheel Audio Controls</li>
+                        </ul>
+                    </div>
+                    <button class="accordion-btn" id="accordion-btn3"><i class="bi bi-arrow-right me-2"></i>Safety</button>
+                    <div class="accordion-content" id="accordion-content3" style="display: none;">
+                        <ul>
+                            <li>Airbag: Driver</li>
+                            <li>Airbag: Passenger</li>
+                            <li>Adaptive Cruise Control</li>
+                            <li>Blind Spot Monitor</li>
+                            <li>Alarm</li>
+                            <li>Antilock Brakes</li>
+                        </ul>
+                    </div>
+                    <button class="accordion-btn" id="accordion-btn4"><i class="bi bi-arrow-right me-2"></i>Technology</button>
+                    <div class="accordion-content" id="accordion-content4" style="display: none;">
+                        <ul>
+                            <li>Multi-Zone A/C</li>
+                            <li>Climate Control</li>
+                            <li>Navigation System</li>
+                            <li>Remote Start</li>
+                            <li>Bluetooth</li>
+                            <li>Remote Start</li>
+                        </ul>
+                    </div>
+
+                    <!-- Full Description -->
+                    <h3 class="margin-top-3">Description</h3>
+                    <div id="content" class="margin-bottom-3">
+                        <p>This stunning convertible blends luxury with performance, featuring a sleek design, advanced technology, and a powerful engine. Enjoy open-air driving with premium comfort and the unmistakable elegance of Mercedes-Benz. Impeccably maintained and ready to provide an exhilarating driving experience. Don't miss out on this exceptional vehicle.</p>
+                        <div id="extra-content">
+                            <p>This A205 Cabriolet comes equipped with top-of-the-line features, including a responsive infotainment system, advanced safety options, and a finely crafted interior that showcases Mercedes-Benz's commitment to quality. The soft-top roof operates seamlessly, allowing you to transition from a cozy cabin to an open-air cruiser in seconds. Whether you're navigating city streets or cruising along the coast, this cabriolet delivers a smooth, refined ride every time.</p>
+                            <p>With low mileage and a full service history, this 2021 model remains in excellent condition, both mechanically and aesthetically. The exterior shines in pristine condition, and the interior has been meticulously cared for, ensuring a like-new experience. This Mercedes-Benz A205 Cabriolet is the perfect choice for those who desire a blend of sophistication, comfort, and thrilling performance in their next vehicle.</p>
+                        </div>
+                        <span class="show-more" onclick="showMore()"><i class="bi bi-arrow-right me-2"></i>Show More</span>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <hr>
+                    <div class="sticky-top pt-3 margin-bottom-3">
+                        <small style="background-color: #3D7A81; color: white; padding-right: 10px; padding-left: 10px; border-radius: 5px;"><i class="bi bi-check2-circle me-2"></i>Verified</small>
+                        <small style="background-color: #FC9231; color: white; padding-right: 10px; padding-left: 10px; border-radius: 5px;">Used</small>
+                        <h2 class="font-weight-semibold margin-top-3">$41 900</h2>
+                        <ul style="opacity: 75%; list-style-type: square;">
+                            <li><i class="bi bi-geo-alt me-2"></i>Los Angeles</li>
+                            <li><i class="bi-speedometer me-2"></i>69K mi</li>
+                            <li><i class="bi bi-fuel-pump me-2"></i>Gasoline</li>
+                            <li><i class="bi-gear me-2"></i>Automatic</li>
+                        </ul>
+                        <div class="user-info">
+                            <div id="profile">
+                                <img src="/assets/img/seller.jpg" alt="user-image" id="user-img">
+                                <div class="profile-info">
+                                    <span class="font-weight-semibold">Darrell Steward</span><br>
+                                    <small><i class="bi bi-star-fill text-warning me-2"></i><strong>4.9</strong> (5 reviews)</small><br>
+                                    <small style="opacity: 75%; font-size: 12px;">Private seller</small>
+                                </div>
+                            </div>
+                            <a href="/products.html" id="link">Other ads by this seller</a><br>
+                            <a href="tel:+12345678" id="phone" class="d-block d-md-inline">(316)********** - Reveal</a>
+                            <a href="mailto:ndouedison02@gmail.com" id="email" class="d-block d-md-inline">Send Email</a>
+                        </div>
+
+                        <!-- Email Me -->
+                        <div id="email-me">
+                            <p class="font-weight-semibold">Email me price drops and new listings for these search results:</p>
+                            <form action="/product.html">
+                                <input type="email" name="" id="" placeholder="Your email">
+                                <button type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Cars -->
+            <div class="d-flex justify-content-between align-items-center mt-5">
+                <h3 class="fw-semibold">Other Products</h3>
+                <a href="/products" class="text-decoration-none text-secondary">View all<i class="bi bi-arrow-right ms-2"></i></a>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="card card-content" style="width: 100%;">
+                        <img src="assets/img/ford.jpg" class="card-img-top img-fluid" alt="benz">
+                        <div class="card-body">
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-auto">
+                                    <p class="text-muted">30/09/2022</p>
+                                </div>
+                                <div class="col-auto card-icons ">
+                                    <i class="bi bi-suit-heart"></i>
+                                    <i class="bi bi-bell"></i>
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title fw-bold"><a href="product.html" class="text-decoration-none text-dark">Ford Truck Lifted <span class="text-muted ms-1">(2024)</span></a></h6>
+                            <h6 class="fw-semibold">$79,000</h6>
+                            <hr>
+                            <div class="row d-flex">
+                                <div class="col-auto">
+                                    <small><i class="bi bi-geo-alt me-2"></i>Boston</small><br>
+                                    <small><i class="bi-speedometer me-2"></i>12K mi</small>
+                                </div>
+                                <div class="col-auto mx-auto">
+                                    <small><i class="bi bi-fuel-pump me-2"></i>Diesel</small><br>
+                                    <small><i class="bi-gear me-2"></i>Automatic</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4 ">
+                    <div class="card" style="width: 100%;">
+                        <img src="assets/img/m5.jpg" class="card-img-top" alt="maserati">
+                        <div class="card-body">
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-auto">
+                                    <p class="text-muted">11/21/2023</p>
+                                </div>
+                                <div class="col-auto card-icons">
+                                    <i class="bi bi-suit-heart"></i>
+                                    <i class="bi bi-bell"></i>
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title fw-bold"><a href="product.html" class="text-decoration-none text-dark">Bmw M5 F90<span class="text-muted ms-1">(2023)</span></a></h6>
+                            <h6 class="fw-semibold">$129,000</h6>
+                            <hr>
+                            <div class="row d-flex">
+                                <div class="col-auto">
+                                    <small><i class="bi bi-geo-alt me-2"></i>New York</small><br>
+                                    <small><i class="bi-speedometer me-2"></i>28K mi</small>
+                                </div>
+                                <div class="col-auto mx-auto">
+                                    <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
+                                    <small><i class="bi-gear me-2"></i>Automatic</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="assets/img/porsche.jpg" class="card-img-top" alt="volvo">
+                        <div class="card-body">
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-auto">
+                                    <p class="text-muted">05/12/2023</p>
+                                </div>
+                                <div class="col-auto card-icons">
+                                    <i class="bi bi-suit-heart"></i>
+                                    <i class="bi bi-bell"></i>
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title fw-bold"><a href="product.html" class="text-decoration-none text-dark">Porsche 911 GT <span class="text-muted ms-1">(2023)</span></a></h6>
+                            <h6 class="fw-semibold">$119,000</h6>
+                            <hr>
+                            <div class="row d-flex">
+                                <div class="col-auto">
+                                    <small><i class="bi bi-geo-alt me-2"></i>San Diego</small><br>
+                                    <small><i class="bi-speedometer me-2"></i>56K mi</small>
+                                </div>
+                                <div class="col-auto mx-auto">
+                                    <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
+                                    <small><i class="bi-gear me-2"></i>Automatic</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                    <div class="card" style="width: 100%;">
+                        <img src="assets/img/tesla.jpg" class="card-img-top" alt="benz">
+                        <div class="card-body">
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-auto">
+                                    <p class="text-muted">12/09/2024</p>
+                                </div>
+                                <div class="col-auto card-icons">
+                                    <i class="bi bi-suit-heart"></i>
+                                    <i class="bi bi-bell"></i>
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title fw-bold"><a href="product.html" class="text-decoration-none text-dark">Tesla<span class="text-muted ms-1">(2024)</span></a></h6>
+                            <h6 class="fw-semibold">$69,000</h6>
+                            <hr>
+                            <div class="row d-flex">
+                                <div class="col-auto">
+                                    <small><i class="bi bi-geo-alt me-2"></i>Washington</small><br>
+                                    <small><i class="bi-speedometer me-2"></i>66K mi</small>
+                                </div>
+                                <div class="col-auto mx-auto">
+                                    <small><i class="bi bi-fuel-pump me-2"></i>Electric</small><br>
+                                    <small><i class="bi-gear me-2"></i>Automatic</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Script Source Bootsrap JS & Custom JS -->
         <script src="assets/bootstrap/bootstrap.js"></script>
         <script src="assets/main.js"></script>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+
+            // Changing images
+            $(document).ready(function() {
+                $('#main-img-1').click(function() {
+                    const newSrc = $(this).attr('src');
+                    $('#active').attr('src', newSrc);
+                });
+
+                $('#main-img-2').click(function() {
+                    const newSrc = $(this).attr('src');
+                    $('#active').attr('src', newSrc);
+                });
+
+                $('#main-img-3').click(function() {
+                    const newSrc = $(this).attr('src');
+                    $('#active').attr('src', newSrc);
+                });
+
+                $('#main-img-4').click(function() {
+                    const newSrc = $(this).attr('src');
+                    $('#active').attr('src', newSrc);
+                });
+            });
+            
+            // Show more function 
+            function showMore() {
+                const extraContent = document.getElementById('extra-content');
+                const showMoreLink = document.querySelector('.show-more');
+
+                if (extraContent.style.display === 'none' || extraContent.style.display === '') {
+                    extraContent.style.display = 'block';
+                    showMoreLink.innerHTML = '<i class="bi bi-arrow-right me-2"></i>Show Less';
+                } else {
+                    extraContent.style.display = 'none';
+                    showMoreLink.innerHTML = '<i class="bi bi-arrow-right me-2"></i>Show More';
+                }
+            }
+
+            // Toggle paragraphs
+            $(document).ready(function() {
+                $('#accordion-btn1').click(function() {
+                    $('#accordion-content1').slideToggle();
+                });
+
+                $('#accordion-btn2').click(function() {
+                    $('#accordion-content2').slideToggle(); 
+                });
+
+                $('#accordion-btn3').click(function() {
+                    $('#accordion-content3').slideToggle();
+                });
+
+                $('#accordion-btn4').click(function() {
+                    $('#accordion-content4').slideToggle();
+                });
+            });
+        </script>
     </body>
 </html>
