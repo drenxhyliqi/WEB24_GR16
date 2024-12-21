@@ -219,7 +219,8 @@ ul li a{
     cursor: pointer;
 }
 .car-demands a:hover{
-    border-bottom: 3px solid #000;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 
@@ -263,24 +264,66 @@ ul li a{
 
 /* footer section */
 .footer-info{
-    background-color: lightgray;
+    background-color: #111827;
+    color: rgba(255, 255, 255, 0.855);
 }
 .footer-lists p{
     font-size: large;
+    margin-top: 10px;
+    margin-left: 10px;
 }
+.footer-lists button{
+    font-size: 13px;
+    border-radius: 10px;
+    background-color:#9aa1ad90 ;
+    border-color: transparent;
+}
+.footer-lists button:hover{
+    background-color:#9aa1ad;
+}
+
 .footer-info-content{
     margin: 5px;
-    padding-top: 15px;    
-    padding-bottom: 15px;    
+    padding-top: 40px;    
+    padding-bottom: 15px;   
+     
 }
-
-.footer-lists a{
+.footer-info-content span{
+    padding: 7px;
+     
+}
+.footer-lists a {
     font-size: 10px;
-    color:#000;
+    color: #808792;
+    margin-left: 15px;
+    text-decoration: none;
 }
 
-.footer-lists a:hover{
+.footer-lists a:hover {
     opacity: 0.7;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+
+#copyright {
+    margin-top: 70px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: small;
+    color: #808792;
+}
+
+#copyright a{
+    text-decoration: none; 
+    color: rgba(255, 255, 255, 0.855);
+    
+}
+
+#copyright a:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 
