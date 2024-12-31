@@ -31,10 +31,6 @@
                 color: black;
             }
 
-            .bold-text{
-                font-weight: 600;
-            }
-
             .main-img{
                 width: 100%;
                 border-radius: 10px;
@@ -259,14 +255,14 @@
 
             <!-- Pages Link -->
             <div class="margin-top-3">
-                <small><a href="" class="no-decoration dark-text">Home</a><i class="bi bi-caret-right mx-1"></i><a href="" class="no-decoration dark-text">All Cars</a><i class="bi bi-caret-right mx-1"></i><a href="" class="no-decoration dark-text">Mercedes-Benz A205 Cabriolet</a></small>
+                <small><a href="/index.html" class="no-decoration dark-text">Home</a><i class="bi bi-caret-right mx-1"></i><a href="/products.html" class="no-decoration dark-text">All Cars</a><i class="bi bi-caret-right mx-1"></i><a href="#mercedes" class="no-decoration dark-text">Mercedes-Benz A205 Cabriolet</a></small>
             </div>
 
             <!-- Product Title -->
-            <h2 class="bold-text margin-top-3">Mercedes-Benz A205 Cabriolet</h2>
+            <h2 class="margin-top-3"><b>Mercedes-Benz A205 Cabriolet</b></h2>
 
             <!-- Product Images -->
-            <div class="row">
+            <div class="row" id="mercedes">
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <img src="/assets/img/prod1.jpg" alt="main-img-1" id="active" class="img-hover-product main-img shadow-sm">
                     <div class="row mt-4">
@@ -286,36 +282,42 @@
                     <hr>
 
                     <!-- Specifications Table -->
-                    <h3>Specifications</h3>
                     <div class="table-container">
-                        <table>
+                        <table style="width: 100%; border-color: #f0f0f0;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="background-color: #ECF2F2; color: #00515a; text-align: center;">Car Specifications</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr>
                                     <td><strong>Manufacturing year:</strong> 2021</td>
-                                    <td><strong>Fuel type:</strong> 2021</td>
+                                    <td><strong>Fuel type:</strong> Gasoline</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Mileage:</strong> 60K miles</td>
-                                    <td><strong>City MPG:</strong> 60K miles</td>
+                                    <td style="background-color: #ECF2F2; color: #00515a;"><strong>Mileage:</strong> 60K miles</td>
+                                    <td style="background-color: #ECF2F2; color: #00515a;"><strong>City MPG:</strong> 25</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Body type:</strong> Convertible</td>
-                                    <td><strong>Highway MPG:</strong> Convertible</td>
+                                    <td><strong>Highway MPG:</strong> 35</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Drive type:</strong> 2 wheel drive - rear</td>
-                                    <td><strong>Exterior color:</strong> 2 wheel drive - rear</td>
+                                    <td style="background-color: #ECF2F2; color: #00515a;"><strong>Drive type:</strong> 2 wheel drive - rear</td>
+                                    <td style="background-color: #ECF2F2; color: #00515a;"><strong>Exterior color:</strong> Red</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Engine:</strong> 6-Cylinder Turbo</td>
-                                    <td><strong>Interior color:</strong> Charcoal</td>
+                                    <td rowspan="2"><a href="#description" style="text-decoration: none; color: black;"><b>View Details<i class="bi bi-arrow-right ms-2"></i></b></a></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Transmission:</strong> 7-Speed Shiftable Automatic</td>
-                                    <td><strong>VIN:</strong> 2VW821AU9JM754284</td>
+                                    <td style="background-color: #ECF2F2; color: #00515a;"><strong>Exterior color:</strong> Red</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center;"><strong>Transmission:</strong> 7-Speed Shiftable Automatic</td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table>                        
                     </div>
 
                     <!-- Infos Card -->
@@ -350,51 +352,82 @@
                     <h3>Features</h3>
                     <button class="accordion-btn" id="accordion-btn1"><i class="bi bi-arrow-right me-2"></i>Exterior</button>
                     <div class="accordion-content" id="accordion-content1" style="display: none;">
-                        <ul>
+                        <ol>
                             <li>Alloy Wheels</li>
                             <li>Sunroof / Moonroof</li>
                             <li>Tinged glass</li>
                             <li>LED Headlights</li>
                             <li>Foldable Roof</li>
                             <li>Tow Hitch</li>
-                        </ul>
+                        </ol>
                     </div>
                     <button class="accordion-btn" id="accordion-btn2"><i class="bi bi-arrow-right me-2"></i>Interior</button>
                     <div class="accordion-content" id="accordion-content2" style="display: none;">
-                        <ul>
+                        <ol type="A">
                             <li>Adjustable Steering Wheel</li>
                             <li>Auto-Dimming Rearview Mirror</li>
                             <li>Driver Adjustable Lumbar</li>
                             <li>Driver Illuminated Vanity Mirror</li>
                             <li>Universal Garage Door Opener</li>
                             <li>Steering Wheel Audio Controls</li>
-                        </ul>
+                        </ol>
                     </div>
                     <button class="accordion-btn" id="accordion-btn3"><i class="bi bi-arrow-right me-2"></i>Safety</button>
                     <div class="accordion-content" id="accordion-content3" style="display: none;">
-                        <ul>
-                            <li>Airbag: Driver</li>
-                            <li>Airbag: Passenger</li>
-                            <li>Adaptive Cruise Control</li>
-                            <li>Blind Spot Monitor</li>
-                            <li>Alarm</li>
-                            <li>Antilock Brakes</li>
-                        </ul>
+                        <ol type="a">
+                            <li>Airbag: Driver
+                                <ul>
+                                    <li>Front Impact</li>
+                                    <li>Side Impact</li>
+                                    <li>Rear Impact</li>
+                                </ul>
+                            </li>
+                            <li>Airbag: Passenger
+                                <ul>
+                                    <li>Front Impact</li>
+                                    <li>Side Impact</li>
+                                </ul>
+                            </li>
+                            <li>Adaptive Cruise Control
+                                <ul>
+                                    <li>Maintains Distance</li>
+                                    <li>Automatic Braking</li>
+                                </ul>
+                            </li>
+                            <li>Blind Spot Monitor
+                                <ul>
+                                    <li>Visual Alerts</li>
+                                    <li>Audible Alerts</li>
+                                </ul>
+                            </li>
+                            <li>Alarm
+                                <ul>
+                                    <li>Anti-Theft</li>
+                                    <li>Motion Detection</li>
+                                </ul>
+                            </li>
+                            <li>Antilock Brakes
+                                <ul>
+                                    <li>Prevents Skidding</li>
+                                    <li>Improves Steering</li>
+                                </ul>
+                            </li>
+                        </ol>
                     </div>
                     <button class="accordion-btn" id="accordion-btn4"><i class="bi bi-arrow-right me-2"></i>Technology</button>
                     <div class="accordion-content" id="accordion-content4" style="display: none;">
-                        <ul>
+                        <ol type="I">
                             <li>Multi-Zone A/C</li>
                             <li>Climate Control</li>
                             <li>Navigation System</li>
                             <li>Remote Start</li>
                             <li>Bluetooth</li>
                             <li>Remote Start</li>
-                        </ul>
+                        </ol>
                     </div>
 
                     <!-- Full Description -->
-                    <h3 class="margin-top-3">Description</h3>
+                    <h3 class="margin-top-3" id="description">Description</h3>
                     <div id="content" class="margin-bottom-3">
                         <p>This stunning convertible blends luxury with performance, featuring a sleek design, advanced technology, and a powerful engine. Enjoy open-air driving with premium comfort and the unmistakable elegance of Mercedes-Benz. Impeccably maintained and ready to provide an exhilarating driving experience. Don't miss out on this exceptional vehicle.</p>
                         <div id="extra-content">
@@ -409,8 +442,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-4">
                     <hr>
                     <div class="sticky-top pt-3 margin-bottom-3">
-                        <small style="background-color: #3D7A81; color: white; padding-right: 10px; padding-left: 10px; border-radius: 5px;"><i class="bi bi-check2-circle me-2"></i>Verified</small>
-                        <small style="background-color: #FC9231; color: white; padding-right: 10px; padding-left: 10px; border-radius: 5px;">Used</small>
+                        <small style="background-color: #3D7A81; color: white; padding-right: 10px; padding-left: 10px; border-radius: 5px;"><i class="bi bi-check2-circle me-2"></i><i>Verified</i></small>
+                        <small style="background-color: #FC9231; color: white; padding-right: 10px; padding-left: 10px; border-radius: 5px;"><i>Used</i></small>
                         <h2 class="font-weight-semibold margin-top-3">$41 900</h2>
                         <ul style="opacity: 75%; list-style-type: square;">
                             <li><i class="bi bi-geo-alt me-2"></i>Los Angeles</li>
@@ -422,9 +455,9 @@
                             <div id="profile">
                                 <img src="/assets/img/seller.jpg" alt="user-image" id="user-img">
                                 <div class="profile-info">
-                                    <span class="font-weight-semibold">Darrell Steward</span><br>
+                                    <span class="font-weight-semibold"><u>Darrell Steward</u></span><br>
                                     <small><i class="bi bi-star-fill text-warning me-2"></i><strong>4.9</strong> (5 reviews)</small><br>
-                                    <small style="opacity: 75%; font-size: 12px;">Private seller</small>
+                                    <small style="opacity: 75%; font-size: 12px;"><abbr title="We don't take responsibility for sale!">Private seller</abbr></small>
                                 </div>
                             </div>
                             <a href="/products.html" id="link">Other ads by this seller</a><br>
@@ -578,7 +611,6 @@
 
         <!-- Script Source Bootsrap JS & Custom JS -->
         <script src="assets/bootstrap/bootstrap.js"></script>
-        <script src="assets/main.js"></script>
 
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
