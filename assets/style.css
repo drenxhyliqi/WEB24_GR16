@@ -266,6 +266,7 @@ ul li a{
 .footer-info{
     background-color: #111827;
     color: rgba(255, 255, 255, 0.855);
+    height: 450px;
 }
 .footer-lists p{
     font-size: large;
