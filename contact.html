@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car ShowRoom | Find your dream car!</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="/assets/img/logo.png" alt="logo" width="200px">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="bi bi-list fs-2"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto py-1 py-md-0 fs-6 text-start text-md-center ">
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link " href="about.html">About</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="#">Cars</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link active" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+                <i class="bi bi-moon fs-5 text-white" id="bi-moon" onclick="toggleBackgroundColor()"></i>
+                <i class="bi bi-brightness-high text-white fs-5 d-none" id="bi-brightness-high"
+                    onclick="toggleBackgroundColor()"></i>
+            </div>
+        </div>
+    </nav>
+    <section class="container-fluid Contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 contactUs">
+                    <h1><b>Contact Us</b></h1>
+                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
+                    <div class="d-flex align-items-center">
+                        <div class="questions">
+                            <div class="questions-body">
+                                <img src="assets/img/avatar1.jpg" alt="" id="questionsImg">
+                                <div class="text mt-4">
+                                    <h2><b>Questions?</b></h2>
+                                    <p>Give us a call right now <a href="tel:(406) 555‑0120">(406) 555‑0120</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-md-6 contactForm">
+                    <h2><b>Get in touch</b></h2>
+                    <form id="contactForm" onsubmit="return validateForm()">
+                        <input type="text" id="full-name" placeholder="Full name"><br>
+                        <input type="email" id="email" placeholder="Email"><br>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea><br>
+                        <input type="submit" style="background-color:#3d7a81; color: white;" value="Send Message">
+                    </form>
+                    <p id="error-message" style="color: red; display: none;">Please fill out all fields correctly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/bootstrap/bootstrap.js"></script>
+    <script src="assets/main.js"></script>
+    <script>
+    function validateForm() {
+        const fullName = document.getElementById('full-name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+    
+        const errorMessage = document.getElementById('error-message');
+    
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+        if (fullName === "" || email === "" || message === "") {
+            errorMessage.textContent = "All fields are required.";
+            errorMessage.style.display = "block";
+            return false; 
+        }
+    
+        if (!emailPattern.test(email)) {
+            errorMessage.textContent = "Please enter a valid email address.";
+            errorMessage.style.display = "block";
+            return false; 
+        }
+    
+        errorMessage.style.display = "none";
+        return true;
+    }
+</script>
+
+    
+
+    <footer class="container-fluid mt-5 footer-info">
+        <div class="row d-flex align-items-center footer-info-content">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-copy me-2"></i>
+                    <span class="mb-0">Over 1 million listings</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-search me-2"></i>
+                    <span class="">Personalized search</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-car-front-fill me-2"></i>
+                    <span class="mb-0">Online car appraisal</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-lightbulb me-2"></i>
+                    <span class="mb-0">Non-stop innovation</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row d-flex justify-content-around footer-lists">
+            <div class="col-6 col-md-6 col-lg-3 ">
+                <p>Buying & Selling</p>
+                <ul class="list-unstyled">
+                    <li><a href="#">Find a car</a></li>
+                    <li><a href="#">Sell your car</a></li>
+                    <li><a href="#">Car dealers</a></li>
+                    <li><a href="#">Compare Cars</a></li>
+                    <li><a href="#">Online car appraisal</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-6 col-lg-3 ">
+                <p>About</p>
+                <ul class="list-unstyled ">
+                    <li><a href="#">About Finder</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">FAQs & Support</a></li>
+                    <li><a href="#">Mobile app</a></li>
+                    <li><a href="#">Blog & News</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-6 col-lg-3 ">
+                <p>Profile</p>
+                <ul class="list-unstyled">
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">My listings</a></li>
+                    <li><a href="#">Add listings</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                <p>Download our app</p>
+                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
+                <div>
+                    <button class="btn btn-primary me-2">
+                        <i class="bi bi-google-play"></i>  Google Play</button>
+                    <button class="btn btn-primary">
+                        <i class="bi bi-apple"></i>  App Store</button>
+                </div>
+            </div>
+        </div>
+
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="" ><b>Gr.16</b></a></p>
+    </footer>
+</body>
+</html>
