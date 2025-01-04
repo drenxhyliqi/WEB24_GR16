@@ -438,17 +438,17 @@
                 <div class="col-12 col-md-7 col-lg-7 order-2 order-md-1">
                     <form action="" class="half-main-banner p-3 p-md-2 p-lg-3" id="carSearchForm">
                         <div class="mb-3">
-                            <input type="radio" class="btn-check" name="options" id="btn-check-1" checked>
-                            <label class="btn btn-light rounded-5 px-3" for="btn-check-1">All</label>
-    
+                            <input type="radio" class="btn-check" name="options" id="btn-check-1">
+                            <label class="btn btn-select rounded-3 px-3" for="btn-check-1">All</label>
+
                             <input type="radio" class="btn-check" name="options" id="btn-check-2">
-                            <label class="btn btn-light rounded-5 px-3" for="btn-check-2">New Cars</label>
-    
+                            <label class="btn btn-select rounded-3 px-3" for="btn-check-2">New Cars</label>
+
                             <input type="radio" class="btn-check" name="options" id="btn-check-3">
-                            <label class="btn btn-light rounded-5 px-3" for="btn-check-3">Used Cars</label>
+                            <label class="btn btn-select rounded-3 px-3" for="btn-check-3">Used Cars</label>
                         </div>
                         <div id="optionsError" class="text-danger mb-3" style="margin-top: 5px;"></div>
-    
+
                         <!-- Form Fields -->
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
@@ -518,7 +518,7 @@
                                 <div id="priceError" class="text-danger" style="margin-top: 5px;"></div>
                             </div>
                         </div>
-    
+
                         <!-- Submit Button -->
                         <button type="submit" class="btn search"><i class="bi bi-search me-2"></i>Search</button>
                         <a href="#" class="text-decoration-none text-light ms-2">Advanced search<i
@@ -544,43 +544,43 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         document.getElementById("carSearchForm").addEventListener("submit", function (e) {
             e.preventDefault();
-            
+
             let isValid = true;
-            
+
             // Reset all errors before validation
             const errorMessages = ['optionsError', 'makeError', 'modelError', 'bodyTypeError', 'yearError', 'locationError', 'priceError'];
             errorMessages.forEach(function (id) {
                 document.getElementById(id).innerText = "";
             });
-            
+
             const selectedOption = document.querySelector('input[name="options"]:checked');
             if (!selectedOption) {
                 isValid = false;
                 document.getElementById("optionsError").innerText = "• Please select a car type.";
             }
-    
+
             const make = document.getElementById("make").value;
             if (!make) {
                 isValid = false;
                 document.getElementById("makeError").innerText = "• Please select a car make.";
             }
-    
+
             const model = document.getElementById("model").value;
             if (!model) {
                 isValid = false;
                 document.getElementById("modelError").innerText = "• Please select a car model.";
             }
-    
+
             const bodyType = document.getElementById("bodyType").value;
             if (!bodyType) {
                 isValid = false;
                 document.getElementById("bodyTypeError").innerText = "• Please select a body type.";
             }
-    
+
             const yearFrom = document.getElementById("yearFrom").value;
             const yearTo = document.getElementById("yearTo").value;
             if (!yearFrom || !yearTo) {
@@ -590,13 +590,13 @@
                 isValid = false;
                 document.getElementById("yearError").innerText = "• Year 'From' cannot be greater than 'To'.";
             }
-    
+
             const location = document.getElementById("location").value;
             if (!location) {
                 isValid = false;
                 document.getElementById("locationError").innerText = "• Please select a location.";
             }
-    
+
             const priceFrom = document.getElementById("priceFrom").value;
             const priceTo = document.getElementById("priceTo").value;
             if (!priceFrom || !priceTo) {
@@ -606,14 +606,14 @@
                 isValid = false;
                 document.getElementById("priceError").innerText = "• 'Price From' cannot be greater than 'To'.";
             }
-    
+
             if (isValid) {
                 alert("Form submitted successfully!");
-                this.submit(); 
+                this.submit();
             }
         });
     </script>
-    
+
     <!--Popular car body types-->
     <section class="container-fluid mt-4 mb-4 banner">
         <div class="container-fluid">
