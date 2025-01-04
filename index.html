@@ -436,14 +436,14 @@
         <div class="p-0 p-md-1 p-lg-5">
             <div class="row align-items-center">
                 <div class="col-12 col-md-7 col-lg-7 order-2 order-md-1">
-                    <form action="" class="half-main-banner p-3 p-md-2 p-lg-3">
+                    <form action="" class="half-main-banner p-3 p-md-2 p-lg-3" id="carSearchForm">
                         <div class="mb-3">
                             <input type="radio" class="btn-check" name="options" id="btn-check-1" checked>
                             <label class="btn btn-light rounded-5 px-3" for="btn-check-1">All</label>
-
+    
                             <input type="radio" class="btn-check" name="options" id="btn-check-2">
                             <label class="btn btn-light rounded-5 px-3" for="btn-check-2">New Cars</label>
-
+    
                             <input type="radio" class="btn-check" name="options" id="btn-check-3">
                             <label class="btn btn-light rounded-5 px-3" for="btn-check-3">Used Cars</label>
                         </div>
@@ -548,11 +548,15 @@
     <script>
         document.getElementById("carSearchForm").addEventListener("submit", function (e) {
             e.preventDefault();
-    
-            let isValid = true; 
-            let errorMessages = [];
-
-    
+            
+            let isValid = true;
+            
+            // Reset all errors before validation
+            const errorMessages = ['optionsError', 'makeError', 'modelError', 'bodyTypeError', 'yearError', 'locationError', 'priceError'];
+            errorMessages.forEach(function (id) {
+                document.getElementById(id).innerText = "";
+            });
+            
             const selectedOption = document.querySelector('input[name="options"]:checked');
             if (!selectedOption) {
                 isValid = false;
