@@ -10,7 +10,7 @@ body{
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 body.dark-mode {
-    background-color: #000;
+    background-color: #05040b;
     color: #f9f9f9;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -20,7 +20,7 @@ body.dark-mode {
 }
 
 .active{
-    color: #da1a17 !important;
+    color: #035dad !important;
 }
 
 /* Nese don Edison heke veq per menim tem ma mire po del qeshtu */
@@ -30,7 +30,7 @@ body.dark-mode {
 
 /* Navbar */
 .navbar{
-    background-color: #111;
+    background-color: #05040b;
     position: sticky;
     top: 0;
     width: 100%;
@@ -41,7 +41,7 @@ body.dark-mode {
     color: #f9f9f9;
 }
 .navbar-nav .nav-link:hover{
-    color: #da1a17;
+    color: #035dad;
 }
 
 ul li a{
@@ -51,9 +51,10 @@ ul li a{
     font-weight: 600 !important;
 }
 
-.bi-moon,
-.bi-brightness-high{
+.bi-person-fill{
     cursor: pointer;
+    font-size: 1.8rem;
+    color: #f8f7fd !important;
 }
 
 .navbar-toggler{
@@ -87,11 +88,16 @@ ul li a{
     padding: 2%; 
 }
 .banner .card {
-    background-color:rgb(247, 249, 250);
+    background-color: #05040b;
+    color: #f8f7fd;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
 }
 
+.banner .card:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
 .banner h3 {
     margin-bottom: 30px;
 }
@@ -99,34 +105,36 @@ ul li a{
 .banner h4 {
     text-align: center;
 }
-
-.banner h4:hover {
-    text-decoration-line: underline;
-}
 .banner p {
     text-align: center;
     margin: 10px 0;
 }
-
+.btn-select{
+    background-color: #f9f9f9;
+}
+.btn-select:hover{
+    background-color: #035dad !important;
+    color: #f8f7fd !important;
+}
 
 /* Latest Cars Section */
 .btn-all, .btn-new, .btn-used {
     padding: 8px 14px; 
-    border: 2px solid #555; 
+    border: 2px solid #035dad; 
     background-color: transparent; 
-    color: #666; 
+    color: #05040b; 
     font-size: 12px;
     font-weight: 500;
-    border-radius: 30px;
+    border-radius: 15px !important;
     transition: all 0.3s ease; 
     text-transform: uppercase; 
     cursor: pointer; 
 }
 
 .btn-all:hover, .btn-new:hover, .btn-used:hover {
-    background-color: #555; 
-    color: #fff; 
-    border-color: #555; 
+    background-color: #05040b; 
+    color: #f8f7fd; 
+    border-color: #05040b; 
 }
 
 .btn-all:focus, .btn-new:focus, .btn-used:focus {
@@ -138,7 +146,7 @@ ul li a{
 .bi-suit-heart, 
 .bi-bell,
 .bi-arrow-repeat{
-    border: 1px solid #000;
+    border: 1px solid #05040b;
     padding: 5px 5px 3px 5px;
     border-radius: 25%;
     cursor: pointer;
@@ -147,7 +155,7 @@ ul li a{
 .bi-suit-heart:hover,
 .bi-bell:hover,
 .bi-arrow-repeat:hover {
-    background-color: #111827;
+    background-color: #0478DF;
     color: #f9f9f9;
 }
 
@@ -158,10 +166,10 @@ ul li a{
 
 /* Main Section */
 .main-banner{
-    background-color: #333;
+    background-color: #05040b;
 }
 .search{
-    background-color: #da1a17;
+    background-color: #035dad;
     color: #f9f9f9;
 }
 
@@ -212,7 +220,7 @@ ul li a{
 }
 
 .car-demands a {
-    color: #555;
+    color: #05040b;
     text-decoration: none;
     font-size: larger;
     font-weight: bold;
@@ -231,20 +239,23 @@ ul li a{
 
 .auto-market{
     padding: 5%;
-    background-color: #222;
+    background-color: #05040b;
     color: #f9f9f9;
 }
 .btn-shop{
     padding: 10px 16px; 
-    border: 2px solid #da1a17; 
-    background-color: #da1a17 ; 
+    border: 2px solid #035dad; 
+    background-color: transparent ; 
     color: #f9f9f9; 
     font-size: 14px;
     font-weight: 500;
-    border-radius: 30px;
+    border-radius: 10px;
     transition: all 0.3s ease; 
     text-transform: uppercase; 
     cursor: pointer; 
+}
+.btn-shop:hover{
+    background-color: #035dad;
 }
 
 /* Info section */
@@ -264,9 +275,9 @@ ul li a{
 
 /* footer section */
 .footer-info{
-    background-color: #111827;
+    background-color: #05040b;
     color: rgba(255, 255, 255, 0.855);
-    border: solid #111827 1px;
+    border: solid #05040b 1px;
 }
 .footer-lists p{
     font-size: large;
@@ -276,11 +287,11 @@ ul li a{
 .footer-lists button{
     font-size: 13px;
     border-radius: 10px;
-    background-color:#9aa1ad90 ;
+    background-color:#05040b ;
     border-color: transparent;
 }
 .footer-lists button:hover{
-    background-color:#9aa1ad;
+    background-color:#05040b;
 }
 
 .footer-info-content{
@@ -291,7 +302,6 @@ ul li a{
 }
 .footer-info-content span{
     padding: 7px;
-     
 }
 .footer-lists a {
     font-size: 10px;
@@ -348,8 +358,9 @@ ul li a{
 
 .contactForm {
     padding: 40px 25px 40px 25px;
-    border-radius: 40px;
-    background-color:#e7e7e7;
+    color: #05040b;
+    border-radius:15px;
+    border: 2px solid #035dad;
 
 }
 .contactForm input, textarea{
@@ -357,7 +368,7 @@ ul li a{
     margin: 5px;
     padding: 7px;
     border-radius: 10px;
-    border-color: lightgray;
+    border-color: #05040b;
 }
 
 
