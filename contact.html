@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <img src="/assets/img/logo.png" alt="logo" width="200px">
+            <img src="/assets/img/weblogo.png" alt="logo" width="135px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -27,18 +28,13 @@
                         <a class="nav-link " href="about.html">About</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link" href="#">Cars</a>
+                        <a class="nav-link" href="product.html">Cars</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
                         <a class="nav-link active" href="#">Contact</a>
                     </li>
-                    <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
                 </ul>
-                <i class="bi bi-moon fs-5 text-white" id="bi-moon" onclick="toggleBackgroundColor()"></i>
-                <i class="bi bi-brightness-high text-white fs-5 d-none" id="bi-brightness-high"
-                    onclick="toggleBackgroundColor()"></i>
+                <i class="bi bi-person-fill"></i>
             </div>
         </div>
     </nav>
@@ -47,29 +43,34 @@
             <div class="row">
                 <div class="col-12 col-md-6 contactUs">
                     <h1><b>Contact Us</b></h1>
-                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
+                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to
+                        communication and want to know more about those who trust us.</p>
                     <div class="d-flex align-items-center">
                         <div class="questions">
                             <div class="questions-body">
                                 <img src="assets/img/avatar1.jpg" alt="" id="questionsImg">
                                 <div class="text mt-4">
                                     <h2><b>Questions?</b></h2>
-                                    <p>Give us a call right now <a href="tel:(406) 555‑0120">(406) 555‑0120</a></p>
+                                    <p>Give us a call right now <a href="tel:(406) 555‑0120"
+                                            style="color: #05040b;">(406)
+                                            555‑0120</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="col-12 col-md-6 contactForm">
                     <h2><b>Get in touch</b></h2>
                     <form id="contactForm" onsubmit="return validateForm()">
                         <input type="text" id="full-name" placeholder="Full name"><br>
                         <input type="email" id="email" placeholder="Email"><br>
                         <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea><br>
-                        <input type="submit" style="background-color:#3d7a81; color: white;" value="Send Message">
+                        <input type="submit" style="background-color: #035dad; border: #035dad; color: white;"
+                            value="Send Message">
                     </form>
-                    <p id="error-message" style="color: red; display: none;">Please fill out all fields correctly.</p>
+                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.
+                    </p>
                 </div>
             </div>
         </div>
@@ -78,33 +79,33 @@
     <script src="assets/bootstrap/bootstrap.js"></script>
     <script src="assets/main.js"></script>
     <script>
-    function validateForm() {
-        const fullName = document.getElementById('full-name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-    
-        const errorMessage = document.getElementById('error-message');
-    
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    
-        if (fullName === "" || email === "" || message === "") {
-            errorMessage.textContent = "All fields are required.";
-            errorMessage.style.display = "block";
-            return false; 
-        }
-    
-        if (!emailPattern.test(email)) {
-            errorMessage.textContent = "Please enter a valid email address.";
-            errorMessage.style.display = "block";
-            return false; 
-        }
-    
-        errorMessage.style.display = "none";
-        return true;
-    }
-</script>
+        function validateForm() {
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-    
+            const errorMessage = document.getElementById('error-message');
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (fullName === "" || email === "" || message === "") {
+                errorMessage.textContent = "All fields are required.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            return true;
+        }
+    </script>
+
+
 
     <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
@@ -169,14 +170,15 @@
                 <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
                 <div>
                     <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i>  Google Play</button>
+                        <i class="bi bi-google-play"></i> Google Play</button>
                     <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i>  App Store</button>
+                        <i class="bi bi-apple"></i> App Store</button>
                 </div>
             </div>
         </div>
 
-        <p id="copyright">&copy; All rights are reserved. Made by <a href="" ><b>Gr.16</b></a></p>
+        <p id="copyright">&copy; All rights are reserved. Made by <a href=""><b>Gr.16</b></a></p>
     </footer>
 </body>
+
 </html>

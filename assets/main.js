@@ -1,18 +1,22 @@
-function toggleBackgroundColor() {
-  const body = document.body;
-  const moonIcon = document.getElementById("bi-moon");
-  const sunIcon = document.getElementById("bi-brightness-high");
+const targetDate = new Date("January 28, 2025 23:59:59").getTime();
 
-  if (body.classList.contains("dark-mode")) {
-    body.classList.remove("dark-mode");
-    moonIcon.classList.remove("d-none");
-    sunIcon.classList.add("d-none"); 
-  } else {
-    body.classList.add("dark-mode");
-    moonIcon.classList.add("d-none"); 
-    sunIcon.classList.remove("d-none"); 
-  }
-}
+const countdownTimer = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    
+    if (distance < 0) {
+        clearInterval(countdownTimer);
+        document.getElementById("timer").innerHTML = "Offer Expired!";
+    }
+}, 1000);
+
 const getItNow = document.getElementById("get");
 getItNow.addEventListener('click', function () {
   window.location.href = "contact.html";
@@ -50,24 +54,7 @@ playPauseButton.addEventListener('click', function() {
     }
 });
 
-const targetDate = new Date("December 31, 2024 23:59:59").getTime();
 
-const countdownTimer = setInterval(function() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-    
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    
-    if (distance < 0) {
-        clearInterval(countdownTimer);
-        document.getElementById("timer").innerHTML = "Offer Expired!";
-    }
-}, 1000);
 
 
 

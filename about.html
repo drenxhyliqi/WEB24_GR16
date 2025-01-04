@@ -12,20 +12,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/style.css">
     <style>
-        body {
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        body.dark-mode {
-            background-color: #000;
-            color: #f9f9f9;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
         .video {
             position: relative;
-            width: 100%;
+            width: 60%;
             height: auto;
+            margin: 0 auto;
+            display: block;
         }
 
         .playPauseButton {
@@ -65,8 +57,8 @@
         }
 
         .accordion-item {
-            background-color: #222 !important;
-            border: 1px solid #333;
+            background-color: #05040b !important;
+            border: 1px solid #05040b;
         }
 
         .accordion-button {
@@ -133,19 +125,18 @@
         }
 
         .offer-timer {
-            background-color: #f7f7f7;
+            background-color: #05040b;
             padding: 20px;
-            border-radius: 8px;
         }
 
         #countdown-timer p {
             font-size: 2rem;
             font-weight: bold;
-            color: #da1a17;
+            color: #035dad;
         }
 
         #countdown-timer button {
-            background-color: #da1a17;
+            background-color: #035dad;
             padding: 15px 35px;
             border: none;
             color: #f9f9f9;
@@ -154,6 +145,10 @@
 
 
         @media (max-width: 576px) {
+            .video {
+                width: 100%;
+            }
+
             .card-content {
                 margin-top: 20px;
             }
@@ -201,7 +196,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <img src="/assets/img/logo.png" alt="logo" width="200px">
+            <img src="/assets/img/weblogo.png" alt="logo" width="135px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -217,25 +212,20 @@
                         <a class="nav-link active" href="#">About</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link" href="#">Cars</a>
+                        <a class="nav-link" href="product.html">Cars</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
-                    <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
                 </ul>
-                <i class="bi bi-moon fs-5 text-white" id="bi-moon" onclick="toggleBackgroundColor()"></i>
-                <i class="bi bi-brightness-high text-white fs-5 d-none" id="bi-brightness-high"
-                    onclick="toggleBackgroundColor()"></i>
+                <i class="bi bi-person-fill"></i>
             </div>
         </div>
     </nav>
     <section class="main-about">
         <div class="container-fluid mt-5">
             <div class="top-content">
-                <p class="text-center fw-semibold">ABOUT US</p>
+                <h4 class="text-center fw-semibold display-5 mt-3">ABOUT US</h4>
                 <h2 class="text-center display-5 display-md-4 mt-3 fw-bold text-left"></h2>
                 <div class="video text-center mt-4">
                     <video src="assets/video/about.mp4" class="rounded-4" autoplay muted loop
@@ -465,16 +455,17 @@
     </section>
     <section class="offer-timer">
         <div class="container text-center">
-            <h2>Special Offer Ends In:</h2>
+            <h2 class="text-white">Special Offer Ends In:</h2>
             <div id="countdown-timer">
                 <p id="timer"></p>
                 <div class="text-center"><button id="get">Get It Now</button></div>
             </div>
         </div>
+        <hr style="color: #035dad;">
     </section>
 
-      <!-- Footer Section -->
-      <footer class="container-fluid mt-5 footer-info">
+    <!-- Footer Section -->
+    <footer class="container-fluid footer-info">
         <div class="row d-flex align-items-center footer-info-content">
             <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
                 <div class="d-flex align-items-center">
@@ -537,14 +528,14 @@
                 <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
                 <div>
                     <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i>  Google Play</button>
+                        <i class="bi bi-google-play"></i> Google Play</button>
                     <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i>  App Store</button>
+                        <i class="bi bi-apple"></i> App Store</button>
                 </div>
             </div>
         </div>
 
-        <p id="copyright">&copy; All rights are reserved. Made by <a href="" ><b>Gr.16</b></a></p>
+        <p id="copyright">&copy; All rights are reserved. Made by <a href=""><b>Gr.16</b></a></p>
     </footer>
 
 
