@@ -437,54 +437,60 @@
             <div class="row align-items-center">
                 <div class="col-12 col-md-7 col-lg-7 order-2 order-md-1">
                     <form action="" class="half-main-banner p-3 p-md-2 p-lg-3">
-                        <div class="mb-3 ">
-                            <input type="radio" class="btn-check" name="options" id="btn-check-1">
-                            <label class="btn btn-select rounded-3 px-3" for="btn-check-1">All</label>
+                        <div class="mb-3">
+                            <input type="radio" class="btn-check" name="options" id="btn-check-1" checked>
+                            <label class="btn btn-light rounded-5 px-3" for="btn-check-1">All</label>
 
                             <input type="radio" class="btn-check" name="options" id="btn-check-2">
-                            <label class="btn btn-select rounded-3 px-3" for="btn-check-2">New Cars</label>
+                            <label class="btn btn-light rounded-5 px-3" for="btn-check-2">New Cars</label>
 
                             <input type="radio" class="btn-check" name="options" id="btn-check-3">
-                            <label class="btn btn-select rounded-3 px-3" for="btn-check-3">Used Cars</label>
+                            <label class="btn btn-light rounded-5 px-3" for="btn-check-3">Used Cars</label>
                         </div>
+                        <div id="optionsError" class="text-danger mb-3" style="margin-top: 5px;"></div>
+    
+                        <!-- Form Fields -->
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
                                 <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="">Make</option>
+                                    <option value="" selected disabled>Select Make</option>
                                     <option value="Audi">Audi</option>
                                     <option value="BMW">BMW</option>
                                     <option value="Mercedes">Mercedes</option>
                                     <option value="Volkswagen">Volkswagen</option>
                                 </select>
+                                <div id="makeError" class="text-danger" style="margin-top: 5px;"></div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
-                                <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="">Model</option>
+                                <select name="model" id="model" class="form-control shadow-none">
+                                    <option value="" selected disabled>Select Model</option>
                                     <option value="A-Class">A-Class</option>
                                     <option value="C-Class">C-Class</option>
                                     <option value="E-Class">E-Class</option>
                                     <option value="Brabus">Brabus</option>
                                 </select>
+                                <div id="modelError" class="text-danger" style="margin-top: 5px;"></div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
-                                <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="">Body type</option>
+                                <select name="bodyType" id="bodyType" class="form-control shadow-none">
+                                    <option value="" selected disabled>Select Body Type</option>
                                     <option value="Sedan">Sedan</option>
                                     <option value="Convertible">Convertible</option>
                                     <option value="SUV">SUV</option>
                                     <option value="Coupe">Coupe</option>
                                 </select>
+                                <div id="bodyTypeError" class="text-danger" style="margin-top: 5px;"></div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
                                 <div class="input-group">
-                                    <select name="make" id="make" class="form-control shadow-none">
+                                    <select name="yearFrom" id="yearFrom" class="form-control shadow-none">
                                         <option value="">Year from</option>
                                         <option value="2024">2024</option>
                                         <option value="2023">2023</option>
                                         <option value="2022">2022</option>
                                         <option value="2021">2021</option>
                                     </select>
-                                    <select name="make" id="make" class="form-control shadow-none">
+                                    <select name="yearTo" id="yearTo" class="form-control shadow-none">
                                         <option value="">Year to</option>
                                         <option value="2024">2024</option>
                                         <option value="2023">2023</option>
@@ -492,23 +498,28 @@
                                         <option value="2021">2021</option>
                                     </select>
                                 </div>
+                                <div id="yearError" class="text-danger" style="margin-top: 5px;"></div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
-                                <select name="make" id="make" class="form-control shadow-none">
-                                    <option value="">Location</option>
+                                <select name="location" id="location" class="form-control shadow-none">
+                                    <option value="" selected disabled>Select Location</option>
                                     <option value="San Diego">San Diego</option>
                                     <option value="Dallas">Dallas</option>
                                     <option value="San Jose">San Jose</option>
                                     <option value="Phoenix">Phoenix</option>
                                 </select>
+                                <div id="locationError" class="text-danger" style="margin-top: 5px;"></div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 mb-3">
                                 <div class="input-group">
-                                    <input type="text" placeholder="$ Price from" class="form-control">
-                                    <input type="text" placeholder="$ Price to" class="form-control">
+                                    <input type="text" placeholder="$ Price from" id="priceFrom" class="form-control">
+                                    <input type="text" placeholder="$ Price to" id="priceTo" class="form-control">
                                 </div>
+                                <div id="priceError" class="text-danger" style="margin-top: 5px;"></div>
                             </div>
                         </div>
+    
+                        <!-- Submit Button -->
                         <button type="submit" class="btn search"><i class="bi bi-search me-2"></i>Search</button>
                         <a href="#" class="text-decoration-none text-light ms-2">Advanced search<i
                                 class="bi bi-arrow-right ms-2"></i></a>
@@ -533,7 +544,72 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        document.getElementById("carSearchForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+    
+            let isValid = true; 
+            let errorMessages = [];
 
+    
+            const selectedOption = document.querySelector('input[name="options"]:checked');
+            if (!selectedOption) {
+                isValid = false;
+                document.getElementById("optionsError").innerText = "• Please select a car type.";
+            }
+    
+            const make = document.getElementById("make").value;
+            if (!make) {
+                isValid = false;
+                document.getElementById("makeError").innerText = "• Please select a car make.";
+            }
+    
+            const model = document.getElementById("model").value;
+            if (!model) {
+                isValid = false;
+                document.getElementById("modelError").innerText = "• Please select a car model.";
+            }
+    
+            const bodyType = document.getElementById("bodyType").value;
+            if (!bodyType) {
+                isValid = false;
+                document.getElementById("bodyTypeError").innerText = "• Please select a body type.";
+            }
+    
+            const yearFrom = document.getElementById("yearFrom").value;
+            const yearTo = document.getElementById("yearTo").value;
+            if (!yearFrom || !yearTo) {
+                isValid = false;
+                document.getElementById("yearError").innerText = "• Please select both 'Year From' and 'Year To'.";
+            } else if (parseInt(yearFrom) > parseInt(yearTo)) {
+                isValid = false;
+                document.getElementById("yearError").innerText = "• Year 'From' cannot be greater than 'To'.";
+            }
+    
+            const location = document.getElementById("location").value;
+            if (!location) {
+                isValid = false;
+                document.getElementById("locationError").innerText = "• Please select a location.";
+            }
+    
+            const priceFrom = document.getElementById("priceFrom").value;
+            const priceTo = document.getElementById("priceTo").value;
+            if (!priceFrom || !priceTo) {
+                isValid = false;
+                document.getElementById("priceError").innerText = "• Please fill in both 'Price From' and 'Price To'.";
+            } else if (parseFloat(priceFrom) > parseFloat(priceTo)) {
+                isValid = false;
+                document.getElementById("priceError").innerText = "• 'Price From' cannot be greater than 'To'.";
+            }
+    
+            if (isValid) {
+                alert("Form submitted successfully!");
+                this.submit(); 
+            }
+        });
+    </script>
+    
     <!--Popular car body types-->
     <section class="container-fluid mt-4 mb-4 banner">
         <div class="container-fluid">
@@ -732,7 +808,7 @@
                 <img src="assets/img/bmw (2).png" alt="" class="img-fluid mb-3">
             </div>
             <div class="col-6 col-md-6 col-lg-2">
-                <img src="assets/img/tesla.png" alt="" class="img-fluid mb-3">
+                <img src="assets/img/tesla1.png" alt="" class="img-fluid mb-3">
             </div>
             <div class="col-6 col-md-6 col-lg-2">
                 <img src="assets/img/mercedes.png" alt="" class="img-fluid mb-3">
