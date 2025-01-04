@@ -6,14 +6,6 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-body{
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-body.dark-mode {
-    background-color: #05040b;
-    color: #f9f9f9;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
 
 .d-none {
     display: none;
@@ -23,7 +15,6 @@ body.dark-mode {
     color: #035dad !important;
 }
 
-/* Nese don Edison heke veq per menim tem ma mire po del qeshtu */
 .container-fluid{
     padding: 0 5%;
 }
@@ -172,9 +163,13 @@ ul li a{
     background-color: #035dad;
     color: #f9f9f9;
 }
+.search:hover{
+    background-color: #035ead87;
+    color: #f8f7fd;
+}
 
 .half-main-banner{
-    background-color: #111;
+    background-color: #05040b;
     border-radius: 10px;
 }
 
@@ -371,4 +366,22 @@ ul li a{
     border-color: #05040b;
 }
 
+
+
+/*Media Queries*/
+
+/* Per Telefona */
+@media (min-width: 576px) {
+
+}
+
+/* per Tablets */
+@media (min-width: 768px) {
+
+}
+
+/* Per Desktop */
+@media (min-width: 992px) {
+
+}
 
