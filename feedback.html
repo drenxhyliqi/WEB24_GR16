@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback List Management</title>
+
+    <!-- Bootstrap & Custom CSS -->
+    <link rel="stylesheet" href="/assets/bootstrap/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .feedback-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .feedback-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background-color: #cc0000;
+        }
+
+        .form-container {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .feedback-input {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Content -->
+    <div class="container-fluid">
+        <h3 class="fw-semibold mt-5">Feedback Management</h3>
+        <hr>
+
+        <!-- Feedback Form -->
+        <div class="form-container">
+            <h5>Submit Your Feedback (More than 5 characters)</h5>
+            <form id="feedback-form">
+                <label for="feedback-text">Feedback Content:</label>
+                <textarea id="feedback-text" class="form-control feedback-input" placeholder="Enter your feedback here..." required></textarea>
+                <button type="submit" class="btn">Submit Feedback</button>
+            </form>
+        </div>
+
+        <!-- Feedback List -->
+        <div class="mt-5">
+            <h3 class="fw-semibold">Feedback List</h3>
+            <hr>
+            <ul id="feedback-list" class="feedback-list">
+                <!-- Feedback items will appear here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let feedbacks = []; // Store feedback list
+
+            // Get the feedbacks list
+            function getFeedbacks() {
+                return feedbacks;
+            }
+
+            // Set the feedbacks list
+            function setFeedbacks(newFeedbacks) {
+                if (Array.isArray(newFeedbacks)) {
+                    feedbacks = newFeedbacks;
+                    renderFeedbackList();
+                } else {
+                    console.error("Invalid data. Feedbacks must be an array.");
+                }
+            }
+
+            // Add new feedback
+            function addFeedback(feedbackContent) {
+                if (feedbackContent.length > 5) {
+                    feedbacks.push(feedbackContent);
+                    renderFeedbackList();
+                } else {
+                    alert("Feedback must be more than 5 characters.");
+                }
+            }
+
+            // Remove feedback by index
+            function removeFeedback(index) {
+                if (index > -1 && index < feedbacks.length) {
+                    feedbacks.splice(index, 1);
+                    renderFeedbackList();
+                }
+            }
+
+            // Function to render the feedback list
+            function renderFeedbackList() {
+                const feedbackContainer = $("#feedback-list");
+                feedbackContainer.empty(); // Clear the list before re-rendering
+
+                const feedbacksList = getFeedbacks(); // Using get method here
+                if (feedbacksList.length === 0) {
+                    feedbackContainer.append('<li>No feedback available yet.</li>');
+                } else {
+                    feedbacksList.forEach((feedback, index) => {
+                        const feedbackItem = `
+                            <li class="feedback-item">
+                                <p>${feedback}</p>
+                                <button class="remove-btn" data-index="${index}">Remove Feedback</button>
+                            </li>
+                        `;
+                        feedbackContainer.append(feedbackItem);
+                    });
+                }
+            }
+
+            // Handle feedback form submission
+            $("#feedback-form").submit(function(event) {
+                event.preventDefault(); // Prevent page reload
+
+                const feedbackText = $("#feedback-text").val();
+                addFeedback(feedbackText); // Using add method here
+
+                // Clear the textarea after submitting
+                $("#feedback-text").val("");
+            });
+
+            // Handle feedback removal
+            $(document).on("click", ".remove-btn", function() {
+                const index = $(this).data("index");
+                removeFeedback(index); // Using remove method here
+            });
+
+            // Initial render of the feedback list
+            renderFeedbackList();
+        });
+    </script>
+</body>
+</html>
