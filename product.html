@@ -214,7 +214,19 @@
         .accordion-content ul {
             margin: 0;
         }
-    </style>
+
+        .navbar-canvas-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 15px;
+        }
+
+        #myCanvas {
+        margin-left: 10px;
+        cursor: pointer;
+        }
+</style>
 </head>
 
 <body>
@@ -244,7 +256,9 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
-                <i class="bi bi-person-fill"></i>
+                <div class="navbar-canvas-container">
+                    <canvas id="myCanvas" width="40" height="40"></canvas>
+                </div>
             </div>
         </div>
     </nav>
@@ -816,6 +830,25 @@
             });
         });
     </script>
+        <script>
+            const canvas = document.getElementById('myCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            ctx.beginPath();
+            ctx.arc(20, 15, 7, 0, Math.PI * 2); 
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(20, 40, 13, Math.PI, 0, false); 
+            ctx.closePath();
+            ctx.fillStyle = 'white';
+            ctx.fill();
+        
+            canvas.addEventListener('click', function() {
+                alert("Canvas clicked! You can perform an action here.");
+            });
+        </script>
 </body>
 
 </html>

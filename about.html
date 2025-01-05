@@ -198,19 +198,28 @@
                 font-size: 2rem;
             }
         }
-    </style>
-</head>
 
+        .navbar-canvas-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 15px;
+    }
+
+    #myCanvas {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <img src="/assets/img/weblogo.png" class="logo" alt="logo" width="135px">
+            <img src="/assets/img/weblogo.png" alt="logo" width="135px">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="bi bi-list fs-2"></span>
-                <!-- <span class="navbar-toggler-icon text-white"></span> -->
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto py-1 py-md-0 fs-6 text-start text-md-center ">
@@ -218,19 +227,22 @@
                         <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link active" href="#">About</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
                         <a class="nav-link" href="product.html">Cars</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link active" href="#">Contact</a>
                     </li>
                 </ul>
-                <i class="bi bi-person-fill"></i>
+                <div class="navbar-canvas-container">
+                    <canvas id="myCanvas" width="40" height="40"></canvas>
+                </div>
             </div>
         </div>
     </nav>
+
     <section class="main-about">
         <div class="container-fluid mt-5">
             <div class="top-content">
@@ -556,6 +568,25 @@
     <!-- Script Source Bootsrap JS & Custom JS -->
     <script src="assets/bootstrap/bootstrap.js"></script>
     <script src="assets/main.js"></script>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        ctx.beginPath();
+        ctx.arc(20, 15, 7, 0, Math.PI * 2); 
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.arc(20, 40, 13, Math.PI, 0, false); 
+        ctx.closePath();
+        ctx.fillStyle = 'white';
+        ctx.fill();
+    
+        canvas.addEventListener('click', function() {
+            alert("Canvas clicked! You can perform an action here.");
+        });
+    </script>
+    
 </body>
-
 </html>
