@@ -336,6 +336,43 @@
             return true;
         }
     </script>
+         <script>
+            $(document).ready(function() {
+                $("body").append('<button id="scrollToTop">↑</button>');
+    
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 200) {
+                        $("#scrollToTop").fadeIn();
+                    } else {
+                        $("#scrollToTop").fadeOut();
+                    }
+                });
+    
+                $("#scrollToTop").click(function() {
+                    $("html, body").animate({ scrollTop: 0 }, 100);
+                });
+            });
+        </script>
+    
+       
+    
+        <script>
+        $(document).ready(function() {
+        $("#phoneNumber").hide();
+    
+        $("#toggleNumberBtn").click(function() {
+            $("#phoneNumber").slideToggle(500);  
+            $(this).hide();  
+        });
+    
+        $("#phoneNumber").click(function() {
+            $(this).slideToggle(300);
+            $("#toggleNumberBtn").show();  
+        });
+        });
+    
+        </script>
+        
 
 </body>
 </html>
