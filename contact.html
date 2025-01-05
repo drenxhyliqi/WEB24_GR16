@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car ShowRoom | Find your dream car!</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<style>
+    .navbar-canvas-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 15px;
+    }
+
+    #myCanvas {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    #scrollToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        background-color: #035dad;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #scrollToTop:hover {
+        background-color: #024c89;
+    }
+
+    #toggleNumberBtn {
+    display: inline-block;
+    color: gray;
+}
+#phoneNumber {
+    display: none;
+    cursor: pointer;
+}
+
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="/assets/img/weblogo.png" alt="logo" width="135px">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="bi bi-list fs-2"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto py-1 py-md-0 fs-6 text-start text-md-center">
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="product.html">Cars</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link active" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="navbar-canvas-container">
+                    <canvas id="myCanvas" width="40" height="40"></canvas>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.arc(20, 15, 7, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(20, 40, 13, Math.PI, 0, false);
+        ctx.closePath();
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        canvas.addEventListener('click', function () {
+            alert("Canvas clicked! You can perform an action here.");
+        });
+    </script>
+<<<<<<< HEAD
+
+    <section class="container-fluid Contact">
+=======
+     
+     <section class="container-fluid Contact">
+>>>>>>> 15c20fafe559e05a7e40cd27726f3444fd412ca9
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 contactUs">
+                    <h1><b>Contact Us</b></h1>
+                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to
+                        communication and want to know more about those who trust us.</p>
+                    <div class="d-flex align-items-center">
+                        <div class="questions">
+                            <div class="questions-body">
+                                <img src="assets/img/avatar1.jpg" alt="" id="questionsImg">
+                                <div class="text mt-4">
+                                    <h2><b>Questions?</b></h2>
+                                    <div id="contact-info">
+                                        <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;">(406) 555‑0120</span>
+                                        <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button></p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-12 col-md-6 contactForm">
+                    <h2><b>Get in touch</b></h2>
+                    <form id="contactForm" onsubmit="return false;">
+                        <input type="text" id="full-name" placeholder="Full name" autocomplete="off"><br>
+                        <input list="locations" class="form-control" id="location" name="location" placeholder="Region"
+                            required autocomplete="off">
+                        <datalist id="locations">
+                            <option value="Europe">
+                            <option value="Asia">
+                            <option value="USA">
+                            <option value="Australia">
+                            <option value="Africa">
+                        </datalist>
+                        <input type="email" id="email" placeholder="Email" autocomplete="off"><br>
+                        <input type="tel" id="number" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$"
+                            required>
+                        <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea><br>
+                        <keygen name="random_key" challenge="0987654321">
+                        <input type="submit" style="background-color: #035dad; border: #035dad; color: white;"
+                            value="Send Message">
+                    </form>
+                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/bootstrap/bootstrap.js"></script>
+    <script src="assets/main.js"></script>
+    <script>
+        function validateForm() {
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const errorMessage = document.getElementById('error-message');
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (fullName === "" || email === "" || message === "") {
+                errorMessage.textContent = "All fields are required.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            return true;
+        }
+    </script>
+
+
+
+    <!--    Footer Section -->
+    <footer class="container-fluid mt-5 footer-info">
+        <div class="row d-flex align-items-center footer-info-content">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-copy me-2"></i>
+                    <span class="mb-0">Over 1 million listings</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-search me-2"></i>
+                    <span class="">Personalized search</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-car-front-fill me-2"></i>
+                    <span class="mb-0">Online car appraisal</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-lightbulb me-2"></i>
+                    <span class="mb-0">Non-stop innovation</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row d-flex justify-content-around footer-lists">
+            <div class="col-6 col-md-6 col-lg-3 ">
+                <p>Buying & Selling</p>
+                <ul class="list-unstyled">
+                    <li><a href="#">Find a car</a></li>
+                    <li><a href="#">Sell your car</a></li>
+                    <li><a href="#">Car dealers</a></li>
+                    <li><a href="#">Compare Cars</a></li>
+                    <li><a href="#">Online car</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-6 col-lg-3 ">
+                <p>About</p>
+                <ul class="list-unstyled">
+                    <li><a href="#">About Finder</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">FAQs & Support</a></li>
+                    <li><a href="#">Mobile app</a></li>
+                    <li><a href="#">Blog & News</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 ">
+                <p>Profile</p>
+                <ul class="list-unstyled">
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">My listings</a></li>
+                    <li><a href="#">Add listings</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                <p>Download our app</p>
+                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
+                <div>
+                    <button class="btn btn-primary me-2">
+                        <i class="bi bi-google-play"></i> Google Play</button>
+                    <button class="btn btn-primary">
+                        <i class="bi bi-apple"></i> App Store</button>
+                </div>
+            </div>
+        </div>
+
+        <p id="copyright">&copy; All rights are reserved. Made by <a href=""><b>Gr.16</b></a></p>
+    </footer>
+
+    <script src="assets/bootstrap/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="assets/main.js"></script>
+    <script>
+
+        //Dergimi i Formes ne email te 'kompanise'!
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("contactForm");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const fullName = document.getElementById("full-name");
+                const email = document.getElementById("email");
+                const message = document.getElementById("message");
+                const number = document.getElementById("number")
+
+                const bodyMessage = `Full name: ${fullName.value}<br> Email: ${email.value}<br> Message: ${message.value}<br> Message: ${number.value}`;
+                const subject = "Contact Form Submission";
+
+                Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "xhyliqiidren@gmail.com",
+                    Password: "B7DD7E015E477F864445C3ADB186B536334B",
+                    To: "xhyliqiidren@gmail.com",
+                    From: "xhyliqiidren@gmail.com",
+                    Subject: subject,
+                    Body: bodyMessage,
+                }).then((message) => {
+                    if (message === "OK") {
+                        Swal.fire({
+                            title: "Thank you!",
+                            text: "We will contact you shortly.",
+                            icon: "success",
+                        });
+                        form.reset();
+                        document.getElementById("error-message").style.display = "none";
+                    } else {
+                        Swal.fire({
+                            title: "Oops!",
+                            text: "There was an issue with the submission. Please try again.",
+                            icon: "error",
+                        });
+                    }
+                }).catch(() => {
+                    Swal.fire({
+                        title: "Error",
+                        text: "Something went wrong, please try again later.",
+                        icon: "error",
+                    });
+                });
+            });
+        });
+
+
+        function validateForm() {
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const errorMessage = document.getElementById('error-message');
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (fullName === "" || email === "" || message === "") {
+                errorMessage.textContent = "All fields are required.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            return true;
+        }
+    </script>
+         <script>
+            $(document).ready(function() {
+                $("body").append('<button id="scrollToTop">↑</button>');
+    
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 200) {
+                        $("#scrollToTop").fadeIn();
+                    } else {
+                        $("#scrollToTop").fadeOut();
+                    }
+                });
+    
+                $("#scrollToTop").click(function() {
+                    $("html, body").animate({ scrollTop: 0 }, 100);
+                });
+            });
+        </script>
+    
+       
+    
+        <script>
+        $(document).ready(function() {
+        $("#phoneNumber").hide();
+    
+        $("#toggleNumberBtn").click(function() {
+            $("#phoneNumber").slideToggle(500);  
+            $(this).hide();  
+        });
+    
+        $("#phoneNumber").click(function() {
+            $(this).slideToggle(300);
+            $("#toggleNumberBtn").show();  
+        });
+        });
+    
+        </script>
+        
+
+</body>
+</html>
