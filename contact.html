@@ -62,7 +62,7 @@
 
                 <div class="col-12 col-md-6 contactForm">
                     <h2><b>Get in touch</b></h2>
-                    <form id="contactForm" onsubmit="return validateForm()">
+                    <form id="contactForm" onsubmit="return false;">
                         <input type="text" id="full-name" placeholder="Full name"><br>
                         <input type="email" id="email" placeholder="Email"><br>
                         <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea><br>
@@ -72,41 +72,10 @@
                     <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.
                     </p>
                 </div>
+
             </div>
         </div>
     </section>
-
-    <script src="assets/bootstrap/bootstrap.js"></script>
-    <script src="assets/main.js"></script>
-    <script>
-        function validateForm() {
-            const fullName = document.getElementById('full-name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            const errorMessage = document.getElementById('error-message');
-
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-            if (fullName === "" || email === "" || message === "") {
-                errorMessage.textContent = "All fields are required.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            if (!emailPattern.test(email)) {
-                errorMessage.textContent = "Please enter a valid email address.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            errorMessage.style.display = "none";
-            return true;
-        }
-    </script>
-
-
-
     <!--    Footer Section -->
     <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
@@ -180,6 +149,94 @@
 
         <p id="copyright">&copy; All rights are reserved. Made by <a href=""><b>Gr.16</b></a></p>
     </footer>
+
+    <script src="assets/bootstrap/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="assets/main.js"></script>
+    <script>
+
+        //Dergimi i Formes ne email te 'kompanise'!
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("contactForm");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const fullName = document.getElementById("full-name");
+                const email = document.getElementById("email");
+                const message = document.getElementById("message");
+
+                // Check if all fields are filled
+                if (!fullName.value || !email.value || !message.value) {
+                    document.getElementById("error-message").style.display = "block";
+                    return;
+                }
+
+                const bodyMessage = `Full name: ${fullName.value}<br> Email: ${email.value}<br> Message: ${message.value}`;
+                const subject = "Contact Form Submission";
+
+                Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "xhyliqiidren@gmail.com",
+                    Password: "B7DD7E015E477F864445C3ADB186B536334B",
+                    To: "xhyliqiidren@gmail.com",
+                    From: "xhyliqiidren@gmail.com",
+                    Subject: subject,
+                    Body: bodyMessage,
+                }).then((message) => {
+                    if (message === "OK") {
+                        Swal.fire({
+                            title: "Thank you!",
+                            text: "We will contact you shortly.",
+                            icon: "success",
+                        });
+                        form.reset();
+                        document.getElementById("error-message").style.display = "none";
+                    } else {
+                        Swal.fire({
+                            title: "Oops!",
+                            text: "There was an issue with the submission. Please try again.",
+                            icon: "error",
+                        });
+                    }
+                }).catch(() => {
+                    Swal.fire({
+                        title: "Error",
+                        text: "Something went wrong, please try again later.",
+                        icon: "error",
+                    });
+                });
+            });
+        });
+
+
+        function validateForm() {
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const errorMessage = document.getElementById('error-message');
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (fullName === "" || email === "" || message === "") {
+                errorMessage.textContent = "All fields are required.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            return true;
+        }
+    </script>
 
 </body>
 
