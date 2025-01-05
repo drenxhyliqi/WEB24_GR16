@@ -6,7 +6,14 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-
+.main-banner{
+    background-image: url(img/pexels-steve-30018091.jpg);
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: auto;
+    background-origin: content-box; 
+}
 .d-none {
     display: none;
 }
