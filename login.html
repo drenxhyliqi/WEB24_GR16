@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>Login Form</title>
+
+<style>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+form {
+  border: 3px solid #f1f1f1;
+  padding: 16px;
+  max-width: 400px;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 15%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+  font-size: 14px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+    
+
+<form id="loginForm" onsubmit="return validateForm()">
+  <div class="imgcontainer">
+    <h2 style="text-align: center; margin-bottom: 20px;">Login Form</h2>
+
+    <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" id="uname">
+    <div id="unameError" class="error"></div>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw">
+    <div id="pswError" class="error"></div>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+<script>
+function validateForm() {
+
+    var uname = document.getElementById("uname").value;
+  var psw = document.getElementById("psw").value;
+  
+  document.getElementById("unameError").innerHTML = "";
+  document.getElementById("pswError").innerHTML = "";
+
+  var isValid = true;
+
+  if (uname.trim() === "") {
+    document.getElementById("unameError").innerHTML = "Please fill in the Username field.";
+    isValid = false;
+  }
+
+  if (psw.trim() === "") {
+    document.getElementById("pswError").innerHTML = "Please fill in the password field.";
+    isValid = false;
+  }
+  if (psw.length < 6) {
+  document.getElementById("pswError").innerHTML = "Password must be at least 6 characters long.";
+  document.getElementById("psw").focus();
+  isValid = false;
+}
+
+
+  return isValid;
+}
+</script>
+
+</body>
+</html>
