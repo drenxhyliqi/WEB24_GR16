@@ -551,7 +551,7 @@
                         <input type="number" id="b" value="25" class="form-control" max="50"
                             placeholder="Enter discount percentage">
                     </div>
-
+                    <button id="ruaj">Ruaj </button>
                     <div class="mb-3">
                         <p><strong>Discounted Price: </strong><output id="x" name="x" for="a b">31,425</output></p>
                     </div>
@@ -653,27 +653,68 @@
         ctx.fillStyle = 'white';
         ctx.fill();
 
-        canvas.addEventListener('click', function () {
-            alert("Canvas clicked! You can perform an action here.");
+        // Car discount kalkulator
+        document.addEventListener('DOMContentLoaded', function () {
+            const vleraShtuar = document.getElementById('a');
+            const zbritja = document.getElementById('b');
+            const resultOutput = document.getElementById('x');
+            const ruajVlerat = document.getElementById('ruaj');
+
+            // Array për ruajtjen e historikut të llogaritjeve
+            const history = [];
+
+            // Funksioni për llogaritjen e çmimit të zbritur
+            function kalkuloZbritjen() {
+                const vlera = parseFloat(vleraShtuar.value);
+                const discount = parseFloat(zbritja.value);
+
+                if (isNaN(vlera) || isNaN(discount) || vlera <= 0 || discount <= 0) {
+                    resultOutput.innerHTML = `Kjo vler${"&euml;"} nuk eshte valide`;
+                    return;
+                }
+
+                // Llogaritja e çmimit të zbritur
+                const vleraZbritur = vlera - (vlera * discount / 100);
+                resultOutput.textContent = vleraZbritur.toFixed(2); // Tregon çmimin e zbritur
+            }
+
+            // Event listener për ndryshimin e inputeve të çmimit dhe zbritjes
+            vleraShtuar.addEventListener('input', kalkuloZbritjen);
+            zbritja.addEventListener('input', kalkuloZbritjen);
+
+            // Funksioni për ruajtjen e llogaritjes në array dhe shfaqjen në console
+            function saveCalculation(e) {
+                e.preventDefault();
+
+                const vlera = parseFloat(vleraShtuar.value);
+                const discount = parseFloat(zbritja.value);
+                const vleraZbritur = parseFloat(resultOutput.textContent);
+
+                // Ruajtja në array
+                history.push({
+                    vlera: vlera,
+                    discount: discount,
+                    vleraZbritur: vleraZbritur.toFixed(2)
+                });
+
+                // Shfaqja e historikut të ruajtur në console
+                console.log("Historiku i Llogaritjeve:");
+                history.forEach((entry, index) => {
+                    console.log(`Llogaritja ${index + 1}: Çmimi: ${entry.vlera}, Zbritja: ${entry.discount}%, ${"&ccedil;"}mimi i Zbritur: ${entry.vleraZbritur}`);
+                });
+            }
+
+            // Event listener për butonin "Ruaj"
+            if (ruajVlerat) {
+                ruajVlerat.addEventListener('click', saveCalculation);
+            }
+
+            // Llogaritja fillestare e çmimit të zbritur
+            kalkuloZbritjen();
         });
 
 
-        // Car discount kalkulator
-        const amountInput = document.getElementById('a');
-        const discountInput = document.getElementById('b');
-        const resultOutput = document.getElementById('x');
 
-        function calculateDiscount() {
-            const amount = parseFloat(amountInput.value);
-            const discount = parseFloat(discountInput.value);
-            const discountedPrice = amount - (amount * discount / 100);
-            resultOutput.value = discountedPrice.toFixed(2);
-        }
-
-        amountInput.addEventListener('input', calculateDiscount);
-        discountInput.addEventListener('input', calculateDiscount);
-
-        calculateDiscount();
     </script>
     <script>
         $(document).ready(function () {

@@ -31,6 +31,7 @@ if (timerElement) {
         if (distance < 0) {
             clearInterval(countdownTimer);
             timerElement.innerHTML = "Oferta ka perfunduar!";
+            setTimeout(timerElement, 3000);
         }
     }, 1000);
 }
