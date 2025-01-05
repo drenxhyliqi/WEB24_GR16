@@ -657,26 +657,24 @@
             alert("Canvas clicked! You can perform an action here.");
         });
     </script>
-    <<<<<<< HEAD=======<script>
-        $(document).ready(function() {
-        // Add a "Scroll to Top" button functionality
-        $("body").append('<button id="scrollToTop">↑</button>');
+    <script>
+        $(document).ready(function () {
 
-        $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-        $("#scrollToTop").fadeIn();
-        } else {
-        $("#scrollToTop").fadeOut();
-        }
-        });
+            $("body").append('<button id="scrollToTop">↑</button>');
 
-        $("#scrollToTop").click(function() {
-        $("html, body").animate({ scrollTop: 0 }, 100);
-        });
-        });
-        </script>
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+                    $("#scrollToTop").fadeIn();
+                } else {
+                    $("#scrollToTop").fadeOut();
+                }
+            });
 
-        >>>>>>> 15c20fafe559e05a7e40cd27726f3444fd412ca9
+            $("#scrollToTop").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, 100);
+            });
+        });
+    </script>
 </body>
 
 </html>
