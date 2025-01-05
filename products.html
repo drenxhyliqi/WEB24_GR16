@@ -262,7 +262,14 @@
                 const discountedPrice = (originalPrice / 2).toLocaleString();
                 return { ...product, price: `$${discountedPrice}` };
             });
+
+            // Render discounted products
             renderProducts(discountedProducts);
+
+            // Show a confirmation message with a timeout
+            setTimeout(() => {
+                alert("50% discount has been successfully applied to all products!");
+            }, 2000); // Delay of 2 seconds
         });
 
         // Event Listener for "Show All"
