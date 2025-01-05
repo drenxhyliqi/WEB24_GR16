@@ -156,7 +156,7 @@
 
         #get {
             background-color: #007bff;
-            color: white;
+            color: white !important;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
@@ -551,7 +551,7 @@
                         <input type="number" id="b" value="25" class="form-control" max="50"
                             placeholder="Enter discount percentage">
                     </div>
-
+                    <button id="ruaj">Ruaj </button>
                     <div class="mb-3">
                         <p><strong>Discounted Price: </strong><output id="x" name="x" for="a b">31,425</output></p>
                     </div>
@@ -632,7 +632,7 @@
             </div>
         </div>
 
-        <p id="copyright">&copy; All rights are reserved. Made by <a href=""><b>Gr.16</b></a></p>
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://ecode-ks.com/"><b>Gr.16</b></a></p>
     </footer>
 
     <!-- Script Source Bootsrap JS & Custom JS -->
@@ -653,30 +653,87 @@
         ctx.fillStyle = 'white';
         ctx.fill();
 
-        canvas.addEventListener('click', function () {
-            alert("Canvas clicked! You can perform an action here.");
+        // Car discount kalkulator
+        document.addEventListener('DOMContentLoaded', function () {
+            const vleraShtuar = document.getElementById('a');
+            const zbritja = document.getElementById('b');
+            const resultOutput = document.getElementById('x');
+            const ruajVlerat = document.getElementById('ruaj');
+
+            // Array për ruajtjen e historikut të llogaritjeve
+            const history = [];
+
+            // Funksioni për llogaritjen e çmimit të zbritur
+            function kalkuloZbritjen() {
+                const vlera = parseFloat(vleraShtuar.value);
+                const discount = parseFloat(zbritja.value);
+
+                if (isNaN(vlera) || isNaN(discount) || vlera <= 0 || discount <= 0) {
+                    resultOutput.innerHTML = `Kjo vler${"&euml;"} nuk eshte valide`;
+                    return;
+                }
+
+                // Llogaritja e çmimit të zbritur
+                const vleraZbritur = vlera - (vlera * discount / 100);
+                resultOutput.textContent = vleraZbritur.toFixed(2); // Tregon çmimin e zbritur
+            }
+
+            // Event listener për ndryshimin e inputeve të çmimit dhe zbritjes
+            vleraShtuar.addEventListener('input', kalkuloZbritjen);
+            zbritja.addEventListener('input', kalkuloZbritjen);
+
+            // Funksioni për ruajtjen e llogaritjes në array dhe shfaqjen në console
+            function saveCalculation(e) {
+                e.preventDefault();
+
+                const vlera = parseFloat(vleraShtuar.value);
+                const discount = parseFloat(zbritja.value);
+                const vleraZbritur = parseFloat(resultOutput.textContent);
+
+                // Ruajtja në array
+                history.push({
+                    vlera: vlera,
+                    discount: discount,
+                    vleraZbritur: vleraZbritur.toFixed(2)
+                });
+
+                // Shfaqja e historikut të ruajtur në console
+                console.log("Historiku i Llogaritjeve:");
+                history.forEach((entry, index) => {
+                    console.log(`Llogaritja ${index + 1}: Çmimi: ${entry.vlera}, Zbritja: ${entry.discount}%, ${"&ccedil;"}mimi i Zbritur: ${entry.vleraZbritur}`);
+                });
+            }
+
+            // Event listener për butonin "Ruaj"
+            if (ruajVlerat) {
+                ruajVlerat.addEventListener('click', saveCalculation);
+            }
+
+            // Llogaritja fillestare e çmimit të zbritur
+            kalkuloZbritjen();
+        });
+
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $("body").append('<button id="scrollToTop">↑</button>');
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+                    $("#scrollToTop").fadeIn();
+                } else {
+                    $("#scrollToTop").fadeOut();
+                }
+            });
+
+            $("#scrollToTop").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, 100);
+            });
         });
     </script>
-    <<<<<<< HEAD=======<script>
-        $(document).ready(function() {
-        // Add a "Scroll to Top" button functionality
-        $("body").append('<button id="scrollToTop">↑</button>');
-
-        $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-        $("#scrollToTop").fadeIn();
-        } else {
-        $("#scrollToTop").fadeOut();
-        }
-        });
-
-        $("#scrollToTop").click(function() {
-        $("html, body").animate({ scrollTop: 0 }, 100);
-        });
-        });
-        </script>
-
-        >>>>>>> 15c20fafe559e05a7e40cd27726f3444fd412ca9
 </body>
 
 </html>

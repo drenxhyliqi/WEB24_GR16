@@ -712,7 +712,8 @@
             </div>
         </div>
     </div>
-    <!--    Footer Section -->
+
+    <!-- Footer Section -->
     <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
             <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
@@ -796,22 +797,22 @@
 
         // Changing images
         $(document).ready(function () {
-            $('#main-img-1').click(function () {
+            $('#main-img-1').mouseenter(function () {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
 
-            $('#main-img-2').click(function () {
+            $('#main-img-2').mouseenter(function () {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
 
-            $('#main-img-3').click(function () {
+            $('#main-img-3').mouseenter(function () {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
 
-            $('#main-img-4').click(function () {
+            $('#main-img-4').mouseenter(function () {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
@@ -838,18 +839,42 @@
             });
 
             $('#accordion-btn2').click(function () {
-                $('#accordion-content2').slideToggle();
+                $('#accordion-content2').fadeToggle();
             });
 
             $('#accordion-btn3').click(function () {
-                $('#accordion-content3').slideToggle();
+                const content = $('#accordion-content3');
+
+                if (content.is(':visible')) {
+                    // Animate to hide
+                    content.animate(
+                        { paddingTop: '0px', paddingBottom: '0px', marginTop: '0px', marginBottom: '0px' }, 
+                        500, // Animation duration
+                        function () {
+                            content.css('display', 'none'); // Fully hide after animation
+                        }
+                    );
+                } else {
+                    // Animate to show
+                    content.css('display', 'block'); // Ensure visible before animation
+                    content.animate(
+                        { paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', marginBottom: '10px' }, 
+                        500 // Animation duration
+                    );
+                }
             });
 
             $('#accordion-btn4').click(function () {
-                $('#accordion-content4').slideToggle();
+                if ($('#accordion-content4').is(':visible')) {
+                    $('#accordion-content4').hide();
+                } else {
+                    $('#accordion-content4').show();
+                }
             });
         });
     </script>
+
+    <!-- Designing Canvas Icon -->
     <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
@@ -869,6 +894,8 @@
             alert("Canvas clicked! You can perform an action here.");
         });
     </script>
+
+    <!-- Scroll to top btn -->
     <script>
         $(document).ready(function () {
             // Add a "Scroll to Top" button functionality

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title Name -->
+    <title>Car ShowRoom | Find your dream car!</title>
+
+    <!-- Bootstrap & Custom CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .small-search-bar {
+            padding: 10px !important;
+            margin-right: 10px !important;
+            border: 1px solid #ccc !important;
+            font-size: 14px !important;
+            width: 250px !important;
+            border-radius: 5px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #ccc;
+        }
+
+        #total-price {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" style="z-index: 9999;">
+        <div class="container-fluid">
+            <img src="/assets/img/weblogo.png" alt="logo" width="135px">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="bi bi-list fs-2"></span>
+                <!-- <span class="navbar-toggler-icon text-white"></span> -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto py-1 py-md-0 fs-6 text-start text-md-center ">
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link active" href="products.html" aria-current="page">Cars</a>
+                    </li>
+                    <li class="nav-item py-1 py-md-0">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="navbar-canvas-container">
+                    <canvas id="myCanvas" width="40" height="40"></canvas>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container-fluid">
+        <div class="mt-5">
+            <h3 class="fw-semibold">Other Products</h3>
+            <hr>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls mb-4">
+            <input id="search-bar" type="text" placeholder="Search by name or location..." class="small-search-bar">
+            <button id="search-button" class="btn">Search</button>
+            <button id="sort-by-price" class="btn">Sort by Price</button>
+            <button id="apply-discount" class="btn">Apply 50% Discount</button>
+            <button id="show-all" class="btn">Show All</button>
+        </div>
+
+        <div class="row align-items-center">
+        </div>
+
+        <!-- Total Price -->
+        <div id="total-price" style="margin-top: 20px;">Total Price: $0</div>
+    </div>
+
+    <!-- Designing Canvas Icon -->
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.arc(20, 15, 7, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(20, 40, 13, Math.PI, 0, false);
+        ctx.closePath();
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        canvas.addEventListener('click', function () {
+            alert("Canvas clicked! You can perform an action here.");
+        });
+
+        // Array of product objects
+        const products = [
+            {
+                id: 1,
+                name: "Tesla",
+                date: "12/09/2024",
+                price: "$69,000",
+                location: "Washington",
+                mileage: "66K mi",
+                fuel: "Electric",
+                transmission: "Automatic",
+                year: "2024",
+                image: "assets/img/tesla.jpg"
+            },
+            {
+                id: 2,
+                name: "Ford Mustang",
+                date: "01/05/2023",
+                price: "$55,000",
+                location: "New York",
+                mileage: "40K mi",
+                fuel: "Gasoline",
+                transmission: "Manual",
+                year: "2023",
+                image: "assets/img/ford.jpg"
+            },
+            {
+                id: 3,
+                name: "BMW X5",
+                date: "06/11/2024",
+                price: "$75,000",
+                location: "Los Angeles",
+                mileage: "20K mi",
+                fuel: "Diesel",
+                transmission: "Automatic",
+                year: "2024",
+                image: "assets/img/m5.jpg"
+            }
+        ];
+
+        // Function to render products dynamically (with parameters)
+        const renderProducts = (productsToRender) => {
+            const productContainer = document.querySelector(".row.align-items-center");
+            productContainer.innerHTML = ""; // Clear existing content
+
+            productsToRender.forEach(product => {
+                const card = `
+                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                        <div class="card" style="width: 100%;">
+                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-auto">
+                                        <p class="text-muted">${product.date}</p>
+                                    </div>
+                                    <div class="col-auto card-icons">
+                                        <i class="bi bi-suit-heart"></i>
+                                        <i class="bi bi-bell"></i>
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </div>
+                                </div>
+                                <h6 class="card-title fw-bold">
+                                    <a href="product.html" class="text-decoration-none text-dark">${product.name}
+                                        <span class="text-muted ms-1">(${product.year})</span>
+                                    </a>
+                                </h6>
+                                <h6 class="fw-semibold">${product.price}</h6>
+                                <hr>
+                                <div class="row d-flex">
+                                    <div class="col-auto">
+                                        <small><i class="bi bi-geo-alt me-2"></i>${product.location}</small><br>
+                                        <small><i class="bi bi-speedometer me-2"></i>${product.mileage}</small>
+                                    </div>
+                                    <div class="col-auto mx-auto">
+                                        <small><i class="bi bi-fuel-pump me-2"></i>${product.fuel}</small><br>
+                                        <small><i class="bi bi-gear me-2"></i>${product.transmission}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productContainer.innerHTML += card;
+            });
+
+            // Calculate total price and display it
+            const totalPrice = calculateTotalPrice(productsToRender);
+            document.getElementById("total-price").textContent = `Total Price : $${totalPrice}`;
+        };
+
+        // Function to calculate total price (with parameters)
+        const calculateTotalPrice = (productsToCalculate) => {
+            return productsToCalculate.reduce((total, product) => {
+                const price = parseInt(product.price.replace('$', '').replace(',', ''));
+                return total + price;
+            }, 0);
+        };
+
+        // Simple function without parameters to reset view
+        const resetView = () => {
+            document.getElementById("search-bar").value = ""; // Clear the search bar
+            renderProducts(products); // Render all products
+            console.log("View reset to show all products.");
+        };
+
+        // Display all products initially
+        document.addEventListener("DOMContentLoaded", () => renderProducts(products));
+
+        // Event Listener for "Search"
+        document.getElementById("search-button").addEventListener("click", () => {
+            const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+
+            // Filter products based on name or location
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) || 
+                product.location.toLowerCase().includes(searchTerm)
+            );
+
+            // Render the filtered products
+            renderProducts(filteredProducts);
+
+            // If no results, show a message
+            if (filteredProducts.length === 0) {
+                const productContainer = document.querySelector(".row.align-items-center");
+                productContainer.innerHTML = "<p>No products found.</p>";
+                document.getElementById("total-price").textContent = "Total Price : $0";
+            }
+        });
+
+        // Event Listener for "Sort by Price"
+        document.getElementById("sort-by-price").addEventListener("click", () => {
+            const sortedProducts = products.slice().sort((a, b) => parseInt(a.price.replace('$', '').replace(',', '')) - parseInt(b.price.replace('$', '').replace(',', '')));
+            renderProducts(sortedProducts);
+        });
+
+        // Event Listener for "Apply 50% Discount"
+        document.getElementById("apply-discount").addEventListener("click", () => {
+            const discountedProducts = products.map(product => {
+                const originalPrice = parseInt(product.price.replace('$', '').replace(',', ''));
+                const discountedPrice = (originalPrice / 2).toLocaleString();
+                return { ...product, price: `$${discountedPrice}` };
+            });
+
+            // Render discounted products
+            renderProducts(discountedProducts);
+
+            // Show a confirmation message with a timeout
+            setTimeout(() => {
+                alert("50% discount has been successfully applied to all products!");
+            }, 2000); // Delay of 2 seconds
+        });
+
+        // Event Listener for "Show All"
+        document.getElementById("show-all").addEventListener("click", resetView);
+    </script>
+</body>
+</html>
