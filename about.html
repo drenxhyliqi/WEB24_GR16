@@ -22,8 +22,8 @@
 
         .playPauseButton {
             position: absolute;
-            top: 90%;
-            left: 3%;
+            top: 85%;
+            left: 4%;
             transform: translateX(-50%);
             background: transparent;
             border: none;
@@ -136,6 +136,35 @@
             display: center;
         }
 
+        #countdown-timer {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+        }
+
+        #get {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #get:hover {
+            background-color: #0056b3;
+        }
 
         #countdown-timer p {
             font-size: 2rem;
@@ -200,18 +229,19 @@
         }
 
         .navbar-canvas-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: 15px;
-    }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 15px;
+        }
 
-    #myCanvas {
-        margin-left: 10px;
-        cursor: pointer;
-    }
-</style>
+        #myCanvas {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -227,13 +257,13 @@
                         <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link" href="about.html">About</a>
+                        <a class="nav-link active" href="about.html">About</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
                         <a class="nav-link" href="product.html">Cars</a>
                     </li>
                     <li class="nav-item py-1 py-md-0">
-                        <a class="nav-link active" href="#">Contact</a>
+                        <a class="nav-link " href="#">Contact</a>
                     </li>
                 </ul>
                 <div class="navbar-canvas-container">
@@ -246,7 +276,6 @@
     <section class="main-about">
         <div class="container-fluid mt-5">
             <div class="top-content">
-                <h4 class="text-center fw-semibold display-5 mt-3">ABOUT US</h4>
                 <h2 class="text-center display-5 display-md-4 mt-3 fw-bold text-left"></h2>
                 <div class="video text-center mt-4">
                     <video src="assets/video/about.mp4" class="rounded-4" autoplay muted loop
@@ -486,8 +515,30 @@
             <h2 class="text-white">Special Offer Ends In:</h2>
             <div id="countdown-timer">
                 <p id="timer"></p>
-                <div class="text-center"><button id="get">Get It Now</button></div>
+                <div class="text-center">
+                    <button id="get">Get It Now</button>
+                </div>
+
+                <h3 class="text-center">Calculate Your Discount</h3>
+                <form id="discount-calculator">
+                    <div class="mb-3">
+                        <label for="original-price" class="form-label">Original Price ($):</label>
+                        <input type="number" id="a" value="41900" class="form-control"
+                            placeholder="Enter the original price">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="discount" class="form-label">Discount Percentage (%):</label>
+                        <input type="number" id="b" value="25" class="form-control" max="50"
+                            placeholder="Enter discount percentage">
+                    </div>
+
+                    <div class="mb-3">
+                        <p><strong>Discounted Price: </strong><output id="x" name="x" for="a b">31,425</output></p>
+                    </div>
+                </form>
             </div>
+
         </div>
         <hr style="color: #035dad;">
     </section>
@@ -567,26 +618,27 @@
 
     <!-- Script Source Bootsrap JS & Custom JS -->
     <script src="assets/bootstrap/bootstrap.js"></script>
-    <script src="assets/main.js"></script>
+    <script src="assets/main.js" defer></script>
     <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
-        
+
         ctx.beginPath();
-        ctx.arc(20, 15, 7, 0, Math.PI * 2); 
+        ctx.arc(20, 15, 7, 0, Math.PI * 2);
         ctx.fillStyle = 'white';
         ctx.fill();
-        
+
         ctx.beginPath();
-        ctx.arc(20, 40, 13, Math.PI, 0, false); 
+        ctx.arc(20, 40, 13, Math.PI, 0, false);
         ctx.closePath();
         ctx.fillStyle = 'white';
         ctx.fill();
-    
-        canvas.addEventListener('click', function() {
+
+        canvas.addEventListener('click', function () {
             alert("Canvas clicked! You can perform an action here.");
         });
     </script>
-    
+
 </body>
+
 </html>

@@ -59,23 +59,23 @@
     <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
-        
+
         ctx.beginPath();
-        ctx.arc(20, 15, 7, 0, Math.PI * 2); 
+        ctx.arc(20, 15, 7, 0, Math.PI * 2);
         ctx.fillStyle = 'white';
         ctx.fill();
-        
+
         ctx.beginPath();
-        ctx.arc(20, 40, 13, Math.PI, 0, false); 
+        ctx.arc(20, 40, 13, Math.PI, 0, false);
         ctx.closePath();
         ctx.fillStyle = 'white';
         ctx.fill();
-    
-        canvas.addEventListener('click', function() {
+
+        canvas.addEventListener('click', function () {
             alert("Canvas clicked! You can perform an action here.");
         });
     </script>
-     
+
     <section class="container-fluid Contact">
         <div class="container">
             <div class="row">
@@ -101,9 +101,21 @@
                 <div class="col-12 col-md-6 contactForm">
                     <h2><b>Get in touch</b></h2>
                     <form id="contactForm" onsubmit="return false;">
-                        <input type="text" id="full-name" placeholder="Full name"><br>
-                        <input type="email" id="email" placeholder="Email"><br>
+                        <input type="text" id="full-name" placeholder="Full name" autocomplete="off"><br>
+                        <input list="locations" class="form-control" id="location" name="location" placeholder="Region"
+                            required autocomplete="off">
+                        <datalist id="locations">
+                            <option value="Europe">
+                            <option value="Asia">
+                            <option value="USA">
+                            <option value="Australia">
+                            <option value="Africa">
+                        </datalist>
+                        <input type="email" id="email" placeholder="Email" autocomplete="off"><br>
+                        <input type="tel" id="number" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$"
+                            required>
                         <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea><br>
+                        <keygen name="random_key" challenge="0987654321">
                         <input type="submit" style="background-color: #035dad; border: #035dad; color: white;"
                             value="Send Message">
                     </form>
@@ -205,14 +217,9 @@
                 const fullName = document.getElementById("full-name");
                 const email = document.getElementById("email");
                 const message = document.getElementById("message");
+                const number = document.getElementById("number")
 
-                // Check if all fields are filled
-                if (!fullName.value || !email.value || !message.value) {
-                    document.getElementById("error-message").style.display = "block";
-                    return;
-                }
-
-                const bodyMessage = `Full name: ${fullName.value}<br> Email: ${email.value}<br> Message: ${message.value}`;
+                const bodyMessage = `Full name: ${fullName.value}<br> Email: ${email.value}<br> Message: ${message.value}<br> Message: ${number.value}`;
                 const subject = "Contact Form Submission";
 
                 Email.send({

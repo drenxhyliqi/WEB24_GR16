@@ -12,19 +12,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/style.css">
 
-<style>
-    .navbar-canvas-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: 15px;
-    }
+    <style>
+        .navbar-canvas-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 15px;
+        }
 
-    #myCanvas {
-        margin-left: 10px;
-        cursor: pointer;
-    }
-</style>
+        #myCanvas {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -537,7 +537,7 @@
 
                         <!-- Submit Button -->
                         <button type="submit" class="btn search"><i class="bi bi-search me-2"></i>Search</button>
-                        <a href="#" class="text-decoration-none text-light ms-2">Advanced search<i
+                        <a href="#" id="warning" class="text-decoration-none text-light ms-2">Advanced search<i
                                 class="bi bi-arrow-right ms-2"></i></a>
                     </form>
                     <p class="p-3 text-light opacity-75 text-center text-md-start">Finder is a <strong>leading digital
@@ -560,75 +560,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById("carSearchForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            let isValid = true;
-
-            // Reset all errors before validation
-            const errorMessages = ['optionsError', 'makeError', 'modelError', 'bodyTypeError', 'yearError', 'locationError', 'priceError'];
-            errorMessages.forEach(function (id) {
-                document.getElementById(id).innerText = "";
-            });
-
-            const selectedOption = document.querySelector('input[name="options"]:checked');
-            if (!selectedOption) {
-                isValid = false;
-                document.getElementById("optionsError").innerText = "• Please select a car type.";
-            }
-
-            const make = document.getElementById("make").value;
-            if (!make) {
-                isValid = false;
-                document.getElementById("makeError").innerText = "• Please select a car make.";
-            }
-
-            const model = document.getElementById("model").value;
-            if (!model) {
-                isValid = false;
-                document.getElementById("modelError").innerText = "• Please select a car model.";
-            }
-
-            const bodyType = document.getElementById("bodyType").value;
-            if (!bodyType) {
-                isValid = false;
-                document.getElementById("bodyTypeError").innerText = "• Please select a body type.";
-            }
-
-            const yearFrom = document.getElementById("yearFrom").value;
-            const yearTo = document.getElementById("yearTo").value;
-            if (!yearFrom || !yearTo) {
-                isValid = false;
-                document.getElementById("yearError").innerText = "• Please select both 'Year From' and 'Year To'.";
-            } else if (parseInt(yearFrom) > parseInt(yearTo)) {
-                isValid = false;
-                document.getElementById("yearError").innerText = "• Year 'From' cannot be greater than 'To'.";
-            }
-
-            const location = document.getElementById("location").value;
-            if (!location) {
-                isValid = false;
-                document.getElementById("locationError").innerText = "• Please select a location.";
-            }
-
-            const priceFrom = document.getElementById("priceFrom").value;
-            const priceTo = document.getElementById("priceTo").value;
-            if (!priceFrom || !priceTo) {
-                isValid = false;
-                document.getElementById("priceError").innerText = "• Please fill in both 'Price From' and 'Price To'.";
-            } else if (parseFloat(priceFrom) > parseFloat(priceTo)) {
-                isValid = false;
-                document.getElementById("priceError").innerText = "• 'Price From' cannot be greater than 'To'.";
-            }
-
-            if (isValid) {
-                alert("Form submitted successfully!");
-                this.submit();
-            }
-        });
-    </script>
 
     <!--Popular car body types-->
     <section class="container-fluid mt-4 mb-4 banner">
@@ -1201,27 +1132,96 @@
     </footer>
 
     <!-- Script Source Bootsrap JS & Custom JS -->
+    <script src="assets/main.js" defer></script>
     <script src="assets/bootstrap/bootstrap.js"></script>
-    <script src="assets/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
-        
+
         ctx.beginPath();
-        ctx.arc(20, 15, 7, 0, Math.PI * 2); 
+        ctx.arc(20, 15, 7, 0, Math.PI * 2);
         ctx.fillStyle = 'white';
         ctx.fill();
-        
+
         ctx.beginPath();
-        ctx.arc(20, 40, 13, Math.PI, 0, false); 
+        ctx.arc(20, 40, 13, Math.PI, 0, false);
         ctx.closePath();
         ctx.fillStyle = 'white';
         ctx.fill();
-    
-        canvas.addEventListener('click', function() {
+
+        canvas.addEventListener('click', function () {
             alert("Canvas clicked! You can perform an action here.");
         });
+
+        document.getElementById("carSearchForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let isValid = true;
+
+            // Reset all errors before validation
+            const errorMessages = ['optionsError', 'makeError', 'modelError', 'bodyTypeError', 'yearError', 'locationError', 'priceError'];
+            errorMessages.forEach(function (id) {
+                document.getElementById(id).innerText = "";
+            });
+
+            const selectedOption = document.querySelector('input[name="options"]:checked');
+            if (!selectedOption) {
+                isValid = false;
+                document.getElementById("optionsError").innerText = "• Please select a car type.";
+            }
+
+            const make = document.getElementById("make").value;
+            if (!make) {
+                isValid = false;
+                document.getElementById("makeError").innerText = "• Please select a car make.";
+            }
+
+            const model = document.getElementById("model").value;
+            if (!model) {
+                isValid = false;
+                document.getElementById("modelError").innerText = "• Please select a car model.";
+            }
+
+            const bodyType = document.getElementById("bodyType").value;
+            if (!bodyType) {
+                isValid = false;
+                document.getElementById("bodyTypeError").innerText = "• Please select a body type.";
+            }
+
+            const yearFrom = document.getElementById("yearFrom").value;
+            const yearTo = document.getElementById("yearTo").value;
+            if (!yearFrom || !yearTo) {
+                isValid = false;
+                document.getElementById("yearError").innerText = "• Please select both 'Year From' and 'Year To'.";
+            } else if (parseInt(yearFrom) > parseInt(yearTo)) {
+                isValid = false;
+                document.getElementById("yearError").innerText = "• Year 'From' cannot be greater than 'To'.";
+            }
+
+            const location = document.getElementById("location").value;
+            if (!location) {
+                isValid = false;
+                document.getElementById("locationError").innerText = "• Please select a location.";
+            }
+
+            const priceFrom = document.getElementById("priceFrom").value;
+            const priceTo = document.getElementById("priceTo").value;
+            if (!priceFrom || !priceTo) {
+                isValid = false;
+                document.getElementById("priceError").innerText = "• Please fill in both 'Price From' and 'Price To'.";
+            } else if (parseFloat(priceFrom) > parseFloat(priceTo)) {
+                isValid = false;
+                document.getElementById("priceError").innerText = "• 'Price From' cannot be greater than 'To'.";
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+                this.submit();
+            }
+        });
     </script>
+
 </body>
 
 </html>

@@ -216,17 +216,17 @@
         }
 
         .navbar-canvas-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 15px;
         }
 
         #myCanvas {
-        margin-left: 10px;
-        cursor: pointer;
+            margin-left: 10px;
+            cursor: pointer;
         }
-</style>
+    </style>
 </head>
 
 <body>
@@ -830,25 +830,25 @@
             });
         });
     </script>
-        <script>
-            const canvas = document.getElementById('myCanvas');
-            const ctx = canvas.getContext('2d');
-            
-            ctx.beginPath();
-            ctx.arc(20, 15, 7, 0, Math.PI * 2); 
-            ctx.fillStyle = 'white';
-            ctx.fill();
-            
-            ctx.beginPath();
-            ctx.arc(20, 40, 13, Math.PI, 0, false); 
-            ctx.closePath();
-            ctx.fillStyle = 'white';
-            ctx.fill();
-        
-            canvas.addEventListener('click', function() {
-                alert("Canvas clicked! You can perform an action here.");
-            });
-        </script>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.arc(20, 15, 7, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(20, 40, 13, Math.PI, 0, false);
+        ctx.closePath();
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        canvas.addEventListener('click', function () {
+            alert("Canvas clicked! You can perform an action here.");
+        });
+    </script>
 </body>
 
 </html>
