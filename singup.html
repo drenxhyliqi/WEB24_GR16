@@ -1,171 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<title>Sign Up Form</title>
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f2f2f2;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Sign Up Form</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
 
-form {
-  border: 3px solid #f1f1f1;
-  padding: 16px;
-  max-width: 400px;
-  width: 100%;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
+    form {
+      border: 3px solid #f1f1f1;
+      padding: 16px;
+      max-width: 400px;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
 
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
 
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+    button {
+      background-color: #035dad;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
 
-button:hover {
-  opacity: 0.8;
-}
+    button:hover {
+      opacity: 0.8;
+    }
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: transparent;
+      color: #111;
+      font-weight: bold;
+      border: 1px solid red;
 
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
+    }
 
-img.avatar {
-  width: 15%;
-  border-radius: 50%;
-}
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+    }
 
-.container {
-  padding: 16px;
-}
+    img.avatar {
+      width: 15%;
+      border-radius: 50%;
+    }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-  font-size: 14px;
-}
+    .container {
+      padding: 16px;
+    }
 
-.error {
-  color: red;
-  font-size: 14px;
-  margin-top: -8px;
-  margin-bottom: 8px;
-}
+    span.psw {
+      float: right;
+      padding-top: 16px;
+      font-size: 14px;
+    }
 
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: -8px;
+      margin-bottom: 8px;
+    }
+
+    #goBack {
+      width: 13%;
+      padding: 5px 22px 5px 10px;
+      margin: 0;
+      margin-right: 95%;
+      margin-top: 0;
+    }
+
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <form id="signupForm" onsubmit="return validateSignUpForm()">
+    <div class="imgcontainer">
+      <button type="button" id="goBack"><b>Back</b></button>
+      <h2 style="text-align: center; margin-bottom: 20px;">Sign Up Form</h2>
 
-<form id="signupForm" onsubmit="return validateSignUpForm()">
-  <div class="imgcontainer">
-    
-    <h2 style="text-align: center; margin-bottom: 20px;">Sign Up Form</h2>
+      <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
+    </div>
 
-    <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
-  </div>
+    <div class="container">
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" id="email">
+      <div id="emailError" class="error"></div>
 
-  <div class="container">
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email">
-    <div id="emailError" class="error"></div>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw">
+      <div id="pswError" class="error"></div>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw">
-    <div id="pswError" class="error"></div>
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat">
+      <div id="pswRepeatError" class="error"></div>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat">
-    <div id="pswRepeatError" class="error"></div>
-
-    <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-    </label>
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
 
 
-    <button type="submit">Sign Up</button>
-    <button type="button" class="cancelbtn">Cancel</button>
-  </div>
-</form>
+      <button type="submit">Sign Up</button>
+      <button type="button" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+  <script>
+    function validateSignUpForm() {
+      var email = document.getElementById("email").value;
+      var psw = document.getElementById("psw").value;
+      var pswRepeat = document.getElementById("psw-repeat").value;
 
-<script>
-function validateSignUpForm() {
+      document.getElementById("emailError").innerHTML = "";
+      document.getElementById("pswError").innerHTML = "";
+      document.getElementById("pswRepeatError").innerHTML = "";
 
-  var email = document.getElementById("email").value;
-  var psw = document.getElementById("psw").value;
-  var pswRepeat = document.getElementById("psw-repeat").value;
-  
-  document.getElementById("emailError").innerHTML = "";
-  document.getElementById("pswError").innerHTML = "";
-  document.getElementById("pswRepeatError").innerHTML = "";
+      var isValid = true;
 
-  var isValid = true;
+      if (email.trim() === "") {
+        document.getElementById("emailError").innerHTML = "Please fill in the Email field.";
+        isValid = false;
+      } else if (!email.endsWith('@gmail.com')) {
+        document.getElementById("emailError").innerHTML = "Email must be a valid Gmail address.";
+        isValid = false;
+      }
 
-  if (email.trim() === "") {
-    document.getElementById("emailError").innerHTML = "Please fill in the Email field.";
-    isValid = false;
-  }
+      if (psw.trim() === "") {
+        document.getElementById("pswError").innerHTML = "Please fill in the password field.";
+        isValid = false;
+      }
 
-  else if (!email.endsWith('@gmail.com')) {
-    document.getElementById("emailError").innerHTML = "Email must be a valid Gmail address.";
-    isValid = false;
-  }
+      if (psw !== pswRepeat) {
+        document.getElementById("pswRepeatError").innerHTML = "Passwords do not match.";
+        isValid = false;
+      }
 
-  if (psw.trim() === "") {
-    document.getElementById("pswError").innerHTML = "Please fill in the password field.";
-    isValid = false;
-  }
+      if (psw.length < 6) {
+        document.getElementById("pswError").innerHTML = "Password must be at least 6 characters long.";
+        isValid = false;
+      }
+      return isValid;
+    }
 
-  if (psw !== pswRepeat) {
-    document.getElementById("pswRepeatError").innerHTML = "Passwords do not match.";
-    isValid = false;
-  }
 
-  if (psw.length < 6) {
-  document.getElementById("pswError").innerHTML = "Password must be at least 6 characters long.";
-  document.getElementById("psw").focus();
-  isValid = false;
-}
-  return isValid;
-}
-</script>
+    document.getElementById("goBack").addEventListener("click", function () {
+      document.getElementById("emailError").innerHTML = "";
+      document.getElementById("pswError").innerHTML = "";
+      document.getElementById("pswRepeatError").innerHTML = "";
+      window.location.href = "index.html";
+    });
+  </script>
 
 </body>
+
 </html>
