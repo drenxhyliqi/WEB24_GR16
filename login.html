@@ -6,7 +6,6 @@
 <title>Login Form</title>
 
 <style>
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -50,12 +49,6 @@ button:hover {
   opacity: 0.8;
 }
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
@@ -71,8 +64,7 @@ img.avatar {
 }
 
 span.psw {
-  float: right;
-  padding-top: 16px;
+  margin-left: auto;
   font-size: 14px;
 }
 
@@ -83,24 +75,40 @@ span.psw {
   margin-bottom: 8px;
 }
 
+.d-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: #04AA6D;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
+    display: block;
+    float: none;
   }
 }
 </style>
 </head>
 <body>
     
-
 <form id="loginForm" onsubmit="return validateForm()">
   <div class="imgcontainer">
     <h2 style="text-align: center; margin-bottom: 20px;">Login Form</h2>
-
     <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
   </div>
 
@@ -114,21 +122,24 @@ span.psw {
     <div id="pswError" class="error"></div>
         
     <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+
+    <div class="d-flex">
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+      <span class="psw" >Forgot <a href="#" style="text-decoration: none;">password?</a></span>
+    </div>
+    
+    <div class="signup-link">
+      Don't have an account? <a href="singup.html" id="signup">Sign up</a>
+    </div>
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
 </form>
 
 <script>
 function validateForm() {
-
-    var uname = document.getElementById("uname").value;
+  var uname = document.getElementById("uname").value;
   var psw = document.getElementById("psw").value;
   
   document.getElementById("unameError").innerHTML = "";
@@ -146,13 +157,16 @@ function validateForm() {
     isValid = false;
   }
   if (psw.length < 6) {
-  document.getElementById("pswError").innerHTML = "Password must be at least 6 characters long.";
-  document.getElementById("psw").focus();
-  isValid = false;
-}
-
+    document.getElementById("pswError").innerHTML = "Password must be at least 6 characters long.";
+    document.getElementById("psw").focus();
+    isValid = false;
+  }
 
   return isValid;
+
+  signup.addEventListener('click', function () {
+    window.location.href = "login.html";
+    });
 }
 </script>
 
