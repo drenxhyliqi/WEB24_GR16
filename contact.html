@@ -43,14 +43,14 @@
     }
 
     #toggleNumberBtn {
-    display: inline-block;
-    color: gray;
-}
-#phoneNumber {
-    display: none;
-    cursor: pointer;
-}
+        display: inline-block;
+        color: gray;
+    }
 
+    #phoneNumber {
+        display: none;
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -103,13 +103,7 @@
             alert("Canvas clicked! You can perform an action here.");
         });
     </script>
-<<<<<<< HEAD
-
     <section class="container-fluid Contact">
-=======
-     
-     <section class="container-fluid Contact">
->>>>>>> 15c20fafe559e05a7e40cd27726f3444fd412ca9
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 contactUs">
@@ -123,16 +117,20 @@
                                 <div class="text mt-4">
                                     <h2><b>Questions?</b></h2>
                                     <div id="contact-info">
-                                        <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;">(406) 555‑0120</span>
-                                        <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button></p>
+                                        <p>Give us a call right now at <span id="phoneNumber"
+                                                style="display: none; cursor: pointer;">(406) 555‑0120</span>
+                                            <button id="toggleNumberBtn" class="btn btn-link"
+                                                style="background: none; border: none; text-decoration: none; color: gray;">Show
+                                                Number</button>
+                                        </p>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="col-12 col-md-6 contactForm">
                     <h2><b>Get in touch</b></h2>
                     <form id="contactForm" onsubmit="return false;">
@@ -154,7 +152,8 @@
                         <input type="submit" style="background-color: #035dad; border: #035dad; color: white;"
                             value="Send Message">
                     </form>
-                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.</p>
+                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.
+                    </p>
                 </div>
 
             </div>
@@ -348,43 +347,44 @@
             return true;
         }
     </script>
-         <script>
-            $(document).ready(function() {
-                $("body").append('<button id="scrollToTop">↑</button>');
-    
-                $(window).scroll(function() {
-                    if ($(this).scrollTop() > 200) {
-                        $("#scrollToTop").fadeIn();
-                    } else {
-                        $("#scrollToTop").fadeOut();
-                    }
-                });
-    
-                $("#scrollToTop").click(function() {
-                    $("html, body").animate({ scrollTop: 0 }, 100);
-                });
+    <script>
+        $(document).ready(function () {
+            $("body").append('<button id="scrollToTop">↑</button>');
+
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+                    $("#scrollToTop").fadeIn();
+                } else {
+                    $("#scrollToTop").fadeOut();
+                }
             });
-        </script>
-    
-       
-    
-        <script>
-        $(document).ready(function() {
-        $("#phoneNumber").hide();
-    
-        $("#toggleNumberBtn").click(function() {
-            $("#phoneNumber").slideToggle(500);  
-            $(this).hide();  
+
+            $("#scrollToTop").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, 100);
+            });
         });
-    
-        $("#phoneNumber").click(function() {
-            $(this).slideToggle(300);
-            $("#toggleNumberBtn").show();  
+    </script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#phoneNumber").hide();
+
+            $("#toggleNumberBtn").click(function () {
+                $("#phoneNumber").slideToggle(500);
+                $(this).hide();
+            });
+
+            $("#phoneNumber").click(function () {
+                $(this).slideToggle(300);
+                $("#toggleNumberBtn").show();
+            });
         });
-        });
-    
-        </script>
-        
+
+    </script>
+
 
 </body>
+
 </html>
