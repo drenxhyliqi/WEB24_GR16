@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <style>
@@ -22,8 +23,35 @@
         margin-left: 10px;
         cursor: pointer;
     }
-</style>
 
+    #scrollToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        background-color: #035dad;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #scrollToTop:hover {
+        background-color: #024c89;
+    }
+
+    #toggleNumberBtn {
+    display: inline-block;
+    color: gray;
+}
+#phoneNumber {
+    display: none;
+    cursor: pointer;
+}
+
+</style>
 
 <body>
     <nav class="navbar navbar-expand-lg">
@@ -35,7 +63,7 @@
                 <span class="bi bi-list fs-2"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto py-1 py-md-0 fs-6 text-start text-md-center ">
+                <ul class="navbar-nav mx-auto py-1 py-md-0 fs-6 text-start text-md-center">
                     <li class="nav-item py-1 py-md-0">
                         <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
@@ -76,7 +104,7 @@
         });
     </script>
      
-    <section class="container-fluid Contact">
+     <section class="container-fluid Contact">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 contactUs">
@@ -89,15 +117,17 @@
                                 <img src="assets/img/avatar1.jpg" alt="" id="questionsImg">
                                 <div class="text mt-4">
                                     <h2><b>Questions?</b></h2>
-                                    <p>Give us a call right now <a href="tel:(406) 555‑0120"
-                                            style="color: #05040b;">(406)
-                                            555‑0120</a></p>
+                                    <div id="contact-info">
+                                        <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;">(406) 555‑0120</span>
+                                        <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button></p>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+    
                 <div class="col-12 col-md-6 contactForm">
                     <h2><b>Get in touch</b></h2>
                     <form id="contactForm" onsubmit="return validateForm()">
@@ -107,8 +137,7 @@
                         <input type="submit" style="background-color: #035dad; border: #035dad; color: white;"
                             value="Send Message">
                     </form>
-                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.
-                    </p>
+                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.</p>
                 </div>
             </div>
         </div>
@@ -142,10 +171,45 @@
             return true;
         }
     </script>
+     <script>
+        $(document).ready(function() {
+            $("body").append('<button id="scrollToTop">↑</button>');
 
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 200) {
+                    $("#scrollToTop").fadeIn();
+                } else {
+                    $("#scrollToTop").fadeOut();
+                }
+            });
 
+            $("#scrollToTop").click(function() {
+                $("html, body").animate({ scrollTop: 0 }, 100);
+            });
+        });
+    </script>
 
-    <!--    Footer Section -->
+   
+
+    <script>
+    $(document).ready(function() {
+    $("#phoneNumber").hide();
+
+    $("#toggleNumberBtn").click(function() {
+        $("#phoneNumber").slideToggle(500);  
+        $(this).hide();  
+    });
+
+    $("#phoneNumber").click(function() {
+        $(this).slideToggle(300);
+        $("#toggleNumberBtn").show();  
+    });
+    });
+
+    </script>
+    
+ 
+    <!-- Footer Section -->
     <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
             <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
@@ -187,7 +251,7 @@
             </div>
             <div class="col-6 col-md-6 col-lg-3 ">
                 <p>About</p>
-                <ul class="list-unstyled ">
+                <ul class="list-unstyled">
                     <li><a href="#">About Finder</a></li>
                     <li><a href="#">Contact us</a></li>
                     <li><a href="#">FAQs & Support</a></li>
@@ -220,5 +284,4 @@
     </footer>
 
 </body>
-
 </html>

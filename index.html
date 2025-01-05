@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <style>
     .navbar-canvas-container {
@@ -23,6 +25,23 @@
     #myCanvas {
         margin-left: 10px;
         cursor: pointer;
+    }
+    #scrollToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        background-color: #035dad;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #scrollToTop:hover {
+        background-color: #024c89;
     }
 </style>
 </head>
@@ -1220,6 +1239,23 @@
     
         canvas.addEventListener('click', function() {
             alert("Canvas clicked! You can perform an action here.");
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("body").append('<button id="scrollToTop">↑</button>');
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 200) {
+                    $("#scrollToTop").fadeIn();
+                } else {
+                    $("#scrollToTop").fadeOut();
+                }
+            });
+
+            $("#scrollToTop").click(function() {
+                $("html, body").animate({ scrollTop: 0 }, 100);
+            });
         });
     </script>
 </body>
