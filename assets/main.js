@@ -36,13 +36,6 @@ if (timerElement) {
     }, 1000);
 }
 
-
-
-    canvas.addEventListener('click', function () {
-    alert("You will be sent to the sign up page!");
-    window.location.href = "singup.html";
-    });
-
     // Text typing effect
     const text = "Easy way to find the perfect car with us!";
     let index = 0;
