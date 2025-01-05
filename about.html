@@ -156,7 +156,7 @@
 
         #get {
             background-color: #007bff;
-            color: white;
+            color: white !important;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
@@ -632,7 +632,7 @@
             </div>
         </div>
 
-        <p id="copyright">&copy; All rights are reserved. Made by <a href=""><b>Gr.16</b></a></p>
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://ecode-ks.com/"><b>Gr.16</b></a></p>
     </footer>
 
     <!-- Script Source Bootsrap JS & Custom JS -->
@@ -656,6 +656,24 @@
         canvas.addEventListener('click', function () {
             alert("Canvas clicked! You can perform an action here.");
         });
+
+
+        // Car discount kalkulator
+        const amountInput = document.getElementById('a');
+        const discountInput = document.getElementById('b');
+        const resultOutput = document.getElementById('x');
+
+        function calculateDiscount() {
+            const amount = parseFloat(amountInput.value);
+            const discount = parseFloat(discountInput.value);
+            const discountedPrice = amount - (amount * discount / 100);
+            resultOutput.value = discountedPrice.toFixed(2);
+        }
+
+        amountInput.addEventListener('input', calculateDiscount);
+        discountInput.addEventListener('input', calculateDiscount);
+
+        calculateDiscount();
     </script>
     <script>
         $(document).ready(function () {
