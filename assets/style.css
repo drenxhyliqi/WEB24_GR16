@@ -71,19 +71,9 @@ ul li a{
 } */
 
 /* Banner Section */
-.banner{
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
 .banner .card img {
     height: 120 px;
     object-fit: cover;
-}
-.PopularcarsContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;    
-    padding: 2%; 
 }
 .banner .card {
     background-color: #000615;
