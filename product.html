@@ -245,7 +245,10 @@
         #scrollToTop:hover {
             background-color: #024c89;
         }
-    </style>
+
+        .video {
+            position: relative; /* Establish a reference point for absolute positioning */
+        }
     </style>
 </head>
 
@@ -501,6 +504,8 @@
                             A205 Cabriolet is the perfect choice for those who desire a blend of sophistication,
                             comfort, and thrilling performance in their next vehicle.</p>
                     </div>
+                    <span class="show-more" onclick="showMore()"><i class="bi bi-arrow-right me-2"></i>Show More</span>
+
                     <div class="audio">
                         <p>Listen to the Revs</p>
                         <audio controls>
@@ -516,7 +521,12 @@
                         </audio>
                     </div>
 
-                    <span class="show-more" onclick="showMore()"><i class="bi bi-arrow-right me-2"></i>Show More</span>
+                                <div class="video text-center mt-4">
+                                    <video src="assets/video/Cla 45 amg Launch Control.mp4" class="rounded-4" controls autoplay muted loop playsinline
+                                        style="height: 500px; width: 100%; object-fit: cover;" playsinline></video>
+                                   
+                                </div>
+
                 </div>
             </div>
 
