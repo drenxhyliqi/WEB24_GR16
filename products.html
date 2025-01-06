@@ -177,7 +177,7 @@
         <div id="feedback-popout">
             <h4>Leave Feedback</h4>
             <form id="feedback-form" class="feedback-form">
-                <textarea id="feedback-text" placeholder="Write your feedback..." rows="1" required></textarea>
+                <textarea id="feedback-text" placeholder="Write your feedback..." rows="1"></textarea>
                 <button type="submit">Submit Feedback</button>
             </form>
 
@@ -347,98 +347,131 @@
         });
 
         document.getElementById("show-all").addEventListener("click", resetView);
-let feedbackList = [];
+        let feedbackList = [];
 
-let isDragging = false;
-let offsetX = 0;
-let offsetY = 0;
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
 
-const renderFeedbackList = () => {
-    const feedbackContainer = $("#feedback-list");
-    feedbackContainer.empty();
-    if (feedbackList.length === 0) {
-        feedbackContainer.append("<p>No feedback available.</p>");
-    } else {
-        feedbackList.forEach((feedback, index) => {
-            const feedbackItem = `
-                <div class="feedback-item">
-                    <p>${feedback}</p>
-                    <button class="remove-btn" data-index="${index}">Remove</button>
-                </div>
-            `;
-            feedbackContainer.append(feedbackItem);
+        const renderFeedbackList = () => {
+            try {
+                const feedbackContainer = $("#feedback-list");
+                feedbackContainer.empty();
+                if (!Array.isArray(feedbackList)) {
+                    throw new Error("Feedback list is not an array.");
+                }
+                if (feedbackList.length === 0) {
+                    feedbackContainer.append("<p>No feedback available.</p>");
+                } else {
+                    feedbackList.forEach((feedback, index) => {
+                        const feedbackItem = `
+                            <div class="feedback-item">
+                                <p>${feedback}</p>
+                                <button class="remove-btn" data-index="${index}">Remove</button>
+                            </div>
+                        `;
+                        feedbackContainer.append(feedbackItem);
+                    });
+                }
+            } catch (error) {
+                console.error("Error rendering feedback list:", error.message);
+            }
+        };
+
+        const addFeedback = (feedbackText) => {
+            try {
+                if (!feedbackText.trim()) {
+                    throw new Error("Feedback text cannot be empty.");
+                }
+                feedbackList.push(feedbackText);
+                renderFeedbackList();
+            } catch (error) {
+                alert(error.message);
+            }
+        };
+
+        const removeFeedback = (index) => {
+            try {
+                if (index < 0 || index >= feedbackList.length) {
+                    throw new Error("Invalid feedback index.");
+                }
+                feedbackList.splice(index, 1);
+                renderFeedbackList();
+            } catch (error) {
+                alert(error.message);
+            }
+        };
+
+        $("#feedback-form").submit(function (event) {
+            event.preventDefault();
+            const feedbackText = $("#feedback-text").val();
+            addFeedback(feedbackText);
+            $("#feedback-text").val("");
         });
-    }
-};
 
-const addFeedback = (feedbackText) => {
-    feedbackList.push(feedbackText);
-    renderFeedbackList();
-};
+        $(document).on("click", ".remove-btn", function () {
+            try {
+                const index = $(this).data("index");
+                removeFeedback(index);
+            } catch (error) {
+                console.error("Error removing feedback:", error.message);
+            }
+        });
 
-const removeFeedback = (index) => {
-    feedbackList.splice(index, 1);  
-    renderFeedbackList();
-};
+        $("#openPopout").click(function () {
+            try {
+                $("#feedback-popout").fadeIn().css({
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                });
+                $("#returnButton").show();
+            } catch (error) {
+                console.error("Error opening popout:", error.message);
+            }
+        });
 
-$("#feedback-form").submit(function (event) {
-    event.preventDefault();
-    const feedbackText = $("#feedback-text").val();
-    addFeedback(feedbackText);
-    $("#feedback-text").val("");  
-});
+        $("#closePopout").click(function () {
+            try {
+                $("#feedback-popout").fadeOut();
+                $("#returnButton").hide();
+            } catch (error) {
+                console.error("Error closing popout:", error.message);
+            }
+        });
 
-$(document).on("click", ".remove-btn", function () {
-    const index = $(this).data("index");
-    removeFeedback(index); 
-});
+        const popoutForm = document.getElementById("feedback-popout");
 
-$("#openPopout").click(function () {
-    $("#feedback-popout").fadeIn().css({
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)"
-    });
-    $("#returnButton").show(); 
-});
+        if (popoutForm) {
+            popoutForm.addEventListener("mousedown", function (e) {
+                isDragging = true;
+                offsetX = e.clientX - popoutForm.offsetLeft;
+                offsetY = e.clientY - popoutForm.offsetTop;
+            });
 
-$("#closePopout").click(function () {
-    $("#feedback-popout").fadeOut();
-    $("#returnButton").hide(); 
-});
+            document.addEventListener("mousemove", function (e) {
+                if (isDragging) {
+                    popoutForm.style.left = (e.clientX - offsetX) + "px";
+                    popoutForm.style.top = (e.clientY - offsetY) + "px";
+                    $("#returnButton").fadeIn();  
+                }
+            });
 
-const popoutForm = document.getElementById("feedback-popout");
-
-if (popoutForm) {
-    popoutForm.addEventListener("mousedown", function (e) {
-        isDragging = true;
-        offsetX = e.clientX - popoutForm.offsetLeft;
-        offsetY = e.clientY - popoutForm.offsetTop;
-    });
-
-    document.addEventListener("mousemove", function (e) {
-        if (isDragging) {
-            popoutForm.style.left = (e.clientX - offsetX) + "px";
-            popoutForm.style.top = (e.clientY - offsetY) + "px";
-            $("#returnButton").fadeIn();  
+            document.addEventListener("mouseup", function () {
+                isDragging = false; 
+            });
         }
-    });
 
-    document.addEventListener("mouseup", function () {
-        isDragging = false; 
-    });
-}
+        $("#returnButton").click(function () {
+            $("#feedback-popout").css({
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)"
+            });
+            $("#returnButton").fadeOut();  
+        });
 
-$("#returnButton").click(function () {
-    $("#feedback-popout").css({
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)"
-    });
-    $("#returnButton").fadeOut();  
-});
-
-renderFeedbackList();
-</script>
+        renderFeedbackList();
+    </script>
 </body>
 </html>
