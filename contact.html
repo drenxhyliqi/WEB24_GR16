@@ -162,37 +162,6 @@
         </div>
     </section>
 
-    <script src="assets/bootstrap/bootstrap.js"></script>
-    <script src="assets/main.js"></script>
-    <script>
-        function validateForm() {
-            const fullName = document.getElementById('full-name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            const errorMessage = document.getElementById('error-message');
-
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-            if (fullName === "" || email === "" || message === "") {
-                errorMessage.textContent = "All fields are required.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            if (!emailPattern.test(email)) {
-                errorMessage.textContent = "Please enter a valid email address.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            errorMessage.style.display = "none";
-            return true;
-        }
-    </script>
-
-
-
     <!--    Footer Section -->
     <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
@@ -265,14 +234,38 @@
         </div>
 
         <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
-
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="assets/main.js"></script>
+
     <script>
+        function validateForm() {
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const errorMessage = document.getElementById('error-message');
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (fullName === "" || email === "" || message === "") {
+                errorMessage.textContent = "All fields are required.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            return true;
+        }
 
         //Dergimi i Formes ne email te 'kompanise'!
         document.addEventListener("DOMContentLoaded", function () {
@@ -323,7 +316,6 @@
             });
         });
 
-
         function validateForm() {
             const fullName = document.getElementById('full-name').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -348,8 +340,7 @@
             errorMessage.style.display = "none";
             return true;
         }
-    </script>
-    <script>
+        
         $(document).ready(function () {
             $("body").append('<button id="scrollToTop">↑</button>');
 
@@ -365,11 +356,7 @@
                 $("html, body").animate({ scrollTop: 0 }, 100);
             });
         });
-    </script>
-
-
-
-    <script>
+        
         $(document).ready(function () {
             $("#phoneNumber").hide();
 
@@ -383,9 +370,6 @@
                 $("#toggleNumberBtn").show();
             });
         });
-
     </script>
-
 </body>
-
 </html>
