@@ -547,7 +547,7 @@
                 <h3 class="text-center">Calculate Your Discount</h3>
                 <form id="discount-calculator">
                     <div class="mb-3">
-                        <label for="original-price" class="form-label">Original Price ($):</label>
+                        <label for="original-price" class="form-label">Original Price (€):</label>
                         <input type="number" id="a" value="41900" class="form-control"
                             placeholder="Enter the original price">
                     </div>
@@ -674,6 +674,14 @@
     const history = [];
 
     function kalkuloZbritjen() {
+        const vleraMatch = vleraShtuar.value.match(/^\d+(\.\d+)?$/); 
+        const discountMatch = zbritja.value.match(/^\d+(\.\d+)?$/); 
+
+        if (!vleraMatch || !discountMatch) {
+            resultOutput.innerHTML = `Gabim: Ju lutemi shkruani vlera numerike t${"&euml;"} sakta.`;
+            return;
+        }
+
         const vlera = parseFloat(vleraShtuar.value);
         const discount = parseFloat(zbritja.value);
 
@@ -693,7 +701,9 @@
                 );
             }
             const vleraZbritur = vlera - (vlera * discount / 100);
-            resultOutput.innerHTML = `Çmimi i zbritur: ${vleraZbritur.toFixed(2)} €`;
+            resultOutput.innerHTML = `Çmimi i zbritur: ${vleraZbritur.toFixed(2)} EUR`;
+
+            resultOutput.innerHTML = resultOutput.innerHTML.replace('EUR', '€');
         } catch (error) {
             resultOutput.innerHTML = error.message;
         }
@@ -738,7 +748,8 @@
     }
 
     kalkuloZbritjen();
-});    </script>
+});
+    </script>
     <script>
         $(document).ready(function () {
 
