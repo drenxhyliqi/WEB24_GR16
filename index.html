@@ -49,6 +49,33 @@
         #scrollToTop:hover {
             background-color: #024c89;
         }
+        @font-face {
+    font-family: 'CustomMontserrat';
+    src: url('fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('fonts/Montserrat-Bold.woff') format('woff'),
+        url('fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomMontserrat', Arial, sans-serif;
+}
+
+        #p1 {
+            font-family: 'CustomMontserrat' , Arial, sans-serif;
+            font-size: 24px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+            color: #ccc;
+        }
+
+        .wrapped {
+            overflow-wrap: break-word;
+            margin: 20px 0;
+            font-size: 18px;
+        }
     </style>
 </head>
 
@@ -580,9 +607,8 @@
                 </div>
             </div>
             <!-- <div class="text-end d-none d-md-block">
-                <img src="assets/img/banner.png" alt="banner"
-                    style="position: absolute; bottom: 20%; right: 0; width: 350px; object-fit: contain; opacity: 50%;">
-            </div> -->
+                <img src="" alt="banner"
+            </div>  -->
         </div>
     </div>
 
@@ -1042,7 +1068,7 @@
         <div class="row d-flex justify-content-around auto-market ">
             <div class="col-12 col-md-4 col-lg-4 mt-4 text-center">
                 <h2>Auto Market</h2>
-                <p>Choose the best for your car!</p>
+                <p class="wrapped" id="p1">Choose the best for your car!</p>
                 <button class="btn-shop mb-4">Go to shop</button>
             </div>
             <div class="col-12 col-md-8 col-lg-8 auto-img mt-4">
