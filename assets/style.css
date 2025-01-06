@@ -8,13 +8,16 @@
 }
 
 .main-banner {
-    background-image: url(img/pexels-steve-30018091.jpg), url(img/audi.png);
-    background-position: top , left;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover, 100px 100px;
-    background-origin: content-box;
+    background: url("img/bgbanner.png"), url("img/pexels-steve-30018091.jpg");
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: scroll, scroll;
+    background-size: 100px 100px, cover;
+    background-origin: padding-box, padding-box;
+    
+    width: 100%;
 }
+
 
 .d-none {
     display: none;
