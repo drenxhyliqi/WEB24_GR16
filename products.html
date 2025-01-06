@@ -211,41 +211,135 @@
         const products = [
             {
                 id: 1,
-                name: "Tesla",
-                date: "12/09/2024",
-                price: "$69,000",
-                location: "Washington",
-                mileage: "66K mi",
-                fuel: "Electric",
-                transmission: "Automatic",
-                year: "2024",
-                image: "assets/img/tesla.jpg"
-            },
-            {
-                id: 2,
-                name: "Ford Mustang",
-                date: "01/05/2023",
-                price: "$55,000",
-                location: "New York",
-                mileage: "40K mi",
-                fuel: "Gasoline",
-                transmission: "Manual",
-                year: "2023",
-                image: "assets/img/ford.jpg"
-            },
-            {
-                id: 3,
-                name: "BMW X5",
-                date: "06/11/2024",
-                price: "$75,000",
-                location: "Los Angeles",
-                mileage: "20K mi",
+                name: "Ford Truck Lifted",
+                date: "30/09/2022",
+                price: "$79,000",
+                location: "Boston",
+                mileage: "12K mi",
                 fuel: "Diesel",
                 transmission: "Automatic",
                 year: "2024",
+                image: "assets/img/ford.jpg"
+            },
+            {
+                id: 2,
+                name: "Bmw M5 F90",
+                date: "11/21/2023",
+                price: "$129,000",
+                location: "New York",
+                mileage: "28K mi",
+                fuel: "Gasoline",
+                transmission: "Automatic",
+                year: "2023",
                 image: "assets/img/m5.jpg"
+            },
+            {
+                id: 3,
+                name: "Porsche 911 GT",
+                date: "06/11/2024",
+                price: "$119,000",
+                location: "San Diego",
+                mileage: "56K mi",
+                fuel: "Gasoline",
+                transmission: "Automatic",
+                year: "2024",
+                image: "assets/img/porsche.jpg"
             }
         ];
+
+        // Funksioni Konstruktor për Produkt
+        function Product(id, name, date, price, location, mileage, fuel, transmission, year, image) {
+            this.id = id;
+            this.name = name;
+            this.date = date;
+            this.price = price;
+            this.location = location;
+            this.mileage = mileage;
+            this.fuel = fuel;
+            this.transmission = transmission;
+            this.year = year;
+            this.image = image;
+        }
+
+        // Krijimi i një produkti të ri duke përdorur konstruktorin
+        const newProduct = new Product(
+            4,
+            "Tesla",
+            "12/09/2024",
+            "$69,000",
+            "Washington",
+            "66K mi",
+            "Electric",
+            "Automatic",
+            "2024",
+            "assets/img/tesla.jpg"
+        );
+
+        products.push(newProduct);
+
+        // Krijimi i një produkti të ri duke përdorur konstruktorin
+        const newProduct2 = new Product(
+            5,  // ID
+            "ROLLS-ROYCE CULLINAN 6.75",
+            "10/12/2024",
+            "$180,000",
+            "Chicago",
+            "00K mi",
+            "Diesel",
+            "Automatic",
+            "2023",
+            "assets/img/rolls.webp"
+        );
+
+        products.push(newProduct2);
+
+        // Krijimi i një produkti të ri duke përdorur konstruktorin
+        const newProduct3 = new Product(
+            6,  // ID
+            "FERRARI SF90 SPIDER / CARBON",
+            "01/08/2024",
+            "$250,000",
+            "NYC",
+            "00K mi",
+            "Gasoline",
+            "Automatic",
+            "2023",
+            "assets/img/fff.webp"
+        );
+
+        products.push(newProduct3);
+
+        // Krijimi i një produkti të ri duke përdorur konstruktorin
+        const newProduct4 = new Product(
+            7,
+            "FERRARI ROMA 3.9 V8 / CARBON",
+            "11/12/2024",
+            "$185,000",
+            "Tulsa",
+            "30K mi",
+            "Gasoline",
+            "Automatic",
+            "2024",
+            "assets/img/ferrr.webp"
+        );
+
+        products.push(newProduct4);
+
+        // Krijimi i një produkti të ri duke përdorur konstruktorin
+        const newProduct5 = new Product(
+            8,
+            "MERCEDES G 63 AMG MANUFAKTUR",
+            "14/02/2024",
+            "$380,000",
+            "Chicago",
+            "30K mi",
+            "Gasoline",
+            "Automatic",
+            "2024",
+            "assets/img/merca.webp"
+        );
+
+        products.push(newProduct5);
 
         const renderProducts = (productsToRender) => {
             const productContainer = document.querySelector(".row.align-items-center");
