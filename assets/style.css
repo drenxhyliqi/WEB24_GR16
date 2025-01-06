@@ -13,14 +13,15 @@
     box-sizing: border-box;
     font-family: 'CustomMontserrat', Arial, sans-serif;
 }
-.main-banner{
-    background-image: url(img/pexels-steve-30018091.jpg);
-    background-position: 0;
+.main-banner {
+    background-image: url(img/pexels-steve-30018091.jpg), url(img/audi.png);
+    background-position: top , left;
     background-repeat: no-repeat;
-    background-attachment:fixed;
-    background-size: auto;
-    background-origin: content-box; 
+    background-attachment: fixed;
+    background-size: cover, 100px 100px;
+    background-origin: content-box;
 }
+
 .d-none {
     display: none;
 }
@@ -83,7 +84,7 @@ ul li a{
     object-fit: cover;
 }
 .banner .card {
-    background-color: #000615;
+    background: linear-gradient(to top, #01284a, #000615);
     color: #f8f7fd;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
@@ -238,7 +239,7 @@ ul li a{
 
 .auto-market{
     padding: 5%;
-    background-color: #000615;
+    background: linear-gradient(to bottom, #013360, #000615);
     color: #f9f9f9;
 }
 .btn-shop{

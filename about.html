@@ -158,9 +158,23 @@
             background-color: #007bff;
             color: white !important;
             border: none;
+            border-radius: 10px;
+
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+        }
+        #ruaj {
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #ruaj:hover {
+            background-color: #0056b3;
         }
 
         #get:hover {
@@ -172,14 +186,6 @@
             font-weight: bold;
             color: #035dad;
             text-shadow: #222;
-        }
-
-        #countdown-timer button {
-            background-image: radial-gradient(#ffffff11, #035dad);
-            padding: 15px 35px;
-            border: none;
-            color: #222;
-            border-radius: 10px;
         }
 
 
@@ -660,67 +666,79 @@
 
         // Car discount kalkulator
         document.addEventListener('DOMContentLoaded', function () {
-            const vleraShtuar = document.getElementById('a');
-            const zbritja = document.getElementById('b');
-            const resultOutput = document.getElementById('x');
-            const ruajVlerat = document.getElementById('ruaj');
+    const vleraShtuar = document.getElementById('a');
+    const zbritja = document.getElementById('b');
+    const resultOutput = document.getElementById('x');
+    const ruajVlerat = document.getElementById('ruaj');
 
-            // Array për ruajtjen e historikut të llogaritjeve
-            const history = [];
+    const history = [];
 
-            // Funksioni për llogaritjen e çmimit të zbritur
-            function kalkuloZbritjen() {
-                const vlera = parseFloat(vleraShtuar.value);
-                const discount = parseFloat(zbritja.value);
+    function kalkuloZbritjen() {
+        const vlera = parseFloat(vleraShtuar.value);
+        const discount = parseFloat(zbritja.value);
 
-                if (isNaN(vlera) || isNaN(discount) || vlera <= 0 || discount <= 0) {
-                    resultOutput.innerHTML = `Kjo vler${"&euml;"} nuk eshte valide`;
-                    return;
-                }
+        try {
+            if (isNaN(vlera) || isNaN(discount)) {
+                throw new Error(`Gabim: Ju lutemi shkruani vlera numerike t${"&euml;"} sakta.`);
+            }
+            if (vlera <= 0 || discount <= 0) {
+                throw new Error(`Gabim: Vlerat duhet t${"&euml;"} jen${"&euml;"} m${"&euml;"} t${"&euml;"} mëdha se zero.`);
+            }
+            if (discount > 100) {
+                throw new Error(`Gabim: Zbritja nuk mund t${"&euml;"} tejkaloj${"&euml;"} 100%.`);
+            }
+            if (vlera > Number.MAX_VALUE) {
+                throw new Error(
+                    `Gabim: Vlera tejkalon kufirin maksimal t${"&euml;"} lejuar (${Number.MAX_VALUE.toExponential()}).`
+                );
+            }
+            const vleraZbritur = vlera - (vlera * discount / 100);
+            resultOutput.innerHTML = `Çmimi i zbritur: ${vleraZbritur.toFixed(2)} €`;
+        } catch (error) {
+            resultOutput.innerHTML = error.message;
+        }
+    }
 
-                // Llogaritja e çmimit të zbritur
-                const vleraZbritur = vlera - (vlera * discount / 100);
-                resultOutput.textContent = vleraZbritur.toFixed(2); // Tregon çmimin e zbritur
+    vleraShtuar.addEventListener('input', kalkuloZbritjen);
+    zbritja.addEventListener('input', kalkuloZbritjen);
+
+    function saveCalculation(e) {
+        e.preventDefault();
+
+        const vlera = parseFloat(vleraShtuar.value);
+        const discount = parseFloat(zbritja.value);
+        const vleraZbritur = parseFloat(resultOutput.textContent.split(":")[1]?.trim());
+
+        try {
+            if (isNaN(vlera) || isNaN(discount) || vlera <= 0 || discount <= 0 || discount > 100) {
+                throw new Error(
+                    `Gabim: Sigurohuni q${"&euml;"} vlerat jan${"&euml;"} t${"&euml;"} sakta dhe zbritja nuk tejkalon 100%.`
+                );
             }
 
-            // Event listener për ndryshimin e inputeve të çmimit dhe zbritjes
-            vleraShtuar.addEventListener('input', kalkuloZbritjen);
-            zbritja.addEventListener('input', kalkuloZbritjen);
+            history.push({
+                vlera: vlera.toFixed(2),
+                discount: discount.toFixed(2),
+                vleraZbritur: vleraZbritur.toFixed(2),
+            });
 
-            // Funksioni për ruajtjen e llogaritjes në array dhe shfaqjen në console
-            function saveCalculation(e) {
-                e.preventDefault();
+            console.log("Historiku i llogaritjeve:");
+            history.forEach((entry, index) => {
+                console.log(
+                    `Llogaritja ${index + 1}: Çmimi: ${entry.vlera}, Zbritja: ${entry.discount}%, Çmimi i Zbritur: ${entry.vleraZbritur}`
+                );
+            });
+        } catch (error) {
+            console.error(`Gabim gjatë ruajtjes: ${error.message}`);
+        }
+    }
 
-                const vlera = parseFloat(vleraShtuar.value);
-                const discount = parseFloat(zbritja.value);
-                const vleraZbritur = parseFloat(resultOutput.textContent);
+    if (ruajVlerat) {
+        ruajVlerat.addEventListener('click', saveCalculation);
+    }
 
-                // Ruajtja në array
-                history.push({
-                    vlera: vlera,
-                    discount: discount,
-                    vleraZbritur: vleraZbritur.toFixed(2)
-                });
-
-                // Shfaqja e historikut të ruajtur në console
-                console.log("Historiku i Llogaritjeve:");
-                history.forEach((entry, index) => {
-                    console.log(`Llogaritja ${index + 1}: Çmimi: ${entry.vlera}, Zbritja: ${entry.discount}%, ${"&ccedil;"}mimi i Zbritur: ${entry.vleraZbritur}`);
-                });
-            }
-
-            // Event listener për butonin "Ruaj"
-            if (ruajVlerat) {
-                ruajVlerat.addEventListener('click', saveCalculation);
-            }
-
-            // Llogaritja fillestare e çmimit të zbritur
-            kalkuloZbritjen();
-        });
-
-
-
-    </script>
+    kalkuloZbritjen();
+});    </script>
     <script>
         $(document).ready(function () {
 
