@@ -1175,6 +1175,11 @@
         ctx.fillStyle = 'white';
         ctx.fill();
 
+        myCanvas.addEventListener('click', function () {
+            window.location.href = "login.html";
+            
+        });
+
         document.getElementById("carSearchForm").addEventListener("submit", function (e) {
             e.preventDefault();
 
