@@ -218,7 +218,7 @@ ul li a{
 .footer-info{
     background-color: #000615;
     color: rgba(255, 255, 255, 0.855);
-    border: 1px dashed #000615;
+    border: 1px solid #000615;
 }
 .footer-lists p{
     font-size: large;
