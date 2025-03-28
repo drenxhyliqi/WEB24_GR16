@@ -7,16 +7,6 @@
     font-family: "Montserrat", serif;
 }
 
-.main-banner {
-    background: url("img/bgbanner.png"), url("img/pexels-steve-30018091.jpg");
-    background-position: center, center;
-    background-repeat: no-repeat, no-repeat;
-    background-attachment: scroll, scroll;
-    background-size: 100px 100px, cover;
-    background-origin: padding-box, padding-box;
-    
-    width: 100%;
-}
 
 
 .d-none {
@@ -24,7 +14,7 @@
 }
 
 .active{
-    color: #035dad !important;
+    color: #011750 !important;
 }
 
 .container-fluid{
@@ -33,7 +23,7 @@
 
 /* Navbar */
 .navbar{
-    background-color: #000615;
+    background-color: #f9f9f9;
     position: sticky;
     top: 0;
     width: 100%;
@@ -41,10 +31,10 @@
 }
 
 .navbar-nav .nav-link{
-    color: #f9f9f9;
+    color: #011750;
 }
 .navbar-nav .nav-link:hover{
-    color: #035dad;
+    color: #011750ad;
 }
 
 ul li a{
@@ -66,7 +56,7 @@ ul li a{
 }
 
 .navbar-toggler .bi-list {
-    color: #f9f9f9;
+    color: #035dad;
 }
 
 /* Home Section */
@@ -75,39 +65,23 @@ ul li a{
     padding: 10%;
 } */
 
-/* Banner Section */
-.banner .card img {
-    height: 120 px;
-    object-fit: cover;
-}
-.banner .card {
-    background: linear-gradient(to top, #01284a, #000615);
-    color: #f8f7fd;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-}
-
-.banner .card:hover{
-    opacity: 0.9;
-    cursor: pointer;
-}
-.banner h3 {
-    margin-bottom: 30px;
-}
-
-.banner h4 {
-    text-align: center;
-}
-.banner p {
-    text-align: center;
-    margin: 10px 0;
-}
-.btn-select{
+/* Explore Cars */
+.car-card {
     background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: center;
+    transition: 0.3s;
+    outline: 1px solid #0006151e;
 }
-.btn-select:hover{
-    background-color: #035dad !important;
-    color: #f8f7fd !important;
+.car-card:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px 1px #036bfc79;
+}
+.car-card img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* Latest Cars Section */
@@ -139,7 +113,7 @@ ul li a{
 .bi-suit-heart, 
 .bi-bell,
 .bi-arrow-repeat{
-    border: 1px dashed #15102f;
+    border: 1px solid #15102f;
     padding: 5px 5px 3px 5px;
     border-radius: 25%;
     cursor: pointer;
@@ -148,7 +122,7 @@ ul li a{
 .bi-suit-heart:hover,
 .bi-bell:hover,
 .bi-arrow-repeat:hover {
-    background-color: #0478DF;
+    background-color: #000615;
     color: #f9f9f9;
 }
 
@@ -161,19 +135,15 @@ ul li a{
 .main-banner{
     background-color: #000615f8;
 }
-.search{
-    background-color: #035dad;
-    color: #f9f9f9;
-}
-.search:hover{
-    background-color: #035ead87;
-    color: #f8f7fd;
-}
 
-.half-main-banner{
-    background-color: #000615;
-    border-radius: 10px;
-}
+.btn-find {
+        background-color: #001a5a;
+        color: white;
+        border: none;
+    }
+    .btn-find:hover {
+        background-color: #002c88;
+    }
 
 /* Top offers */
 .top-of{
@@ -200,32 +170,23 @@ ul li a{
     cursor: pointer;
 }
 
-/* Car Demand Section */
-.car-demands{
+/* seelect typeSection */
+.select-type{
     padding: 5%;
 }
-.car-demands img {
-    width: 160px;
-    padding-top: 10%;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in;
+.filter-btn {
+    border: none;
+    background-color: #f9f9f9;
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s;
 }
-
-.car-demands img:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-.car-demands a {
-    color: #000615;
-    text-decoration: none;
-    font-size: larger;
-    font-weight: bold;
-    cursor: pointer;
-}
-.car-demands a:hover{
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+.filter-btn:hover, .filter-btn.active {
+    background-color: #6b6b6b59;
 }
 
 
@@ -234,26 +195,6 @@ ul li a{
     width: 220px;
 }
 
-.auto-market{
-    padding: 5%;
-    background: linear-gradient(to bottom, #013360, #000615);
-    color: #f9f9f9;
-}
-.btn-shop{
-    padding: 10px 16px; 
-    border: 2px solid #035dad; 
-    background-color: transparent ; 
-    color: #f9f9f9; 
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 10px;
-    transition: all 0.3s ease; 
-    text-transform: uppercase; 
-    cursor: pointer; 
-}
-.btn-shop:hover{
-    background-color: #035dad;
-}
 
 /* Info section */
 .info-content {
@@ -267,7 +208,8 @@ ul li a{
 }
 
 .info-content:hover{
-    transform: scale(1.05);    
+    box-shadow: 0 0 5px 1px #036bfc79;
+    cursor: pointer;
 }
 
 /* footer section */
@@ -295,7 +237,6 @@ ul li a{
     margin: 5px;
     padding-top: 40px;    
     padding-bottom: 15px;   
-     
 }
 .footer-info-content span{
     padding: 7px;
@@ -335,7 +276,6 @@ ul li a{
 }
 
 /* Contact Us sections */
-
 .Contact{
     margin-top: 50px;
 }
