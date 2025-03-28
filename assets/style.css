@@ -186,9 +186,11 @@ ul li a{
     transition: background-color 0.2s;
 }
 .filter-btn:hover, .filter-btn.active {
-    background-color: #6b6b6b59;
+    background-color: #eeee;
 }
-
+.filter-btn:hover{
+    box-shadow: 0 0 2px 1px #036bfc79;
+}
 
 /* Auto Market */
 .auto-img img{
