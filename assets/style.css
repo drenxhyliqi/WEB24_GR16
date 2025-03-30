@@ -85,13 +85,18 @@ ul li a{
 }
 
 /*---THANK YOU----*/
-#thankyou{
+#thankyou {
     margin: 10% 5% 5% 5%;
-    background-color: #000615;
+    background-image: url("../assets/img/thankbg.png"); /* Kontrollo path-in */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 8%;
     color: #f9f9f9;
     border-radius: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 36, 136, 0.417);
 }
+
 .cnt-btn{
     background-color: #035dad;
     color: #f8f7fd;
@@ -146,7 +151,17 @@ ul li a{
     background-color: #000615;
     color: #f9f9f9;
 }
-
+.view{
+    background-color: #035dad;
+    color: #f9f9f9;
+    border: none;
+    padding: .5rem 0 .5rem 0;
+    margin-top: 2rem;
+    border-radius: .5rem;
+}
+.view:hover{
+    background-color: #000615;
+}
 
 .cars-cards{
     /* padding: 3rem 5rem 3rem 5rem; */
@@ -239,6 +254,7 @@ ul li a{
     background-color: #000615;
     color: rgba(255, 255, 255, 0.855);
     border: 1px solid #000615;
+    border-radius: 1.5rem;
 }
 .footer-lists p{
     font-size: large;
