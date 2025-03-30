@@ -84,6 +84,27 @@ ul li a{
     margin-bottom: 10px;
 }
 
+/*---THANK YOU----*/
+#thankyou{
+    margin: 10% 5% 5% 5%;
+    background-color: #000615;
+    padding: 8%;
+    color: #f9f9f9;
+    border-radius: 1.5rem;
+}
+.cnt-btn{
+    background-color: #035dad;
+    color: #f8f7fd;
+    border: 0.5px solid #000615 ;
+    padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+}
+
+.cnt-btn:hover{
+    background-color: transparent;
+    border: 1px solid #035dad;
+}
 /* Latest Cars Section */
 .btn-all, .btn-new, .btn-used {
     padding: 8px 14px; 
@@ -156,19 +177,18 @@ ul li a{
     transition: transform 0.5s ease; 
 }
 
-/* Car Logos Section */
-.car-logos{
-    padding: 5% 3% 4% 3%;
+/* Manufacture logos */
+.brands{
+    padding: 2rem 0 2rem 0;
+}
+.brands a{
+    padding: 10px;
+}
+.brands a:hover{
+    border-left: 1px solid #035dad;
+    background-image:linear-gradient(to left,#ffffff, #0377ad15);
 }
 
-.car-logos img{
-    opacity: 1;
-    width: 100px;
-}
-.car-logos img:hover{
-    opacity: 0.6;
-    cursor: pointer;
-}
 
 /* seelect typeSection */
 .select-type{
@@ -322,8 +342,20 @@ input, textarea {
 /*Media Queries*/
 
 /* Per Telefona */
-@media (min-width: 576px) {
+@media (max-width: 576px) {
+    /*--THANK YOUS ECTION*/
+    #thankyou h3,h4{
+        font-size: 1rem;
+    }
+    .cnt-btn{
+        font-size: 0.8rem;
+        margin-top: 1rem;
+    }
 
+    /*--BRANDS SECTION---*/
+    .brands{
+    padding: 1rem;
+}
 }
 
 /* per Tablets */
