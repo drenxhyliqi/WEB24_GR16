@@ -156,7 +156,7 @@ ul li a {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
 }
 
 .card:hover {
@@ -207,7 +207,7 @@ ul li a {
 .car-price {
     font-size: 24px;
     font-weight: 700;
-    color: #0d6efd;
+    color: #035dad;
     margin-bottom: 16px;
 }
 
@@ -235,7 +235,7 @@ ul li a {
 }
 
 .btn-view:hover {
-    background-color: #0d6efd;
+    background-color: #035dad;
 }
 
 .car-details-grid {
@@ -330,20 +330,59 @@ ul li a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.bi-suit-heart{
-    border: 1px solid #15102f;
-    padding: 5px 5px 3px 5px;
-    border-radius: 25%;
+.new-deal{
+    font-weight: 600;
+    font-size: .8rem;
+    background-color: #035dad;
+    padding: .30rem;
+    color: #f9f9f9;
+    cursor: pointer;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    border-radius: 5px;
+}
+.bi-heart{
+    position: absolute;
+    top: 4.7%;
+    left: 6%;
+    font-size: .9rem;
+    background-color: #035dad;
+    color: #f9f9f9 !important;
+    padding: 5px 10px 5px 10px;
+    padding-left: 10px;
+    border-radius: 5px !important;
     cursor: pointer;
 }
-
-.bi-suit-heart:hover{
-    background-color: #000615;
-    color: #f9f9f9;
+.new-deal:hover{
+    background-color: #035;
+}
+/* Add this to your CSS */
+.bi-heart {
+    transition: transform 0.3s ease;
 }
 
+.bi-heart:hover {
+    animation: heartShake 0.5s ease 2ms;
+}
+
+@keyframes heartShake {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-5deg) scale(1.1); }
+    50% { transform: rotate(5deg) scale(1.1); }
+    75% { transform: rotate(-5deg) scale(1.1); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+
+
+/* .new-deal:hover{
+    background-color: #;
+    color: #035dad;
+} */
+
 .view {
-    background-color: #035;
+    background-color: #000615;
     color: #f9f9f9;
     border: none;
     padding: .5rem 0;
@@ -352,7 +391,7 @@ ul li a {
 }
 
 .view:hover {
-    background-color: #000615;
+    background-color: #035dad;
 }
 
 /* ============= FOOTER SECTION ============= */
