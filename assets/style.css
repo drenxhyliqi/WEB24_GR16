@@ -1,28 +1,27 @@
-/* Font Style from Google Font */
+/* ============= BASE STYLES ============= */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", serif;
 }
 
-
-
 .d-none {
     display: none;
 }
 
-.active{
+.active {
     color: #011750 !important;
 }
 
-.container-fluid{
+.container-fluid {
     padding: 0 5%;
 }
 
-/* Navbar */
-.navbar{
+/* ============= NAVBAR ============= */
+.navbar {
     background-color: #f9f9f9;
     position: sticky;
     top: 0;
@@ -30,27 +29,28 @@
     z-index: 1;
 }
 
-.navbar-nav .nav-link{
+.navbar-nav .nav-link {
     color: #011750;
 }
-.navbar-nav .nav-link:hover{
+
+.navbar-nav .nav-link:hover {
     color: #011750ad;
 }
 
-ul li a{
+ul li a {
     padding: 0 3rem 0 0 !important;
     text-transform: uppercase;
     font-size: 24px;
     font-weight: 600 !important;
 }
 
-.bi-person-fill{
+.bi-person-fill {
     cursor: pointer;
     font-size: 1.8rem;
     color: #f8f7fd !important;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     border: none !important;
     box-shadow: none !important;
 }
@@ -59,13 +59,49 @@ ul li a{
     color: #035dad;
 }
 
-/* Home Section */
-/* .home{
-    background-color: aquamarine;
-    padding: 10%;
-} */
+/* ============= MAIN BANNER SECTION ============= */
+.main-banner {
+    background-color: #000615f8;
+    padding: 3rem 0;
+}
 
-/* Explore Cars */
+.btn-find {
+    background-color: #001a5a;
+    color: white;
+    border: none;
+}
+
+.btn-find:hover {
+    background-color: #002c88;
+}
+
+/* ============= SELECT TYPE SECTION ============= */
+.select-type {
+    padding: 5%;
+}
+
+.filter-btn {
+    border: none;
+    background-color: #f9f9f9;
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.filter-btn:hover, 
+.filter-btn.active {
+    background-color: #eeee;
+}
+
+.filter-btn:hover {
+    box-shadow: 0 0 2px 1px #036bfc79;
+}
+
+/* ============= EXPLORE CARS SECTION ============= */
 .car-card {
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -74,20 +110,22 @@ ul li a{
     transition: 0.3s;
     outline: 1px solid #0006151e;
 }
+
 .car-card:hover {
     cursor: pointer;
     box-shadow: 0 0 8px 1px #036bfc79;
 }
+
 .car-card img {
     width: 80px;
     height: auto;
     margin-bottom: 10px;
 }
 
-/*---THANK YOU----*/
+/* ============= THANK YOU SECTION ============= */
 #thankyou {
     margin: 10% 5% 5% 5%;
-    background-image: url("../assets/img/thankbg.png"); /* Kontrollo path-in */
+    background-image: url("../assets/img/thankbg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -97,48 +135,92 @@ ul li a{
     box-shadow: 0 5px 15px rgba(0, 36, 136, 0.417);
 }
 
-.cnt-btn{
+.cnt-btn {
     background-color: #035dad;
     color: #f8f7fd;
-    border: 0.5px solid #000615 ;
-    padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+    border: 0.5px solid #000615;
+    padding: 0.75rem 1.25rem;
     margin-top: 2rem;
     border-radius: 0.5rem;
 }
 
-.cnt-btn:hover{
+.cnt-btn:hover {
     background-color: transparent;
     border: 1px solid #035dad;
 }
-/* Latest Cars Section */
+
+/* ============= TOP OFFERS SECTION ============= */
+.top-of {
+    padding-top: 5%;
+}
+
+.img-hover:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+/* ============= BRANDS SECTION ============= */
+.brands {
+    padding: 2rem 0;
+}
+
+.brands a {
+    padding: 10px;
+}
+
+.brands a:hover {
+    border-left: 1px solid #035dad;
+    background-image: linear-gradient(to left, #ffffff, #0377ad15);
+}
+
+/* ============= INFO SECTION ============= */
+.info-content {
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.info-content i {
+    font-size: 25px;
+}
+
+.info-content:hover {
+    box-shadow: 0 0 5px 1px #036bfc79;
+    cursor: pointer;
+}
+
+/* ============= LATEST CARS SECTION ============= */
 .btn-all, .btn-new, .btn-used {
-    padding: 8px 14px; 
-    border: 2px solid #035dad; 
-    background-color: transparent; 
-    color: #000615; 
+    padding: 8px 14px;
+    border: 2px solid #035dad;
+    background-color: transparent;
+    color: #000615;
     font-size: 12px;
     font-weight: 500;
-    border-radius: 15px !important;
-    transition: all 0.3s ease; 
-    text-transform: uppercase; 
-    cursor: pointer; 
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
-.btn-all:hover, .btn-new:hover, .btn-used:hover {
-    background-color: #000615; 
-    color: #f8f7fd; 
-    border-color: #000615; 
+.btn-all:hover, 
+.btn-new:hover, 
+.btn-used:hover {
+    background-color: #035;
+    color: #f8f7fd;
+    border-color: #035;
 }
 
-.btn-all:focus, .btn-new:focus, .btn-used:focus {
+.btn-all:focus, 
+.btn-new:focus, 
+.btn-used:focus {
     outline: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-.bi-suit-heart, 
+.bi-suit-heart,
 .bi-bell,
-.bi-arrow-repeat{
+.bi-arrow-repeat {
     border: 1px solid #15102f;
     padding: 5px 5px 3px 5px;
     border-radius: 25%;
@@ -151,134 +233,55 @@ ul li a{
     background-color: #000615;
     color: #f9f9f9;
 }
-.view{
-    background-color: #035dad;
+
+.view {
+    background-color: #035;
     color: #f9f9f9;
     border: none;
-    padding: .5rem 0 .5rem 0;
+    padding: .5rem 0;
     margin-top: 2rem;
     border-radius: .5rem;
 }
-.view:hover{
+
+.view:hover {
     background-color: #000615;
 }
 
-.cars-cards{
-    /* padding: 3rem 5rem 3rem 5rem; */
-}
-
-/* Main Section */
-.main-banner{
-    background-color: #000615f8;
-}
-
-.btn-find {
-        background-color: #001a5a;
-        color: white;
-        border: none;
-    }
-    .btn-find:hover {
-        background-color: #002c88;
-    }
-
-/* Top offers */
-.top-of{
-    padding-top: 5%;
-}
-.img-hover:hover {
-    width: 100%;
-    overflow: hidden;
-    transform: scale(1.1);
-    transition: transform 0.5s ease; 
-}
-
-/* Manufacture logos */
-.brands{
-    padding: 2rem 0 2rem 0;
-}
-.brands a{
-    padding: 10px;
-}
-.brands a:hover{
-    border-left: 1px solid #035dad;
-    background-image:linear-gradient(to left,#ffffff, #0377ad15);
-}
-
-
-/* seelect typeSection */
-.select-type{
-    padding: 5%;
-}
-.filter-btn {
-    border: none;
-    background-color: #f9f9f9;
-    padding: 15px 25px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    transition: background-color 0.2s;
-}
-.filter-btn:hover, .filter-btn.active {
-    background-color: #eeee;
-}
-.filter-btn:hover{
-    box-shadow: 0 0 2px 1px #036bfc79;
-}
-
-/* Auto Market */
-.auto-img img{
-    width: 220px;
-}
-
-
-/* Info section */
-.info-content {
-    font-weight: 600;
-    padding: 15px;
-    border-radius: 20px;
-}
-
-.info-content i{
-    font-size: 25px;
-}
-
-.info-content:hover{
-    box-shadow: 0 0 5px 1px #036bfc79;
-    cursor: pointer;
-}
-
-/* footer section */
-.footer-info{
+/* ============= FOOTER SECTION ============= */
+.footer-info {
     background-color: #000615;
     color: rgba(255, 255, 255, 0.855);
     border: 1px solid #000615;
     border-radius: 1.5rem;
 }
-.footer-lists p{
+
+.footer-lists p {
     font-size: large;
     margin-top: 10px;
     margin-left: 10px;
 }
-.footer-lists button{
+
+.footer-lists button {
     font-size: 13px;
     border-radius: 10px;
-    background-color:#000615 ;
+    background-color: #000615;
     border-color: transparent;
 }
-.footer-lists button:hover{
-    background-color:#000615;
+
+.footer-lists button:hover {
+    background-color: #000615;
 }
 
-.footer-info-content{
+.footer-info-content {
     margin: 5px;
-    padding-top: 40px;    
-    padding-bottom: 15px;   
+    padding-top: 40px;
+    padding-bottom: 15px;
 }
-.footer-info-content span{
+
+.footer-info-content span {
     padding: 7px;
 }
+
 .footer-lists a {
     font-size: 10px;
     color: #808792;
@@ -292,7 +295,6 @@ ul li a{
     text-decoration-thickness: 2px;
 }
 
-
 #copyright {
     margin-top: 70px;
     padding-bottom: 20px;
@@ -302,85 +304,41 @@ ul li a{
     color: #808792;
 }
 
-#copyright a{
-    text-decoration: none; 
+#copyright a {
+    text-decoration: none;
     color: rgba(255, 255, 255, 0.855);
-    
 }
 
-#copyright a:hover{
+#copyright a:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
 
-/* Contact Us sections */
-.Contact{
-    margin-top: 50px;
-}
-
-.contactUs {
-    padding: 70px 20px 50px 20px;
-}
-.questions-body{
-    display: flex;
-    border: none;
-}
-#questionsImg{
-    border-radius: 50%;
-    width: 140px;
-    height: 130px;
-    margin-right: 30px;
-}
-input, textarea {
-    border: none !important; 
-    border-bottom: 1px solid #035dad !important; 
-    outline: none; 
-    border-radius: 0;
-}
-
-.contactForm {
-    padding: 40px 25px 40px 25px;
-    color: #000615;
-    border-radius:15px;
-    border: 2px solid #035dad;
-
-}
-.contactForm input, textarea{
-    width: 100%;
-    margin: 5px;
-    padding: 7px;
-    border-radius: 10px;
-    border-color: #000615;
-}
-
-
-
-/*Media Queries*/
-
-/* Per Telefona */
+/* ============= MEDIA QUERIES ============= */
+/* For Phones */
 @media (max-width: 576px) {
-    /*--THANK YOUS ECTION*/
-    #thankyou h3,h4{
+    /* Thank You Section */
+    #thankyou h3, #thankyou h4 {
         font-size: 1rem;
     }
-    .cnt-btn{
+    
+    .cnt-btn {
         font-size: 0.8rem;
         margin-top: 1rem;
     }
 
-    /*--BRANDS SECTION---*/
-    .brands{
-    padding: 1rem;
-}
+    /* Brands Section */
+    .brands {
+        padding: 1rem;
+    }
 }
 
-/* per Tablets */
+/* For Tablets */
 @media (min-width: 768px) {
-
+    /* Add tablet-specific styles here */
 }
 
-/* Per Desktop */
+/* For Desktop */
 @media (min-width: 992px) {
-
+    /* Add desktop-specific styles here */
 }
-
