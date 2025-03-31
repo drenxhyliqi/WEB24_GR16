@@ -1,0 +1,165 @@
+/* Custom CSS to supplement Bootstrap */
+
+/* ============= NAVBAR ============= */
+.navbar {
+    background-color: #f9f9f9;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar-nav .nav-link {
+    color: #011750;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #011750ad;
+}
+
+ul li a {
+    padding: 0 3rem 0 0 !important;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 600 !important;
+}
+
+.bi-person-fill {
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: #f8f7fd !important;
+}
+
+.navbar-toggler {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler .bi-list {
+    color: #035dad;
+}
+
+
+/* Logo styling */
+.logo-icon {
+  height: 32px;
+  width: 32px;
+  color: #000;
+}
+
+/* Card hover effect */
+.hover-shadow:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Custom colors for filter badge */
+.bg-teal-light {
+  background-color: rgba(20, 184, 166, 0.1);
+}
+
+.text-teal {
+  color: rgb(20, 184, 166);
+}
+
+/* Filter sidebar styling */
+.filter-sidebar {
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background-color: #000615 !important;
+  color: #f9f9f9 !important;
+}
+
+/* General spacing and responsiveness improvements */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  .filter-badge {
+    padding: 0.5rem !important;
+  }
+  
+  .filter-badge i {
+    font-size: 0.875rem;
+  }
+}
+
+/* Styling for card image containers */
+.card .position-relative {
+  overflow: hidden;
+}
+
+/* Better styling for the condition badge */
+.position-absolute.badge {
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+/* ============= FOOTER SECTION ============= */
+.footer-info {
+    background-color: #000615;
+    color: rgba(255, 255, 255, 0.855);
+    border: 1px solid #000615;
+}
+
+.footer-lists p {
+    font-size: large;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.footer-lists button {
+    font-size: 13px;
+    border-radius: 10px;
+    background-color: #000615;
+    border-color: transparent;
+}
+
+.footer-lists button:hover {
+    background-color: #000615;
+}
+
+.footer-info-content {
+    margin: 5px;
+    padding-top: 40px;
+    padding-bottom: 15px;
+}
+
+.footer-info-content span {
+    padding: 7px;
+}
+
+.footer-lists a {
+    font-size: 10px;
+    color: #808792;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.footer-lists a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+#copyright {
+    margin-top: 70px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: small;
+    color: #808792;
+}
+
+#copyright a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.855);
+}
+
+#copyright a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
