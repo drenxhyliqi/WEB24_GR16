@@ -254,7 +254,6 @@
 </head>
 
 <body>
-
     <!-- ============= NAVBAR ============= -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
@@ -285,10 +284,7 @@
 
         <!-- Pages Link -->
         <div class="margin-top-3">
-            <small><a href="/index.html" class="no-decoration dark-text">Home</a><i
-                    class="bi bi-caret-right mx-1"></i><a href="/products.html" class="no-decoration dark-text">All
-                    Cars</a><i class="bi bi-caret-right mx-1"></i><a href="#mercedes"
-                    class="no-decoration dark-text">Mercedes-Benz A205 Cabriolet</a></small>
+            <small><a href="index.php" class="no-decoration dark-text">Home</a><i class="bi bi-caret-right mx-1"></i><a href="products.php" class="no-decoration dark-text">All Cars</a><i class="bi bi-caret-right mx-1"></i><a href="#mercedes" class="no-decoration dark-text">Mercedes-Benz A205 Cabriolet</a></small>
         </div>
 
         <!-- Product Title -->
@@ -297,23 +293,23 @@
         <!-- Product Images -->
         <div class="row" id="mercedes">
             <div class="col-sm-12 col-md-12 col-lg-8">
-                <img src="/assets/img/prod1.jpg" alt="main-img-1" id="active"
+                <img src="assets/img/prod1.jpg" alt="main-img-1" id="active"
                     class="img-hover-product main-img shadow-sm">
                 <div class="row mt-4">
                     <div class="col-3">
-                        <img src="/assets/img/prod1.jpg" alt="main-img-1" id="main-img-1"
+                        <img src="assets/img/prod1.jpg" alt="main-img-1" id="main-img-1"
                             class="img-hover-product main-img shadow-sm">
                     </div>
                     <div class="col-3">
-                        <img src="/assets/img/prod2.jpg" alt="main-img-2" id="main-img-2"
+                        <img src="assets/img/prod2.jpg" alt="main-img-2" id="main-img-2"
                             class="img-hover-product main-img shadow-sm">
                     </div>
                     <div class="col-3">
-                        <img src="/assets/img/prod3.jpg" alt="main-img-3" id="main-img-3"
+                        <img src="assets/img/prod3.jpg" alt="main-img-3" id="main-img-3"
                             class="img-hover-product main-img shadow-sm">
                     </div>
                     <div class="col-3">
-                        <img src="/assets/img/prod4.jpg" alt="main-img-4" id="main-img-4"
+                        <img src="assets/img/prod4.jpg" alt="main-img-4" id="main-img-4"
                             class="img-hover-product main-img shadow-sm">
                     </div>
                 </div>
@@ -324,8 +320,7 @@
                     <table style="width: 100%; border-color: #f0f0f0;" cellspacing="10" cellpadding="8">
                         <thead>
                             <tr>
-                                <th colspan="2" style="background-color: #ECF2F2; color: #00515a; text-align: center;">
-                                    Car Specifications</th>
+                                <th colspan="2" style="background-color: #ECF2F2; color: #00515a; text-align: center;">Car Specifications</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -334,34 +329,26 @@
                                 <td><strong>Fuel type:</strong> Gasoline</td>
                             </tr>
                             <tr>
-                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Mileage:</strong> 60K
-                                    miles</td>
-                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>City MPG:</strong> 25
-                                </td>
+                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Mileage:</strong> 60Kmiles</td>
+                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>City MPG:</strong> 25</td>
                             </tr>
                             <tr>
                                 <td><strong>Body type:</strong> Convertible</td>
                                 <td><strong>Highway MPG:</strong> 35</td>
                             </tr>
                             <tr>
-                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Drive type:</strong> 2
-                                    wheel drive - rear</td>
-                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Exterior color:</strong>
-                                    Red</td>
+                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Drive type:</strong> 2 wheel drive - rear</td>
+                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Exterior color:</strong> Red</td>
                             </tr>
                             <tr>
                                 <td><strong>Engine:</strong> 6-Cylinder Turbo</td>
-                                <td rowspan="2"><a href="#description"
-                                        style="text-decoration: none; color: black;"><b>View Details<i
-                                                class="bi bi-arrow-right ms-2"></i></b></a></td>
+                                <td rowspan="2"><a href="#description" style="text-decoration: none; color: black;"><b>View Details<i class="bi bi-arrow-right ms-2"></i></b></a></td>
                             </tr>
                             <tr>
-                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Exterior color:
-                                    </strong>Red</td>
+                                <td style="background-color: #ECF2F2; color: #00515a;"><strong>Exterior color: </strong>Red</td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: center;"><strong>Transmission:</strong> 7-Speed
-                                    Shiftable Automatic</td>
+                                <td colspan="2" style="text-align: center;"><strong>Transmission:</strong> 7-Speed Shiftable Automatic</td>
                             </tr>
                         </tbody>
                     </table>
@@ -397,8 +384,7 @@
 
                 <!-- Features -->
                 <h3>Features</h3>
-                <button class="accordion-btn" id="accordion-btn1"><i
-                        class="bi bi-arrow-right me-2"></i>Exterior</button>
+                <button class="accordion-btn" id="accordion-btn1"><i class="bi bi-arrow-right me-2"></i>Exterior</button>
                 <div class="accordion-content" id="accordion-content1" style="display: none;">
                     <ol>
                         <li>Alloy Wheels</li>
@@ -411,8 +397,7 @@
                         <li>Tow Hitch</li>
                     </ol>
                 </div>
-                <button class="accordion-btn" id="accordion-btn2"><i
-                        class="bi bi-arrow-right me-2"></i>Interior</button>
+                <button class="accordion-btn" id="accordion-btn2"><i class="bi bi-arrow-right me-2"></i>Interior</button>
                 <div class="accordion-content" id="accordion-content2" style="display: none;">
                     <ol type="A">
                         <li>Adjustable Steering Wheel</li>
@@ -465,8 +450,7 @@
                         </li>
                     </ol>
                 </div>
-                <button class="accordion-btn" id="accordion-btn4"><i
-                        class="bi bi-arrow-right me-2"></i>Technology</button>
+                <button class="accordion-btn" id="accordion-btn4"><i class="bi bi-arrow-right me-2"></i>Technology</button>
                 <div class="accordion-content" id="accordion-content4" style="display: none;">
                     <ol type="I">
                         <li>Multi-Zone A/C</li>
@@ -542,7 +526,7 @@
                     </ul>
                     <div class="user-info">
                         <div id="profile">
-                            <img src="/assets/img/seller.jpg" alt="user-image" id="user-img">
+                            <img src="assets/img/seller.jpg" alt="user-image" id="user-img">
                             <div class="profile-info">
                                 <span class="font-weight-semibold"><u>Darrell Steward</u></span><br>
                                 <small><i class="bi bi-star-fill text-warning me-2"></i><strong>4.9</strong> (5
@@ -551,7 +535,7 @@
                                         title="We don't take responsibility for sale!">Private seller</abbr></small>
                             </div>
                         </div>
-                        <a href="/products.html" id="link">Other ads by this seller</a><br>
+                        <a href="products.php" id="link">Other ads by this seller</a><br>
                         <a href="tel:+12345678" id="phone" class="d-block d-md-inline">(316)********** - Reveal</a>
                         <a href="mailto:ndouedison02@gmail.com" id="email" class="d-block d-md-inline">Send Email</a>
                         <address class="mt-4">
@@ -568,7 +552,7 @@
                     <div id="email-me">
                         <p class="font-weight-semibold">Email me price drops and new listings for these search results:
                         </p>
-                        <form action="/product.html">
+                        <form action="product.php">
                             <input type="email" name="" id="" placeholder="Your email">
                             <button type="submit">Subscribe</button>
                         </form>
@@ -580,8 +564,7 @@
         <!-- Other Cars -->
         <div class="d-flex justify-content-between align-items-center mt-5">
             <h3 class="fw-semibold">Other Products</h3>
-            <a href="/products" class="text-decoration-none text-secondary">View all<i
-                    class="bi bi-arrow-right ms-2"></i></a>
+            <a href="products.php" class="text-decoration-none text-secondary">View all<i class="bi bi-arrow-right ms-2"></i></a>
         </div>
         <div class="row align-items-center">
             <div class="col-12 col-md-6 col-lg-3 mb-4">

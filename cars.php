@@ -385,7 +385,7 @@
                         <div class="card h-100 shadow-sm hover-shadow">
                             <!-- Car Image -->
                             <div class="position-relative">
-                                <img src="/assets/img/porsche.jpg" class="card-img-top" alt="Ford Fiesta"
+                                <img src="assets/img/porsche.jpg" class="card-img-top" alt="Ford Fiesta"
                                     style="height: 180px; object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 m-2 badge bg-dark">Used</div>
                             </div>

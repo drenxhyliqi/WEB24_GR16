@@ -153,7 +153,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-img-wrapper">
-                        <img src="/assets/img/gwagon.jpg" alt="G Wagon">
+                        <img src="assets/img/gwagon.jpg" alt="G Wagon">
                         <div class="date-badge">28/06/2024</div>
                     </div>
                     <div class="card-body">
@@ -178,7 +178,6 @@
                                 <span>Automatic</span>
                             </div>
                         </div>
-
                         <button class="btn-view">View Details</button>
                     </div>
                 </div>
@@ -188,7 +187,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-img-wrapper">
-                        <img src="/assets/img/e63s.jpg" alt="E63s">
+                        <img src="assets/img/e63s.jpg" alt="E63s">
                         <div class="date-badge">23/10/2024</div>
                     </div>
                     <div class="card-body">
@@ -223,7 +222,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-img-wrapper">
-                        <img src="/assets/img/m5.jpg" alt="BMW M5">
+                        <img src="assets/img/m5.jpg" alt="BMW M5">
                         <div class="date-badge">15/07/2024</div>
                     </div>
                     <div class="card-body">
@@ -266,85 +265,85 @@
                     <span class="fw-bold">Jaguar</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-61.svg" alt="Lamborghini" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-61.svg" alt="Lamborghini" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Lamborghini</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-62.svg" alt="Land Rover" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-62.svg" alt="Land Rover" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Land Rover</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-64.svg" alt="Lexus" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-64.svg" alt="Lexus" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Lexus</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-66.svg" alt="Maserati" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-66.svg" alt="Maserati" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Maserati</span>
                 </a>
             </div>
             <div class="col-6 col-md-3">
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-68.svg" alt="McLaren" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-68.svg" alt="McLaren" class="me-3" style="width: 40px;">
                     <span class="fw-bold">McLaren</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-69.svg" alt="Mercedes" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-69.svg" alt="Mercedes" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Mercedes</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-47.svg" alt="Ferrari" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-47.svg" alt="Ferrari" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Ferrari</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-72.svg" alt="Mitsubishi" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-72.svg" alt="Mitsubishi" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Mitsubishi</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-73.svg" alt="Nissan" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-73.svg" alt="Nissan" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Nissan</span>
                 </a>
             </div>
             <div class="col-6 col-md-3">
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-77.svg" alt="Porsche" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-77.svg" alt="Porsche" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Porsche</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-79.svg" alt="Rolls Royce" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-79.svg" alt="Rolls Royce" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Rolls Royce</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-35.svg" alt="Abarth" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-35.svg" alt="Abarth" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Abarth</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-36.svg" alt="Alfa Romeo" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-36.svg" alt="Alfa Romeo" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Alfa Romeo</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-67.svg" alt="Mazda" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-67.svg" alt="Mazda" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Mazda</span>
                 </a>
             </div>
             <div class="col-6 col-md-3">
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-38.svg" alt="Aston Martin" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-38.svg" alt="Aston Martin" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Aston Martin</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-39.svg" alt="Audi" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-39.svg" alt="Audi" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Audi</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-40.svg" alt="Bentley" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-40.svg" alt="Bentley" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Bentley</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-41.svg" alt="BMW" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-41.svg" alt="BMW" class="me-3" style="width: 40px;">
                     <span class="fw-bold">BMW</span>
                 </a>
                 <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="/assets/svg/svgexport-65.svg" alt="Lotus" class="me-3" style="width: 40px;">
+                    <img src="assets/svg/svgexport-65.svg" alt="Lotus" class="me-3" style="width: 40px;">
                     <span class="fw-bold">Lotus</span>
                 </a>
             </div>

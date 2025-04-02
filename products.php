@@ -160,8 +160,7 @@
             <button id="show-all" class="btn">Show All</button>
         </div>
 
-        <div class="row align-items-center">
-        </div>
+        <div class="row align-items-center"></div>
 
         <!-- Total Price -->
         <div id="total-price" style="margin-top: 20px;">Total Price: $0</div>
@@ -193,7 +192,7 @@
             <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-search me-2"></i>
-                    <span class="">Personalized search</span>
+                    <span>Personalized search</span>
                 </div>
             </div>
             <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
@@ -258,25 +257,6 @@
     <!-- Designing Canvas Icon -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-
-        ctx.beginPath();
-        ctx.arc(20, 15, 7, 0, Math.PI * 2);
-        ctx.fillStyle = 'white';
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(20, 40, 13, Math.PI, 0, false);
-        ctx.closePath();
-        ctx.fillStyle = 'white';
-        ctx.fill();
-
-        myCanvas.addEventListener('click', function () {
-            window.location.href = "login.html";
-            
-        });
-
         const products = [
             {
                 id: 1,
@@ -330,84 +310,16 @@
             this.image = image;
         }
 
-        // Krijimi i një produkti të ri duke përdorur konstruktorin
-        const newProduct = new Product(
-            4,
-            "Tesla",
-            "12/09/2024",
-            "$69,000",
-            "Washington",
-            "66K mi",
-            "Electric",
-            "Automatic",
-            "2024",
-            "assets/img/tesla.jpg"
-        );
-
+        // Krijimi i produkteve të rinj
+        const newProduct = new Product(4, "Tesla", "12/09/2024", "$69,000", "Washington", "66K mi", "Electric", "Automatic", "2024", "assets/img/tesla.jpg");
         products.push(newProduct);
-
-        // Krijimi i një produkti të ri duke përdorur konstruktorin
-        const newProduct2 = new Product(
-            5,  // ID
-            "ROLLS-ROYCE CULLINAN 6.75",
-            "10/12/2024",
-            "$180,000",
-            "Chicago",
-            "00K mi",
-            "Diesel",
-            "Automatic",
-            "2023",
-            "assets/img/rolls.webp"
-        );
-
+        const newProduct2 = new Product(5, "ROLLS-ROYCE CULLINAN 6.75", "10/12/2024", "$180,000", "Chicago", "00K mi", "Diesel", "Automatic", "2023", "assets/img/rolls.webp");
         products.push(newProduct2);
-
-        // Krijimi i një produkti të ri duke përdorur konstruktorin
-        const newProduct3 = new Product(
-            6,  // ID
-            "FERRARI SF90 SPIDER / CARBON",
-            "01/08/2024",
-            "$250,000",
-            "NYC",
-            "00K mi",
-            "Gasoline",
-            "Automatic",
-            "2023",
-            "assets/img/fff.webp"
-        );
-
+        const newProduct3 = new Product(6, "FERRARI SF90 SPIDER / CARBON", "01/08/2024", "$250,000", "NYC", "00K mi", "Gasoline", "Automatic", "2023", "assets/img/fff.webp");
         products.push(newProduct3);
-
-        // Krijimi i një produkti të ri duke përdorur konstruktorin
-        const newProduct4 = new Product(
-            7,
-            "FERRARI ROMA 3.9 V8 / CARBON",
-            "11/12/2024",
-            "$185,000",
-            "Tulsa",
-            "30K mi",
-            "Gasoline",
-            "Automatic",
-            "2024",
-            "assets/img/ferrr.webp"
-        );
-
+        const newProduct4 = new Product(7, "FERRARI ROMA 3.9 V8 / CARBON", "11/12/2024", "$185,000", "Tulsa", "30K mi", "Gasoline", "Automatic", "2024", "assets/img/ferrr.webp");
         products.push(newProduct4);
-
-        // Krijimi i një produkti të ri duke përdorur konstruktorin
-        const newProduct5 = new Product(
-            8,
-            "MERCEDES G 63 AMG MANUFAKTUR",
-            "14/02/2024",
-            "$380,000",
-            "Chicago",
-            "30K mi",
-            "Gasoline",
-            "Automatic",
-            "2024",
-            "assets/img/merca.webp"
-        );
-
+        const newProduct5 = new Product(8, "MERCEDES G 63 AMG MANUFAKTUR", "14/02/2024", "$380,000", "Chicago", "30K mi", "Gasoline", "Automatic", "2024", "assets/img/merca.webp");
         products.push(newProduct5);
 
         const renderProducts = (productsToRender) => {
@@ -491,150 +403,47 @@
         });
 
         document.getElementById("sort-by-price").addEventListener("click", () => {
-            const sortedProducts = products.slice().sort((a, b) => parseInt(a.price.replace('$', '').replace(',', '')) - parseInt(b.price.replace('$', '').replace(',', '')));
+            const sortedProducts = [...products].sort((a, b) => parseInt(a.price.replace('$', '').replace(',', '')) - parseInt(b.price.replace('$', '').replace(',', '')));
             renderProducts(sortedProducts);
         });
 
         document.getElementById("apply-discount").addEventListener("click", () => {
             const discountedProducts = products.map(product => {
-                const originalPrice = parseInt(product.price.replace('$', '').replace(',', ''));
-                const discountedPrice = (originalPrice / 2).toLocaleString();
-                return { ...product, price: `$${discountedPrice}` };
+                const discountedPrice = parseInt(product.price.replace('$', '').replace(',', '')) * 0.5;
+                product.price = `$${discountedPrice.toLocaleString()}`;
+                return product;
             });
 
             renderProducts(discountedProducts);
-
-            setTimeout(() => {
-                alert("50% discount has been successfully applied to all products!");
-            }, 2000); 
         });
 
         document.getElementById("show-all").addEventListener("click", resetView);
-        let feedbackList = [];
 
-        let isDragging = false;
-        let offsetX = 0;
-        let offsetY = 0;
+        // Feedback Section Logic
+        const feedbackPopout = document.getElementById("feedback-popout");
+        const openPopout = document.getElementById("openPopout");
+        const closePopout = document.getElementById("closePopout");
+        const feedbackForm = document.getElementById("feedback-form");
+        const feedbackList = document.getElementById("feedback-list");
 
-        const renderFeedbackList = () => {
-            try {
-                const feedbackContainer = $("#feedback-list");
-                feedbackContainer.empty();
-                if (!Array.isArray(feedbackList)) {
-                    throw new Error("Feedback list is not an array.");
-                }
-                if (feedbackList.length === 0) {
-                    feedbackContainer.append("<p>No feedback available.</p>");
-                } else {
-                    feedbackList.forEach((feedback, index) => {
-                        const feedbackItem = `
-                            <div class="feedback-item">
-                                <p>${feedback}</p>
-                                <button class="remove-btn" data-index="${index}">Remove</button>
-                            </div>
-                        `;
-                        feedbackContainer.append(feedbackItem);
-                    });
-                }
-            } catch (error) {
-                console.error("Error rendering feedback list:", error.message);
-            }
-        };
+        openPopout.addEventListener("click", () => {
+            feedbackPopout.style.display = "block";
+        });
 
-        const addFeedback = (feedbackText) => {
-            try {
-                if (!feedbackText.trim()) {
-                    throw new Error("Feedback text cannot be empty.");
-                }
-                feedbackList.push(feedbackText);
-                renderFeedbackList();
-            } catch (error) {
-                alert(error.message);
-            }
-        };
+        closePopout.addEventListener("click", () => {
+            feedbackPopout.style.display = "none";
+        });
 
-        const removeFeedback = (index) => {
-            try {
-                if (index < 0 || index >= feedbackList.length) {
-                    throw new Error("Invalid feedback index.");
-                }
-                feedbackList.splice(index, 1);
-                renderFeedbackList();
-            } catch (error) {
-                alert(error.message);
-            }
-        };
-
-        $("#feedback-form").submit(function (event) {
+        feedbackForm.addEventListener("submit", (event) => {
             event.preventDefault();
-            const feedbackText = $("#feedback-text").val();
-            addFeedback(feedbackText);
-            $("#feedback-text").val("");
-        });
-
-        $(document).on("click", ".remove-btn", function () {
-            try {
-                const index = $(this).data("index");
-                removeFeedback(index);
-            } catch (error) {
-                console.error("Error removing feedback:", error.message);
+            const feedbackText = document.getElementById("feedback-text").value;
+            if (feedbackText.trim()) {
+                const feedbackItem = document.createElement("div");
+                feedbackItem.classList.add("feedback-item");
+                feedbackItem.textContent = feedbackText;
+                feedbackList.appendChild(feedbackItem);
+                document.getElementById("feedback-text").value = "";
             }
         });
-
-        $("#openPopout").click(function () {
-            try {
-                $("#feedback-popout").fadeIn().css({
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                });
-                $("#returnButton").show();
-            } catch (error) {
-                console.error("Error opening popout:", error.message);
-            }
-        });
-
-        $("#closePopout").click(function () {
-            try {
-                $("#feedback-popout").fadeOut();
-                $("#returnButton").hide();
-            } catch (error) {
-                console.error("Error closing popout:", error.message);
-            }
-        });
-
-        const popoutForm = document.getElementById("feedback-popout");
-
-        if (popoutForm) {
-            popoutForm.addEventListener("mousedown", function (e) {
-                isDragging = true;
-                offsetX = e.clientX - popoutForm.offsetLeft;
-                offsetY = e.clientY - popoutForm.offsetTop;
-            });
-
-            document.addEventListener("mousemove", function (e) {
-                if (isDragging) {
-                    popoutForm.style.left = (e.clientX - offsetX) + "px";
-                    popoutForm.style.top = (e.clientY - offsetY) + "px";
-                    $("#returnButton").fadeIn();  
-                }
-            });
-
-            document.addEventListener("mouseup", function () {
-                isDragging = false; 
-            });
-        }
-
-        $("#returnButton").click(function () {
-            $("#feedback-popout").css({
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)"
-            });
-            $("#returnButton").fadeOut();  
-        });
-
-        renderFeedbackList();
     </script>
 </body>
-</html>

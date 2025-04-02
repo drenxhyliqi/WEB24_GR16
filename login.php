@@ -142,7 +142,7 @@
 
   <div class="wrapper">
     <div class="login-container text-center">
-      <img src="/assets/img/company_logo.png" alt="cmp" width="180px" height="40px">
+      <img src="assets/img/company_logo.png" alt="cmp" width="180px" height="40px">
       <br>
       <br>
       <h2 class="login-title">LOG IN TO YOUR ACCOUNT</h2>
