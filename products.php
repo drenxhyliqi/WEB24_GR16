@@ -75,14 +75,26 @@ $products = [
     ],
     [
         "id" => 7,
-        "name" => "Rolls-Royce Cullinan",
-        "price" => 500000,
-        "location" => "Chicago",
-        "year" => 2022,
+        "name" => "Porsche 911",
+        "price" => 179000,
+        "location" => "Boston",
+        "year" => 2024,
         "mileage" => "10K mi",
         "fuel" => "Gasoline",
         "transmission" => "Automatic",
-        "image" => "assets/img/rolls.webp",
+        "image" => "assets/img/porschecar.jpg",
+        "date" => "06/18/2024"
+    ],
+    [
+        "id" => 8,
+        "name" => "Ferrari Pista 499",
+        "price" => 419000,
+        "location" => "San Diego",
+        "year" => 2022,
+        "mileage" => "56K mi",
+        "fuel" => "Gasoline",
+        "transmission" => "Automatic",
+        "image" => "assets/img/pista488.jpg",
         "date" => "06/18/2022"
     ]
 ];
