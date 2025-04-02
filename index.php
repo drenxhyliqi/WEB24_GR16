@@ -148,8 +148,8 @@
             </a>
         </div>
 
-        <div class="row">
-            <!-- Card 1 -->
+        <!-- <div class="row">
+            <!-- Card 1 
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-img-wrapper">
@@ -183,7 +183,7 @@
                 </div>
             </div>
 
-            <!-- Card 2 -->
+            <!-- Card 2 
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-img-wrapper">
@@ -218,7 +218,7 @@
                 </div>
             </div>
 
-            <!-- Card 3 -->
+            <!-- Card 3 
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-img-wrapper">
@@ -252,7 +252,80 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <?php
+// Array me të dhënat e veturave
+$veturat = [    
+    [
+        "image" => "assets/img/gwagon.jpg",
+        "date" => "28/06/2024",
+        "title" => "Mereceds G Wagon 63",
+        "price" => "$273,000",
+        "location" => "L.A",
+        "mileage" => "09K mi",
+        "fuel" => "Gasoline",
+        "gear" => "Automatic"
+    ],
+    [
+        "image" => "assets/img/e63s.jpg",
+        "date" => "23/10/2024",
+        "title" => "Mercedes Benz E63s",
+        "price" => "$142,500",
+        "location" => "Chicago",
+        "mileage" => "0 mi",
+        "fuel" => "Electric",
+        "gear" => "Manual"
+    ],
+    [
+        "image" => "assets/img/m5.jpg",
+        "date" => "15/07/2024",
+        "title" => "BMW M5 F90",
+        "price" => "$122,500",
+        "location" => "NYC",
+        "mileage" => "15K mi",
+        "fuel" => "Gasoline",
+        "gear" => "Automatic"
+    ]
+];
+?>
+        <div class="row">
+        <?php foreach ($veturat as $vetura): ?>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-img-wrapper">
+                        <img src="<?php echo $vetura['image']; ?>" alt="<?php echo $vetura['title']; ?>">
+                        <div class="date-badge"><?php echo $vetura['date']; ?></div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="car-title"><?php echo $vetura['title']; ?></h3>
+                        <p class="car-price"><?php echo $vetura['price']; ?></p>
+
+                        <div class="car-details-grid">
+                            <div class="car-detail">
+                                <i class="bi bi-geo-alt"></i>
+                                <span><?php echo $vetura['location']; ?></span>
+                            </div>
+                            <div class="car-detail">
+                                <i class="bi bi-speedometer"></i>
+                                <span><?php echo $vetura['mileage']; ?></span>
+                            </div>
+                            <div class="car-detail">
+                                <i class="bi bi-fuel-pump"></i>
+                                <span><?php echo $vetura['fuel']; ?></span>
+                            </div>
+                            <div class="car-detail">
+                                <i class="bi bi-gear"></i>
+                                <span><?php echo $vetura['gear']; ?></span>
+                            </div>
+                        </div>
+                        <button class="btn-view">View Details</button>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+
     </div>
 
     <!-- ============= BRANDS SECTION ============= -->
