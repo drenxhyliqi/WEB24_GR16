@@ -75,14 +75,26 @@ $products = [
     ],
     [
         "id" => 7,
-        "name" => "Rolls-Royce Cullinan",
-        "price" => 500000,
-        "location" => "Chicago",
-        "year" => 2022,
+        "name" => "Porsche 911",
+        "price" => 179000,
+        "location" => "Boston",
+        "year" => 2024,
         "mileage" => "10K mi",
         "fuel" => "Gasoline",
         "transmission" => "Automatic",
-        "image" => "assets/img/rolls.webp",
+        "image" => "assets/img/porschecar.jpg",
+        "date" => "06/18/2024"
+    ],
+    [
+        "id" => 8,
+        "name" => "Ferrari Pista 499",
+        "price" => 419000,
+        "location" => "San Diego",
+        "year" => 2022,
+        "mileage" => "56K mi",
+        "fuel" => "Gasoline",
+        "transmission" => "Automatic",
+        "image" => "assets/img/pista488.jpg",
         "date" => "06/18/2022"
     ]
 ];
@@ -94,34 +106,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Funksioni për renditjen e produkteve bazuar në zgjedhjen e përdoruesit
     switch ($sort_by) {
         case 'sort':
-            usort($products, function($a, $b) {
-                return $a['id'] <=> $b['id']; // Ascending by Index
-            });
+            sort($products); // Funksioni sort() për renditjen në rritje sipas vlerave
             break;
         case 'rsort':
-            usort($products, function($a, $b) {
-                return $b['id'] <=> $a['id']; // Descending by Index
-            });
+            rsort($products); // Funksioni rsort() për renditjen në rënie sipas vlerave
             break;
         case 'asort':
-            usort($products, function($a, $b) {
-                return $a['price'] <=> $b['price']; // Ascending by Value (price)
-            });
+            asort($products); // Funksioni asort() për renditjen në rritje sipas vlerave, duke mbajtur çelësin
             break;
         case 'ksort':
-            usort($products, function($a, $b) {
-                return $a['name'] <=> $b['name']; // Ascending by Key (name)
-            });
+            ksort($products); // Funksioni ksort() për renditjen në rritje sipas çelësit
             break;
         case 'arsort':
-            usort($products, function($a, $b) {
-                return $b['price'] <=> $a['price']; // Descending by Value (price)
-            });
+            arsort($products); // Funksioni arsort() për renditjen në rënie sipas vlerave, duke mbajtur çelësin
             break;
         case 'krsort':
-            usort($products, function($a, $b) {
-                return $b['name'] <=> $a['name']; // Descending by Key (name)
-            });
+            krsort($products); // Funksioni krsort() për renditjen në rënie sipas çelësit
             break;
         default:
             // Pa renditje nëse nuk është zgjedhur asnjë opsion
