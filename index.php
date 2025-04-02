@@ -18,30 +18,23 @@
     <!-- ============= NAVBAR ============= -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            <a href="/index.html">
+            <a href="index.php">
                 <img src="assets/img/company_logo.png" alt="logo" width="140px">
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="bi bi-list fs-2"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="/index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/products.html">Cars</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
-
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
-                    <li class="nav-item"><a class="nav-link" href="cars.html"><i
-                                class="bi bi-car-front-fill fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html"><i
-                                class="bi bi-person-circle fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
                 </ul>
             </div>
         </div>
