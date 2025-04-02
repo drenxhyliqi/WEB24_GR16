@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car ShowRoom | Find your dream car!</title>
-    <link rel="icon" href="assets/img/weblogo.png" type="image/x-icon">
+    <title>Car Marketplace | Contact</title>
+    <link rel="icon" href="assets/img/webicon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/style.css">
@@ -52,6 +52,34 @@
         display: none;
         cursor: pointer;
     }
+
+    /* Responsivitet i formës dhe fushave të input-it */
+    .contactForm input, .contactForm textarea {
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .contactForm input[type="submit"] {
+        background-color: #035dad;
+        border: #035dad;
+        color: white;
+        font-size: 1rem;
+        padding: 30px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .contactForm input[type="submit"]:hover {
+        background-color: #024c89;
+    }
+
+    .form-label {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
 </style>
 
 <body>
@@ -97,10 +125,56 @@
 
         myCanvas.addEventListener('click', function () {
             window.location.href = "login.html";
+        });
+
+        // Form validation function
+        function validateForm(event) {
+            const fullName = document.getElementById('full-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const number = document.getElementById('number').value.trim();
             
+            const errorMessage = document.getElementById('error-message');
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const phonePattern = /^\+383\d{8}$/; // Modify this pattern if necessary for specific formats
+
+            // Validate inputs
+            if (fullName === "" || email === "" || message === "") {
+                errorMessage.style.display = "block";
+                event.preventDefault();
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                errorMessage.style.display = "block";
+                event.preventDefault();
+                return false;
+            }
+
+            if (number && !phonePattern.test(number)) {
+                errorMessage.style.display = "block";
+                event.preventDefault();
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            return true;
+        }
+
+        // Attach the validation function to the form submission event
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("contactForm");
+
+            form.addEventListener("submit", function (e) {
+                if (!validateForm(e)) {
+                    e.preventDefault();  // Prevent form submission if validation fails
+                }
+            });
         });
     </script>
-    <section class="container-fluid Contact">
+
+    <section class="container-fluid mt-4 Contact">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 contactUs">
@@ -121,250 +195,114 @@
                                                 Number</button>
                                         </p>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 contactForm">
+                <div class="col-12 col-md-6 mb-5 contactForm">
                     <h2><b>Get in touch</b></h2>
-                    <form id="contactForm" onsubmit="return false;">
-                        <input type="text" id="full-name" placeholder="Full name" autocomplete="off"><br>
-                        <input list="locations" class="form-control" id="location" name="location" placeholder="Region"
-                            required autocomplete="off">
-                        <datalist id="locations">
-                            <option value="Europe">
-                            <option value="Asia">
-                            <option value="USA">
-                            <option value="Australia">
-                            <option value="Africa">
-                        </datalist>
-                        <input type="email" id="email" placeholder="Email" autocomplete="off"><br>
-                        <input type="tel" id="number" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$"
-                            required>
-                        <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea><br>
-                        <keygen name="random_key" challenge="0987654321">
-                        <input type="submit" style="background-color: #035dad; border: #035dad; color: white;"
-                            value="Send Message">
+                    <form id="contactForm" onSubmit="validateForm(event)">
+                            <label for="full-name" class="form-label"></label>
+                            <input type="text" id="full-name" class="form-control" placeholder="Full name" autocomplete="off">
+                            <label for="location" class="form-label"></label>
+                            <input list="locations" class="form-control" id="location" name="location" placeholder="Region" autocomplete="off">
+                            <datalist id="locations">
+                                <option value="Europe">
+                                <option value="Asia">
+                                <option value="USA">
+                                <option value="Australia">
+                                <option value="Africa">
+                            </datalist>
+                            <label for="email" class="form-label"></label>
+                            <input type="email" id="email" class="form-control" placeholder="Email" autocomplete="off">
+                            <label for="number" class="form-label"></label>
+                            <input type="tel" id="number" class="form-control" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$">
+                            <label for="message" class="form-label"></label>
+                            <textarea id="message" name="message" class="form-control" rows="3" placeholder="Your message"></textarea>
+                            <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Submit</button>
                     </form>
-                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.
-                    </p>
+                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!--    Footer Section -->
-    <footer class="container-fluid mt-5 footer-info">
-        <div class="row d-flex align-items-center footer-info-content">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
-                <div class="d-flex align-items-center">
-                    <i class="bi bi-copy me-2"></i>
-                    <span class="mb-0">Over 1 million listings</span>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
-                <div class="d-flex align-items-center">
-                    <i class="bi bi-search me-2"></i>
-                    <span class="">Personalized search</span>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
-                <div class="d-flex align-items-center">
-                    <i class="bi bi-car-front-fill me-2"></i>
-                    <span class="mb-0">Online car appraisal</span>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="d-flex align-items-center">
-                    <i class="bi bi-lightbulb me-2"></i>
-                    <span class="mb-0">Non-stop innovation</span>
-                </div>
+<footer class="container-fluid footer-info">
+    <div class="row d-flex align-items-center footer-info-content">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-copy me-2"></i>
+                <span class="mb-0">Over 1 million listings</span>
             </div>
         </div>
-        <hr>
-        <div class="row d-flex justify-content-around footer-lists">
-            <div class="col-6 col-md-6 col-lg-3 ">
-                <p>Buying & Selling</p>
-                <ul class="list-unstyled">
-                    <li><a href="#">Find a car</a></li>
-                    <li><a href="#">Sell your car</a></li>
-                    <li><a href="#">Car dealers</a></li>
-                    <li><a href="#">Compare Cars</a></li>
-                    <li><a href="#">Online car</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md-6 col-lg-3 ">
-                <p>About</p>
-                <ul class="list-unstyled">
-                    <li><a href="#">About Finder</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs & Support</a></li>
-                    <li><a href="#">Mobile app</a></li>
-                    <li><a href="#">Blog & News</a></li>
-                </ul>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 ">
-                <p>Profile</p>
-                <ul class="list-unstyled">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My listings</a></li>
-                    <li><a href="#">Add listings</a></li>
-                </ul>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <p>Download our app</p>
-                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-                <div>
-                    <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i> Google Play</button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i> App Store</button>
-                </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-search me-2"></i>
+                <span class="">Personalized search</span>
             </div>
         </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-car-front-fill me-2"></i>
+                <span class="mb-0">Online car appraisal</span>
+            </div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-lightbulb me-2"></i>
+                <span class="mb-0">Non-stop innovation</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row d-flex justify-content-around footer-lists">
+        <div class="col-6 col-md-6 col-lg-3 ">
+            <p>Buying & Selling</p>
+            <ul class="list-unstyled">
+                <li><a href="#">Find a car</a></li>
+                <li><a href="#">Sell your car</a></li>
+                <li><a href="#">Car dealers</a></li>
+                <li><a href="#">Compare Cars</a></li>
+                <li><a href="#">Online car</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md-6 col-lg-3 ">
+            <p>About</p>
+            <ul class="list-unstyled ">
+                <li><a href="#">About Finder</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">FAQs & Support</a></li>
+                <li><a href="#">Mobile app</a></li>
+                <li><a href="#">Blog & News</a></li>
+            </ul>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 ">
+            <p>Profile</p>
+            <ul class="list-unstyled">
+                <li><a href="#">My account</a></li>
+                <li><a href="#">Wishlist</a></li>
+                <li><a href="#">My listings</a></li>
+                <li><a href="#">Add listings</a></li>
+            </ul>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+            <p>Download our app</p>
+            <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
+            <div>
+                <button class="btn btn-primary me-2">
+                    <i class="bi bi-google-play"></i> Google Play</button>
+                <button class="btn btn-primary">
+                    <i class="bi bi-apple"></i> App Store</button>
+            </div>
+        </div>
+    </div>
 
-        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
-    </footer>
+    <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="assets/main.js"></script>
+</footer>
 
-    <script>
-        function validateForm() {
-            const fullName = document.getElementById('full-name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            const errorMessage = document.getElementById('error-message');
-
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-            if (fullName === "" || email === "" || message === "") {
-                errorMessage.textContent = "All fields are required.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            if (!emailPattern.test(email)) {
-                errorMessage.textContent = "Please enter a valid email address.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            errorMessage.style.display = "none";
-            return true;
-        }
-
-        //Dergimi i Formes ne email te 'kompanise'!
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("contactForm");
-
-            form.addEventListener("submit", function (e) {
-                e.preventDefault();
-
-                const fullName = document.getElementById("full-name");
-                const email = document.getElementById("email");
-                const message = document.getElementById("message");
-                const number = document.getElementById("number")
-
-                const bodyMessage = `Full name: ${fullName.value}<br> Email: ${email.value}<br> Message: ${message.value}<br> Message: ${number.value}`;
-                const subject = "Contact Form Submission";
-
-                Email.send({
-                    Host: "smtp.elasticemail.com",
-                    Username: "xhyliqiidren@gmail.com",
-                    Password: "B7DD7E015E477F864445C3ADB186B536334B",
-                    To: "xhyliqiidren@gmail.com",
-                    From: "xhyliqiidren@gmail.com",
-                    Subject: subject,
-                    Body: bodyMessage,
-                }).then((message) => {
-                    if (message === "OK") {
-                        Swal.fire({
-                            title: "Thank you!",
-                            text: "We will contact you shortly.",
-                            icon: "success",
-                        });
-                        form.reset();
-                        document.getElementById("error-message").style.display = "none";
-                    } else {
-                        Swal.fire({
-                            title: "Oops!",
-                            text: "There was an issue with the submission. Please try again.",
-                            icon: "error",
-                        });
-                    }
-                }).catch(() => {
-                    Swal.fire({
-                        title: "Error",
-                        text: "Something went wrong, please try again later.",
-                        icon: "error",
-                    });
-                });
-            });
-        });
-
-        function validateForm() {
-            const fullName = document.getElementById('full-name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            const errorMessage = document.getElementById('error-message');
-
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-            if (fullName === "" || email === "" || message === "") {
-                errorMessage.textContent = "All fields are required.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            if (!emailPattern.test(email)) {
-                errorMessage.textContent = "Please enter a valid email address.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            errorMessage.style.display = "none";
-            return true;
-        }
-        
-        $(document).ready(function () {
-            $("body").append('<button id="scrollToTop">↑</button>');
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 200) {
-                    $("#scrollToTop").fadeIn();
-                } else {
-                    $("#scrollToTop").fadeOut();
-                }
-            });
-
-            $("#scrollToTop").click(function () {
-                $("html, body").animate({ scrollTop: 0 }, 100);
-            });
-        });
-        
-        $(document).ready(function () {
-            $("#phoneNumber").hide();
-
-            $("#toggleNumberBtn").click(function () {
-                $("#phoneNumber").slideToggle(500);
-                $(this).hide();
-            });
-
-            $("#phoneNumber").click(function () {
-                $(this).slideToggle(300);
-                $("#toggleNumberBtn").show();
-            });
-        });
-    </script>
 </body>
+
 </html>
