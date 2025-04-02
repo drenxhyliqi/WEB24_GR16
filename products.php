@@ -1,3 +1,176 @@
+<?php
+// Të dhënat e produkteve
+$products = [
+    [
+        "id" => 1,
+        "name" => "Ford Truck Lifted",
+        "price" => 79000,
+        "location" => "Boston",
+        "year" => 2024,
+        "mileage" => "12K mi",
+        "fuel" => "Diesel",
+        "transmission" => "Automatic",
+        "image" => "assets/img/ford.jpg",
+        "date" => "30/09/2022"
+    ],
+    [
+        "id" => 2,
+        "name" => "Bmw M5 F90",
+        "price" => 129000,
+        "location" => "New York",
+        "year" => 2023,
+        "mileage" => "28K mi",
+        "fuel" => "Gasoline",
+        "transmission" => "Automatic",
+        "image" => "assets/img/m5.jpg",
+        "date" => "11/21/2023"
+    ],
+    [
+        "id" => 3,
+        "name" => "Porsche 911 GT",
+        "price" => 119000,
+        "location" => "San Diego",
+        "year" => 2024,
+        "mileage" => "56K mi",
+        "fuel" => "Gasoline",
+        "transmission" => "Automatic",
+        "image" => "assets/img/porsche.jpg",
+        "date" => "06/11/2024"
+    ],
+    [
+        "id" => 4,
+        "name" => "Tesla Model S",
+        "price" => 90000,
+        "location" => "San Francisco",
+        "year" => 2022,
+        "mileage" => "15K mi",
+        "fuel" => "Electric",
+        "transmission" => "Automatic",
+        "image" => "assets/img/tesla.jpg",
+        "date" => "01/15/2022"
+    ],
+    [
+        "id" => 5,
+        "name" => "Ferrari F8 Tributo",
+        "price" => 280000,
+        "location" => "Los Angeles",
+        "year" => 2021,
+        "mileage" => "5K mi",
+        "fuel" => "Gasoline",
+        "transmission" => "Automatic",
+        "image" => "assets/img/fff.webp",
+        "date" => "09/23/2021"
+    ],
+    [
+        "id" => 6,
+        "name" => "FERRARI ROMA 3.9 V8",
+        "price" => 350000,
+        "location" => "Miami",
+        "year" => 2023,
+        "mileage" => "2K mi",
+        "fuel" => "Gasoline",
+        "transmission" => "Automatic",
+        "image" => "assets/img/ferrr.webp",
+        "date" => "02/14/2023"
+    ],
+    [
+        "id" => 7,
+        "name" => "Rolls-Royce Cullinan",
+        "price" => 500000,
+        "location" => "Chicago",
+        "year" => 2022,
+        "mileage" => "10K mi",
+        "fuel" => "Gasoline",
+        "transmission" => "Automatic",
+        "image" => "assets/img/rolls.webp",
+        "date" => "06/18/2022"
+    ]
+];
+
+// Kontrollojmë nëse është zgjedhur një opsion në formularin SELECT
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $sort_by = $_POST['sort_by'];
+
+    // Funksioni për renditjen e produkteve bazuar në zgjedhjen e përdoruesit
+    switch ($sort_by) {
+        case 'sort':
+            usort($products, function($a, $b) {
+                return $a['id'] <=> $b['id']; // Ascending by Index
+            });
+            break;
+        case 'rsort':
+            usort($products, function($a, $b) {
+                return $b['id'] <=> $a['id']; // Descending by Index
+            });
+            break;
+        case 'asort':
+            usort($products, function($a, $b) {
+                return $a['price'] <=> $b['price']; // Ascending by Value (price)
+            });
+            break;
+        case 'ksort':
+            usort($products, function($a, $b) {
+                return $a['name'] <=> $b['name']; // Ascending by Key (name)
+            });
+            break;
+        case 'arsort':
+            usort($products, function($a, $b) {
+                return $b['price'] <=> $a['price']; // Descending by Value (price)
+            });
+            break;
+        case 'krsort':
+            usort($products, function($a, $b) {
+                return $b['name'] <=> $a['name']; // Descending by Key (name)
+            });
+            break;
+        default:
+            // Pa renditje nëse nuk është zgjedhur asnjë opsion
+            break;
+    }
+}
+
+
+// Funksioni për të shfaqur produktet
+function renderProducts($products) {
+    foreach ($products as $product) {
+        echo "
+        <div class='col-12 col-md-6 col-lg-3 mb-4'>
+            <div class='card' style='width: 100%;'>
+                <img src='{$product['image']}' class='card-img-top' alt='{$product['name']}'>
+                <div class='card-body'>
+                    <div class='row d-flex justify-content-between'>
+                        <div class='col-auto'>
+                            <p class='text-muted'>{$product['date']}</p>
+                        </div>
+                        <div class='col-auto card-icons'>
+                            <i class='bi bi-suit-heart'></i>
+                            <i class='bi bi-bell'></i>
+                            <i class='bi bi-arrow-repeat'></i>
+                        </div>
+                    </div>
+                    <h6 class='card-title fw-bold'>
+                        <a href='product.php' class='text-decoration-none text-dark'>{$product['name']}
+                            <span class='text-muted ms-1'>({$product['year']})</span>
+                        </a>
+                    </h6>
+                    <h6 class='fw-semibold'>\$" . number_format($product['price']) . "</h6>
+                    <hr>
+                    <div class='row d-flex'>
+                        <div class='col-auto'>
+                            <small><i class='bi bi-geo-alt me-2'></i>{$product['location']}</small><br>
+                            <small><i class='bi bi-speedometer me-2'></i>{$product['mileage']}</small>
+                        </div>
+                        <div class='col-auto mx-auto'>
+                            <small><i class='bi bi-fuel-pump me-2'></i>{$product['fuel']}</small><br>
+                            <small><i class='bi bi-gear me-2'></i>{$product['transmission']}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +187,7 @@
         .small-search-bar {
             padding: 10px !important;
             margin-right: 10px !important;
+            margin-top: 0px !important;
             border: 1px solid #ccc !important;
             font-size: 14px !important;
             width: 250px !important;
@@ -151,19 +325,26 @@
             <hr>
         </div>
 
-        <!-- Controls -->
         <div class="controls mb-4">
-            <input id="search-bar" type="text" placeholder="Search by name or location..." class="small-search-bar">
-            <button id="search-button" class="btn">Search</button>
-            <button id="sort-by-price" class="btn">Sort by Price</button>
-            <button id="apply-discount" class="btn">Apply 50% Discount</button>
-            <button id="show-all" class="btn">Show All</button>
+            <form method="POST" action="products.php" style="width: 500px;">
+                <div class="input-group">
+                    <select name="sort_by" class="form-control shadow-none border-dark" id="sort_by" aria-describedby="basic-addon2">
+                        <option value="sort">Sort (Ascending by Index)</option>
+                        <option value="rsort">Rsort (Descending by Index)</option>
+                        <option value="asort">Asort (Ascending by Value)</option>
+                        <option value="ksort">Ksort (Ascending by Key)</option>
+                        <option value="arsort">Arsort (Descending by Value)</option>
+                        <option value="krsort">Krsort (Descending by Key)</option>
+                    </select>
+                    <button class="input-group-text bg-dark text-light border-dark" type="submit" id="basic-addon2">Sort</button>
+                </div>
+            </form>
         </div>
 
-        <div class="row align-items-center"></div>
-
-        <!-- Total Price -->
-        <div id="total-price" style="margin-top: 20px;">Total Price: $0</div>
+        <!-- Shfaqja e produkteve -->
+        <div class="row">
+            <?php renderProducts($products); ?>
+        </div>
 
         <!-- Feedback Button and Popout -->
         <button id="openPopout" class="btn">Leave Feedback</button>
@@ -257,168 +438,6 @@
     <!-- Designing Canvas Icon -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        const products = [
-            {
-                id: 1,
-                name: "Ford Truck Lifted",
-                date: "30/09/2022",
-                price: "$79,000",
-                location: "Boston",
-                mileage: "12K mi",
-                fuel: "Diesel",
-                transmission: "Automatic",
-                year: "2024",
-                image: "assets/img/ford.jpg"
-            },
-            {
-                id: 2,
-                name: "Bmw M5 F90",
-                date: "11/21/2023",
-                price: "$129,000",
-                location: "New York",
-                mileage: "28K mi",
-                fuel: "Gasoline",
-                transmission: "Automatic",
-                year: "2023",
-                image: "assets/img/m5.jpg"
-            },
-            {
-                id: 3,
-                name: "Porsche 911 GT",
-                date: "06/11/2024",
-                price: "$119,000",
-                location: "San Diego",
-                mileage: "56K mi",
-                fuel: "Gasoline",
-                transmission: "Automatic",
-                year: "2024",
-                image: "assets/img/porsche.jpg"
-            }
-        ];
-
-        // Funksioni Konstruktor për Produkt
-        function Product(id, name, date, price, location, mileage, fuel, transmission, year, image) {
-            this.id = id;
-            this.name = name;
-            this.date = date;
-            this.price = price;
-            this.location = location;
-            this.mileage = mileage;
-            this.fuel = fuel;
-            this.transmission = transmission;
-            this.year = year;
-            this.image = image;
-        }
-
-        // Krijimi i produkteve të rinj
-        const newProduct = new Product(4, "Tesla", "12/09/2024", "$69,000", "Washington", "66K mi", "Electric", "Automatic", "2024", "assets/img/tesla.jpg");
-        products.push(newProduct);
-        const newProduct2 = new Product(5, "ROLLS-ROYCE CULLINAN 6.75", "10/12/2024", "$180,000", "Chicago", "00K mi", "Diesel", "Automatic", "2023", "assets/img/rolls.webp");
-        products.push(newProduct2);
-        const newProduct3 = new Product(6, "FERRARI SF90 SPIDER / CARBON", "01/08/2024", "$250,000", "NYC", "00K mi", "Gasoline", "Automatic", "2023", "assets/img/fff.webp");
-        products.push(newProduct3);
-        const newProduct4 = new Product(7, "FERRARI ROMA 3.9 V8 / CARBON", "11/12/2024", "$185,000", "Tulsa", "30K mi", "Gasoline", "Automatic", "2024", "assets/img/ferrr.webp");
-        products.push(newProduct4);
-        const newProduct5 = new Product(8, "MERCEDES G 63 AMG MANUFAKTUR", "14/02/2024", "$380,000", "Chicago", "30K mi", "Gasoline", "Automatic", "2024", "assets/img/merca.webp");
-        products.push(newProduct5);
-
-        const renderProducts = (productsToRender) => {
-            const productContainer = document.querySelector(".row.align-items-center");
-            productContainer.innerHTML = ""; 
-
-            productsToRender.forEach(product => {
-                const card = `
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <div class="card" style="width: 100%;">
-                            <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                            <div class="card-body">
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-auto">
-                                        <p class="text-muted">${product.date}</p>
-                                    </div>
-                                    <div class="col-auto card-icons">
-                                        <i class="bi bi-suit-heart"></i>
-                                        <i class="bi bi-bell"></i>
-                                        <i class="bi bi-arrow-repeat"></i>
-                                    </div>
-                                </div>
-                                <h6 class="card-title fw-bold">
-                                    <a href="product.html" class="text-decoration-none text-dark">${product.name}
-                                        <span class="text-muted ms-1">(${product.year})</span>
-                                    </a>
-                                </h6>
-                                <h6 class="fw-semibold">${product.price}</h6>
-                                <hr>
-                                <div class="row d-flex">
-                                    <div class="col-auto">
-                                        <small><i class="bi bi-geo-alt me-2"></i>${product.location}</small><br>
-                                        <small><i class="bi bi-speedometer me-2"></i>${product.mileage}</small>
-                                    </div>
-                                    <div class="col-auto mx-auto">
-                                        <small><i class="bi bi-fuel-pump me-2"></i>${product.fuel}</small><br>
-                                        <small><i class="bi bi-gear me-2"></i>${product.transmission}</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                productContainer.innerHTML += card;
-            });
-
-            const totalPrice = calculateTotalPrice(productsToRender);
-            document.getElementById("total-price").textContent = `Total Price : $${totalPrice}`;
-        };
-
-        const calculateTotalPrice = (productsToCalculate) => {
-            return productsToCalculate.reduce((total, product) => {
-                const price = parseInt(product.price.replace('$', '').replace(',', ''));
-                return total + price;
-            }, 0);
-        };
-
-        const resetView = () => {
-            document.getElementById("search-bar").value = ""; 
-            renderProducts(products); 
-            console.log("View reset to show all products.");
-        };
-
-        document.addEventListener("DOMContentLoaded", () => renderProducts(products));
-
-        document.getElementById("search-button").addEventListener("click", () => {
-            const searchTerm = document.getElementById("search-bar").value.toLowerCase();
-
-            const filteredProducts = products.filter(product => 
-                product.name.toLowerCase().includes(searchTerm) || 
-                product.location.toLowerCase().includes(searchTerm)
-            );
-
-            renderProducts(filteredProducts);
-
-            if (filteredProducts.length === 0) {
-                const productContainer = document.querySelector(".row.align-items-center");
-                productContainer.innerHTML = "<p>No products found.</p>";
-                document.getElementById("total-price").textContent = "Total Price : $0";
-            }
-        });
-
-        document.getElementById("sort-by-price").addEventListener("click", () => {
-            const sortedProducts = [...products].sort((a, b) => parseInt(a.price.replace('$', '').replace(',', '')) - parseInt(b.price.replace('$', '').replace(',', '')));
-            renderProducts(sortedProducts);
-        });
-
-        document.getElementById("apply-discount").addEventListener("click", () => {
-            const discountedProducts = products.map(product => {
-                const discountedPrice = parseInt(product.price.replace('$', '').replace(',', '')) * 0.5;
-                product.price = `$${discountedPrice.toLocaleString()}`;
-                return product;
-            });
-
-            renderProducts(discountedProducts);
-        });
-
-        document.getElementById("show-all").addEventListener("click", resetView);
-
         // Feedback Section Logic
         const feedbackPopout = document.getElementById("feedback-popout");
         const openPopout = document.getElementById("openPopout");
