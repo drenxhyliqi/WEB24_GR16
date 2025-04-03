@@ -223,7 +223,7 @@ $veturat = [
 
     </div>
 
-    <!-- ============= BRANDS SECTION ============= -->
+    <!-- ============= BRANDS SECTION ============== -->
     <section class="container brands">
         <h3 class="fw-bold">Browse by car manufacturer</h3>
         <div class="row">
