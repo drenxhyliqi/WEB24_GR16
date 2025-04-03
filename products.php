@@ -324,18 +324,25 @@ function renderProducts($products) {
         </div>
 
         <div class="controls mb-4">
-            <form method="POST" action="products.php" style="width: 500px;">
-                <div class="input-group">
-                    <select name="sort_by" class="form-control shadow-none border-dark" id="sort_by" aria-describedby="basic-addon2">
-                        <option value="sort">Sort (Ascending by Index)</option>
-                        <option value="rsort">Rsort (Descending by Index)</option>
-                        <option value="asort">Asort (Ascending by Value)</option>
-                        <option value="ksort">Ksort (Ascending by Key)</option>
-                        <option value="arsort">Arsort (Descending by Value)</option>
-                        <option value="krsort">Krsort (Descending by Key)</option>
-                    </select>
-                    <button class="input-group-text bg-dark text-light border-dark" type="submit" id="basic-addon2">Sort</button>
-                </div>
+            <form method="POST" action="products.php" >
+               <div class="row align-items-center justify-content-between" >
+                    <div class="col-6">
+                        <div class="input-group" style="width: 500px;">
+                            <select name="sort_by" class="form-control shadow-none border-dark" id="sort_by" aria-describedby="basic-addon2">
+                                <option value="sort">Sort (Ascending by Index)</option>
+                                <option value="rsort">Rsort (Descending by Index)</option>
+                                <option value="asort">Asort (Ascending by Value)</option>
+                                <option value="ksort">Ksort (Ascending by Key)</option>
+                                <option value="arsort">Arsort (Descending by Value)</option>
+                                <option value="krsort">Krsort (Descending by Key)</option>
+                            </select>
+                            <button class="input-group-text bg-dark text-light border-dark" type="submit" id="basic-addon2">Sort</button>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end">
+                        <span><b>Total number of products:</b> <?php echo count($products); ?></span>
+                    </div>
+               </div>
             </form>
         </div>
 
