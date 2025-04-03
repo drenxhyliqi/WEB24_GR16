@@ -7,9 +7,9 @@
     <title>Car Marketplace - Find Your Perfect Car</title>
     <link rel="icon" href="assets/img/webicon.png" type="image/x-icon">
 
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
     <link href="assets/cars.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -28,9 +28,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
@@ -42,14 +42,13 @@
         </div>
     </nav>
 
-
     <!-- Main content -->
-    <main class="container py-4">
+    <div class="container mt-4">
         <!-- Header section -->
         <div class="d-flex align-items-center mb-4">
             <div class="position-relative me-3">
                 <div class="position-absolute top-0 end-0 translate-middle badge rounded-pill bg-danger">
-                    124
+                    8
                 </div>
             </div>
             <h1 class="fw-bold">19,074 Cars Available</h1>
@@ -89,15 +88,15 @@
                         <div class="d-flex mb-2">
                             <select class="form-select form-select-sm me-2">
                                 <option>Min price</option>
-                                <option>£5,000</option>
-                                <option>£10,000</option>
-                                <option>£15,000</option>
+                                <option>€5,000</option>
+                                <option>€10,000</option>
+                                <option>€15,000</option>
                             </select>
                             <select class="form-select form-select-sm">
                                 <option>Max price</option>
-                                <option>£15,000</option>
-                                <option>£20,000</option>
-                                <option>£30,000</option>
+                                <option>€15,000</option>
+                                <option>€20,000</option>
+                                <option>€30,000</option>
                             </select>
                         </div>
                     </div>
@@ -126,8 +125,6 @@
                             <label class="form-check-label" for="volvo">Volvo</label>
                         </div>
                     </div>
-
-                    <!-- Other filters could go here -->
                 </div>
             </div>
 
@@ -163,15 +160,15 @@
                         <div class="d-flex mb-2">
                             <select class="form-select form-select-sm me-2">
                                 <option>Min price</option>
-                                <option>£5,000</option>
-                                <option>£10,000</option>
-                                <option>£15,000</option>
+                                <option>€5,000</option>
+                                <option>€10,000</option>
+                                <option>€15,000</option>
                             </select>
                             <select class="form-select form-select-sm">
                                 <option>Max price</option>
-                                <option>£15,000</option>
-                                <option>£20,000</option>
-                                <option>£30,000</option>
+                                <option>€15,000</option>
+                                <option>€20,000</option>
+                                <option>€30,000</option>
                             </select>
                         </div>
                     </div>
@@ -194,91 +191,91 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- Car listings -->
             <div class="col-md-9">
                 <div class="row g-4">
-                    <!-- Car Card 1 -->
+                    <!-- Car Card 1: BMW M5 -->
                     <div class="col-md-6">
                         <div class="card h-100 shadow-sm hover-shadow">
                             <!-- Car Image -->
                             <div class="position-relative">
-                                <img src="assets/img/m5.jpg" class="card-img-top" alt="Citroen Ami"
-                                    style="height: 180px; object-fit: cover;">
+                                <img src="assets/img/m5.jpg" class="card-img-top" alt="BMW M5"
+                                     style="height: 180px; object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 m-2 badge bg-dark">New (Pre-Reg)</div>
                             </div>
 
                             <!-- Car Details -->
                             <div class="card-body">
                                 <!-- Specs -->
-                                <p class="card-text small text-muted mb-1">6kW 5.5kWh Auto Ami</p>
+                                <p class="card-text small text-muted mb-1">4.4L V8 Bi-Turbo Auto</p>
 
                                 <!-- Make and Model -->
-                                <h5 class="card-title fw-bold mb-1">Citroen Ami</h5>
+                                <h5 class="card-title fw-bold mb-1">BMW M5</h5>
 
                                 <!-- Variant -->
-                                <p class="card-text text-secondary mb-3">Automatic • Electric</p>
+                                <p class="card-text text-secondary mb-3">Automatic • Gasoline • 4.4 L</p>
 
                                 <!-- Price and Savings -->
                                 <div class="mb-2">
-                                    <div class="fs-4 fw-bold">£6,995</div>
-                                    <div class="text-success small">Saving £700 off RRP</div>
+                                    <div class="fs-4 fw-bold">€119,995</div>
+                                    <div class="text-success small">Saving €5,000 off RRP</div>
                                 </div>
 
                                 <!-- Year and Mileage -->
                                 <div class="d-flex align-items-center small text-secondary mt-3">
-                                    <span>2024</span>
+                                    <span>2023</span>
                                     <span class="mx-2">•</span>
-                                    <span>1 mile</span>
+                                    <span>0 miles</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Car Card 2 -->
+                    <!-- Car Card 2: Ferrari 488 Pista -->
                     <div class="col-md-6">
                         <div class="card h-100 shadow-sm hover-shadow">
                             <!-- Car Image -->
                             <div class="position-relative">
-                                <img src="assets/img/pista488.jpg" class="card-img-top" alt="Citroen Ami Buggy"
-                                    style="height: 180px; object-fit: cover;">
+                                <img src="assets/img/pista488.jpg" class="card-img-top" alt="Ferrari 488 Pista"
+                                     style="height: 180px; object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 m-2 badge bg-dark">New (Pre-Reg)</div>
                             </div>
 
                             <!-- Car Details -->
                             <div class="card-body">
                                 <!-- Specs -->
-                                <p class="card-text small text-muted mb-1">6kW 6.3kWh Auto Buggy</p>
+                                <p class="card-text small text-muted mb-1">3.9L V8 Turbocharged</p>
 
                                 <!-- Make and Model -->
-                                <h5 class="card-title fw-bold mb-1">Citroen Ami</h5>
+                                <h5 class="card-title fw-bold mb-1">Ferrari 488 Pista</h5>
 
                                 <!-- Variant -->
-                                <p class="card-text text-secondary mb-3">Automatic • Electric</p>
+                                <p class="card-text text-secondary mb-3">Automatic • Gasoline • 3.9 L</p>
 
                                 <!-- Price and Savings -->
                                 <div class="mb-2">
-                                    <div class="fs-4 fw-bold">£9,999</div>
-                                    <div class="text-success small">Saving £496 off RRP</div>
+                                    <div class="fs-4 fw-bold">€289,000</div>
+                                    <div class="text-success small">Saving €15,000 off RRP</div>
                                 </div>
 
                                 <!-- Year and Mileage -->
                                 <div class="d-flex align-items-center small text-secondary mt-3">
-                                    <span>2024</span>
+                                    <span>2022</span>
                                     <span class="mx-2">•</span>
-                                    <span>20 miles</span>
+                                    <span>10 miles</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Car Card 3 -->
+                    <!-- Car Card 3: Mercedes G-Wagon G63 -->
                     <div class="col-md-6">
                         <div class="card h-100 shadow-sm hover-shadow">
                             <!-- Car Image -->
                             <div class="position-relative">
-                                <img src="assets/img/gwagon.jpg" class="card-img-top" alt="Suzuki Ignis"
-                                    style="height: 180px; object-fit: cover;">
+                                <img src="assets/img/gwagon.jpg" class="card-img-top" alt="Mercedes G-Wagon G63"
+                                     style="height: 180px; object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 m-2 badge bg-dark">Mercedes G Wagon 63</div>
                             </div>
 
@@ -288,7 +285,7 @@
                                 <p class="card-text small text-muted mb-1">6.2L Gasoline</p>
 
                                 <!-- Make and Model -->
-                                <h5 class="card-title fw-bold mb-1">G63</h5>
+                                <h5 class="card-title fw-bold mb-1">Mercedes G-Wagon G63</h5>
 
                                 <!-- Variant -->
                                 <p class="card-text text-secondary mb-3">Automatic • Gasoline • 6.2 L</p>
@@ -309,112 +306,38 @@
                         </div>
                     </div>
 
-                    <!-- Car Card 4 -->
+                    <!-- Car Card 4: Porsche 911 Turbo S -->
                     <div class="col-md-6">
                         <div class="card h-100 shadow-sm hover-shadow">
                             <!-- Car Image -->
                             <div class="position-relative">
-                                <img src="assets/img/ford.jpg" class="card-img-top" alt="Fiat 500"
-                                    style="height: 180px; object-fit: cover;">
+                                <img src="assets/img/porsche.jpg" class="card-img-top" alt="Porsche 911 Turbo S"
+                                     style="height: 180px; object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 m-2 badge bg-dark">Used</div>
                             </div>
 
                             <!-- Car Details -->
                             <div class="card-body">
                                 <!-- Specs -->
-                                <p class="card-text small text-muted mb-1">1.2L Pop</p>
+                                <p class="card-text small text-muted mb-1">3.8L Turbocharged Flat-Six</p>
 
                                 <!-- Make and Model -->
-                                <h5 class="card-title fw-bold mb-1">Fiat 500</h5>
+                                <h5 class="card-title fw-bold mb-1">Porsche 911 Turbo S</h5>
 
                                 <!-- Variant -->
-                                <p class="card-text text-secondary mb-3">Manual • Petrol • 1.2 L</p>
+                                <p class="card-text text-secondary mb-3">Automatic • Gasoline • 3.8 L</p>
 
                                 <!-- Price and Savings -->
                                 <div class="mb-2">
-                                    <div class="fs-4 fw-bold">£10,495</div>
-                                    <div class="text-success small">Saving £2,500 off RRP</div>
+                                    <div class="fs-4 fw-bold">€174,995</div>
+                                    <div class="text-success small">Saving €20,000 off RRP</div>
                                 </div>
 
                                 <!-- Year and Mileage -->
                                 <div class="d-flex align-items-center small text-secondary mt-3">
-                                    <span>2022</span>
+                                    <span>2021</span>
                                     <span class="mx-2">•</span>
-                                    <span>15,000 miles</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Car Card 5 -->
-                    <div class="col-md-6">
-                        <div class="card h-100 shadow-sm hover-shadow">
-                            <!-- Car Image -->
-                            <div class="position-relative">
-                                <img src="assets/img/e63s.jpg" class="card-img-top" alt="Volvo XC60"
-                                    style="height: 180px; object-fit: cover;">
-                                <div class="position-absolute top-0 start-0 m-2 badge bg-dark">Used</div>
-                            </div>
-
-                            <!-- Car Details -->
-                            <div class="card-body">
-                                <!-- Specs -->
-                                <p class="card-text small text-muted mb-1">2.0 D4 Momentum</p>
-
-                                <!-- Make and Model -->
-                                <h5 class="card-title fw-bold mb-1">Volvo XC60</h5>
-
-                                <!-- Variant -->
-                                <p class="card-text text-secondary mb-3">Automatic • Diesel • 2.0 L</p>
-
-                                <!-- Price and Savings -->
-                                <div class="mb-2">
-                                    <div class="fs-4 fw-bold">£28,995</div>
-                                    <div class="text-success small">Saving £3,200 off RRP</div>
-                                </div>
-
-                                <!-- Year and Mileage -->
-                                <div class="d-flex align-items-center small text-secondary mt-3">
-                                    <span>2020</span>
-                                    <span class="mx-2">•</span>
-                                    <span>25,000 miles</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Car Card 6 -->
-                    <div class="col-md-6">
-                        <div class="card h-100 shadow-sm hover-shadow">
-                            <!-- Car Image -->
-                            <div class="position-relative">
-                                <img src="assets/img/porsche.jpg" class="card-img-top" alt="Ford Fiesta"
-                                    style="height: 180px; object-fit: cover;">
-                                <div class="position-absolute top-0 start-0 m-2 badge bg-dark">Used</div>
-                            </div>
-
-                            <!-- Car Details -->
-                            <div class="card-body">
-                                <!-- Specs -->
-                                <p class="card-text small text-muted mb-1">1.0 EcoBoost mHEV ST-Line</p>
-
-                                <!-- Make and Model -->
-                                <h5 class="card-title fw-bold mb-1">Ford Fiesta</h5>
-
-                                <!-- Variant -->
-                                <p class="card-text text-secondary mb-3">Manual • Petrol • 1.0 L</p>
-
-                                <!-- Price and Savings -->
-                                <div class="mb-2">
-                                    <div class="fs-4 fw-bold">£14,495</div>
-                                    <div class="text-success small">Saving £1,800 off RRP</div>
-                                </div>
-
-                                <!-- Year and Mileage -->
-                                <div class="d-flex align-items-center small text-secondary mt-3">
-                                    <span>2023</span>
-                                    <span class="mx-2">•</span>
-                                    <span>5,000 miles</span>
+                                    <span>2,000 miles</span>
                                 </div>
                             </div>
                         </div>
@@ -422,8 +345,6 @@
                 </div>
             </div>
         </div>
-    </main>
-    
         <!-- ============= FOOTER SECTION ============= -->
         <footer class="container-fluid mt-5 footer-info">
             <div class="row d-flex align-items-center footer-info-content">
@@ -498,9 +419,9 @@
             <p id="copyright">&copy; All rights are reserved. Made by <a
                     href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>execution</b></a></p>
         </footer>
+    </main>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
