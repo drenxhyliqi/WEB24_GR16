@@ -52,11 +52,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Marketplace - Find Your Perfect Car</title>
     <link rel="icon" href="assets/img/webicon.png" type="image/x-icon">
-    
-    <!-- External CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
     <link href="assets/cars.css" rel="stylesheet">
 </head>
@@ -77,9 +76,9 @@
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 
@@ -92,13 +91,13 @@
         </div>
     </nav>
 
-    <!-- ============= MAIN CONTENT ============= -->
-    <main class="container py-4">
-        <!-- Header Section -->
-        <header class="d-flex align-items-center mb-4">
+    <!-- Main content -->
+    <div class="container mt-4">
+        <!-- Header section -->
+        <div class="d-flex align-items-center mb-4">
             <div class="position-relative me-3">
                 <div class="position-absolute top-0 end-0 translate-middle badge rounded-pill bg-danger">
-                    124
+                    8
                 </div>
             </div>
             <h1 class="fw-bold">19,074 Cars Available</h1>
@@ -139,15 +138,15 @@
                         <div class="d-flex mb-2">
                             <select class="form-select form-select-sm me-2">
                                 <option>Min price</option>
-                                <option>£5,000</option>
-                                <option>£10,000</option>
-                                <option>£15,000</option>
+                                <option>€5,000</option>
+                                <option>€10,000</option>
+                                <option>€15,000</option>
                             </select>
                             <select class="form-select form-select-sm">
                                 <option>Max price</option>
-                                <option>£15,000</option>
-                                <option>£20,000</option>
-                                <option>£30,000</option>
+                                <option>€15,000</option>
+                                <option>€20,000</option>
+                                <option>€30,000</option>
                             </select>
                         </div>
                     </div>
@@ -210,15 +209,15 @@
                         <div class="d-flex mb-2">
                             <select class="form-select form-select-sm me-2">
                                 <option>Min price</option>
-                                <option>£5,000</option>
-                                <option>£10,000</option>
-                                <option>£15,000</option>
+                                <option>€5,000</option>
+                                <option>€10,000</option>
+                                <option>€15,000</option>
                             </select>
                             <select class="form-select form-select-sm">
                                 <option>Max price</option>
-                                <option>£15,000</option>
-                                <option>£20,000</option>
-                                <option>£30,000</option>
+                                <option>€15,000</option>
+                                <option>€20,000</option>
+                                <option>€30,000</option>
                             </select>
                         </div>
                     </div>
@@ -370,6 +369,6 @@
     </footer>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
