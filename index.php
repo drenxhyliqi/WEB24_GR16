@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Marketplace | Home</title>
+    <title>Car Marketplace | Home PHP</title>
     <link rel="icon" href="assets/img/webicon.png" type="image/x-icon">
 
     <!-- Bootstrap & Icons -->
@@ -77,7 +77,7 @@
                         <button class="filter-btn btn py-2 px-3"><i class="bi bi-truck"></i> SUVs</button>
                         <button class="filter-btn btn py-2 px-3"><i class="bi bi-fuel-pump"></i> Hybrids</button>
                         <button class="filter-btn btn py-2 px-3"><i class="bi bi-eyeglasses"></i> Big boot</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-piggy-bank"></i> Below £30k</button>
+                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-piggy-bank"></i> Below 30k</button>
                     </div>
                 </div>
             </div>
