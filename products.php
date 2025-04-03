@@ -102,29 +102,35 @@ $products = [
 
 // Controlling sort request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the value from the POST request
     $sort_by = $_POST['sort_by'];
 
-    switch ($sort_by) {
-        case 'sort':
-            sort($products);
-            break;
-        case 'rsort':
-            rsort($products);
-            break;
-        case 'asort':
-            asort($products);
-            break;
-        case 'ksort':
-            ksort($products);
-            break;
-        case 'arsort':
-            arsort($products);
-            break;
-        case 'krsort':
-            krsort($products);
-            break;
-        default:
-            break;
+    // Validate the sort_by value using a RegEx
+    if (preg_match("/^(sort|rsort|asort|ksort|arsort|krsort)$/", $sort_by)) {
+        switch ($sort_by) {
+            case 'sort':
+                sort($products);
+                break;
+            case 'rsort':
+                rsort($products);
+                break;
+            case 'asort':
+                asort($products);
+                break;
+            case 'ksort':
+                ksort($products);
+                break;
+            case 'arsort':
+                arsort($products);
+                break;
+            case 'krsort':
+                krsort($products);
+                break;
+            default:
+                break;
+        }
+    } else {
+        $error_message = "Error: Invalid sort option selected!";
     }
 }
 
@@ -323,11 +329,12 @@ function renderProducts($products) {
             <hr>
         </div>
 
+        <!-- Sorting -->
         <div class="controls mb-4">
-            <form method="POST" action="products.php" >
-               <div class="row align-items-center justify-content-between" >
-                    <div class="col-6">
-                        <div class="input-group" style="width: 500px;">
+            <form method="POST" action="products.php">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="input-group" style="width: 100%;">
                             <select name="sort_by" class="form-control shadow-none border-dark" id="sort_by" aria-describedby="basic-addon2">
                                 <option value="sort">Sort (Ascending by Index)</option>
                                 <option value="rsort">Rsort (Descending by Index)</option>
@@ -339,14 +346,19 @@ function renderProducts($products) {
                             <button class="input-group-text bg-dark text-light border-dark" type="submit" id="basic-addon2">Sort</button>
                         </div>
                     </div>
-                    <div class="col-6 text-end">
+                    <div class="col-sm-12 col-md-6 col-lg-6 text-end">
                         <span><b>Total number of products:</b> <?php echo count($products); ?></span>
                     </div>
-               </div>
+                </div>
             </form>
+            <?php if (isset($error_message)): ?>
+                <div class="alert alert-danger mt-3" role="alert">
+                    <?php echo $error_message; ?>
+                </div>
+            <?php endif; ?>
         </div>
 
-        <!-- Shfaqja e produkteve -->
+        <!-- Products -->
         <div class="row">
             <?php renderProducts($products); ?>
         </div>
