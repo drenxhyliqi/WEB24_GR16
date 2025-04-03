@@ -69,8 +69,10 @@ ul li a {
 /* Filter sidebar styling */
 .filter-sidebar {
     position: sticky;
+    background-color: #000615 !important;
     top: 80px;
     max-height: calc(100vh - 100px);
+    color: #f9f9f9;
     overflow-y: auto;
 }
 
@@ -96,7 +98,7 @@ ul li a {
 .footer-info {
     background-color: #000615;
     color: rgba(255, 255, 255, 0.855);
-    padding: 0 5% 0;
+    padding-bottom: 2%;
 }
 
 .footer-lists p {
