@@ -1,5 +1,6 @@
 <?php
-// Të dhënat e produkteve
+
+// Products
 $products = [
     [
         "id" => 1,
@@ -99,38 +100,35 @@ $products = [
     ]
 ];
 
-// Kontrollojmë nëse është zgjedhur një opsion në formularin SELECT
+// Controlling sort request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sort_by = $_POST['sort_by'];
 
-    // Funksioni për renditjen e produkteve bazuar në zgjedhjen e përdoruesit
     switch ($sort_by) {
         case 'sort':
-            sort($products); // Funksioni sort() për renditjen në rritje sipas vlerave
+            sort($products);
             break;
         case 'rsort':
-            rsort($products); // Funksioni rsort() për renditjen në rënie sipas vlerave
+            rsort($products);
             break;
         case 'asort':
-            asort($products); // Funksioni asort() për renditjen në rritje sipas vlerave, duke mbajtur çelësin
+            asort($products);
             break;
         case 'ksort':
-            ksort($products); // Funksioni ksort() për renditjen në rritje sipas çelësit
+            ksort($products);
             break;
         case 'arsort':
-            arsort($products); // Funksioni arsort() për renditjen në rënie sipas vlerave, duke mbajtur çelësin
+            arsort($products);
             break;
         case 'krsort':
-            krsort($products); // Funksioni krsort() për renditjen në rënie sipas çelësit
+            krsort($products);
             break;
         default:
-            // Pa renditje nëse nuk është zgjedhur asnjë opsion
             break;
     }
 }
 
-
-// Funksioni për të shfaqur produktet
+// Showing products
 function renderProducts($products) {
     foreach ($products as $product) {
         echo "
