@@ -202,7 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label for="password">Password</label>
         <div class="password-container">
-          <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
+          <input type="password" id="password" name="password" placeholder="Enter password" required>
           <span class="toggle-password"><i class="bi bi-eye"></i></span>
         </div><br>
 

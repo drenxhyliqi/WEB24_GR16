@@ -92,6 +92,7 @@
     </nav>
 
     <!-- Main content -->
+     <main>
     <div class="container mt-4">
         <!-- Header section -->
         <div class="d-flex align-items-center mb-4">
@@ -101,7 +102,7 @@
                 </div>
             </div>
             <h1 class="fw-bold">19,074 Cars Available</h1>
-        </header>
+    </div>
 
         <!-- Active Filters Section -->
         <section class="mb-4">
