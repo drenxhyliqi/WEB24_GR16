@@ -581,7 +581,7 @@
                                 <i class="bi bi-arrow-repeat"></i>
                             </div>
                         </div>
-                        <h6 class="card-title fw-bold"><a href="/product.html"
+                        <h6 class="card-title fw-bold"><a href="product.php"
                                 class="text-decoration-none text-dark">Ford Truck Lifted <span
                                     class="text-muted ms-1">(2024)</span></a></h6>
                         <h6 class="fw-semibold">$79,000</h6>
@@ -614,7 +614,7 @@
                                 <i class="bi bi-arrow-repeat"></i>
                             </div>
                         </div>
-                        <h6 class="card-title fw-bold"><a href="/product.html" class="text-decoration-none text-dark">Bmw
+                        <h6 class="card-title fw-bold"><a href="product.php" class="text-decoration-none text-dark">Bmw
                                 M5 F90<span class="text-muted ms-1">(2023)</span></a></h6>
                         <h6 class="fw-semibold">$129,000</h6>
                         <hr>
@@ -646,7 +646,7 @@
                                 <i class="bi bi-arrow-repeat"></i>
                             </div>
                         </div>
-                        <h6 class="card-title fw-bold"><a href="/product.html"
+                        <h6 class="card-title fw-bold"><a href="product.php"
                                 class="text-decoration-none text-dark">Porsche 911 GT <span
                                     class="text-muted ms-1">(2023)</span></a></h6>
                         <h6 class="fw-semibold">$119,000</h6>
@@ -679,7 +679,7 @@
                                 <i class="bi bi-arrow-repeat"></i>
                             </div>
                         </div>
-                        <h6 class="card-title fw-bold"><a href="/product.html"
+                        <h6 class="card-title fw-bold"><a href="product.php"
                                 class="text-decoration-none text-dark">Tesla<span
                                     class="text-muted ms-1">(2024)</span></a></h6>
                         <h6 class="fw-semibold">$69,000</h6>

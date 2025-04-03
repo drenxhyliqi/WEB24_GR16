@@ -346,7 +346,7 @@ function renderProducts($products) {
             </form>
         </div>
 
-        <!-- Shfaqja e produkteve -->
+        <!-- Products -->
         <div class="row">
             <?php renderProducts($products); ?>
         </div>

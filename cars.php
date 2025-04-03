@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="/assets/cars.css" rel="stylesheet">
+    <link href="assets/cars.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
@@ -422,6 +422,8 @@
                 </div>
             </div>
         </div>
+    </main>
+    
         <!-- ============= FOOTER SECTION ============= -->
         <footer class="container-fluid mt-5 footer-info">
             <div class="row d-flex align-items-center footer-info-content">
@@ -496,7 +498,6 @@
             <p id="copyright">&copy; All rights are reserved. Made by <a
                     href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>execution</b></a></p>
         </footer>
-    </main>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
