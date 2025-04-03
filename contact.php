@@ -1,3 +1,54 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get form data
+    $full_name = trim($_POST['full-name']);
+    $email = trim($_POST['email']);
+    $number = trim($_POST['number']);
+    $message = trim($_POST['message']);
+    
+    // Define the error message array
+    $errors = [];
+
+    // Regular expression patterns for validation
+    $namePattern = "/^[a-zA-Z\s]+$/"; // Validates only alphabets and spaces
+    $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Valid email format
+    $phonePattern = "/^\+383\d{8}$/"; // Specific format for Kosovo phone numbers (+383 followed by 8 digits)
+
+    // Validate full name
+    if (empty($full_name) || !preg_match($namePattern, $full_name)) {
+        $errors[] = "Please provide a valid full name.";
+    }
+
+    // Validate email
+    if (empty($email) || !preg_match($emailPattern, $email)) {
+        $errors[] = "Please provide a valid email address.";
+    }
+
+    // Validate phone number (if provided)
+    if (!empty($number) && !preg_match($phonePattern, $number)) {
+        $errors[] = "Please provide a valid phone number.";
+    }
+
+    // Validate message
+    if (empty($message)) {
+        $errors[] = "Please enter your message.";
+    }
+
+    // Check if there are any validation errors
+    if (count($errors) > 0) {
+        // Store error messages as an unordered list to display above the form
+        $errorMessages = "<ul>";
+        foreach ($errors as $error) {
+            $errorMessages .= "<li>" . $error . "</li>";
+        }
+        $errorMessages .= "</ul>";
+    } else {
+        // If no errors, display a success message
+        $successMessage = "Your message has been successfully submitted!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -179,8 +230,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 contactUs">
                     <h1><b>Contact Us</b></h1>
-                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to
-                        communication and want to know more about those who trust us.</p>
+                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
                     <div class="d-flex align-items-center">
                         <div class="questions">
                             <div class="questions-body">
@@ -188,11 +238,8 @@
                                 <div class="text mt-4">
                                     <h2><b>Questions?</b></h2>
                                     <div id="contact-info">
-                                        <p>Give us a call right now at <span id="phoneNumber"
-                                                style="display: none; cursor: pointer;">(406) 555‑0120</span>
-                                            <button id="toggleNumberBtn" class="btn btn-link"
-                                                style="background: none; border: none; text-decoration: none; color: gray;">Show
-                                                Number</button>
+                                        <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;">(406) 555‑0120</span>
+                                            <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button>
                                         </p>
                                     </div>
                                 </div>
@@ -203,106 +250,120 @@
 
                 <div class="col-12 col-md-6 mb-5 contactForm">
                     <h2><b>Get in touch</b></h2>
-                    <form id="contactForm" onSubmit="validateForm(event)">
-                            <label for="full-name" class="form-label"></label>
-                            <input type="text" id="full-name" class="form-control" placeholder="Full name" autocomplete="off">
-                            <label for="location" class="form-label"></label>
-                            <input list="locations" class="form-control" id="location" name="location" placeholder="Region" autocomplete="off">
-                            <datalist id="locations">
-                                <option value="Europe">
-                                <option value="Asia">
-                                <option value="USA">
-                                <option value="Australia">
-                                <option value="Africa">
-                            </datalist>
-                            <label for="email" class="form-label"></label>
-                            <input type="email" id="email" class="form-control" placeholder="Email" autocomplete="off">
-                            <label for="number" class="form-label"></label>
-                            <input type="tel" id="number" class="form-control" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$">
-                            <label for="message" class="form-label"></label>
-                            <textarea id="message" name="message" class="form-control" rows="3" placeholder="Your message"></textarea>
-                            <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Submit</button>
+
+                    <!-- Error message displayed at the top of the form -->
+                    <?php if (isset($errorMessages)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $errorMessages; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Success message displayed at the top of the form -->
+                    <?php if (isset($successMessage)): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo $successMessage; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <form id="contactForm" action="contact.php" method="POST">
+                        <label for="full-name" class="form-label"></label>
+                        <input type="text" id="full-name" name="full-name" class="form-control" placeholder="Full name" autocomplete="off">
+                        
+                        <label for="location" class="form-label"></label>
+                        <input list="locations" class="form-control" id="location" name="location" placeholder="Region" autocomplete="off">
+                        <datalist id="locations">
+                            <option value="Europe">
+                            <option value="Asia">
+                            <option value="USA">
+                            <option value="Australia">
+                            <option value="Africa">
+                        </datalist>
+                        
+                        <label for="email" class="form-label"></label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off">
+                        
+                        <label for="number" class="form-label"></label>
+                        <input type="tel" id="number" name="number" class="form-control" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$">
+                        
+                        <label for="message" class="form-label"></label>
+                        <textarea id="message" name="message" class="form-control" rows="3" placeholder="Your message"></textarea>
+                        
+                        <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Submit</button>
                     </form>
-                    <p id="error-message" style="color: #FF0000; display: none;">Please fill out all fields correctly.</p>
                 </div>
             </div>
         </div>
     </section>
-
-<footer class="container-fluid footer-info">
-    <div class="row d-flex align-items-center footer-info-content">
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
-            <div class="d-flex align-items-center">
-                <i class="bi bi-copy me-2"></i>
-                <span class="mb-0">Over 1 million listings</span>
+    <footer class="container-fluid footer-info">
+        <div class="row d-flex align-items-center footer-info-content">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-copy me-2"></i>
+                    <span class="mb-0">Over 1 million listings</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-search me-2"></i>
+                    <span class="">Personalized search</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-car-front-fill me-2"></i>
+                    <span class="mb-0">Online car appraisal</span>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-lightbulb me-2"></i>
+                    <span class="mb-0">Non-stop innovation</span>
+                </div>
             </div>
         </div>
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
-            <div class="d-flex align-items-center">
-                <i class="bi bi-search me-2"></i>
-                <span class="">Personalized search</span>
+        <hr>
+        <div class="row d-flex justify-content-around footer-lists">
+            <div class="col-6 col-md-6 col-lg-3 ">
+                <p>Buying & Selling</p>
+                <ul class="list-unstyled">
+                    <li><a href="#">Find a car</a></li>
+                    <li><a href="#">Sell your car</a></li>
+                    <li><a href="#">Car dealers</a></li>
+                    <li><a href="#">Compare Cars</a></li>
+                    <li><a href="#">Online car</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md-6 col-lg-3 ">
+                <p>About</p>
+                <ul class="list-unstyled ">
+                    <li><a href="#">About Finder</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">FAQs & Support</a></li>
+                    <li><a href="#">Mobile app</a></li>
+                    <li><a href="#">Blog & News</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 ">
+                <p>Profile</p>
+                <ul class="list-unstyled">
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">My listings</a></li>
+                    <li><a href="#">Add listings</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                <p>Download our app</p>
+                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
+                <div>
+                    <button class="btn btn-primary me-2">
+                        <i class="bi bi-google-play"></i> Google Play</button>
+                    <button class="btn btn-primary">
+                        <i class="bi bi-apple"></i> App Store</button>
+                </div>
             </div>
         </div>
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
-            <div class="d-flex align-items-center">
-                <i class="bi bi-car-front-fill me-2"></i>
-                <span class="mb-0">Online car appraisal</span>
-            </div>
-        </div>
-        <div class="col-6 col-sm-6 col-md-6 col-lg-3">
-            <div class="d-flex align-items-center">
-                <i class="bi bi-lightbulb me-2"></i>
-                <span class="mb-0">Non-stop innovation</span>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="row d-flex justify-content-around footer-lists">
-        <div class="col-6 col-md-6 col-lg-3 ">
-            <p>Buying & Selling</p>
-            <ul class="list-unstyled">
-                <li><a href="#">Find a car</a></li>
-                <li><a href="#">Sell your car</a></li>
-                <li><a href="#">Car dealers</a></li>
-                <li><a href="#">Compare Cars</a></li>
-                <li><a href="#">Online car</a></li>
-            </ul>
-        </div>
-        <div class="col-6 col-md-6 col-lg-3 ">
-            <p>About</p>
-            <ul class="list-unstyled ">
-                <li><a href="#">About Finder</a></li>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">FAQs & Support</a></li>
-                <li><a href="#">Mobile app</a></li>
-                <li><a href="#">Blog & News</a></li>
-            </ul>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3 ">
-            <p>Profile</p>
-            <ul class="list-unstyled">
-                <li><a href="#">My account</a></li>
-                <li><a href="#">Wishlist</a></li>
-                <li><a href="#">My listings</a></li>
-                <li><a href="#">Add listings</a></li>
-            </ul>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-            <p>Download our app</p>
-            <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-            <div>
-                <button class="btn btn-primary me-2">
-                    <i class="bi bi-google-play"></i> Google Play</button>
-                <button class="btn btn-primary">
-                    <i class="bi bi-apple"></i> App Store</button>
-            </div>
-        </div>
-    </div>
-
-    <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
-
-</footer>
-
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
+    </footer>
 </body>
-
 </html>
