@@ -1,3 +1,43 @@
+<?php
+function validateEmail($email) {
+    $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+    return preg_match($emailPattern, $email);
+}
+
+function validatePassword($password) {
+    $passwordPattern = '/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/';
+    return preg_match($passwordPattern, $password);
+}
+
+$showAlert = false;
+$alertType = '';
+$alertMessage = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"] ?? '';
+    $password = $_POST["password"] ?? '';
+    
+    $emailValid = validateEmail($email);
+    $passwordValid = validatePassword($password);
+
+    if ($emailValid && $passwordValid) {
+        $showAlert = true;
+        $alertType = 'success';
+        $alertMessage = 'Login Successful';
+    } else {
+        $showAlert = true;
+        $alertType = 'danger';
+        $alertMessage = '<strong>Invalid input:</strong><br>';
+        if (!$emailValid) {
+            $alertMessage .= '- Invalid email format.<br>';
+        }
+        if (!$passwordValid) {
+            $alertMessage .= '- Password must be at least 8 characters with one letter, number, and special character.<br>';
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -111,7 +151,11 @@
       font-weight: bold;
       color: #000;
     }
-  </style>
+    
+    /* Alert message styling */
+    .alert-container {
+      margin-top: 20px;
+    }
   </style>
 </head>
 
@@ -151,21 +195,33 @@
         <i class="bi bi-google"></i> &nbsp; Continue with Google
       </button>
       <div class="separator">or</div>
-      <form>
+
+      <form action="" method="POST">
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter email">
+        <input type="text" id="email" name="email" placeholder="Enter email" required><br><br>
+
         <label for="password">Password</label>
         <div class="password-container">
-          <input type="password" id="password" placeholder="Enter password">
-          <!-- <i class="bi bi-eye-slash"></i> -->
+          <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
           <span class="toggle-password"><i class="bi bi-eye"></i></span>
-        </div>
+        </div><br>
+
         <div class="remember-forgot">
-          <!-- <label><input type="checkbox"> Remember me</label> -->
           <a href="#" class="forgot-password">Forgot password?</a>
-        </div>
+        </div><br>
+
         <button type="submit" class="login-btn">Log in</button>
+        
+        <!-- Alerti per succes of fail -->
+        <?php if ($showAlert): ?>
+        <div class="alert-container">
+          <div class="alert alert-<?= $alertType ?> mt-3">
+            <?= $alertMessage ?>
+          </div>
+        </div>
+        <?php endif; ?>
       </form>
+
       <div class="signup">
         <p>Don't have an account? <a href="#">Sign up</a></p>
         <p>Are you a dealer? <a href="#">Log in as a dealer</a></p>
@@ -176,6 +232,23 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+    
+  <script>
+    //Js per password
+    document.querySelector('.toggle-password').addEventListener('click', function() {
+      const passwordInput = document.querySelector('#password');
+      const icon = this.querySelector('i');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+      }
+    });
+  </script>
 </body>
-
 </html>
