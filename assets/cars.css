@@ -96,7 +96,7 @@ ul li a {
 .footer-info {
     background-color: #000615;
     color: rgba(255, 255, 255, 0.855);
-    padding: 0 5%;
+    padding: 0 5% 0;
 }
 
 .footer-lists p {
@@ -119,7 +119,7 @@ ul li a {
 .footer-info-content {
     margin: 5px;
     padding-top: 40px;
-    padding-bottom: 15px;
+    padding-bottom: 0;
 }
 
 .footer-info-content span {
