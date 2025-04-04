@@ -439,7 +439,9 @@ class InfoSection {
         echo '
             </div>
         </section>';
+        echo "";
     }
+    
 }
 
 
