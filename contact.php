@@ -27,13 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validate phone number (if provided)
     if (!empty($number)) {
         $cleanedNumber = preg_replace('/[^\d+]/', '', $number);
-        
-        // Changed && to ||
+    
         if (!preg_match($phonePattern, $number) || !preg_match('/^\+383\d{8}$/', $cleanedNumber)) {
             $errors[] = "Please provide a valid Kosovo phone number (+383 followed by 8 digits). Formats allowed: +38344123456, +383 44 123 456, +383-44-123-456";
         } else {
-            $number = '+383' . substr($cleanedNumber, 4); // Clean format
-            $number = formatPhoneNumber($number); // Formatted version
+            $number = '+383' . substr($cleanedNumber, 4);
+            $number = formatPhoneNumber($number); 
         }
     }
 
