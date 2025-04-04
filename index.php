@@ -379,62 +379,86 @@ $brands = [
 </section>
 
     <!-- ============= INFO SECTION ============= -->
-    <section class="container-fluid mt-4 mb-4">
-        <div class="col-auto">
-            <h2 class="mt-3 mb-4">What sets Finder apart?</h2>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-copy"></i>
-                                <p class="mt-5">Over 1 million listings</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <?php
+class InfoCard {
+    private $icon;
+    private $text;
 
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-search"></i>
-                                <p class="mt-5">Personalized search</p>
-                            </div>
-                        </div>
+    public function __construct(string $icon, string $text) {
+        $this->icon = $icon;
+        $this->text = $text;
+    }
+
+    public function renderCard(): string {
+        return '
+        <div class="card info-content" style="width: 100%;">
+            <div class="card-body">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-auto">
+                        <i class="bi ' . $this->icon . '"></i>
+                        <p class="mt-5">' . $this->text . '</p>
                     </div>
                 </div>
             </div>
+        </div>';
+    }
+}
+
+class InfoSection {
+    protected $title;
+    private $cards = [];
+
+    public function __construct(string $title) {
+        $this->title = $title;
+    }
+
+    public function addCard(InfoCard $card): void {
+        $this->cards[] = $card;
+    }
+
+    protected function renderHeader(): string {
+        return '
+        <div class="col-auto">
+            <h2 class="mt-3 mb-4">' . $this->title . '</h2>
+        </div>';
+    }
+
+    public function renderSection(): void {
+        echo '
+        <section class="container-fluid mt-4 mb-4">
+            ' . $this->renderHeader() . '
+            <div class="row align-items-center">';
+
+        foreach($this->cards as $card) {
+            echo '
             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-car-front-fill"></i>
-                                <p class="mt-5">Online car appraisal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ' . $card->renderCard() . '
+            </div>';
+        }
+
+        echo '
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-lightbulb"></i>
-                                <p class="mt-5">Non-stop innovation</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>';
+    }
+}
+
+
+$section = new InfoSection("What sets Finder apart?");
+ 
+$card1 = new InfoCard('bi-copy', 'Over 1 million listings');
+$card2 = new InfoCard('bi-search', 'Personalized search');
+$card3 = new InfoCard('bi-car-front-fill', 'Online car appraisal');
+$card4 = new InfoCard('bi-lightbulb', 'Non-stop innovation');
+
+
+$section->addCard($card1);
+$section->addCard($card2);
+$section->addCard($card3);
+$section->addCard($card4);
+
+$section->renderSection();
+?>
+
 
     <!-- ============= LATEST CARS SECTION ============= -->
     <section class="container-fluid mt-4 mb-4 cars-cards">
