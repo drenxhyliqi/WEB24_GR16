@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Regular expression patterns for validation
     $namePattern = "/^[a-zA-Z\s]+$/"; // Validates only alphabets and spaces
     $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Valid email format
-    $phonePattern = "/^\+383\d{8}$/"; // Specific format for Kosovo phone numbers (+383 followed by 8 digits)
+    $phonePattern = "/^\+383[\s-]*\d{2}[\s-]*\d{3}[\s-]*\d{3}$/"; // Specific format for Kosovo phone numbers (+383 followed by 8 digits)
 
     // Validate full name
     if (empty($full_name) || !preg_match($namePattern, $full_name)) {
@@ -25,8 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Validate phone number (if provided)
-    if (!empty($number) && !preg_match($phonePattern, $number)) {
-        $errors[] = "Please provide a valid phone number.";
+    if (!empty($number)) {
+        $cleanedNumber = preg_replace('/[^\d+]/', '', $number);
+        
+        // Changed && to ||
+        if (!preg_match($phonePattern, $number) || !preg_match('/^\+383\d{8}$/', $cleanedNumber)) {
+            $errors[] = "Please provide a valid Kosovo phone number (+383 followed by 8 digits). Formats allowed: +38344123456, +383 44 123 456, +383-44-123-456";
+        } else {
+            $number = '+383' . substr($cleanedNumber, 4); // Clean format
+            $number = formatPhoneNumber($number); // Formatted version
+        }
     }
 
     // Validate message
@@ -46,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // If no errors, display a success message
         $successMessage = "Your message has been successfully submitted!";
     }
+}
+function formatPhoneNumber($number) {
+    return preg_replace('/^(\+383)(\d{2})(\d{3})(\d{3})$/', '$1-$2-$3-$4', $number);
 }
 ?>
 
