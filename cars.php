@@ -87,7 +87,7 @@ $car4->setStatus("Used");
 $cars[] = $car4;
   
 
-public function __destruct() {}
+function __destruct() {}
 ?>
 <!DOCTYPE html>
 <html lang="en">
