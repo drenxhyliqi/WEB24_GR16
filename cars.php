@@ -11,39 +11,83 @@
     private $status;
 
     public function __construct($image, $makeModel, $variant, $price, $savings, $year, $mileage, $status) {
-        $this->image = $image;
-        $this->makeModel = $makeModel;
-        $this->variant = $variant;
-        $this->price = $price;
-        $this->savings = $savings;
-        $this->year = $year;
-        $this->mileage = $mileage;
-        $this->status = $status;
-        }
+        $this->setImage($image);
+        $this->setMakeModel($makeModel);
+        $this->setVariant($variant);
+        $this->setPrice($price);
+        $this->setSavings($savings);
+        $this->setYear($year);
+        $this->setMileage($mileage);
+        $this->setStatus($status);
+    }
 
-        // Getters
-        public function getImage() { 
-            return $this->image;
-        }
+    public function getImage() { return $this->image; }
+    public function getMakeModel() { return $this->makeModel; }
+    public function getVariant() { return $this->variant; }
+    public function getPrice() { return $this->price; }
+    public function getSavings() { return $this->savings; }
+    public function getYear() { return $this->year; }
+    public function getMileage() { return $this->mileage; }
+    public function getStatus() { return $this->status; }
 
-        public function getMakeModel() { return $this->makeModel; }
-        public function getVariant() { return $this->variant; }
-        public function getPrice() { return $this->price; }
-        public function getSavings() { return $this->savings; }
-        public function getYear() { return $this->year; }
-        public function getMileage() { return $this->mileage; }
-        public function getStatus() { return $this->status; }
-        }
+    public function setImage($image) { $this->image = $image; }
+    public function setMakeModel($makeModel) { $this->makeModel = $makeModel; }
+    public function setVariant($variant) { $this->variant = $variant; }
+    public function setPrice($price) { $this->price = $price; }
+    public function setSavings($savings) { $this->savings = $savings; }
+    public function setYear($year) { $this->year = $year; }
+    public function setMileage($mileage) { $this->mileage = $mileage; }
+    public function setStatus($status) { $this->status = $status; }
+}
 
-    // Create an array of Car objects
-    $cars = [
-        new Car("assets/img/m5.jpg", "BMW M5", "Automatic • Gasoline • 4.4 L", "€119,995", "Saving €5,000 off RRP", "2023", "0 miles", "New (Pre-Reg)"),
-        new Car("assets/img/pista488.jpg", "Ferrari 488 Pista", "Automatic • Gasoline • 3.9 L", "€289,000", "Saving €15,000 off RRP", "2022", "10 miles", "New (Pre-Reg)"),
-        new Car("assets/img/gwagon.jpg", "Mercedes G-Wagon G63", "Automatic • Gasoline • 6.2 L", "$311,999", "Saving $5,050 off RRP", "2021", "0 miles", "Used"),
-        new Car("assets/img/porsche.jpg", "Porsche 911 Turbo S", "Automatic • Gasoline • 3.8 L", "€174,995", "Saving €20,000 off RRP", "2021", "2,000 miles", "Used")
-    ];
-    
-    
+$cars = [];
+
+$car1 = new Car("", "", "", "", "", "", "", "");
+$car1->setImage("assets/img/m5.jpg");
+$car1->setMakeModel("BMW M5");
+$car1->setVariant("Automatic • Gasoline • 4.4 L");
+$car1->setPrice("€119,995");
+$car1->setSavings("Saving €5,000 off RRP");
+$car1->setYear("2023");
+$car1->setMileage("0 miles");
+$car1->setStatus("New (Pre-Reg)");
+$cars[] = $car1;
+
+$car2 = new Car("", "", "", "", "", "", "", "");
+$car2->setImage("assets/img/pista488.jpg");
+$car2->setMakeModel("Ferrari 488 Pista");
+$car2->setVariant("Automatic • Gasoline • 3.9 L");
+$car2->setPrice("€289,000");
+$car2->setSavings("Saving €15,000 off RRP");
+$car2->setYear("2022");
+$car2->setMileage("10 miles");
+$car2->setStatus("New (Pre-Reg)");
+$cars[] = $car2;
+
+$car3 = new Car("", "", "", "", "", "", "", "");
+$car3->setImage("assets/img/gwagon.jpg");
+$car3->setMakeModel("Mercedes G-Wagon G63");
+$car3->setVariant("Automatic • Gasoline • 6.2 L");
+$car3->setPrice("$311,999");
+$car3->setSavings("Saving $5,050 off RRP");
+$car3->setYear("2021");
+$car3->setMileage("0 miles");
+$car3->setStatus("Used");
+$cars[] = $car3;
+
+$car4 = new Car("", "", "", "", "", "", "", "");
+$car4->setImage("assets/img/porsche.jpg");
+$car4->setMakeModel("Porsche 911 Turbo S");
+$car4->setVariant("Automatic • Gasoline • 3.8 L");
+$car4->setPrice("€174,995");
+$car4->setSavings("Saving €20,000 off RRP");
+$car4->setYear("2021");
+$car4->setMileage("2,000 miles");
+$car4->setStatus("Used");
+$cars[] = $car4;
+  
+
+function __destruct() {}
 ?>
 <!DOCTYPE html>
 <html lang="en">
