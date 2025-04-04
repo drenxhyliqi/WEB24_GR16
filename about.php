@@ -12,259 +12,35 @@
     <!-- Bootstrap & Custom CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        .video {
-            position: relative;
-            width: 60%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-        }
+        .text-primary {
+    color: #1a73e8 !important;
+  }
 
-        .playPauseButton {
-            position: absolute;
-            top: 85%;
-            left: 4%;
-            transform: translateX(-50%);
-            background: transparent;
-            border: none;
-            color: #f9f9f9;
-            font-size: 3.5rem;
-            cursor: pointer;
-            z-index: 0;
-        }
+  .hero-section h1 {
+    line-height: 1.2;
+  }
 
-        /* .playPauseButton i {
-            pointer-events: none;
-        } */
+  .story-content p, .company-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
 
+  .brand-logo {
+    width: 120px;
+    height: 60px;
+    border-radius: 4px;
+  }
 
-        .accordion-button {
-            background-color: transparent !important;
-            color: #f9f9f9 !important;
-            border: none !important;
-        }
+  .fact-item i {
+    font-size: 1.5rem;
+  }
 
-        .accordion-button:focus,
-        .accordion-button:active {
-            background-color: transparent !important;
-            color: #f9f9f9 !important;
-        }
-
-        /* Tech Stack Code - Problem i BootStrap */
-        .accordion {
-            --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-            --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-        }
-
-        .accordion-item {
-            background-color: #05040b !important;
-            border: 1px solid #05040b;
-        }
-
-        .accordion-button {
-            color: #f9f9f9;
-        }
-
-        .accordion-body p {
-            color: #f9f9f9;
-        }
-
-        .accordion-button:not(.collapsed) {
-            background-color: transparent !important;
-            border: none !important;
-        }
-
-        .accordion-button {
-            background-color: transparent !important;
-            border: none !important;
-        }
-
-        .accordion-button:focus {
-            box-shadow: none !important;
-            outline: none !important;
-        }
-
-        .trusted {
-            margin: 10% 0;
-        }
-
-        .provide {
-            padding: 10% 0;
-        }
-
-        .provide h5 {
-            font-size: 2.6rem;
-        }
-
-        .provide img {
-            border-radius: 100%;
-            width: 25%;
-        }
-
-        .provide p {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-top: 2rem;
-        }
-
-        .provide h6 {
-            font-weight: 700;
-        }
-
-        .info {
-            margin-top: 8%;
-        }
-
-        .info h3 {
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-
-        .info span {
-            font-size: 1.1rem;
-        }
-
-        .offer-timer {
-            background-color: #05040b;
-            padding: 20px;
-        }
-
-        h4.text-center {
-            background: linear-gradient(to right, #035dad, #00b0ff);
-            color: transparent;
-            display: center;
-        }
-
-        #countdown-timer {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h3 {
-            margin-top: 20px;
-        }
-
-        .form-control {
-            width: 100%;
-            max-width: 300px;
-            margin: 10px auto;
-        }
-
-        #get {
-            background-color: #007bff;
-            color: white !important;
-            border: none;
-            border-radius: 10px;
-
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        #ruaj {
-            background-color: #007bff;
-            color: white !important;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        #ruaj:hover {
-            background-color: #0056b3;
-        }
-
-        #get:hover {
-            background-color: #0056b3;
-        }
-
-        #countdown-timer p {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #035dad;
-            text-shadow: #222;
-        }
-
-
-        @media (max-width: 576px) {
-            .video {
-                width: 100%;
-            }
-
-            .card-content {
-                margin-top: 20px;
-            }
-
-            .card-content h4 {
-                margin-top: 2rem;
-            }
-
-            .card-content p {
-                margin-top: 1rem;
-                font-size: 16px;
-            }
-
-            .provide h5 {
-                font-size: 1.6rem;
-            }
-
-            .provide p {
-                font-size: 1rem;
-            }
-
-            .info h3 {
-                font-size: 1.4rem;
-                font-weight: 600;
-                text-align: center;
-            }
-
-            .info span {
-                font-size: 1rem;
-                text-align: center;
-            }
-
-            .playPauseButton {
-                width: 50px;
-                height: 50px;
-                top: 0;
-                left: 7%;
-                font-size: 2rem;
-            }
-        }
-
-        .navbar-canvas-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-left: 15px;
-        }
-
-        #myCanvas {
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        #scrollToTop {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none;
-            background-color: #035dad;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        #scrollToTop:hover {
-            background-color: #024c89;
-        }
+  .quick-facts {
+    border-radius: 8px;
+  }
     </style>
 </head>
 
@@ -293,276 +69,130 @@
             </div>
         </div>
     </nav>
+    <!-- ============= NAVBAR END ============= -->
 
-    <section class="main-about">
-        <div class="container-fluid mt-5">
-            <div class="top-content">
-                <h2 class="text-center display-5 display-md-4 mt-3 fw-bold text-left"></h2>
-                <div class="video text-center mt-4">
-                    <video src="assets/video/about.mp4" class="rounded-4" autoplay muted loop
-                        style="height: auto; width: 100%; object-fit: cover;" playsinline></video>
-                    <button class="playPauseButton">
-                        <i class="bi bi-pause"></i>
-                    </button>
+    <!-- ============= ABOUT US SECTION ============= -->
+    <div class="container mt-4">
+        <?php
+        // Variabla globale dinamike
+        $youtubeSubscribers = "10M+";
+        $trustpilotRating = "4.5 'Excellent'";
+        $trustedDealers = "5,500+";
+        $registeredUsers = "12M+";
+        $customers = "12M";
+        $growth = "50%";
+        $billionCarsBought = "€3 billion";
+        $billionCarsListed = "€1.8 billion";
+        $youtubeViews = "1.1 billion";
+        $printCopies = "1.2 million";
+        $websiteVisits = "100 million";
+        ?>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <section class="hero-section mb-4">
+                    <h3 class="display-6 fw-bold">
+                        OUR CAR JOURNEY STARTS HERE
+                    </h3>
+                </section>
+                <section class="story-section mb-3">
+                    <h4 class="fw-bold mb-4"><span class="text-primary">OUR STORY</span></h4>
+                    <div class="story-content">
+                        <p class="lead">
+                            What started as a simple reviews site, is now one of the largest online car-changing destinations in <span class="text-primary">Europe</span>.
+                        </p>
+                        <p>
+                            Over <span class="text-primary"><?= $customers; ?> customers</span> have used CarMe to buy or sell their car. Last year we grew over <span class="text-primary"><?= $growth; ?></span> with nearly 
+                            <span class="text-primary"><?= $billionCarsBought; ?></span> worth of cars bought on our site, while <span class="text-primary"><?= $billionCarsListed; ?></span> of cars were listed for sale through our Sell 
+                            My Car service.
+                        </p>
+                    </div>
+                </section>
+                <section class="company-section mb-3">
+                    <h4 class="fw-bold mb-4"><span class="text-primary">CARMARKET GROUP</span></h4>
+                    <div class="company-content">
+                        <p>
+                            In 2021, we acquired Autovia and formed Carmarket Group. Together we're driven by a passion for getting 
+                            people into cars. But not just any car, <span class="text-primary">the right car</span>.
+                        </p>
+                        <p>
+                            That's why our trailblazing portfolio of automotive brands is building the go-to destination for car-changing, 
+                            capable of reaching drivers everywhere.
+                        </p>
+                        <p>
+                            Our group has one of the world's most popular motoring YouTube channels, with over <span class="text-primary"><?= $youtubeViews; ?></span> annual views. 
+                            We also sell <span class="text-primary"><?= $printCopies; ?></span> print copies of our magazines and have over <span class="text-primary"><?= $websiteVisits; ?></span> website visits a year.
+                        </p>
+                    </div>
+                    <h4><span class="text-primary fw-bold">Trusted By</span></h4>
+                    <div class="brand-logos mt-2 d-flex flex-wrap justify-content-between">
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-41.svg" alt="bmw">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-64.svg" alt="lexus">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-72.svg" alt="Mitsubishi">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-67.svg" alt="Mazda">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-79.svg" alt="Rolls">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-89.svg" alt="volvo">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-88.svg" alt="VW">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-69.svg" alt="benz">
+                        </div>
+                        <div class="brand-logo me-1 mb-3 bg-light d-flex align-items-center justify-content-center" style="flex: 1 1 calc(33.333% - 0.5rem);">
+                            <img src="assets/svg/svgexport-65.svg" alt="Lotus">
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <div class="quick-facts bg-light p-4">
+                    <h2 class="fw-bold mb-4">QUICK FACTS</h2>
+                    <div class="fact-item mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-youtube text-danger me-2"></i>
+                            <h3 class="fs-4 fw-bold mb-0"><?= $youtubeSubscribers; ?></h3>
+                        </div>
+                        <p class="text-muted">YouTube subscribers</p>
+                    </div>
+                    <div class="fact-item mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-star-fill text-warning me-2"></i>
+                            <h3 class="fs-4 fw-bold mb-0"><?= $trustpilotRating; ?></h3>
+                        </div>
+                        <p class="text-muted">Trustpilot rating</p>
+                    </div>
+                    <div class="fact-item mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-award text-primary me-2"></i>
+                            <h3 class="fs-4 fw-bold mb-0"><?= $trustedDealers; ?></h3>
+                        </div>
+                        <p class="text-muted">Trusted dealer partners</p>
+                    </div>
+                    <div class="fact-item mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-people-fill text-primary me-2"></i>
+                            <h3 class="fs-4 fw-bold mb-0"><?= $registeredUsers; ?></h3>
+                        </div>
+                        <p class="text-muted">Registered users</p>
+                    </div>
                 </div>
+                <img src="assets/img/about.png" alt="ABOUT" class="img-fluid mt-4 mb-4 rounded" style="width: 100%; height: auto;">
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="values">
-        <div class="container mt-5">
-            <h2 class="fw-bold">The values we live by</h2>
-            <div class="card-content mt-5 ">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="row mb-5">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <img src="assets/img/search-img.png" class="img-fluid" alt="search">
-                            </div>
-                            <div class="col-12 col-md-9 col-lg-9">
-                                <h4 class="mb-3">Advanced property search</h4>
-                                <p class="text-left">
-                                    Enable users to filter properties by location, price range, property type, and other
-                                    key criteria for a customized search experience.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <img src="assets/img/globe-img.png" class="img-fluid" alt="globe">
-                            </div>
-                            <div class="col-12 col-md-9 col-lg-9">
-                                <h4 class="mb-3">Advanced property search</h4>
-                                <p class="text-left">
-                                    Enable users to filter properties by location, price range, property type, and other
-                                    key criteria for a customized search experience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row mb-5">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <img src="assets/img/star-img.png" class="img-fluid" alt="star">
-                            </div>
-                            <div class="col-12 col-md-9 col-lg-9">
-                                <h4 class="mb-3 ">Advanced property search</h4>
-                                <p class="text-left">
-                                    Enable users to filter properties by location, price range, property type, and other
-                                    key criteria for a customized search experience.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-12 col-md-3 col-lg-3">
-                                <img src="assets/img/house-img (1).png" class="img-fluid" alt="house">
-                            </div>
-                            <div class="col-12 col-md-9 col-lg-9">
-                                <h4 class="mb-3">Advanced property search</h4>
-                                <p class="text-left">
-                                    Enable users to filter properties by location, price range, property type, and other
-                                    key criteria for a customized search experience.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="get">
-        <div class="container mt-5 mb-5">
-            <h2>Get your car online today!</h2>
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-6">
-                    <img src="assets/img/getcar.jpg" class="img-fluid rounded-4 mt-3" alt="getyourcar">
-                </div>
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="accordion mt-3 mt-lg-0" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    How Do I Find the Right Car for Me?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>
-                                        Our website allows you to filter cars based on make, model, year, price,
-                                        mileage, and more. Whether you’re looking for a
-                                        compact car, SUV, or a luxury vehicle, you can easily narrow down your search to
-                                        find the perfect match. You can also
-                                        compare multiple cars side-by-side to make an informed decision.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    What Is the Buying Process?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Buying a car on our website is straightforward. Once you’ve found the car you
-                                        want, you can contact the seller directly
-                                        through our platform to ask questions or schedule a viewing. After confirming
-                                        the car’s condition and price, you can
-                                        proceed with the purchase through secure payment methods. Our team ensures that
-                                        the paperwork and transfer process is
-                                        seamless.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What Happens If I Have Issues After Purchase?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Customer satisfaction is our priority. If you encounter any issues with your car
-                                        after purchase, our team is here to
-                                        assist. We offer support with warranty information, return policies, and any
-                                        additional services that may be required.
-                                        For peace of mind, we also provide vehicle history reports to ensure you’re
-                                        making a confident purchase.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Do You Offer Financing Options?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Yes, we offer financing options through trusted partners. During the checkout
-                                        process, you’ll have the opportunity to
-                                        apply for financing with flexible terms. Our website provides a financing
-                                        calculator to help you estimate monthly
-                                        payments and find the best option for your budget.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="trusted">
-        <div class="container">
-            <div class="row align-items-center justify-content-evenly">
-                <h5 class="col-12 text-center mb-5">Trusted By</h5>
-                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
-                    <img src="assets/img/bmwcolored.png" style="width: 80px; height: 80px; object-fit: contain;"
-                        alt="bmw">
-                </div>
-                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
-                    <img src="assets/img/mitsubishi.png" style="width: 80px; height: 80px; object-fit: contain;"
-                        alt="mitsubishi">
-                </div>
-                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
-                    <img src="assets/img/teslacolored.png" style="width: 80px; height: 80px; object-fit: contain;"
-                        alt="tesla">
-                </div>
-                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
-                    <img src="assets/img/ford.png" style="width: 80px; height: 80px; object-fit: contain;" alt="ford">
-                </div>
-                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
-                    <img src="assets/img/ferraricolored.png" style="width: 80px; height: 80px; object-fit: contain;"
-                        alt="ferrari">
-                </div>
-                <div class="col-6 col-sm-4 col-md-auto d-flex justify-content-center mb-2 mb-sm-0">
-                    <img src="assets/img/porschelogo.png" style="width: 80px; height: 80px; object-fit: contain;"
-                        alt="porsche">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="provide">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-5 col-lg-5">
-                    <h5>We provide a complete service for the sale, purchase or rental of real estate.</h5>
-                </div>
-                <div class="col-12 col-md-7 col-lg-7">
-                    <img src="assets/img/avatar.jpg" alt="person" class="img-fluid">
-                    <p>At Automative, we take pride in our deep understanding of the automotive market and our
-                        commitment to helping
-                        clients find their perfect car, whether it's a luxury model, a reliable family vehicle, or a
-                        high-performance sports
-                        car. With a wide range of options and expert guidance, we ensure every customer drives away with
-                        the car of their
-                        dreams.</p>
-                    <ol>
-                        <li>Deep understanding of the automotive market</li>
-                        <li>Commitment to helping clients find their perfect car</li>
-                        <li>Wide range of options for luxury, family, and sports cars</li>
-                        <li>Expert guidance to ensure customers drive away with the car of their dreams</li>
-                    </ol>
-
-                    <h6>Liza Rogers, CEO of Automative</h6>
-                    <div class="container info">
-                        <div class="row">
-                            <div class="col-4 col-md-4 col-lg-4">
-                                <h3>10+<br><span>Years on the market</span></h3>
-                            </div>
-                            <div class="col-4 col-md-4 col-lg-4">
-                                <h3>600K <br> <span>Buyers per year</span></h3>
-                            </div>
-                            <div class="col-4 col-md-4 col-lg-4">
-                                <h3>90% <br> <span>Satisfied costumers</span></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="offer-timer">
-        <div class="container text-center">
-            <h2 class="text-white">Special Offer Ends In:</h2>
-            <div id="countdown-timer">
-                <p id="timer"></p>
-                <div class="text-center">
-                    <button id="get">Get It Now</button>
-                </div>
-
-                <h3 class="text-center">Calculate Your Discount</h3>
-                <form id="discount-calculator">
-                    <div class="mb-3">
-                        <label for="original-price" class="form-label">Original Price (€):</label>
-                        <input type="number" id="a" value="41900" class="form-control"
-                            placeholder="Enter the original price">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="discount" class="form-label">Discount Percentage (%):</label>
-                        <input type="number" id="b" value="25" class="form-control" max="50"
-                            placeholder="Enter discount percentage">
-                    </div>
-                    <button id="ruaj">Ruaj </button>
-                    <div class="mb-3">
-                        <p><strong>Discounted Price: </strong><output id="x" name="x" for="a b">31,425</output></p>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-        <hr style="color: #035dad;">
-    </section>
     <!--    Footer Section -->
     <footer class="container-fluid footer-info">
         <div class="row d-flex align-items-center footer-info-content">
@@ -635,136 +265,11 @@
         </div>
 
         <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
-
     </footer>
 
     <!-- Script Source Bootsrap JS & Custom JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="assets/main.js" defer></script>
-    <script>
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-
-        ctx.beginPath();
-        ctx.arc(20, 15, 7, 0, Math.PI * 2);
-        ctx.fillStyle = 'white';
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(20, 40, 13, Math.PI, 0, false);
-        ctx.closePath();
-        ctx.fillStyle = 'white';
-        ctx.fill();
-
-        myCanvas.addEventListener('click', function () {
-            window.location.href = "login.html";
-            
-        });
-
-        // Car discount kalkulator
-        document.addEventListener('DOMContentLoaded', function () {
-    const vleraShtuar = document.getElementById('a');
-    const zbritja = document.getElementById('b');
-    const resultOutput = document.getElementById('x');
-    const ruajVlerat = document.getElementById('ruaj');
-
-    const history = [];
-
-    function kalkuloZbritjen() {
-        const vleraMatch = vleraShtuar.value.match(/^\d+(\.\d+)?$/); 
-        const discountMatch = zbritja.value.match(/^\d+(\.\d+)?$/); 
-
-        if (!vleraMatch || !discountMatch) {
-            resultOutput.innerHTML = `Gabim: Ju lutemi shkruani vlera numerike t${"&euml;"} sakta.`;
-            return;
-        }
-
-        const vlera = parseFloat(vleraShtuar.value);
-        const discount = parseFloat(zbritja.value);
-
-        try {
-            if (isNaN(vlera) || isNaN(discount)) {
-                throw new Error(`Gabim: Ju lutemi shkruani vlera numerike t${"&euml;"} sakta.`);
-            }
-            if (vlera <= 0 || discount <= 0) {
-                throw new Error(`Gabim: Vlerat duhet t${"&euml;"} jen${"&euml;"} m${"&euml;"} t${"&euml;"} mëdha se zero.`);
-            }
-            if (discount > 100) {
-                throw new Error(`Gabim: Zbritja nuk mund t${"&euml;"} tejkaloj${"&euml;"} 100%.`);
-            }
-            if (vlera > Number.MAX_VALUE) {
-                throw new Error(
-                    `Gabim: Vlera tejkalon kufirin maksimal t${"&euml;"} lejuar (${Number.MAX_VALUE.toExponential()}).`
-                );
-            }
-            const vleraZbritur = vlera - (vlera * discount / 100);
-            resultOutput.innerHTML = `Çmimi i zbritur: ${vleraZbritur.toFixed(2)} EUR`;
-
-            resultOutput.innerHTML = resultOutput.innerHTML.replace('EUR', '€');
-        } catch (error) {
-            resultOutput.innerHTML = error.message;
-        }
-    }
-
-    vleraShtuar.addEventListener('input', kalkuloZbritjen);
-    zbritja.addEventListener('input', kalkuloZbritjen);
-
-    function saveCalculation(e) {
-        e.preventDefault();
-
-        const vlera = parseFloat(vleraShtuar.value);
-        const discount = parseFloat(zbritja.value);
-        const vleraZbritur = parseFloat(resultOutput.textContent.split(":")[1]?.trim());
-
-        try {
-            if (isNaN(vlera) || isNaN(discount) || vlera <= 0 || discount <= 0 || discount > 100) {
-                throw new Error(
-                    `Gabim: Sigurohuni q${"&euml;"} vlerat jan${"&euml;"} t${"&euml;"} sakta dhe zbritja nuk tejkalon 100%.`
-                );
-            }
-
-            history.push({
-                vlera: vlera.toFixed(2),
-                discount: discount.toFixed(2),
-                vleraZbritur: vleraZbritur.toFixed(2),
-            });
-
-            console.log("Historiku i llogaritjeve:");
-            history.forEach((entry, index) => {
-                console.log(
-                    `Llogaritja ${index + 1}: Çmimi: ${entry.vlera}, Zbritja: ${entry.discount}%, Çmimi i Zbritur: ${entry.vleraZbritur}`
-                );
-            });
-        } catch (error) {
-            console.error(`Gabim gjatë ruajtjes: ${error.message}`);
-        }
-    }
-
-    if (ruajVlerat) {
-        ruajVlerat.addEventListener('click', saveCalculation);
-    }
-
-    kalkuloZbritjen();
-});
-    </script>
-    <script>
-        $(document).ready(function () {
-
-            $("body").append('<button id="scrollToTop">↑</button>');
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 200) {
-                    $("#scrollToTop").fadeIn();
-                } else {
-                    $("#scrollToTop").fadeOut();
-                }
-            });
-
-            $("#scrollToTop").click(function () {
-                $("html, body").animate({ scrollTop: 0 }, 100);
-            });
-        });
-    </script>
 </body>
 
 </html>
