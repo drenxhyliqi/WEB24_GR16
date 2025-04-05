@@ -100,10 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     #phoneNumber {
-        display: none;
-        cursor: pointer;
+    display: none; 
+    cursor: pointer;
     }
-
     /* Responsivitet i formës dhe fushave të input-it */
     .contactForm input, .contactForm textarea {
         border-radius: 8px;
@@ -131,6 +130,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         font-weight: 500;
     }
 
+    .questionsImg{
+        width:150px;
+        border-radius:50%;
+    }
 </style>
 
 <body>
@@ -159,7 +162,91 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </nav>
 
-    <script>
+    <section class="container-fluid mt-4 Contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 contactUs">
+                    <h1><b>Contact Us</b></h1>
+                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
+                    <div class="d-flex align-items-center gap-4 flex-wrap"> 
+
+                        <img src="assets/img/avatar1.jpg" alt="" class="questionsImg">
+
+                        <div class="questionText">
+                            <h2><b>Questions?</b></h2>
+                            <div id="contact-info">
+                                <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;">(406) 555‑0120</span>
+                                    <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 mb-5 contactForm">
+                    <h2><b>Get in touch</b></h2>
+
+                    <!-- Error message displayed at the top of the form -->
+                    <?php if (isset($errorMessages)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $errorMessages; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Success message displayed at the top of the form -->
+                    <?php if (isset($successMessage)): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo $successMessage; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <form id="contactForm" action="contact.php" method="POST">
+                        <label for="full-name" class="form-label"></label>
+                        <input type="text" id="full-name" name="full-name" class="form-control" placeholder="Full name" autocomplete="off">
+                        
+                        <label for="location" class="form-label"></label>
+                        <input list="locations" class="form-control" id="location" name="location" placeholder="Region" autocomplete="off">
+                        <datalist id="locations">
+                            <option value="Europe">
+                            <option value="Asia">
+                            <option value="USA">
+                            <option value="Australia">
+                            <option value="Africa">
+                        </datalist>
+                        
+                        <label for="email" class="form-label"></label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off">
+                        
+                        <label for="number" class="form-label"></label>
+                        <input type="tel" id="number" name="number" class="form-control" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$">
+                        
+                        <label for="message" class="form-label"></label>
+                        <textarea id="message" name="message" class="form-control" rows="3" placeholder="Your message"></textarea>
+                        
+                        <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const phoneNumber = document.getElementById('phoneNumber');
+            const toggleButton = document.getElementById('toggleNumberBtn');
+
+            function togglePhoneNumber() {
+                if (phoneNumber.style.display === "none") {
+                    phoneNumber.style.display = "inline"; 
+                    toggleButton.textContent = "Hide number"; 
+                } else {
+                    phoneNumber.style.display = "none"; 
+                }
+            }
+
+            toggleButton.addEventListener('click', togglePhoneNumber);
+        });
+
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -213,86 +300,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return true;
         }
 
-        // Attach the validation function to the form submission event
         document.addEventListener("DOMContentLoaded", function () {
             const form = document.getElementById("contactForm");
 
             form.addEventListener("submit", function (e) {
                 if (!validateForm(e)) {
-                    e.preventDefault();  // Prevent form submission if validation fails
+                    e.preventDefault();  
                 }
-            });
+            });    
         });
-    </script>
 
-    <section class="container-fluid mt-4 Contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6 contactUs">
-                    <h1><b>Contact Us</b></h1>
-                    <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
-                    <div class="d-flex align-items-center">
-                        <div class="questions">
-                            <div class="questions-body">
-                                <img src="assets/img/avatar1.jpg" alt="" id="questionsImg">
-                                <div class="text mt-4">
-                                    <h2><b>Questions?</b></h2>
-                                    <div id="contact-info">
-                                        <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;">(406) 555‑0120</span>
-                                            <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 mb-5 contactForm">
-                    <h2><b>Get in touch</b></h2>
-
-                    <!-- Error message displayed at the top of the form -->
-                    <?php if (isset($errorMessages)): ?>
-                        <div class="alert alert-danger" role="alert">
-                            <?php echo $errorMessages; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- Success message displayed at the top of the form -->
-                    <?php if (isset($successMessage)): ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo $successMessage; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <form id="contactForm" action="contact.php" method="POST">
-                        <label for="full-name" class="form-label"></label>
-                        <input type="text" id="full-name" name="full-name" class="form-control" placeholder="Full name" autocomplete="off">
-                        
-                        <label for="location" class="form-label"></label>
-                        <input list="locations" class="form-control" id="location" name="location" placeholder="Region" autocomplete="off">
-                        <datalist id="locations">
-                            <option value="Europe">
-                            <option value="Asia">
-                            <option value="USA">
-                            <option value="Australia">
-                            <option value="Africa">
-                        </datalist>
-                        
-                        <label for="email" class="form-label"></label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off">
-                        
-                        <label for="number" class="form-label"></label>
-                        <input type="tel" id="number" name="number" class="form-control" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$">
-                        
-                        <label for="message" class="form-label"></label>
-                        <textarea id="message" name="message" class="form-control" rows="3" placeholder="Your message"></textarea>
-                        
-                        <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        </script>
     </section>
     <footer class="container-fluid footer-info">
         <div class="row d-flex align-items-center footer-info-content">
