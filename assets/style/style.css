@@ -125,7 +125,7 @@ ul li a {
 /* ============= THANK YOU SECTION ============= */
 #thankyou {
     margin: 10% 5% 5% 5%;
-    background-image: url("../assets/img/thankbg.png");
+    background-image:url(../img/background.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

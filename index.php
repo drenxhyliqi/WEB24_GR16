@@ -10,7 +10,7 @@
     <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -224,157 +224,243 @@ $veturat = [
     </div>
 
     <!-- ============= BRANDS SECTION ============== -->
-    <section class="container brands">
-        <h3 class="fw-bold">Browse by car manufacturer</h3>
-        <div class="row">
+    <?php
+class CarBrand {
+    protected $name;
+    protected $logoPath;
+
+    public function __construct($name, $logoPath) {
+        $this->name = $name;
+        $this->logoPath = $logoPath;
+    }
+
+    public function render() {
+        return '
+        <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
+            <img src="' . $this->logoPath . '" alt="' . $this->name . '" class="me-3" style="width: 40px;">
+            <span class="fw-bold">' . $this->name . '</span>
+        </a>';
+    }
+}
+class Jaguar extends CarBrand {
+    public function __construct() {
+        parent::__construct('Jaguar', 'assets/svg/svgexport-57.svg');
+    }
+}
+class Lamborghini extends CarBrand {
+    public function __construct() {
+        parent::__construct('Lamborghini', 'assets/svg/svgexport-61.svg');
+    }
+}
+class LandRover extends CarBrand {
+    public function __construct() {
+        parent::__construct('Land Rover', 'assets/svg/svgexport-62.svg');
+    }
+}
+class Lexus extends CarBrand {
+    public function __construct() {
+        parent::__construct('Lexus', 'assets/svg/svgexport-64.svg');
+    }
+}
+class Maserati extends CarBrand {
+    public function __construct() {
+        parent::__construct('Maserati', 'assets/svg/svgexport-66.svg');
+    }
+}
+class McLaren extends CarBrand {
+    public function __construct() {
+        parent::__construct('McLaren', 'assets/svg/svgexport-68.svg');
+    }
+}
+class Mercedes extends CarBrand {
+    public function __construct() {
+        parent::__construct('Mercedes', 'assets/svg/svgexport-69.svg');
+    }
+}
+class Ferrari extends CarBrand {
+    public function __construct() {
+        parent::__construct('Ferrari', 'assets/svg/svgexport-47.svg');
+    }
+}
+class Mitsubishi extends CarBrand {
+    public function __construct() {
+        parent::__construct('Mitsubishi', 'assets/svg/svgexport-72.svg');
+    }
+}
+class Nissan extends CarBrand {
+    public function __construct() {
+        parent::__construct('Nissan', 'assets/svg/svgexport-73.svg');
+    }
+}
+class Porsche extends CarBrand {
+    public function __construct() {
+        parent::__construct('Porsche', 'assets/svg/svgexport-77.svg');
+    }
+}
+class RollsRoyce extends CarBrand {
+    public function __construct() {
+        parent::__construct('Rolls Royce', 'assets/svg/svgexport-79.svg');
+    }
+}
+class Abarth extends CarBrand {
+    public function __construct() {
+        parent::__construct('Abarth', 'assets/svg/svgexport-35.svg');
+    }
+}
+class AlfaRomeo extends CarBrand {
+    public function __construct() {
+        parent::__construct('Alfa Romeo', 'assets/svg/svgexport-36.svg');
+    }
+}
+class Mazda extends CarBrand {
+    public function __construct() {
+        parent::__construct('Mazda', 'assets/svg/svgexport-67.svg');
+    }
+}
+class AstonMartin extends CarBrand {
+    public function __construct() {
+        parent::__construct('Aston Martin', 'assets/svg/svgexport-38.svg');
+    }
+}
+class Audi extends CarBrand {
+    public function __construct() {
+        parent::__construct('Audi', 'assets/svg/svgexport-39.svg');
+    }
+}
+class Bentley extends CarBrand {
+    public function __construct() {
+        parent::__construct('Bentley', 'assets/svg/svgexport-40.svg');
+    }
+}
+class BMW extends CarBrand {
+    public function __construct() {
+        parent::__construct('BMW', 'assets/svg/svgexport-41.svg');
+    }
+}
+class Lotus extends CarBrand {
+    public function __construct() {
+        parent::__construct('Lotus', 'assets/svg/svgexport-65.svg');
+    }
+}
+$brands = [
+    new Jaguar(),
+    new Lamborghini(),
+    new LandRover(),
+    new Lexus(),
+    new Maserati(),
+    new McLaren(),
+    new Mercedes(),
+    new Ferrari(),
+    new Mitsubishi(),
+    new Nissan(),
+    new Porsche(),
+    new RollsRoyce(),
+    new Abarth(),
+    new AlfaRomeo(),
+    new Mazda(),
+    new AstonMartin(),
+    new Audi(),
+    new Bentley(),
+    new BMW(),
+    new Lotus(),
+];
+?>
+<section class="container brands">
+    <h3 class="fw-bold">Browse by car manufacturer</h3>
+    <div class="row">
+        <?php foreach (array_chunk($brands, 5) as $brandChunk): ?>
             <div class="col-6 col-md-3">
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-57.svg" alt="Jaguar" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Jaguar</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-61.svg" alt="Lamborghini" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Lamborghini</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-62.svg" alt="Land Rover" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Land Rover</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-64.svg" alt="Lexus" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Lexus</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-66.svg" alt="Maserati" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Maserati</span>
-                </a>
+                <?php foreach ($brandChunk as $brand): ?>
+                    <?= $brand->render(); ?>
+                <?php endforeach; ?>
             </div>
-            <div class="col-6 col-md-3">
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-68.svg" alt="McLaren" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">McLaren</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-69.svg" alt="Mercedes" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Mercedes</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-47.svg" alt="Ferrari" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Ferrari</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-72.svg" alt="Mitsubishi" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Mitsubishi</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-73.svg" alt="Nissan" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Nissan</span>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-77.svg" alt="Porsche" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Porsche</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-79.svg" alt="Rolls Royce" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Rolls Royce</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-35.svg" alt="Abarth" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Abarth</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-36.svg" alt="Alfa Romeo" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Alfa Romeo</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-67.svg" alt="Mazda" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Mazda</span>
-                </a>
-            </div>
-            <div class="col-6 col-md-3">
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-38.svg" alt="Aston Martin" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Aston Martin</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-39.svg" alt="Audi" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Audi</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-40.svg" alt="Bentley" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Bentley</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-41.svg" alt="BMW" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">BMW</span>
-                </a>
-                <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
-                    <img src="assets/svg/svgexport-65.svg" alt="Lotus" class="me-3" style="width: 40px;">
-                    <span class="fw-bold">Lotus</span>
-                </a>
-            </div>
-        </div>
-    </section>
+        <?php endforeach; ?>
+    </div>
+</section>
 
     <!-- ============= INFO SECTION ============= -->
-    <section class="container-fluid mt-4 mb-4">
-        <div class="col-auto">
-            <h2 class="mt-3 mb-4">What sets Finder apart?</h2>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-copy"></i>
-                                <p class="mt-5">Over 1 million listings</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <?php
+class InfoCard {
+    private $icon;
+    private $text;
 
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-search"></i>
-                                <p class="mt-5">Personalized search</p>
-                            </div>
-                        </div>
+    public function __construct(string $icon, string $text) {
+        $this->icon = $icon;
+        $this->text = $text;
+    }
+
+    public function renderCard(): string {
+        return '
+        <div class="card info-content" style="width: 100%;">
+            <div class="card-body">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-auto">
+                        <i class="bi ' . $this->icon . '"></i>
+                        <p class="mt-5">' . $this->text . '</p>
                     </div>
                 </div>
             </div>
+        </div>';
+    }
+}
+
+class InfoSection {
+    protected $title;
+    private $cards = [];
+
+    public function __construct(string $title) {
+        $this->title = $title;
+    }
+
+    public function addCard(InfoCard $card): void {
+        $this->cards[] = $card;
+    }
+
+    protected function renderHeader(): string {
+        return '
+        <div class="col-auto">
+            <h2 class="mt-3 mb-4">' . $this->title . '</h2>
+        </div>';
+    }
+
+    public function renderSection(): void {
+        echo '
+        <section class="container-fluid mt-4 mb-4">
+            ' . $this->renderHeader() . '
+            <div class="row align-items-center">';
+
+        foreach($this->cards as $card) {
+            echo '
             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-car-front-fill"></i>
-                                <p class="mt-5">Online car appraisal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ' . $card->renderCard() . '
+            </div>';
+        }
+
+        echo '
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <div class="card info-content" style="width: 100%;">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <i class="bi bi-lightbulb"></i>
-                                <p class="mt-5">Non-stop innovation</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>';
+        echo "";
+    }
+    
+}
+
+
+$section = new InfoSection("What sets Finder apart?");
+ 
+$card1 = new InfoCard('bi-copy', 'Over 1 million listings');
+$card2 = new InfoCard('bi-search', 'Personalized search');
+$card3 = new InfoCard('bi-car-front-fill', 'Online car appraisal');
+$card4 = new InfoCard('bi-lightbulb', 'Non-stop innovation');
+
+
+$section->addCard($card1);
+$section->addCard($card2);
+$section->addCard($card3);
+$section->addCard($card4);
+
+$section->renderSection();
+?>
+
 
     <!-- ============= LATEST CARS SECTION ============= -->
     <section class="container-fluid mt-4 mb-4 cars-cards">

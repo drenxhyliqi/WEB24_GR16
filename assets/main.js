@@ -35,39 +35,4 @@ if (timerElement) {
         }
     }, 1000);
 }
-
-    // Text typing effect
-    const text = "Easy way to find the perfect car with us!";
-    let index = 0;
-    const element = document.querySelector('.display-5');
-
-    if (element) {
-        function typeText() {
-            if (index < text.length) {
-                element.textContent += text.charAt(index);
-                index++;
-                setTimeout(typeText, 100);
-            }
-        }
-        typeText(); 
-    }
-
-    // Video play/pause button
-const video = document.querySelector("video");
-const playPauseButton = document.querySelector(".playPauseButton");
-
-if (playPauseButton && video) {
-    playPauseButton.addEventListener('click', function () {
-        if (video.paused) {
-            video.play();
-            video.classList.add('playing');
-            playPauseButton.innerHTML = '<i class="bi bi-pause"></i>';
-        } else {
-            video.pause();
-            video.classList.remove('playing');
-            playPauseButton.innerHTML = '<i class="bi bi-play"></i>';
-        }
-    });
-}
-
 });
