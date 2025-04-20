@@ -86,7 +86,10 @@ $car4->setStatus("Used");
 $cars[] = $car4;
   
 
-function __destruct() {}
+public function __destruct() {
+    echo "Object destroyed";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

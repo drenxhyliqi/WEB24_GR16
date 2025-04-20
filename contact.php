@@ -175,11 +175,13 @@ function formatPhoneNumber($number) {
                     <div class="d-flex align-items-center gap-4 flex-wrap"> 
 
                         <img src="assets/img/avatar1.jpg" alt="" class="questionsImg">
-
+                        <?php
+                            define("phoneNumber","(406) 555‑0120");
+                        ?>
                         <div class="questionText">
                             <h2><b>Questions?</b></h2>
                             <div id="contact-info">
-                                <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;">(406) 555‑0120</span>
+                                <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;"><?php echo phoneNumber?></span>
                                     <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button>
                                 </p>
                             </div>
