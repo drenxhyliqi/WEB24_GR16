@@ -224,7 +224,7 @@
     <!-- ============= BRANDS SECTION ============== -->
 <?php
     class CarBrand {
-        protected $name;
+        public $name;
         protected $logoPath;
 
         public function __construct($name, $logoPath) {

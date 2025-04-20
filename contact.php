@@ -1,18 +1,15 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form data
     $full_name = trim($_POST['full-name']);
     $email = trim($_POST['email']);
     $number = trim($_POST['number']);
     $message = trim($_POST['message']);
     
-    // Define the error message array
     $errors = [];
 
-    // Regular expression patterns for validation
-    $namePattern = "/^[a-zA-Z\s]+$/"; // Validates only alphabets and spaces
-    $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Valid email format
-    $phonePattern = "/^\+383[\s-]*\d{2}[\s-]*\d{3}[\s-]*\d{3}$/"; // Specific format for Kosovo phone numbers (+383 followed by 8 digits)
+    $namePattern = "/^[a-zA-Z\s]+$/"; 
+    $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; 
+    $phonePattern = "/^\+383[\s-]*\d{2}[\s-]*\d{3}[\s-]*\d{3}$/"; 
 
     // Validate full name
     if (empty($full_name) || !preg_match($namePattern, $full_name)) {
@@ -24,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Please provide a valid email address.";
     }
 
-    // Validate phone number (if provided)
+    // Validate phone number
     if (!empty($number)) {
         $cleanedNumber = preg_replace('/[^\d+]/', '', $number);
     
@@ -41,16 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Please enter your message.";
     }
 
-    // Check if there are any validation errors
     if (count($errors) > 0) {
-        // Store error messages as an unordered list to display above the form
         $errorMessages = "<ul>";
         foreach ($errors as $error) {
             $errorMessages .= "<li>" . $error . "</li>";
         }
         $errorMessages .= "</ul>";
     } else {
-        // If no errors, display a success message
         $successMessage = "Your message has been successfully submitted!";
     }
 }
@@ -285,7 +279,7 @@ function formatPhoneNumber($number) {
             const errorMessage = document.getElementById('error-message');
 
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            const phonePattern = /^\+383\d{8}$/; // Modify this pattern if necessary for specific formats
+            const phonePattern = /^\+383\d{8}$/; 
 
             // Validate inputs
             if (fullName === "" || email === "" || message === "") {

@@ -201,7 +201,6 @@
             text-align: left;
         }
 
-        /* Accordion Content Style */
         .accordion-content {
             padding: 10px;
             background-color: #f4f4f9;
@@ -248,7 +247,7 @@
         }
 
         .video {
-            position: relative; /* Establish a reference point for absolute positioning */
+            position: relative;
         }
     </style>
 </head>
@@ -783,7 +782,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 
-        // Changing images
         $(document).ready(function () {
             $('#main-img-1').mouseenter(function () {
                 const newSrc = $(this).attr('src');
@@ -806,7 +804,6 @@
             });
         });
 
-        // Show more function 
         function showMore() {
             const extraContent = document.getElementById('extra-content');
             const showMoreLink = document.querySelector('.show-more');
@@ -820,7 +817,6 @@
             }
         }
 
-        // Toggle paragraphs
         $(document).ready(function () {
             $('#accordion-btn1').click(function () {
                 $('#accordion-content1').slideToggle();
@@ -834,20 +830,18 @@
                 const content = $('#accordion-content3');
 
                 if (content.is(':visible')) {
-                    // Animate to hide
                     content.animate(
                         { paddingTop: '0px', paddingBottom: '0px', marginTop: '0px', marginBottom: '0px' }, 
-                        500, // Animation duration
+                        500, 
                         function () {
-                            content.css('display', 'none'); // Fully hide after animation
+                            content.css('display', 'none'); 
                         }
                     );
                 } else {
-                    // Animate to show
-                    content.css('display', 'block'); // Ensure visible before animation
+                    content.css('display', 'block'); 
                     content.animate(
                         { paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', marginBottom: '10px' }, 
-                        500 // Animation duration
+                        500 
                     );
                 }
             });
@@ -887,7 +881,6 @@
     <!-- Scroll to top btn -->
     <script>
         $(document).ready(function () {
-            // Add a "Scroll to Top" button functionality
             $("body").append('<button id="scrollToTop">↑</button>');
 
             $(window).scroll(function () {

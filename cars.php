@@ -1,5 +1,4 @@
 <?php
- // Define the Car class
  class Car {
     private $image;
     private $makeModel;
@@ -302,19 +301,15 @@ function __destruct() {}
 
                                 <!-- Car Details -->
                                 <div class="card-body">
-                                    <!-- Specs -->
                                     <p class="card-text small text-muted mb-1"><?= $car->getVariant() ?></p>
 
-                                    <!-- Make and Model -->
                                     <h5 class="card-title fw-bold mb-1"><?= $car->getMakeModel() ?></h5>
 
-                                    <!-- Price and Savings -->
                                     <div class="mb-2">
                                         <div class="fs-4 fw-bold"><?= $car->getPrice() ?></div>
                                         <div class="text-success small"><?= $car->getSavings() ?></div>
                                     </div>
 
-                                    <!-- Year and Mileage -->
                                     <div class="d-flex align-items-center small text-secondary mt-3">
                                         <span><?= $car->getYear() ?></span>
                                         <span class="mx-2">•</span>
