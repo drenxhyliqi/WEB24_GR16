@@ -1,10 +1,14 @@
 <?php
 function validateEmail($email) {
+    $email = strtolower($email);
     $emailPattern = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
     return preg_match($emailPattern, $email);
 }
 
 function validatePassword($password) {
+  if (strlen($password) < 8) {
+    return false;
+    }
     $passwordPattern = '/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/';
     return preg_match($passwordPattern, $password);
 }
@@ -14,7 +18,7 @@ $alertType = '';
 $alertMessage = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"] ?? '';
+    $email = htmlspecialchars($_POST["email"] ?? '');
     $password = $_POST["password"] ?? '';
     
     $emailValid = validateEmail($email);
@@ -23,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($emailValid && $passwordValid) {
         $showAlert = true;
         $alertType = 'success';
-        $alertMessage = 'Login Successful';
+        $alertMessage = '<strong>' . strtoupper('Login Successful') . '</strong>';
     } else {
         $showAlert = true;
         $alertType = 'danger';

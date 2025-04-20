@@ -85,6 +85,7 @@
         $youtubeViews = "1.1 billion";
         $printCopies = "1.2 million";
         $websiteVisits = "100 million";
+        var_dump($youtubeSubscribers, $trustpilotRating, $trustedDealers, $registeredUsers);
         ?>
 
         <div class="row">
