@@ -180,7 +180,7 @@ function formatPhoneNumber($number) {
                     <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
                     <div class="d-flex align-items-center gap-4 flex-wrap"> 
 
-                        <img src="assets/img/avatar1.jpg" alt="" class="questionsImg">
+                        <img src="assets/img/Team/person1.jpg" alt="" class="questionsImg">
 
                         <div class="questionText">
                             <h2><b>Questions?</b></h2>
@@ -257,24 +257,6 @@ function formatPhoneNumber($number) {
             toggleButton.addEventListener('click', togglePhoneNumber);
         });
 
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-
-        ctx.beginPath();
-        ctx.arc(20, 15, 7, 0, Math.PI * 2);
-        ctx.fillStyle = 'white';
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(20, 40, 13, Math.PI, 0, false);
-        ctx.closePath();
-        ctx.fillStyle = 'white';
-        ctx.fill();
-
-        myCanvas.addEventListener('click', function () {
-            window.location.href = "login.html";
-        });
-
         // Form validation function
         function validateForm(event) {
             const fullName = document.getElementById('full-name').value.trim();
@@ -330,7 +312,7 @@ function formatPhoneNumber($number) {
                     <span class="mb-0">Over 1 million listings</span>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="coaval-6 col-sm-6 col-md-6 col-lg-3 ">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-search me-2"></i>
                     <span class="">Personalized search</span>
@@ -393,5 +375,8 @@ function formatPhoneNumber($number) {
         </div>
         <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
     </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

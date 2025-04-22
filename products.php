@@ -59,7 +59,7 @@ $products = [
         "mileage" => "5K mi",
         "fuel" => "Gasoline",
         "transmission" => "Automatic",
-        "image" => "assets/img/fff.webp",
+        "image" => "assets/img/pista488.jpg",
         "date" => "09/23/2021"
     ],
     [
@@ -71,7 +71,7 @@ $products = [
         "mileage" => "2K mi",
         "fuel" => "Gasoline",
         "transmission" => "Automatic",
-        "image" => "assets/img/ferrr.webp",
+        "image" => "assets/img/pista488.jpg",
         "date" => "02/14/2023"
     ],
     [
