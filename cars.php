@@ -29,7 +29,9 @@
     public function getMileage() { return $this->mileage; }
     public function getStatus() { return $this->status; }
 
-    public function setImage($image) { $this->image = $image; }
+    public function setImage($image) {
+         $this->image = $image;
+         }
     public function setMakeModel($makeModel) { $this->makeModel = $makeModel; }
     public function setVariant($variant) { $this->variant = $variant; }
     public function setPrice($price) { $this->price = $price; }
