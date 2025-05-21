@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title Name -->
     <title>Car Me | About Us</title>
     <link rel="icon" href="assets/img/webicon.png" type="image/x-icon">
 
@@ -86,6 +85,7 @@
         $youtubeViews = "1.1 billion";
         $printCopies = "1.2 million";
         $websiteVisits = "100 million";
+        var_dump($youtubeSubscribers, $trustpilotRating, $trustedDealers, $registeredUsers);
         ?>
 
         <div class="row">

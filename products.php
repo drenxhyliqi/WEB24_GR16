@@ -102,10 +102,8 @@ $products = [
 
 // Controlling sort request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the value from the POST request
     $sort_by = $_POST['sort_by'];
 
-    // Validate the sort_by value using a RegEx
     if (preg_match("/^(sort|rsort|asort|ksort|arsort|krsort)$/", $sort_by)) {
         switch ($sort_by) {
             case 'sort':

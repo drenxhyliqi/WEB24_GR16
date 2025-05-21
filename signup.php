@@ -166,7 +166,7 @@
       if (email.trim() === "") {
         document.getElementById("emailError").innerHTML = "Please fill in the Email field.";
         isValid = false;
-      } else if (!emailRegex.test(email)) {
+      } elseif (!emailRegex.test(email)) {
         document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
         isValid = false;
       }
