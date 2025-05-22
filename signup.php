@@ -1,5 +1,11 @@
 <?php
 require_once('db_conn.php');
+session_start();
+
+if(isset($_SESSION['active'])){
+  session_unset();
+  session_destroy();
+}
 
 $errors = [];
 if (isset($_POST['signup'])) {
@@ -93,7 +99,11 @@ if (isset($_POST['signup'])) {
         <ul class="navbar-nav d-flex align-items-right flex-row py-1">
           <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
           <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+          <?php if(isset($_SESSION['active'])){ ?>
+            <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+          <?php }else{ ?>
+            <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+          <?php } ?>
         </ul>
       </div>
     </div>
