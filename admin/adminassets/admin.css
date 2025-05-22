@@ -1,0 +1,37 @@
+    .custom-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 1rem;
+    }
+
+    .btn-custom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    border-bottom:1px solid #0082f5 ;
+    color: #0082f5;
+    padding: 10px 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-custom i {
+    font-size: 1.2rem;
+    }
+
+    .btn-custom:hover {
+    transform: translateX(2px);
+    color: #0082f5;
+    }
+
+    .offcanvas{
+    background-color: #000615 !important;
+    }
+    .offcanvas h5{
+    color: #fff !important;
+    }
+    .offcanvas .btn-close{
+    color: #fff !important; /*To be fixed*/
+    }

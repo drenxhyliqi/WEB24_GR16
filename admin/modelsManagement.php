@@ -6,114 +6,211 @@
     <title>Dashboard Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="adminassets/admin.css">
+    <link rel="stylesheet" href="../assets/style/style.css">
 </head>
-<style>
-.offcanvas {
-    background-color: #000615;
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
-    width: 280px;
-}
-
-.offcanvas-header {
-    background-color: #007bff;
-    color: white;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-
-.offcanvas-title {
-    font-weight: 600;
-    font-size: 1.25rem;
-}
-
-.offcanvas-body .list-group-item {
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-weight: 500;
-    transition: 0.3s ease;
-}
-
-.offcanvas-body .list-group-item a {
-    color: #333;
-    text-decoration: none;
-    display: block;
-}
-
-
-.offcanvas-header .btn-close {
-    filter: brightness(0) invert(1);
-    opacity: 1;
-    font-size: 1.4rem;
-}
-
-button.btn.btn-transparent i.bi-list {
-    color: #007bff;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-button.btn.btn-transparent i.bi-list:hover {
-    color: #0056b3;
-}
-.offcanvas-body .list-group-item {
-    background-color: #000615; 
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.offcanvas-body .list-group-item a {
-    color: white; 
-    text-decoration: none;
-    display: block;
-}
-
-.offcanvas-body .list-group-item:hover, 
-.offcanvas-body .list-group-item:focus {
-    background-color:#f0f8ff; 
-}
-.offcanvas-body .list-group-item:hover a, 
-.offcanvas-body .list-group-item:focus a {
-    color: #000; 
-}
-</style>
-
 <body>
-    <nav style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); background-color:#f9f9f9;">
-        <div class="container">
-            <div class="nav justify-content-between align-items-center">
-                <div>
-                    <a class="nav-link p-0" href="#">
-                        <img src="../assets/img/webicon.png" alt="Logo" height="62" />
-                    </a>
-                </div>
-                <div class="d-inline-flex align-items-center gap-2">
-                    <span class="nav-link p-0">
-                        <a href="#" class="text-decoration-none text-dark"><i class="bi bi-person-circle fs-4 h5 "></i></a>
-                    </span>
-                    <span>
-                        <a class="btn btn-transparent p-0" class="text-decoration-none text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Toggle menu">
-                            <i class="bi bi-list fs-4 h5"></i>
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a href="../admin/index.php">
+        <img src="../assets/img/company_logo.png" alt="logo" width="140px">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="bi bi-list fs-2"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
+            <li class="nav-item"><a class="nav-link" href="#"></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"></a></li>
+        </ul>
+        <ul class="navbar-nav d-flex align-items-right flex-row py-1">
+            <li class="nav-item"><a class="# " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i class="bi bi-list fs-4"></i>
+        </a>
+        </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><i class="bi bi-person-circle fs-3"> Admin Dynamic</i></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+    <div class="custom-button-group">
+        <a href="dashboard.php" class="btn-custom">
+        <i class="bi bi-grid-fill"></i>
+        <span>Dashboard</span>
+        </a>
+        <a href="productsManagement.php" class="btn-custom">
+        <i class="bi bi-car-front-fill"></i>
+        <span>Cars</span>
+        </a>
+        <a href="clientsManagement.php" class="btn-custom">
+        <i class="bi bi-people-fill"></i>
+        <span>Clients</span>
+        </a>
+        <a href="#" class="btn-custom">
+        <i class="bi bi-list-nested"></i>
+        <span>Models</span>
+        </a>
+        <a href="#" class="btn-custom">
+        <i class="bi bi-box-arrow-left"></i>
+        <span>Log Out</span>
+        </a>
+    </div>
+    </div>
+</div>
+<div class="container-fluid">
+        <div class="container-fluid p-4">
+    <div class="mb-4">
+        <h2 class="fw-bold">Menaxhimi i Modeleve</h2>
+        <p class="text-muted">Menaxhoni dhe përditësoni informacionin e modeleve të veturave.</p>
+    </div>
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="card shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-semibold mb-0">Lista e Modeleve</h5>
+        <a href="#" class="btn btn-primary">
+            <i class="bi bi-plus-circle-fill"></i> Shto
+        </a>
         </div>
-        <div class="offcanvas-body">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="clientsManagement.php">Clients Management</a></li>
-                <li class="list-group-item"><a href="modelsManagement.php">Models Management</a></li>
-                <li class="list-group-item"><a href="productsManagement.php">Products Management</a></li>
-            </ul>
+
+        <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th>Emri i Modelit</th>
+                <th>Brendi</th>
+                <th>Segmenti</th>
+                <th class="text-end">Veprimet</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" class="form-control" value="A4" /></td>
+                <td>
+                <select class="form-select">
+                    <option selected>Audi</option>
+                    <option>BMW</option>
+                    <option>Mercedes</option>
+                    <option>Toyota</option>
+                    <option>Volkswagen</option>
+                </select>
+                </td>
+                <td>
+                <select class="form-select">
+                    <option selected>Sedan</option>
+                    <option>Hatchback</option>
+                    <option>SUV</option>
+                    <option>Coupe</option>
+                </select>
+                </td>
+                <td class="text-end">
+                <button class="btn btn-sm btn-primary">
+                    <i class="bi bi-save"></i> Ruaj
+                </button>
+                <button class="btn btn-sm btn-danger">
+                    <i class="bi bi-trash"></i> Fshij
+                </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="text" class="form-control" value="3 Series" /></td>
+                <td>
+                <select class="form-select">
+                    <option>Audi</option>
+                    <option selected>BMW</option>
+                    <option>Mercedes</option>
+                </select>
+                </td>
+                <td>
+                <select class="form-select">
+                    <option selected>Sedan</option>
+                    <option>Hatchback</option>
+                </select>
+                </td>
+                <td class="text-end">
+                <button class="btn btn-sm btn-primary"><i class="bi bi-save"></i> Ruaj</button>
+                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Fshij</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="text" class="form-control" value="C-Class" /></td>
+                <td>
+                <select class="form-select">
+                    <option>BMW</option>
+                    <option>Audi</option>
+                    <option selected>Mercedes</option>
+                </select>
+                </td>
+                <td>
+                <select class="form-select">
+                    <option selected>Sedan</option>
+                    <option>Coupe</option>
+                </select>
+                </td>
+                <td class="text-end">
+                <button class="btn btn-sm btn-primary"><i class="bi bi-save"></i> Ruaj</button>
+                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Fshij</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="text" class="form-control" value="Golf" /></td>
+                <td>
+                <select class="form-select">
+                    <option selected>Volkswagen</option>
+                    <option>Toyota</option>
+                </select>
+                </td>
+                <td>
+                <select class="form-select">
+                    <option>Coupe</option>
+                    <option selected>Hatchback</option>
+                </select>
+                </td>
+                <td class="text-end">
+                <button class="btn btn-sm btn-primary"><i class="bi bi-save"></i> Ruaj</button>
+                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Fshij</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="text" class="form-control" value="Camry" /></td>
+                <td>
+                <select class="form-select">
+                    <option>Audi</option>
+                    <option>Toyota</option>
+                    <option selected>Toyota</option>
+                </select>
+                </td>
+                <td>
+                <select class="form-select">
+                    <option selected>Sedan</option>
+                    <option>SUV</option>
+                </select>
+                </td>
+                <td class="text-end">
+                <button class="btn btn-sm btn-primary"><i class="bi bi-save"></i> Ruaj</button>
+                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Fshij</button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
         </div>
     </div>
+    </div>
+
+</div>
+
 
     <!-- Bootstrap JS bundle (popper + bootstrap.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
