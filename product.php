@@ -253,7 +253,7 @@
 </head>
 
 <body>
-    <!-- ============= NAVBAR ============= -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <a href="index.php">
@@ -264,15 +264,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php if (isset($_SESSION['active'])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -498,11 +502,11 @@
                         </audio>
                     </div>
 
-                                <div class="video text-center mt-4">
-                                    <video src="assets/video/Cla 45 amg Launch Control.mp4" class="rounded-4" controls autoplay muted loop playsinline
-                                        style="height: 500px; width: 100%; object-fit: cover;" playsinline></video>
-                                   
-                                </div>
+                    <div class="video text-center mt-4">
+                        <video src="assets/video/Cla 45 amg Launch Control.mp4" class="rounded-4" controls autoplay muted loop playsinline
+                            style="height: 500px; width: 100%; object-fit: cover;" playsinline></video>
+
+                    </div>
 
                 </div>
             </div>
@@ -781,24 +785,23 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-
-        $(document).ready(function () {
-            $('#main-img-1').mouseenter(function () {
+        $(document).ready(function() {
+            $('#main-img-1').mouseenter(function() {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
 
-            $('#main-img-2').mouseenter(function () {
+            $('#main-img-2').mouseenter(function() {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
 
-            $('#main-img-3').mouseenter(function () {
+            $('#main-img-3').mouseenter(function() {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
 
-            $('#main-img-4').mouseenter(function () {
+            $('#main-img-4').mouseenter(function() {
                 const newSrc = $(this).attr('src');
                 $('#active').attr('src', newSrc);
             });
@@ -817,36 +820,44 @@
             }
         }
 
-        $(document).ready(function () {
-            $('#accordion-btn1').click(function () {
+        $(document).ready(function() {
+            $('#accordion-btn1').click(function() {
                 $('#accordion-content1').slideToggle();
             });
 
-            $('#accordion-btn2').click(function () {
+            $('#accordion-btn2').click(function() {
                 $('#accordion-content2').fadeToggle();
             });
 
-            $('#accordion-btn3').click(function () {
+            $('#accordion-btn3').click(function() {
                 const content = $('#accordion-content3');
 
                 if (content.is(':visible')) {
-                    content.animate(
-                        { paddingTop: '0px', paddingBottom: '0px', marginTop: '0px', marginBottom: '0px' }, 
-                        500, 
-                        function () {
-                            content.css('display', 'none'); 
+                    content.animate({
+                            paddingTop: '0px',
+                            paddingBottom: '0px',
+                            marginTop: '0px',
+                            marginBottom: '0px'
+                        },
+                        500,
+                        function() {
+                            content.css('display', 'none');
                         }
                     );
                 } else {
-                    content.css('display', 'block'); 
-                    content.animate(
-                        { paddingTop: '10px', paddingBottom: '10px', marginTop: '10px', marginBottom: '10px' }, 
-                        500 
+                    content.css('display', 'block');
+                    content.animate({
+                            paddingTop: '10px',
+                            paddingBottom: '10px',
+                            marginTop: '10px',
+                            marginBottom: '10px'
+                        },
+                        500
                     );
                 }
             });
 
-            $('#accordion-btn4').click(function () {
+            $('#accordion-btn4').click(function() {
                 if ($('#accordion-content4').is(':visible')) {
                     $('#accordion-content4').hide();
                 } else {
@@ -872,18 +883,18 @@
         ctx.fillStyle = 'white';
         ctx.fill();
 
-        myCanvas.addEventListener('click', function () {
+        myCanvas.addEventListener('click', function() {
             window.location.href = "login.html";
-            
+
         });
     </script>
 
     <!-- Scroll to top btn -->
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $("body").append('<button id="scrollToTop">↑</button>');
 
-            $(window).scroll(function () {
+            $(window).scroll(function() {
                 if ($(this).scrollTop() > 200) {
                     $("#scrollToTop").fadeIn();
                 } else {
@@ -891,8 +902,10 @@
                 }
             });
 
-            $("#scrollToTop").click(function () {
-                $("html, body").animate({ scrollTop: 0 }, 100);
+            $("#scrollToTop").click(function() {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 100);
             });
         });
     </script>

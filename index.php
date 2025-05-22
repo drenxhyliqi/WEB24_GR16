@@ -21,33 +21,33 @@ session_start();
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-        <a href="index.php">
-            <img src="assets/img/company_logo.png" alt="logo" width="140px">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="bi bi-list fs-2"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+            <a href="index.php">
+                <img src="assets/img/company_logo.png" alt="logo" width="140px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="bi bi-list fs-2"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
+                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
-                <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-                <?php if(isset($_SESSION['active'])){ ?>
-                    <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
-                <?php }else{ ?>
-                    <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
-                <?php } ?>
-            </ul>
-        </div>
+                    <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+                    <?php if (isset($_SESSION['active'])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } ?>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- ============= MAIN BANNER ============= -->
+    <!-- Main Banner -->
     <div class="container-fluid main-banner p-3 p-md-3 p-lg-5 text-white text-center">
         <div class="p-0 p-md-1 p-lg-5">
             <div class="row align-items-center">
@@ -70,7 +70,7 @@ session_start();
     </div>
 
     <!-- ============= SELECT TYPE SECTION ============= -->
-    <section class="container-fluid select-type">
+    <!-- <section class="container-fluid select-type">
         <div class="row">
             <div class="col-12">
                 <div class="d-flex align-items-left flex-column gap-2">
@@ -89,12 +89,12 @@ session_start();
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <!-- ============= EXPLORE CARS SECTION ============= -->
-    <section class="container-fluid mt-4 mb-4 explore">
-        <h2 class="fw-bold">Explore cars</h2>
-        <p class="fw-semibold">Browse by car type</p>
+    <!-- Our Vehicle Models -->
+    <section class="container-fluid mt-5 explore">
+        <h2 class="section-title">Our vehicle models</h2>
+        <p class="fw-semibold">Below is a selection of our available models</p>
 
         <div class="row g-3">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2">
@@ -136,7 +136,7 @@ session_start();
         </div>
     </section>
 
-    <!-- ============= THANK YOU SECTION ============= -->
+    <!-- Thank you section -->
     <section id="thankyou">
         <div class="container-fluid">
             <h3><i class="bi bi-balloon-heart" style="color: #0369fc !important;"></i> With partners we trust. <i
@@ -146,7 +146,7 @@ session_start();
         </div>
     </section>
 
-    <!-- ============= TOP OFFERS SECTION ============= -->
+    <!-- Top offers(prej databaze ma te shtrejtit) -->
     <div class="container">
         <div class="header-row">
             <h2 class="section-title mt-5">Top offers</h2>
@@ -154,48 +154,48 @@ session_start();
                 View all <i class="bi bi-chevron-right"></i>
             </a>
         </div>
-    <!--==== TOP OFFERS SECTION ======-->
-<?php
-    // Array me të dhënat e veturave
-    $veturat = [    
-        [
-            "image" => "assets/img/gwagon.jpg",
-            "date" => "28/06/2024",
-            "title" => "Mereceds G Wagon 63",
-            "price" => "$273,000",
-            "location" => "L.A",
-            "mileage" => "09K mi",
-            "fuel" => "Gasoline",
-            "gear" => "Automatic"
-        ],
-        [
-            "image" => "assets/img/e63s.jpg",
-            "date" => "23/10/2024",
-            "title" => "Mercedes Benz E63s",
-            "price" => "$142,500",
-            "location" => "Chicago",
-            "mileage" => "0 mi",
-            "fuel" => "Electric",
-            "gear" => "Manual"
-        ],
-        [
-            "image" => "assets/img/m5.jpg",
-            "date" => "15/07/2024",
-            "title" => "BMW M5 F90",
-            "price" => "$122,500",
-            "location" => "NYC",
-            "mileage" => "15K mi",
-            "fuel" => "Gasoline",
-            "gear" => "Automatic"
-        ]
-    ];
-    ?>
-    <div class="row">
-        <?php foreach ($veturat as $vetura): ?>
-            <div class="col-lg-4 col-md-6">
-                <div class="card">
-                    <div class="card-img-wrapper">
-                        <img src="<?php echo $vetura['image']; ?>" alt="<?php echo $vetura['title']; ?>">
+        <!--==== TOP OFFERS SECTION ======-->
+        <?php
+        // Array me të dhënat e veturave
+        $veturat = [
+            [
+                "image" => "assets/img/gwagon.jpg",
+                "date" => "28/06/2024",
+                "title" => "Mereceds G Wagon 63",
+                "price" => "$273,000",
+                "location" => "L.A",
+                "mileage" => "09K mi",
+                "fuel" => "Gasoline",
+                "gear" => "Automatic"
+            ],
+            [
+                "image" => "assets/img/e63s.jpg",
+                "date" => "23/10/2024",
+                "title" => "Mercedes Benz E63s",
+                "price" => "$142,500",
+                "location" => "Chicago",
+                "mileage" => "0 mi",
+                "fuel" => "Electric",
+                "gear" => "Manual"
+            ],
+            [
+                "image" => "assets/img/m5.jpg",
+                "date" => "15/07/2024",
+                "title" => "BMW M5 F90",
+                "price" => "$122,500",
+                "location" => "NYC",
+                "mileage" => "15K mi",
+                "fuel" => "Gasoline",
+                "gear" => "Automatic"
+            ]
+        ];
+        ?>
+        <div class="row">
+            <?php foreach ($veturat as $vetura): ?>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-img-wrapper">
+                            <img src="<?php echo $vetura['image']; ?>" alt="<?php echo $vetura['title']; ?>">
                             <div class="date-badge"><?php echo $vetura['date']; ?></div>
                         </div>
                         <div class="card-body">
@@ -229,17 +229,20 @@ session_start();
     </div>
 
     <!-- ============= BRANDS SECTION ============== -->
-<?php
-    class CarBrand {
+    <?php
+    class CarBrand
+    {
         public $name;
         protected $logoPath;
 
-        public function __construct($name, $logoPath) {
+        public function __construct($name, $logoPath)
+        {
             $this->name = $name;
             $this->logoPath = $logoPath;
         }
 
-        public function render() {
+        public function render()
+        {
             return '
             <a href="#" class="d-flex align-items-center mb-2 text-decoration-none text-dark">
                 <img src="' . $this->logoPath . '" alt="' . $this->name . '" class="me-3" style="width: 40px;">
@@ -247,103 +250,143 @@ session_start();
             </a>';
         }
     }
-    class Jaguar extends CarBrand {
-        public function __construct() {
+    class Jaguar extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Jaguar', 'assets/svg/svgexport-57.svg');
         }
     }
-    class Lamborghini extends CarBrand {
-        public function __construct() {
+    class Lamborghini extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Lamborghini', 'assets/svg/svgexport-61.svg');
         }
     }
-    class LandRover extends CarBrand {
-        public function __construct() {
+    class LandRover extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Land Rover', 'assets/svg/svgexport-62.svg');
         }
     }
-    class Lexus extends CarBrand {
-        public function __construct() {
+    class Lexus extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Lexus', 'assets/svg/svgexport-64.svg');
         }
     }
-    class Maserati extends CarBrand {
-        public function __construct() {
+    class Maserati extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Maserati', 'assets/svg/svgexport-66.svg');
         }
     }
-    class McLaren extends CarBrand {
-        public function __construct() {
+    class McLaren extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('McLaren', 'assets/svg/svgexport-68.svg');
         }
     }
-    class Mercedes extends CarBrand {
-        public function __construct() {
+    class Mercedes extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Mercedes', 'assets/svg/svgexport-69.svg');
         }
     }
-    class Ferrari extends CarBrand {
-        public function __construct() {
+    class Ferrari extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Ferrari', 'assets/svg/svgexport-47.svg');
         }
     }
-    class Mitsubishi extends CarBrand {
-        public function __construct() {
+    class Mitsubishi extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Mitsubishi', 'assets/svg/svgexport-72.svg');
         }
     }
-    class Nissan extends CarBrand {
-        public function __construct() {
+    class Nissan extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Nissan', 'assets/svg/svgexport-73.svg');
         }
     }
-    class Porsche extends CarBrand {
-        public function __construct() {
+    class Porsche extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Porsche', 'assets/svg/svgexport-77.svg');
         }
     }
-    class RollsRoyce extends CarBrand {
-        public function __construct() {
+    class RollsRoyce extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Rolls Royce', 'assets/svg/svgexport-79.svg');
         }
     }
-    class Abarth extends CarBrand {
-        public function __construct() {
+    class Abarth extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Abarth', 'assets/svg/svgexport-35.svg');
         }
     }
-    class AlfaRomeo extends CarBrand {
-        public function __construct() {
+    class AlfaRomeo extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Alfa Romeo', 'assets/svg/svgexport-36.svg');
         }
     }
-    class Mazda extends CarBrand {
-        public function __construct() {
+    class Mazda extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Mazda', 'assets/svg/svgexport-67.svg');
         }
     }
-    class AstonMartin extends CarBrand {
-        public function __construct() {
+    class AstonMartin extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Aston Martin', 'assets/svg/svgexport-38.svg');
         }
     }
-    class Audi extends CarBrand {
-        public function __construct() {
+    class Audi extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Audi', 'assets/svg/svgexport-39.svg');
         }
     }
-    class Bentley extends CarBrand {
-        public function __construct() {
+    class Bentley extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Bentley', 'assets/svg/svgexport-40.svg');
         }
     }
-    class BMW extends CarBrand {
-        public function __construct() {
+    class BMW extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('BMW', 'assets/svg/svgexport-41.svg');
         }
     }
-    class Lotus extends CarBrand {
-        public function __construct() {
+    class Lotus extends CarBrand
+    {
+        public function __construct()
+        {
             parent::__construct('Lotus', 'assets/svg/svgexport-65.svg');
         }
     }
@@ -384,17 +427,20 @@ session_start();
     </section>
 
     <!-- ============= INFO SECTION ============= -->
-<?php
-    class InfoCard {
+    <?php
+    class InfoCard
+    {
         private $icon;
         private $text;
 
-        public function __construct(string $icon, string $text) {
+        public function __construct(string $icon, string $text)
+        {
             $this->icon = $icon;
             $this->text = $text;
         }
 
-        public function renderCard(): string {
+        public function renderCard(): string
+        {
             return '
             <div class="card info-content" style="width: 100%;">
                 <div class="card-body">
@@ -409,32 +455,37 @@ session_start();
         }
     }
 
-    class InfoSection {
+    class InfoSection
+    {
         protected $title;
         private $cards = [];
 
-        public function __construct(string $title) {
+        public function __construct(string $title)
+        {
             $this->title = $title;
         }
 
-        public function addCard(InfoCard $card): void {
+        public function addCard(InfoCard $card): void
+        {
             $this->cards[] = $card;
         }
 
-        protected function renderHeader(): string {
+        protected function renderHeader(): string
+        {
             return '
             <div class="col-auto">
                 <h2 class="mt-3 mb-4">' . $this->title . '</h2>
             </div>';
         }
 
-        public function renderSection(): void {
+        public function renderSection(): void
+        {
             echo '
             <section class="container-fluid mt-4 mb-4">
                 ' . $this->renderHeader() . '
                 <div class="row align-items-center">';
 
-            foreach($this->cards as $card) {
+            foreach ($this->cards as $card) {
                 echo '
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     ' . $card->renderCard() . '
@@ -446,12 +497,11 @@ session_start();
             </section>';
             echo "";
         }
-        
     }
 
 
     $section = new InfoSection("What sets Finder apart?");
-    
+
     $card1 = new InfoCard('bi-copy', 'Over 1 million listings');
     $card2 = new InfoCard('bi-search', 'Personalized search');
     $card3 = new InfoCard('bi-car-front-fill', 'Online car appraisal');

@@ -1,15 +1,16 @@
 <?php
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $full_name = trim($_POST['full-name']);
     $email = trim($_POST['email']);
     $number = trim($_POST['number']);
     $message = trim($_POST['message']);
-    
+
     $errors = [];
 
-    $namePattern = "/^[a-zA-Z\s]+$/"; 
-    $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; 
-    $phonePattern = "/^\+383[\s-]*\d{2}[\s-]*\d{3}[\s-]*\d{3}$/"; 
+    $namePattern = "/^[a-zA-Z\s]+$/";
+    $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    $phonePattern = "/^\+383[\s-]*\d{2}[\s-]*\d{3}[\s-]*\d{3}$/";
 
     // Validate full name
     if (empty($full_name) || !preg_match($namePattern, $full_name)) {
@@ -24,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validate phone number
     if (!empty($number)) {
         $cleanedNumber = preg_replace('/[^\d+]/', '', $number);
-    
+
         if (!preg_match($phonePattern, $number) || !preg_match('/^\+383\d{8}$/', $cleanedNumber)) {
             $errors[] = "Please provide a valid Kosovo phone number (+383 followed by 8 digits). Formats allowed: +38344123456, +383 44 123 456, +383-44-123-456";
         } else {
             $number = '+383' . substr($cleanedNumber, 4);
-            $number = formatPhoneNumber($number); 
+            $number = formatPhoneNumber($number);
         }
     }
 
@@ -48,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $successMessage = "Your message has been successfully submitted!";
     }
 }
-function formatPhoneNumber($number) {
+function formatPhoneNumber($number)
+{
     return preg_replace('/^(\+383)(\d{2})(\d{3})(\d{3})$/', '$1-$2-$3-$4', $number);
 }
 ?>
@@ -104,11 +106,13 @@ function formatPhoneNumber($number) {
     }
 
     #phoneNumber {
-    display: none; 
-    cursor: pointer;
+        display: none;
+        cursor: pointer;
     }
+
     /* Responsivitet i formës dhe fushave të input-it */
-    .contactForm input, .contactForm textarea {
+    .contactForm input,
+    .contactForm textarea {
         border-radius: 8px;
         padding: 10px;
         width: 100%;
@@ -134,14 +138,14 @@ function formatPhoneNumber($number) {
         font-weight: 500;
     }
 
-    .questionsImg{
-        width:150px;
-        border-radius:50%;
+    .questionsImg {
+        width: 150px;
+        border-radius: 50%;
     }
 </style>
 
 <body>
-    <!-- ============= NAVBAR ============= -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <a href="index.php">
@@ -152,15 +156,19 @@ function formatPhoneNumber($number) {
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php if (isset($_SESSION['active'])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -168,20 +176,16 @@ function formatPhoneNumber($number) {
 
     <section class="container-fluid mt-4 Contact">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-12 col-md-6 contactUs">
                     <h1><b>Contact Us</b></h1>
                     <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
-                    <div class="d-flex align-items-center gap-4 flex-wrap"> 
-
-                        <img src="assets/img/avatar1.jpg" alt="" class="questionsImg">
-
+                    <div class="d-flex align-items-center gap-4 flex-wrap">
+                        <img src="assets/img/team/person1.jpg" alt="carme" class="questionsImg">
                         <div class="questionText">
                             <h2><b>Questions?</b></h2>
                             <div id="contact-info">
-                                <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;"><?php echo $phoneNumber?></span>
-                                    <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button>
-                                </p>
+                                <p>Give us a call right now at : <br><b>+383 (0)45 548 747</b></p>
                             </div>
                         </div>
                     </div>
@@ -207,7 +211,7 @@ function formatPhoneNumber($number) {
                     <form id="contactForm" action="contact.php" method="POST">
                         <label for="full-name" class="form-label"></label>
                         <input type="text" id="full-name" name="full-name" class="form-control" placeholder="Full name" autocomplete="off">
-                        
+
                         <label for="location" class="form-label"></label>
                         <input list="locations" class="form-control" id="location" name="location" placeholder="Region" autocomplete="off">
                         <datalist id="locations">
@@ -217,86 +221,21 @@ function formatPhoneNumber($number) {
                             <option value="Australia">
                             <option value="Africa">
                         </datalist>
-                        
+
                         <label for="email" class="form-label"></label>
                         <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="off">
-                        
+
                         <label for="number" class="form-label"></label>
                         <input type="tel" id="number" name="number" class="form-control" placeholder="+38349123456" autocomplete="off" pattern="^\+383\d*$">
-                        
+
                         <label for="message" class="form-label"></label>
                         <textarea id="message" name="message" class="form-control" rows="3" placeholder="Your message"></textarea>
-                        
+
                         <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
-        
-        <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const phoneNumber = document.getElementById('phoneNumber');
-            const toggleButton = document.getElementById('toggleNumberBtn');
-
-            function togglePhoneNumber() {
-                if (phoneNumber.style.display === "none") {
-                    phoneNumber.style.display = "inline"; 
-                    toggleButton.textContent = "Hide number"; 
-                } else {
-                    phoneNumber.style.display = "none"; 
-                }
-            }
-
-            toggleButton.addEventListener('click', togglePhoneNumber);
-        });
-
-        // Form validation function
-        function validateForm(event) {
-            const fullName = document.getElementById('full-name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            const number = document.getElementById('number').value.trim();
-            
-            const errorMessage = document.getElementById('error-message');
-
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            const phonePattern = /^\+383\d{8}$/; 
-
-            // Validate inputs
-            if (fullName === "" || email === "" || message === "") {
-                errorMessage.style.display = "block";
-                event.preventDefault();
-                return false;
-            }
-
-            if (!emailPattern.test(email)) {
-                errorMessage.style.display = "block";
-                event.preventDefault();
-                return false;
-            }
-
-            if (number && !phonePattern.test(number)) {
-                errorMessage.style.display = "block";
-                event.preventDefault();
-                return false;
-            }
-
-            errorMessage.style.display = "none";
-            return true;
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("contactForm");
-
-            form.addEventListener("submit", function (e) {
-                if (!validateForm(e)) {
-                    e.preventDefault();  
-                }
-            });    
-        });
-
-        </script>
     </section>
     <footer class="container-fluid footer-info">
         <div class="row d-flex align-items-center footer-info-content">
@@ -370,7 +309,7 @@ function formatPhoneNumber($number) {
         <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
     </footer>
 
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

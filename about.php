@@ -15,36 +15,37 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .text-primary {
-    color: #1a73e8 !important;
-  }
+            color: #1a73e8 !important;
+        }
 
-  .hero-section h1 {
-    line-height: 1.2;
-  }
+        .hero-section h1 {
+            line-height: 1.2;
+        }
 
-  .story-content p, .company-content p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-  }
+        .story-content p,
+        .company-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
 
-  .brand-logo {
-    width: 120px;
-    height: 60px;
-    border-radius: 4px;
-  }
+        .brand-logo {
+            width: 120px;
+            height: 60px;
+            border-radius: 4px;
+        }
 
-  .fact-item i {
-    font-size: 1.5rem;
-  }
+        .fact-item i {
+            font-size: 1.5rem;
+        }
 
-  .quick-facts {
-    border-radius: 8px;
-  }
+        .quick-facts {
+            border-radius: 8px;
+        }
     </style>
 </head>
 
 <body>
-    <!-- ============= NAVBAR ============= -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <a href="index.php">
@@ -55,20 +56,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php if (isset($_SESSION['active'])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- ============= NAVBAR END ============= -->
 
     <!-- ============= ABOUT US SECTION ============= -->
     <div class="container mt-4">
@@ -102,8 +106,8 @@
                             What started as a simple reviews site, is now one of the largest online car-changing destinations in <span class="text-primary">Europe</span>.
                         </p>
                         <p>
-                            Over <span class="text-primary"><?= $customers; ?> customers</span> have used CarMe to buy or sell their car. Last year we grew over <span class="text-primary"><?= $growth; ?></span> with nearly 
-                            <span class="text-primary"><?= $billionCarsBought; ?></span> worth of cars bought on our site, while <span class="text-primary"><?= $billionCarsListed; ?></span> of cars were listed for sale through our Sell 
+                            Over <span class="text-primary"><?= $customers; ?> customers</span> have used CarMe to buy or sell their car. Last year we grew over <span class="text-primary"><?= $growth; ?></span> with nearly
+                            <span class="text-primary"><?= $billionCarsBought; ?></span> worth of cars bought on our site, while <span class="text-primary"><?= $billionCarsListed; ?></span> of cars were listed for sale through our Sell
                             My Car service.
                         </p>
                     </div>
@@ -112,15 +116,15 @@
                     <h4 class="fw-bold mb-4"><span class="text-primary">CARMARKET GROUP</span></h4>
                     <div class="company-content">
                         <p>
-                            In 2021, we acquired Autovia and formed Carmarket Group. Together we're driven by a passion for getting 
+                            In 2021, we acquired Autovia and formed Carmarket Group. Together we're driven by a passion for getting
                             people into cars. But not just any car, <span class="text-primary">the right car</span>.
                         </p>
                         <p>
-                            That's why our trailblazing portfolio of automotive brands is building the go-to destination for car-changing, 
+                            That's why our trailblazing portfolio of automotive brands is building the go-to destination for car-changing,
                             capable of reaching drivers everywhere.
                         </p>
                         <p>
-                            Our group has one of the world's most popular motoring YouTube channels, with over <span class="text-primary"><?= $youtubeViews; ?></span> annual views. 
+                            Our group has one of the world's most popular motoring YouTube channels, with over <span class="text-primary"><?= $youtubeViews; ?></span> annual views.
                             We also sell <span class="text-primary"><?= $printCopies; ?></span> print copies of our magazines and have over <span class="text-primary"><?= $websiteVisits; ?></span> website visits a year.
                         </p>
                     </div>

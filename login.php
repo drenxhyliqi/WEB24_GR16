@@ -2,7 +2,7 @@
 require_once('db_conn.php');
 session_start();
 
-if(isset($_SESSION['active'])){
+if (isset($_SESSION['active'])) {
   session_unset();
   session_destroy();
 }
@@ -16,8 +16,7 @@ if (isset($_POST['login'])) {
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $err = "Invalid email format.";
     $errors[] = $err;
-  }
-  elseif (strlen($password) < 8) {
+  } elseif (strlen($password) < 8) {
     $err = "Password must be at least 8 characters long.";
     $errors[] = $err;
   } else {
@@ -36,7 +35,7 @@ if (isset($_POST['login'])) {
           $_SESSION['user_email'] = $user['email'];
           $_SESSION['user_role'] = $user['role'];
           $_SESSION['active'] = true;
-          
+
           header('Location: admin/dashboard.php?login_success=true');
           exit();
         } else {
@@ -83,7 +82,7 @@ if (isset($_POST['login'])) {
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-          <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
           <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
@@ -91,9 +90,9 @@ if (isset($_POST['login'])) {
         <ul class="navbar-nav d-flex align-items-right flex-row py-1">
           <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
           <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-          <?php if(isset($_SESSION['active'])){ ?>
+          <?php if (isset($_SESSION['active'])) { ?>
             <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
-          <?php }else{ ?>
+          <?php } else { ?>
             <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
           <?php } ?>
         </ul>
@@ -106,48 +105,48 @@ if (isset($_POST['login'])) {
       <img src="assets/img/company_logo.png" alt="cmp" width="180px" height="40px">
       <h2 class="login-title mt-5">LOG IN TO YOUR ACCOUNT</h2>
 
-      <?php 
-        if (isset($_GET['login_success'])) {
-          if ($_GET['login_success'] == 'true') {
-            echo '
+      <?php
+      if (isset($_GET['login_success'])) {
+        if ($_GET['login_success'] == 'true') {
+          echo '
               <div class="alert alert-success" role="alert">
                   Login successful! Redirecting...
               </div>
             ';
-          } else {
-            echo '
+        } else {
+          echo '
               <div class="alert alert-danger" role="alert">
                   Incorrect credentials. Please try again.
               </div>
             ';
-          }
         }
+      }
 
-        if (isset($_GET['register_success'])) {
-          if ($_GET['register_success'] == 'true') {
-            echo '
+      if (isset($_GET['register_success'])) {
+        if ($_GET['register_success'] == 'true') {
+          echo '
               <div class="alert alert-success" role="alert">
                 Register successful. Please login!
               </div>
             ';
-          } else {
-            echo '
+        } else {
+          echo '
               <div class="alert alert-danger" role="alert">
                 Register fail. Please try again!
               </div>
             ';
-          }
         }
+      }
 
-        if (!empty($errors)) {
-          foreach ($errors as $error) {
-            echo '
+      if (!empty($errors)) {
+        foreach ($errors as $error) {
+          echo '
               <div class="alert alert-danger" role="alert">
                 ' . $error . '
               </div>
             ';
-          }
         }
+      }
       ?>
 
       <form action="login.php" method="POST">
@@ -166,4 +165,5 @@ if (isset($_POST['login'])) {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>

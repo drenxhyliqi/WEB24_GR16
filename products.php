@@ -133,7 +133,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Showing products
-function renderProducts($products) {
+function renderProducts($products)
+{
     foreach ($products as $product) {
         echo "
         <div class='col-12 col-md-6 col-lg-3 mb-4'>
@@ -175,6 +176,7 @@ function renderProducts($products) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -225,7 +227,7 @@ function renderProducts($products) {
             background-color: #fff;
             width: 450px;
             height: 500px;
-            outline: #024c89 dotted 1px; 
+            outline: #024c89 dotted 1px;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
@@ -235,7 +237,8 @@ function renderProducts($products) {
             transform: translate(-50%, -50%);
         }
 
-        .feedback-form input, .feedback-form button {
+        .feedback-form input,
+        .feedback-form button {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -256,7 +259,7 @@ function renderProducts($products) {
             cursor: pointer;
         }
 
-        #closePopout{
+        #closePopout {
             position: absolute;
             bottom: 20px;
             left: 15%;
@@ -291,11 +294,11 @@ function renderProducts($products) {
             cursor: pointer;
             color: red;
         }
-
     </style>
 </head>
+
 <body>
-    <!-- ============= NAVBAR ============= -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <a href="index.php">
@@ -306,15 +309,19 @@ function renderProducts($products) {
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php if (isset($_SESSION['active'])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -373,7 +380,7 @@ function renderProducts($products) {
 
             <div id="feedback-list"></div>
             <button id="returnButton">Return</button>
-            <button id="closePopout" >Close</button>
+            <button id="closePopout">Close</button>
         </div>
     </div>
 
