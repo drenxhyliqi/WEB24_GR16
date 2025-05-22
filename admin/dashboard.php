@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,44 +82,6 @@ button.btn.btn-transparent i.bi-list:hover {
 </style>
 
 <body>
-    <nav style="box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); background-color:#f9f9f9;">
-        <div class="container">
-            <div class="nav justify-content-between align-items-center">
-                <div>
-                    <a class="nav-link p-0" href="#">
-                        <img src="../assets/img/webicon.png" alt="Logo" height="62" />
-                    </a>
-                </div>
-                <div class="d-inline-flex align-items-center gap-2">
-                    <span class="nav-link p-0">
-                        <a href="#" class="text-decoration-none text-dark"><i class="bi bi-person-circle fs-4 h5 "></i></a>
-                    </span>
-                    <span>
-                        <a class="btn btn-transparent p-0" class="text-decoration-none text-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" aria-label="Toggle menu">
-                            <i class="bi bi-list fs-4 h5"></i>
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasMenuLabel">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#">Dashboard</a></li>
-                <li class="list-group-item"><a href="#">Profile</a></li>
-                <li class="list-group-item"><a href="#">Settings</a></li>
-                <li class="list-group-item"><a href="#">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS bundle (popper + bootstrap.js) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <h1>Hi</h1>
 </body>
 </html>

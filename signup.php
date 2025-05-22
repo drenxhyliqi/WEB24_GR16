@@ -1,5 +1,11 @@
 <?php
 require_once('db_conn.php');
+session_start();
+
+if(isset($_SESSION['active'])){
+  session_unset();
+  session_destroy();
+}
 
 $errors = [];
 if (isset($_POST['signup'])) {
@@ -17,19 +23,36 @@ if (isset($_POST['signup'])) {
     $err = "Password must be at least 8 characters long.";
     $errors[] = $err;
   } else {
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO users (user, email, password) VALUES (?, ?, ?)";
-
+    $query = "SELECT * FROM users WHERE email = ?";
     if ($stmt = mysqli_prepare($con, $query)) {
-      mysqli_stmt_bind_param($stmt, "sss", $user, $email, $hashedPassword);
+      mysqli_stmt_bind_param($stmt, "s", $email);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_store_result($stmt);
 
-      if (mysqli_stmt_execute($stmt)) {
-        header('Location: login.php?register_success=true');
-        exit();
+      if (mysqli_stmt_num_rows($stmt) > 0) {
+        $err = "Email already exists. Please choose another one.";
+        $errors[] = $err;
       } else {
-        header('Location: signup.php?register_success=false');
-        exit();
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $query = "INSERT INTO users (user, email, password) VALUES (?, ?, ?)";
+
+        if ($stmt = mysqli_prepare($con, $query)) {
+          mysqli_stmt_bind_param($stmt, "sss", $user, $email, $hashedPassword);
+
+          if (mysqli_stmt_execute($stmt)) {
+            header('Location: login.php?register_success=true');
+            exit();
+          } else {
+            $err = "Error registering user. Please try again.";
+            $errors[] = $err;
+            header('Location: signup.php?register_success=false');
+            exit();
+          }
+
+          mysqli_stmt_close($stmt);
+        } else {
+          echo "Error preparing the query: " . mysqli_error($con);
+        }
       }
 
       mysqli_stmt_close($stmt);
@@ -76,7 +99,11 @@ if (isset($_POST['signup'])) {
         <ul class="navbar-nav d-flex align-items-right flex-row py-1">
           <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
           <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+          <?php if(isset($_SESSION['active'])){ ?>
+            <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+          <?php }else{ ?>
+            <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+          <?php } ?>
         </ul>
       </div>
     </div>
@@ -87,16 +114,32 @@ if (isset($_POST['signup'])) {
       <img src="assets/img/company_logo.png" alt="cmp" width="180px" height="40px">
       <h2 class="login-title mt-5">CREATE NEW ACCOUNT</h2>
 
-      <?php 
-        if(isset($errors)){
-          foreach($errors as $error):
-            echo '
-              <div class="alert alert-danger" role="alert">
-                  ' . $error . '
+      <?php
+      if (isset($_GET['register_success'])) {
+        if ($_GET['register_success'] == 'true') {
+          echo '
+              <div class="alert alert-success" role="alert">
+                Your registration request has been approved, please log in now.
               </div>
             ';
-          endforeach;
+        } else {
+          echo '
+              <div class="alert alert-danger" role="alert">
+                Registration failed, please try again.
+              </div>
+            ';
         }
+      }
+
+      if (!empty($errors)) {
+        foreach ($errors as $error) {
+          echo '
+              <div class="alert alert-danger" role="alert">
+                ' . $error . '
+              </div>
+            ';
+        }
+      }
       ?>
 
       <form action="signup.php" method="POST">
