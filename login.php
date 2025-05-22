@@ -30,7 +30,7 @@ if (isset($_POST['login'])) {
           $_SESSION['user_name'] = $user['user'];
           $_SESSION['user_email'] = $user['email'];
           $_SESSION['user_role'] = $user['role'];
-
+          
           header('Location: admin/dashboard.php?login_success=true');
           exit();
         } else {
@@ -108,6 +108,32 @@ if (isset($_POST['login'])) {
             echo '
               <div class="alert alert-danger" role="alert">
                   Incorrect credentials. Please try again.
+              </div>
+            ';
+          }
+        }
+
+        if (isset($_GET['register_success'])) {
+          if ($_GET['register_success'] == 'true') {
+            echo '
+              <div class="alert alert-success" role="alert">
+                Register successful. Please login!
+              </div>
+            ';
+          } else {
+            echo '
+              <div class="alert alert-danger" role="alert">
+                Register fail. Please try again!
+              </div>
+            ';
+          }
+        }
+
+        if (!empty($errors)) {
+          foreach ($errors as $error) {
+            echo '
+              <div class="alert alert-danger" role="alert">
+                ' . $error . '
               </div>
             ';
           }
