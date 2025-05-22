@@ -179,7 +179,7 @@ function formatPhoneNumber($number) {
                         <div class="questionText">
                             <h2><b>Questions?</b></h2>
                             <div id="contact-info">
-                                <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;"><?php echo phoneNumber?></span>
+                                <p>Give us a call right now at <span id="phoneNumber" style="display: none; cursor: pointer;"><?php echo $phoneNumber?></span>
                                     <button id="toggleNumberBtn" class="btn btn-link" style="background: none; border: none; text-decoration: none; color: gray;">Show Number</button>
                                 </p>
                             </div>

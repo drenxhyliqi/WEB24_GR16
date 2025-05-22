@@ -1,204 +1,120 @@
+<?php
+require_once('db_conn.php');
+
+$errors = [];
+if (isset($_POST['signup'])) {
+  $user = $_POST['user'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  if (empty($user)) {
+    $err = "Username is required.";
+    $errors[] = $err;
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $err = "Invalid email format.";
+    $errors[] = $err;
+  } elseif (strlen($password) < 8) {
+    $err = "Password must be at least 8 characters long.";
+    $errors[] = $err;
+  } else {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users (user, email, password) VALUES (?, ?, ?)";
+
+    if ($stmt = mysqli_prepare($con, $query)) {
+      mysqli_stmt_bind_param($stmt, "sss", $user, $email, $hashedPassword);
+
+      if (mysqli_stmt_execute($stmt)) {
+        header('Location: login.php?register_success=true');
+        exit();
+      } else {
+        header('Location: signup.php?register_success=false');
+        exit();
+      }
+
+      mysqli_stmt_close($stmt);
+    } else {
+      echo "Error preparing the query: " . mysqli_error($con);
+    }
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title>Car Marketplace | Sign UP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Marketplace | Signup</title>
   <link rel="icon" href="assets/img/webicon.png" type="image/x-icon">
+
+  <!-- Bootstrap & Custom CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f2f2f2;
-    }
-
-    form {
-      border: 3px solid #f1f1f1;
-      padding: 16px;
-      max-width: 400px;
-      width: 100%;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-    }
-
-    input[type=text],
-    input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #04AA6D;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    button:hover {
-      opacity: 0.8;
-    }
-
-    .cancelbtn {
-      width: auto;
-      padding: 10px 18px;
-      background-color: transparent;
-      color: #111;
-      font-weight: bold;
-      border: 1px solid red;
-    }
-
-    .imgcontainer {
-      text-align: center;
-      margin: 24px 0 12px 0;
-    }
-
-    img.avatar {
-      width: 15%;
-      border-radius: 50%;
-    }
-
-    .container {
-      padding: 16px;
-    }
-
-    span.psw {
-      float: right;
-      padding-top: 16px;
-      font-size: 14px;
-    }
-
-    .error {
-      color: red;
-      font-size: 14px;
-      margin-top: -8px;
-      margin-bottom: 8px;
-    }
-
-    .success {
-      color: green;
-      font-size: 14px;
-      margin-top: -8px;
-      margin-bottom: 8px;
-    }
-
-    #goBack {
-      width: auto;
-      padding: 5px 15px;
-      cursor: pointer;
-      font-size: 18px;
-      color: #035dad;
-      margin-bottom: 20px;
-    }
-
-    @media screen and (max-width: 300px) {
-      span.psw {
-        display: block;
-        float: none;
-      }
-
-      .cancelbtn {
-        width: 100%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style/style.css">
+  <link rel="stylesheet" href="assets/style/login.css">
 </head>
 
 <body>
-  <form id="signupForm" onsubmit="return validateSignUpForm()">
-    <i class="bi bi-chevron-left mt-6" id="goBack"></i>
-    <div class="form">
-      <div class="imgcontainer">
-        <h2 style="text-align: center; margin-bottom: 20px;">Sign Up Form</h2>
-        <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
-      </div>
-
-      <div class="container">
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email">
-        <div id="emailError" class="error"></div>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="psw">
-        <div id="pswError" class="error"></div>
-
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat">
-        <div id="pswRepeatError" class="error"></div>
-
-        <label>
-          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-        </label>
-
-        <button type="submit">Sign Up</button>
-        <div id="successMessage" class="success"></div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a href="index.php">
+        <img src="assets/img/company_logo.png" alt="logo" width="140px">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="bi bi-list fs-2"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
+          <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+        </ul>
+        <ul class="navbar-nav d-flex align-items-right flex-row py-1">
+          <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+        </ul>
       </div>
     </div>
-  </form>
+  </nav>
 
-  <script>
-    function validateSignUpForm() {
-      var email = document.getElementById("email").value;
-      var psw = document.getElementById("psw").value;
-      var pswRepeat = document.getElementById("psw-repeat").value;
+  <div class="wrapper">
+    <div class="login-container text-center">
+      <img src="assets/img/company_logo.png" alt="cmp" width="180px" height="40px">
+      <h2 class="login-title mt-5">CREATE NEW ACCOUNT</h2>
 
-      document.getElementById("emailError").innerHTML = "";
-      document.getElementById("pswError").innerHTML = "";
-      document.getElementById("pswRepeatError").innerHTML = "";
-      document.getElementById("successMessage").innerHTML = "";
+      <?php 
+        if(isset($errors)){
+          foreach($errors as $error):
+            echo '
+              <div class="alert alert-danger" role="alert">
+                  ' . $error . '
+              </div>
+            ';
+          endforeach;
+        }
+      ?>
 
-      var isValid = true;
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      <form action="signup.php" method="POST">
+        <label for="user">Full name</label>
+        <input type="text" id="user" name="user" placeholder="Enter name and surname" required><br><br>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Enter email" required><br><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
+        <button type="submit" name="signup" class="login-btn">Signup</button>
+      </form>
 
-      if (email.trim() === "") {
-        document.getElementById("emailError").innerHTML = "Please fill in the Email field.";
-        isValid = false;
-      } elseif (!emailRegex.test(email)) {
-        document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
-        isValid = false;
-      }
-
-      if (psw.trim() === "") {
-        document.getElementById("pswError").innerHTML = "Please fill in the password field.";
-        isValid = false;
-      }
-
-      if (psw !== pswRepeat) {
-        document.getElementById("pswRepeatError").innerHTML = "Passwords do not match.";
-        isValid = false;
-      }
-
-      if (psw.length < 6) {
-        document.getElementById("pswError").innerHTML = "Password must be at least 6 characters long.";
-        isValid = false;
-      }
-
-      if (isValid) {
-        document.getElementById("successMessage").innerHTML = "Sign up successful!";
-      }
-      return isValid;
-    }
-
-    document.getElementById("goBack").addEventListener("click", function () {
-      window.history.back();
-    });
-
-    
-  </script>
-
+      <div class="signup">
+        <p>Do you have an account? <a href="login.php">Log in</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

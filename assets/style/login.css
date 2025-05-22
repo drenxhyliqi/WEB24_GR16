@@ -1,0 +1,103 @@
+.wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+      width: 100%;
+    }
+
+    .login-container {
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .google-login {
+      background: #035dad;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .separator {
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    form {
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 1rem;
+      border: none;
+      border-bottom: 1px solid #035dad;
+      border-radius: 0 !important;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .login-btn {
+      background: #035dad;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    .forgot-password {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #000;
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    p a {
+      font-weight: bold;
+      color: #000;
+    }
+    
+    /* Alert message styling */
+    .alert-container {
+      margin-top: 20px;
+    }
