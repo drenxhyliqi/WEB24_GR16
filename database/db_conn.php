@@ -1,5 +1,5 @@
 <?php
-include_once 'error_handler.php';
+include_once '../error_handler.php';
     $servername = "localhost";
     $username = "root";
     // $password = "";

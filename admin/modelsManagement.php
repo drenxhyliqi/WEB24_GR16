@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     exit();
 }
 
-require_once("../db_conn.php");
+require_once("../database/db_conn.php");
 
 // Reading all models
 $result = $con->query("SELECT * FROM models");
@@ -93,7 +93,7 @@ while ($row = $result->fetch_assoc()) {
                     <tbody>
                         <?php foreach ($models as $row): ?>
                         <tr>
-                            <td><?= htmlspecialchars($row['model'], ENT_QUOTES) ?></td>
+                            <td><?= $row['model'] ?></td>
                             <td class="text-end">
                                 <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editModal<?= $row['id'] ?>">
                                     <i class="bi bi-pencil"></i> Edit
@@ -124,7 +124,7 @@ while ($row = $result->fetch_assoc()) {
                             <input type="hidden" name="id" value="<?= $row['id'] ?>" />
                             <div class="mb-3">
                                 <label for="modalModelName<?= $row['id'] ?>" class="form-label">Model Name</label>
-                                <input type="text" value="<?= htmlspecialchars($row['model'], ENT_QUOTES) ?>" class="form-control" name="model" id="modalModelName<?= $row['id'] ?>" required/>
+                                <input type="text" value="<?= $row['model'] ?>" class="form-control" name="model" id="modalModelName<?= $row['id'] ?>" required/>
                             </div>
                         </div>
                         <div class="modal-footer">
