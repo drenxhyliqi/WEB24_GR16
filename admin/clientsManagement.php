@@ -1,3 +1,13 @@
+<?php 
+require_once("../database/db_conn.php");
+
+$result = $con -> query("SELECT * FROM users");
+$users = [];
+while($row = $result -> fetch_assoc()){
+    $users[]= $row;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,53 +83,29 @@
     </div>
 
     <div class="card shadow-sm p-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-semibold mb-0">Lista e Klientëve</h5>
-        <a href="addclient.php" class="btn btn-primary">
-            <i class="bi bi-plus-circle-fill"></i> Shto
-        </a>
-        </div>
-
         <div class="table-responsive">
         <table class="table align-middle">
             <thead>
-            <tr>
-                <th>Emri</th>
-                <th>Email</th>
-                <th>Telefoni</th>
-                <th>Regjistruar më</th>
-                <th class="text-end">Veprime</th>
-            </tr>
+                <tr>
+                    <th>Emri i përdoruesit</th>
+                    <th>Email</th>
+                    <th>Roli</th>
+                    <th class="text-end">Veprime</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><input type="text" class="form-control" value="Arbër Berisha" /></td>
-                <td><input type="email" class="form-control" value="arber@example.com" /></td>
-                <td><input type="text" class="form-control" value="045123456" /></td>
-                <td>22 Maj 2025</td>
-                <td class="text-end">
-                <button class="btn btn-sm btn-primary">
-                    <i class="bi bi-save"></i> Ruaj
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-trash"></i> Fshij
-                </button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="text" class="form-control" value="Donika Krasniqi" /></td>
-                <td><input type="email" class="form-control" value="donika@example.com" /></td>
-                <td><input type="text" class="form-control" value="044987654" /></td>
-                <td>20 Maj 2025</td>
-                <td class="text-end">
-                <button class="btn btn-sm btn-primary">
-                    <i class="bi bi-save"></i> Ruaj
-                </button>
-                <button class="btn btn-sm btn-danger">
-                    <i class="bi bi-trash"></i> Fshij
-                </button>
-                </td>
-            </tr>
+                <?php foreach($users as $user): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($user['user']) ?></td>
+                        <td><?= htmlspecialchars($user['email']) ?></td>
+                        <td><?= ucfirst($user['role']) ?></td>
+                        <td class="text-end">
+                            <a href="users/deleteUser.php?id=<?= $user['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('A jeni i sigurt?');">
+                                <i class="bi bi-trash"></i> Fshij
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
         </div>
@@ -128,7 +114,6 @@
 </div>
 
 
-    <!-- Bootstrap JS bundle (popper + bootstrap.js) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

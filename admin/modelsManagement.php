@@ -28,6 +28,7 @@ while ($row = $result->fetch_assoc()) {
 </head>
 <body class="bg-light">
 
+    <!-- Navbar and Sidebar -->
     <nav class="navbar navbar-expand-lg shadow-sm border-bottom">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <a href="../index.php">
@@ -76,71 +77,129 @@ while ($row = $result->fetch_assoc()) {
             <form method="POST" action="models/addModel.php" class="mb-3">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                        <input type="text" name="model" class="form-control form-control-sm py-2 shadow-none" placeholder="Add new model..." autofocus required/>
+                        <input type="text" id="model" name="model" class="form-control form-control-sm py-2 shadow-none" placeholder="Add new model..." autofocus required/>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="button" id="insert_model" name="insert_model" class="btn btn-primary">
                             <i class="bi bi-plus-circle-fill"></i> Add
                         </button>
                     </div>
                 </div>
             </form>
 
+            
             <div class="table-responsive">
-                <table class="table align-middle">
-                    <thead>
-                        <tr>
-                            <th>Model Name</th>
-                            <th class="text-end">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($models as $row): ?>
-                        <tr>
-                            <td><?= $row['model'] ?></td>
-                            <td class="text-end">
-                                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editModal<?= $row['id'] ?>">
-                                    <i class="bi bi-pencil"></i> Edit
-                                </button>
-                                <a href="models/deleteModel.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">
-                                    <i class="bi bi-trash"></i> Delete
-                                </a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <!-- This is where the table will be inserted -->
+                <div id="model-table-container">
+                    <!-- Table will be loaded here dynamically -->
+                </div>
             </div>
+
+            
         </div>
     </div>
 
-    <!-- Edit Modals -->
-    <?php foreach ($models as $row): ?>
-        <div class="modal fade" id="editModal<?= $row['id'] ?>" tabindex="-1" aria-labelledby="editModal<?= $row['id'] ?>Label" aria-hidden="true">
-            <div class="modal-dialog">
-                <form method="POST" action="models/updateModel.php">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit Model</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <input type="hidden" class="form-control shadow-none" name="id" value="<?= $row['id'] ?>" />
-                            <div class="mb-3">
-                                <label for="modalModelName<?= $row['id'] ?>" class="form-label">Model Name</label>
-                                <input type="text" value="<?= $row['model'] ?>" class="form-control shadow-none" name="model" id="modalModelName<?= $row['id'] ?>" required/>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-success">Save Changes</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    <?php endforeach; ?>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function clearFields() {
+                $("#model").val('');
+            }
+
+            // Insert Model (Create)
+            $('#insert_model').click(function () {
+                var model = $("#model").val();
+
+                if (model === "") {
+                    alert("Model name cannot be empty!");
+                    return;
+                }
+
+                $.ajax({
+                    url: "models/addModel.php",
+                    method: "POST",
+                    data: {
+                        insert: "insertModel",
+                        model: model
+                    },
+
+                    success: function (data) {
+                        fetchModels();
+                        clearFields();
+                    },
+                    error: function (data) {
+                        alert('Error: ' + data.message);
+                    }
+                });
+            });
+
+            // Update Model
+            $('#update_model').click(function () {
+                var modelId = $("#model_id").val();
+                var modelName = $("#modalModelName").val();
+
+                if (modelName === "") {
+                    alert("Model name cannot be empty!");
+                    return;
+                }
+
+                $.ajax({
+                    url: "models/updateModel.php",
+                    method: "POST",
+                    data: { 
+                        update: "updateModel",
+                        id: modelId,
+                        model: modelName
+                    },
+
+                    success: function (data) {
+                        fetchModels();
+                        clearFields();
+                    },
+                    error: function (data) {
+                        alert('Error: ' + data.message);
+                    }
+                });
+            });
+
+            // Delete Model
+            $('#delete_model').click(function () {
+                var modelId = $(this).data('id');
+
+                if (confirm('Are you sure you want to delete this model?')) {
+                    $.ajax({
+                        url: "models/deleteModel.php",
+                        method: "POST",
+                        data: { id: modelId },
+
+                        success: function (data) {
+                            alert('Deleted.');
+                            fetchModels();
+                            clearFields();
+                        },
+                        error: function (data) {
+                            alert('Error: ' + data.message);
+                        }
+                    });
+                }
+            });
+
+            // Fetch all models (Read)
+            function fetchModels() {
+                $.ajax({
+                    url: "models/fetchModels.php",
+                    method: "POST",
+                    data: { fetch: 'fetchModels' },
+                    success: function(response) {
+                        $('#model-table-container').html(response);
+                    },
+                    error: function() {
+                        alert('An error occurred while fetching models.');
+                    }
+                });
+            };
+        });
+    </script>
 </body>
 </html>
