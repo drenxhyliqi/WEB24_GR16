@@ -30,7 +30,7 @@ while ($row = $result->fetch_assoc()) {
 
     <nav class="navbar navbar-expand-lg shadow-sm border-bottom">
         <div class="container-fluid d-flex justify-content-between align-items-center">
-            <a href="../admin/index.php">
+            <a href="../index.php">
                 <img src="../assets/img/company_logo.png" alt="logo" width="140" />
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -64,22 +64,26 @@ while ($row = $result->fetch_assoc()) {
         </div>
     </div>
 
-    <div class="container-fluid justify-content-between align-items-center">
+    <div class="container-fluid">
         <div class="mt-4 mb-4">
             <h3 class="fw-bold"><i class="bi bi-caret-right"></i>Model Management</h3>
             <p class="text-muted">Manage and update vehicle model information.</p>
         </div>
 
         <div class="card border shadow-sm p-5">
-            <div class="d-flex justify-content-between align-items-center">
-                <h5 class="fw-semibold">Model List</h5>
-            </div>
+            <h5 class="fw-semibold">Model List</h5>
 
-            <form method="POST" action="models/addModel.php" class="mb-3 d-flex gap-2">
-                <input type="text" name="model" class="form-control form-control-sm py-2 shadow-none" placeholder="Add new model..." autofocus required/>
-                <button type="submit" class="btn btn-primary btn-sm d-flex align-items-center">
-                    <i class="bi bi-plus-circle-fill me-1"></i> Add
-                </button>
+            <form method="POST" action="models/addModel.php" class="mb-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                        <input type="text" name="model" class="form-control form-control-sm py-2 shadow-none" placeholder="Add new model..." autofocus required/>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-plus-circle-fill"></i> Add
+                        </button>
+                    </div>
+                </div>
             </form>
 
             <div class="table-responsive">
@@ -121,14 +125,14 @@ while ($row = $result->fetch_assoc()) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <input type="hidden" name="id" value="<?= $row['id'] ?>" />
+                            <input type="hidden" class="form-control shadow-none" name="id" value="<?= $row['id'] ?>" />
                             <div class="mb-3">
                                 <label for="modalModelName<?= $row['id'] ?>" class="form-label">Model Name</label>
-                                <input type="text" value="<?= $row['model'] ?>" class="form-control" name="model" id="modalModelName<?= $row['id'] ?>" required/>
+                                <input type="text" value="<?= $row['model'] ?>" class="form-control shadow-none" name="model" id="modalModelName<?= $row['id'] ?>" required/>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-success">Save Changes</button>
                         </div>
                     </div>

@@ -1,5 +1,4 @@
 <?php
-require_once 'error_handler.php';
 require_once('database/db_conn.php');
 session_start();
 

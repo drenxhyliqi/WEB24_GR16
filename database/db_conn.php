@@ -4,7 +4,7 @@
     $username = "root";
     // $password = "";
     // $password = "2711";
-    // $password = "610913";
+    $password = "610913";
     $dbname = "carme";
 
     try {

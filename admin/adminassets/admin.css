@@ -35,3 +35,174 @@
     .offcanvas .btn-close{
     color: #fff !important; /*To be fixed*/
     }
+
+    .form-card {
+        max-width: 900px;
+        margin: 30px auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .form-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .form-header h3 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #1d1d1d;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #495057;
+        display: block;
+        margin-bottom: 6px;
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 14px;
+        background-color: #f8f9fa;
+    }
+    .form-control:focus {
+        border-color: #0d6efd;
+        outline: none;
+        background-color: #fff;
+    }
+    .grid-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .grid-col {
+        flex: 1;
+        min-width: 260px;
+    }
+    .file-upload {
+        border: 2px dashed #ced4da;
+        padding: 30px;
+        text-align: center;
+        color: #6c757d;
+        font-size: 14px;
+        border-radius: 6px;
+        margin-top: 10px;
+    }
+    .btn-submit {
+        margin-top: 20px;
+        padding: 12px 24px;
+        background-color: #0d6efd;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .btn-submit:hover {
+        background-color: #0b5ed7;
+    }
+    
+    .modern-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0 8px;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fc;
+    }
+
+    .modern-table thead th {
+        background-color: #035dad;
+        color: #f9f9f9;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        padding: 14px;
+        border: none;
+    }
+
+    .modern-table tbody tr {
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .modern-table td {
+        padding: 14px;
+        font-size: 14px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .modern-table .text-blue {
+        color: #035dad;
+        font-weight: 500;
+    }
+
+    .modern-table .badge-new {
+        background-color: #035ead63;
+        color: #024077;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 50px;
+    }
+
+    .modern-table .badge-used {
+        background-color: #d027277f;
+        color: #3f0d0de0;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 50px;
+    }
+
+    .modern-table tbody tr:hover {
+    background-color: #f2f2f268;
+    }
+
+    .desc {
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        color: #555;
+    }
+
+    .pagination {
+        margin-top: 20px;
+        display: flex;
+        justify-content: end;
+        gap: 5px;
+    }
+
+    .pagination .page-link {
+        border: none;
+        background-color: #f8f9fa;
+        color: #333;
+        padding: 8px 12px;
+        border-radius: 4px;
+    }
+
+    .pagination .active {
+        background-color: #035dad;
+        color: #fff;
+    }
+
+    .add-button button {
+        background-color: #035dad !important;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    
