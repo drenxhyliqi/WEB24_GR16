@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car_name']) && !isset
         exit();
     }
 
-    $stmt->close();
-    $con->close();
+    // $stmt->close();
+    // $con->close();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['getCar'])) {
