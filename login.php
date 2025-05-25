@@ -2,6 +2,10 @@
 require_once('database/db_conn.php');
 session_start();
 
+$log_file = fopen("file.txt", "a") or die("Unable to open file!");
+fwrite($log_file, "[" . date("Y-m-d H:i:s") . "] New login attempt\n");
+fclose($log_file);
+
 if (isset($_SESSION['active'])) {
   session_unset();
   session_destroy();
@@ -35,6 +39,10 @@ if (isset($_POST['login'])) {
           $_SESSION['user_email'] = $user['email'];
           $_SESSION['user_role'] = $user['role'];
           $_SESSION['active'] = true;
+
+          $log_file = fopen("file.txt", "a") or die("Unable to open file!");
+          fwrite($log_file, "[" . date("Y-m-d H:i:s") . "] User " . $user['user'] . " " . $user['email'] . " logged in\n");
+          fclose($log_file);
 
           header('Location: admin/dashboard.php?login_success=true');
           exit();
