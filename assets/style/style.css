@@ -59,6 +59,27 @@ ul li a {
     color: #035dad;
 }
 
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    min-width: 180px; 
+    text-transform: capitalize;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.dropdown-item:hover {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+
 /* ============= MAIN BANNER SECTION ============= */
 .main-banner {
     background-color: #000615f8;
@@ -406,6 +427,7 @@ ul li a {
 .view:hover {
     background-color: #035dad;
 }
+
 
 /* ============= FOOTER SECTION ============= */
 .footer-info {

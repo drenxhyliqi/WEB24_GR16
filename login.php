@@ -44,7 +44,7 @@ if (isset($_POST['login'])) {
           fwrite($log_file, "[" . date("Y-m-d H:i:s") . "] User " . $user['user'] . " " . $user['email'] . " logged in\n");
           fclose($log_file);
 
-          header('Location: admin/dashboard.php?login_success=true');
+          header('Location: index.php?login_success=true');
           exit();
         } else {
           header('Location: login.php?login_success=false');
