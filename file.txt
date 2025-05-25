@@ -2,3 +2,15 @@
 [2025-05-25 13:55:03] New login attempt
 [2025-05-25 13:55:10] New login attempt
 [2025-05-25 13:55:10] User Dren Xhyliqi drenadmin@gmail.com logged in
+[2025-05-25 13:57:31] New login attempt
+[2025-05-25 13:57:32] New login attempt
+[2025-05-25 13:57:38] New login attempt
+[2025-05-25 13:57:38] New login attempt
+[2025-05-25 13:57:41] New login attempt
+[2025-05-25 13:57:42] New login attempt
+[2025-05-25 13:57:47] New login attempt
+[2025-05-25 13:57:47] User Dren Xhyliqi drenadmin@gmail.com logged in
+[2025-05-25 14:02:56] New login attempt
+[2025-05-25 14:02:56] New login attempt
+[2025-05-25 14:03:02] New login attempt
+[2025-05-25 14:03:03] User Dren Xhyliqi drenadmin@gmail.com logged in

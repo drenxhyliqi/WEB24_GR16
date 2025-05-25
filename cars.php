@@ -4,7 +4,7 @@ session_start();
 require_once("database/db_conn.php");
 class Car {
     public $image;
-    public $makeModel;
+    public $models;
     public $variant;
     public $price;
     public $savings;
@@ -12,9 +12,9 @@ class Car {
     public $mileage;
     public $status;
 
-    public function __construct($image, $makeModel, $variant, $price, $savings, $year, $mileage, $status) {
+    public function __construct($image, $models, $variant, $price, $savings, $year, $mileage, $status) {
         $this->image = $image;
-        $this->makeModel = $makeModel;
+        $this->models = $models;
         $this->variant = $variant;
         $this->price = $price;
         $this->savings = $savings;
@@ -24,7 +24,7 @@ class Car {
     }
 
     public function getImage()       { return $this->image; }
-    public function getMakeModel()   { return $this->makeModel; }
+    public function getModels()   { return $this->models; }
     public function getVariant()     { return $this->variant; }
     public function getPrice()       { return $this->price; }
     public function getSavings()     { return $this->savings; }
@@ -62,7 +62,7 @@ if ($result && $result->num_rows > 0) {
             $row['car_name'] . ' ' . $row['model'],
             $row['fuel'] . ' • ' . $row['transmission'],
             '€' . number_format($row['price'], 0),
-            'Saving €0 off RRP',
+            'Saving €1000 off RRP',
             $row['relased_year'],
             number_format($row['km']) . ' km',
             $row['status']
@@ -128,7 +128,7 @@ if ($result && $result->num_rows > 0) {
             </div>
 
             <div class="row">
-                <!-- Filter Sidebar (Desktop) -->
+            <!-- Filter Sidebar (Desktop) -->
                 <aside class="col-md-3 d-none d-md-block">
                     <div class="filter-sidebar bg-white p-4 rounded shadow-sm">
                         <h5 class="fw-bold mb-4">Filter</h5>
@@ -137,69 +137,42 @@ if ($result && $result->num_rows > 0) {
                         <div class="mb-4">
                             <h6 class="fw-bold mb-3">Condition</h6>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="newCar" checked>
+                                <input class="form-check-input" type="checkbox" name="condition[]" value="New" id="newCar">
                                 <label class="form-check-label" for="newCar">New</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="usedCar">
+                                <input class="form-check-input" type="checkbox" name="condition[]" value="Used" id="usedCar">
                                 <label class="form-check-label" for="usedCar">Used</label>
                             </div>
                         </div>
 
                         <!-- Price Filter -->
                         <div class="mb-4">
-                            <h6 class="fw-bold mb-3">Price</h6>
-                            <div class="d-flex mb-2">
-                                <select class="form-select form-select-sm me-2">
-                                    <option>Min price</option>
-                                    <option>€5,000</option>
-                                    <option>€10,000</option>
-                                    <option>€15,000</option>
-                                </select>
-                                <select class="form-select form-select-sm">
-                                    <option>Max price</option>
-                                    <option>€15,000</option>
-                                    <option>€20,000</option>
-                                    <option>€30,000</option>
-                                </select>
-                            </div>
+                            <h6 class="fw-bold mb-3">Price (€)</h6>
+                            <label for="priceMin" class="form-label">Min: <span id="minPriceValue">500€</span></label>
+                            <input type="range" class="form-range" name="minPrice" id="priceMin" min="500" max="800000" step="5000" value="0">
+                            <label for="priceMax" class="form-label mt-2">Max: <span id="maxPriceValue">800.000€</span></label>
+                            <input type="range" class="form-range" name="maxPrice" id="priceMax" min="500" max="800000" step="5000" value="800000">
                         </div>
-
-                        <!-- Make Filter -->
+                        <!-- Model Type Filter -->
                         <div class="mb-4">
-                            <h6 class="fw-bold mb-3">Make</h6>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="citroen">
-                                <label class="form-check-label" for="citroen">Citroen</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="fiat">
-                                <label class="form-check-label" for="fiat">Fiat</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="ford">
-                                <label class="form-check-label" for="ford">Ford</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="suzuki">
-                                <label class="form-check-label" for="suzuki">Suzuki</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="volvo">
-                                <label class="form-check-label" for="volvo">Volvo</label>
-                            </div>
+                            <h6 class="fw-bold mb-3">Body Type</h6>
+                            <?php
+                            $modelsQuery = "SELECT DISTINCT model FROM models WHERE model IS NOT NULL AND model != ''";
+                            $modelsResult = $con->query($modelsQuery);
+                            if ($modelsResult && $modelsResult->num_rows > 0) {
+                                while ($modelRow = $modelsResult->fetch_assoc()) {
+                                    $model = htmlspecialchars($modelRow['model']);
+                                    echo '
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" name="models[]" value="' . $model . '" id="' . $model . '">
+                                        <label class="form-check-label" for="' . $model . '">' . $model . '</label>
+                                    </div>';
+                                }
+                            }
+                            ?>
                         </div>
-                    </div>
                 </aside>
-
-                <!-- Mobile Filter Button -->
-                <div class="col-12 d-md-none mb-3">
-                    <button class="btn btn-outline-secondary w-100 d-flex justify-content-between align-items-center"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#mobileFilter">
-                        <span class="fw-medium">Filters</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                </div>
 
                 <!-- Mobile Filter Panel -->
                 <div class="collapse mb-3 d-md-none" id="mobileFilter">
@@ -208,80 +181,48 @@ if ($result && $result->num_rows > 0) {
                         <div class="mb-4">
                             <h6 class="fw-bold mb-3">Condition</h6>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="newCarMobile" checked>
+                                <input class="form-check-input" type="checkbox" name="condition[]" value="New" id="newCarMobile">
                                 <label class="form-check-label" for="newCarMobile">New</label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="usedCarMobile">
+                                <input class="form-check-input" type="checkbox" name="condition[]" value="Used" id="usedCarMobile">
                                 <label class="form-check-label" for="usedCarMobile">Used</label>
                             </div>
                         </div>
 
                         <!-- Price Filter -->
                         <div class="mb-4">
-                            <h6 class="fw-bold mb-3">Price</h6>
-                            <div class="d-flex mb-2">
-                                <select class="form-select form-select-sm me-2">
-                                    <option>Min price</option>
-                                    <option>€5,000</option>
-                                    <option>€10,000</option>
-                                    <option>€15,000</option>
-                                </select>
-                                <select class="form-select form-select-sm">
-                                    <option>Max price</option>
-                                    <option>€15,000</option>
-                                    <option>€20,000</option>
-                                    <option>€30,000</option>
-                                </select>
-                            </div>
+                            <h6 class="fw-bold mb-3">Price (€)</h6>
+                            <label for="priceMinMobile" class="form-label">Min: <span id="minPriceValueMobile">500</span></label>
+                            <input type="range" class="form-range" name="minPrice" id="priceMinMobile" min="500" max="800000" step="1000" value="0">
+                            <label for="priceMaxMobile" class="form-label mt-2">Max: <span id="maxPriceValueMobile">800000</span></label>
+                            <input type="range" class="form-range" name="maxPrice" id="priceMaxMobile" min="500" max="800000" step="1000" value="800000">
                         </div>
 
-                        <!-- Make Filter -->
+                        <!-- Body Type Filter -->
                         <div class="mb-4">
-                            <h6 class="fw-bold mb-3">Make</h6>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="citroenMobile">
-                                <label class="form-check-label" for="citroenMobile">Citroen</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="fiatMobile">
-                                <label class="form-check-label" for="fiatMobile">Fiat</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="fordMobile">
-                                <label class="form-check-label" for="fordMobile">Ford</label>
-                            </div>
+                            <h6 class="fw-bold mb-3">Body Type</h6>
+                            <?php
+                            $typesQuery = "SELECT DISTINCT model FROM models WHERE model IS NOT NULL AND model != ''";
+                            $typesResult = $con->query($typesQuery);
+                            if ($typesResult && $typesResult->num_rows > 0) {
+                                while ($typeRow = $typesResult->fetch_assoc()) {
+                                    $type = htmlspecialchars($typeRow['model']);
+                                    echo '
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" name="types[]" value="' . $type . '" id="' . $type . '">
+                                        <label class="form-check-label" for="' . $type . '">' . $type . '</label>
+                                    </div>';
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
-
                 <!-- Car Listings Section -->
                 <section class="col-md-9">
-                    <div class="row g-4">
-                        <!-- Display the cars -->
-                        <?php while ($car = $result->fetch_assoc()): ?>
-                        <div class="col-md-6">
-                            <div class="card h-100 shadow-sm hover-shadow">
-                                <div class="position-relative">
-                                    <img src="<?= $car['cover_img'] ?>" class="card-img-top" alt="<?= $car['car_name'] ?>" style="height: 180px; object-fit: cover;">
-                                    <div class="position-absolute top-0 start-0 m-2 badge bg-dark"><?= $car['status'] ?></div>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text small text-muted mb-1"><?= $car['fuel'] ?> • <?= $car['transmission'] ?></p>
-                                    <h5 class="card-title fw-bold mb-1"><?= $car['car_name'] . ' ' . $car['model'] ?></h5>
-                                    <div class="mb-2">
-                                        <div class="fs-4 fw-bold">€<?= number_format($car['price']) ?></div>
-                                        <div class="text-success small">Saving €0 off RRP</div>
-                                    </div>
-                                    <div class="d-flex align-items-center small text-secondary mt-3">
-                                        <span><?= $car['relased_year'] ?></span>
-                                        <span class="mx-2">•</span>
-                                        <span><?= number_format($car['km']) ?> km</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
+                    <div class="row g-4" id="carsContainer">
+                        <!-- Veturat AJAX do ngarkohen këtu -->
                     </div>
                 </section>
             </div>
@@ -349,6 +290,55 @@ if ($result && $result->num_rows > 0) {
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    function loadCars(filters = {}) {
+        $.ajax({
+            url: 'filterCars.php',
+            type: 'POST',
+            data: filters,
+            success: function (response) {
+                $('#carsContainer').html(response);
+            },
+            error: function () {
+                $('#carsContainer').html('<div class="col-12 text-danger text-center">Failed to load cars.</div>');
+            }
+        });
+    }
+
+    function applyFilters() {
+        let conditions = [];
+        $('input[name="condition[]"]:checked').each(function () {
+            conditions.push($(this).val());
+        });
+
+        let models = [];
+        $('input[name="models[]"]:checked').each(function () {
+            models.push($(this).val());
+        });
+
+
+        let minPrice = $('#priceMin').val() || $('#priceMinMobile').val() || 500;
+        let maxPrice = $('#priceMax').val() || $('#priceMaxMobile').val() || 800000;
+        
+        $('#minPriceValue, #minPriceValueMobile').text(minPrice);
+        $('#maxPriceValue, #maxPriceValueMobile').text(maxPrice);
+
+        loadCars({
+            conditions: conditions,
+            models: models,
+            minPrice: minPrice,
+            maxPrice: maxPrice
+        });
+    }
+
+    $(document).ready(function () {
+        loadCars(); // ngarko veturat në fillim
+        $(document).on('change input', 'input[type=checkbox], input[type=range]', applyFilters);
+    });
+</script>
+
+
 </body>
 
 </html>
