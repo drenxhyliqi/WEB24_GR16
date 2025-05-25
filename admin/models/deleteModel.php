@@ -1,34 +1,22 @@
 <?php
 require_once("../../database/db_conn.php");
 
-if (!isset($_POST['id']) || empty($_POST['id'])) {
-    echo json_encode(['status' => 'error', 'message' => 'Model ID is required']);
-    exit();
-}
+if (isset($_POST['id']) && !empty($_POST['id'])) {
+    $id = $_POST['id'];
 
-$id = (int) $_POST['id'];
+    // Prepare the delete query
+    $stmt = $con->prepare("DELETE FROM models WHERE id = ?");
+    $stmt->bind_param("i", $id);
 
-$stmt = $con->prepare("SELECT COUNT(*) FROM models WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$stmt->bind_result($count);
-$stmt->fetch();
-$stmt->close();
+    if ($stmt->execute()) {
+        echo json_encode(['status' => 'success', 'message' => 'Model deleted successfully']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Failed to delete model']);
+    }
 
-if ($count == 0) {
-    echo json_encode(['status' => 'error', 'message' => 'Model not found']);
-    exit();
-}
-
-$stmt = $con->prepare("DELETE FROM models WHERE id = ?");
-$stmt->bind_param("i", $id);
-
-if ($stmt->execute()) {
-    echo json_encode(['status' => 'success', 'message' => 'Model deleted successfully']);
+    $stmt->close();
+    $con->close();
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Failed to delete model']);
+    echo json_encode(['status' => 'error', 'message' => 'Model ID is required']);
 }
-
-$stmt->close();
-$con->close();
 ?>

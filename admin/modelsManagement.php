@@ -1,19 +1,11 @@
 <?php
 session_start();
-
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     header('Location: ../index.php');
     exit();
 }
 
 require_once("../database/db_conn.php");
-
-// Reading all models
-$result = $con->query("SELECT * FROM models");
-$models = [];
-while ($row = $result->fetch_assoc()) {
-    $models[] = $row;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,56 +57,76 @@ while ($row = $result->fetch_assoc()) {
         </div>
     </div>
 
+    <!-- Content -->
     <div class="container-fluid">
         <div class="mt-4 mb-4">
             <h3 class="fw-bold"><i class="bi bi-caret-right"></i>Model Management</h3>
             <p class="text-muted">Manage and update vehicle model information.</p>
+
+            <div class="card shadow-sm p-5">
+                <!-- Add Model Form -->
+                <form id="addModelForm">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+                            <input type="text" id="model" class="form-control form-control-sm py-2 shadow-none mb-2" placeholder="Enter model name" autofocus required/>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i>Add Model</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+
+                <!-- Model Table -->
+                <div id="model-table-container"></div>
+            </div>
         </div>
+    </div>
 
-        <div class="card border shadow-sm p-5">
-            <h5 class="fw-semibold">Model List</h5>
-
-            <form method="POST" action="models/addModel.php" class="mb-3">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                        <input type="text" id="model" name="model" class="form-control form-control-sm py-2 shadow-none" placeholder="Add new model..." autofocus required/>
-                    </div>
-                    <div class="mb-3">
-                        <button type="button" id="insert_model" name="insert_model" class="btn btn-primary">
-                            <i class="bi bi-plus-circle-fill"></i> Add
-                        </button>
-                    </div>
+    <!-- Edit Model Modal -->
+    <div class="modal fade" id="editModelModal" tabindex="-1" aria-labelledby="editModelModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModelModalLabel">Edit Model</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-            </form>
-
-            
-            <div class="table-responsive">
-                <!-- This is where the table will be inserted -->
-                <div id="model-table-container">
-                    <!-- Table will be loaded here dynamically -->
+                <div class="modal-body">
+                    <input type="hidden" id="edit_model_id" />
+                    <input type="text" id="edit_model_name" class="form-control form-control-sm py-2 shadow-none" placeholder="Model name" required />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="save_model" class="btn btn-success">Save Changes</button>
                 </div>
             </div>
-
-            
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script>
         $(document).ready(function () {
-            function clearFields() {
-                $("#model").val('');
+            function clearFields(){
+                $('#model').val('');
             }
 
-            // Insert Model (Create)
-            $('#insert_model').click(function () {
-                var model = $("#model").val();
+            function fetchModels() {
+                $.ajax({
+                    url: "models/fetchModels.php",
+                    method: "POST",
+                    data: { fetch: "fetchModels" },
+                    success: function (response) {
+                        $('#model-table-container').html(response);
+                    }
+                });
+            }
 
-                if (model === "") {
-                    alert("Model name cannot be empty!");
-                    return;
-                }
+            // Add Model (Create)
+            $('#addModelForm').submit(function (e) {
+                e.preventDefault();
+                var model = $('#model').val();
 
                 $.ajax({
                     url: "models/addModel.php",
@@ -123,82 +135,80 @@ while ($row = $result->fetch_assoc()) {
                         insert: "insertModel",
                         model: model
                     },
-
                     success: function (data) {
-                        fetchModels();
-                        clearFields();
-                    },
-                    error: function (data) {
-                        alert('Error: ' + data.message);
+                        var response = JSON.parse(data);
+                        if (response.status === 'success') {
+                            alert(response.message);
+                            fetchModels(); // Refresh the table
+                            clearFields();
+                        } else {
+                            alert(response.message);
+                        }
                     }
                 });
             });
 
-            // Update Model
-            $('#update_model').click(function () {
-                var modelId = $("#model_id").val();
-                var modelName = $("#modalModelName").val();
+            // Edit Model (Open Modal)
+            $(document).on('click', '.edit-btn', function () {
+                var id = $(this).data('id');
+                var name = $(this).data('name');
 
-                if (modelName === "") {
-                    alert("Model name cannot be empty!");
-                    return;
-                }
+                $('#edit_model_id').val(id);
+                $('#edit_model_name').val(name);
+
+                $('#editModelModal').modal('show');
+            });
+
+            // Save Model (Update)
+            $('#save_model').click(function () {
+                var id = $('#edit_model_id').val();
+                var modelName = $('#edit_model_name').val();
 
                 $.ajax({
                     url: "models/updateModel.php",
                     method: "POST",
-                    data: { 
+                    data: {
                         update: "updateModel",
-                        id: modelId,
+                        id: id,
                         model: modelName
                     },
-
                     success: function (data) {
-                        fetchModels();
-                        clearFields();
-                    },
-                    error: function (data) {
-                        alert('Error: ' + data.message);
+                        var response = JSON.parse(data);
+                        if (response.status === 'success') {
+                            alert(response.message);
+                            fetchModels();
+                            $('#editModelModal').modal('hide');
+                        } else {
+                            alert(response.message);
+                        }
                     }
                 });
             });
 
             // Delete Model
-            $('#delete_model').click(function () {
-                var modelId = $(this).data('id');
+            $(document).on('click', '.delete-btn', function () {
+                var id = $(this).data('id');
 
                 if (confirm('Are you sure you want to delete this model?')) {
                     $.ajax({
                         url: "models/deleteModel.php",
                         method: "POST",
-                        data: { id: modelId },
-
+                        data: { id: id },
                         success: function (data) {
-                            alert('Deleted.');
-                            fetchModels();
-                            clearFields();
-                        },
-                        error: function (data) {
-                            alert('Error: ' + data.message);
+                            var response = JSON.parse(data);
+                            if (response.status === 'success') {
+                                alert(response.message);
+                                fetchModels(); // Refresh the table
+                            } else {
+                                alert(response.message);
+                            }
                         }
                     });
                 }
             });
 
-            // Fetch all models (Read)
-            function fetchModels() {
-                $.ajax({
-                    url: "models/fetchModels.php",
-                    method: "POST",
-                    data: { fetch: 'fetchModels' },
-                    success: function(response) {
-                        $('#model-table-container').html(response);
-                    },
-                    error: function() {
-                        alert('An error occurred while fetching models.');
-                    }
-                });
-            };
+            // Initial fetch of models
+            fetchModels();
         });
     </script>
 </body>

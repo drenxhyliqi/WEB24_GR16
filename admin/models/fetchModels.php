@@ -6,7 +6,6 @@ if (isset($_POST['fetch']) && $_POST['fetch'] == "fetchModels") {
     $result = mysqli_query($con, $query);
 
     $output = '';
-
     $output .= '
         <table class="table align-middle">
             <thead>
@@ -24,26 +23,21 @@ if (isset($_POST['fetch']) && $_POST['fetch'] == "fetchModels") {
                 <tr>
                     <td>' . htmlspecialchars($row['model']) . '</td>
                     <td class="text-end">
-                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#editModal' . $row['id'] . '">
+                        <button class="btn btn-sm btn-success edit-btn" data-id="' . $row['id'] . '" data-name="' . $row['model'] . '">
                             <i class="bi bi-pencil"></i> Edit
                         </button>
-                        <a href="models/deleteModel.php?id=' . $row['id'] . '" class="btn btn-sm btn-danger" onclick="return confirm(\'Are you sure?\');">
+                        <button class="btn btn-sm btn-danger delete-btn" data-id="' . $row['id'] . '">
                             <i class="bi bi-trash"></i> Delete
-                        </a>
+                        </button>
                     </td>
                 </tr>
             ';
         }
     } else {
-        $output .= '
-            <tr>
-                <td colspan="2" class="text-center">No Models Found</td>
-            </tr>
-        ';
+        $output .= '<tr><td colspan="2" class="text-center">No Models Found</td></tr>';
     }
 
     $output .= '</tbody></table>';
-
-    echo $output;  // Return the HTML content as response
+    echo $output;
 }
 ?>
