@@ -53,3 +53,7 @@
 [2025-05-25 20:18:53] New login attempt
 [2025-05-25 20:19:01] New login attempt
 [2025-05-25 20:19:01] User duser u@gmail.com logged in
+[2025-05-25 20:48:54] New login attempt
+[2025-05-25 20:48:55] New login attempt
+[2025-05-25 20:49:04] New login attempt
+[2025-05-25 20:49:04] User Dren Xhyliqi drenadmin@gmail.com logged in
