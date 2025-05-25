@@ -50,14 +50,18 @@ $result = $stmt->get_result();
 $html = '';
 
 // Web API per real time value t'bitcoinit
-$btcRate = null;
-$btcResponse = @file_get_contents("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur");
-if ($btcResponse !== false) {
-    $btcData = json_decode($btcResponse, true);
-    if (isset($btcData["bitcoin"]["eur"])) {
-    $btcRate = $btcData["bitcoin"]["eur"];
+if (!isset($_SESSION['btc_rate']) || time() - $_SESSION['btc_time'] > 60) {
+    $btcResponse = @file_get_contents("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur");
+    if ($btcResponse !== false) {
+        $btcData = json_decode($btcResponse, true);
+        if (isset($btcData["bitcoin"]["eur"])) {
+            $_SESSION['btc_rate'] = $btcData["bitcoin"]["eur"];
+            $_SESSION['btc_time'] = time();
+        }
     }
 }
+
+$btcRate = $_SESSION['btc_rate'] ?? null;
 
 if ($result->num_rows > 0) {
     function &getCarReferenceByIndex(array &$cars, int $index) {
@@ -96,12 +100,11 @@ if ($result->num_rows > 0) {
                         <div class="fs-4 fw-bold">€' . number_format($row['price']) . '</div>';
 
         
-                if ($btcRate !== null) {
-                    $discounted = $row['price'] * 0.95;
-                    $btcPrice = $discounted / $btcRate;
-                    $html .= '<div class="text-warning small">Pay with Bitcoin (-5%): <strong>' . number_format($btcPrice, 6) . ' BTC</strong></div>';
-                }
-
+                    if ($btcRate !== null) {
+                        $discounted = $row['price'] * 0.95;
+                        $btcPrice = $discounted / $btcRate;
+                        $html .= '<div class="small">Pay with Bitcoin (-5%): <strong class="text-warning">' . number_format($btcPrice, 3) . ' BTC</strong></div>';
+                    }
         $html .= '
                     </div>
                     <div class="d-flex align-items-center small text-secondary mt-3">

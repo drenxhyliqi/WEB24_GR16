@@ -99,21 +99,6 @@ if ($result && $result->num_rows > 0) {
     }
 }
 
-    $url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur";
-    $response = file_get_contents($url);
-    $data = json_decode($response, true);
-
-    if ($data && isset($data["bpi"]["EUR"]["rate_float"])) {
-        $btcRate = $data["bpi"]["EUR"]["rate_float"];
-        $numericPrice = floatval(str_replace(['€', ','], '', $rowPrice));
-        $discountedPrice = $numericPrice * 0.95;
-        $btcPrice = $discountedPrice / $btcRate;
-
-        $car->btcPrice = number_format($btcPrice, 6);
-    }
-
-
-
 function &getCarReferenceByIndex(array &$cars, int $index) {
     if (isset($cars[$index])) {
         return $cars[$index];
