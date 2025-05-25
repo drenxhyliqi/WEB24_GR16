@@ -12,7 +12,7 @@ require_once("../database/db_conn.php");
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Model Management</title>
+    <title>Carme | Models Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="adminassets/admin.css" />
@@ -23,7 +23,7 @@ require_once("../database/db_conn.php");
     <!-- Navbar and Sidebar -->
     <nav class="navbar navbar-expand-lg shadow-sm border-bottom">
         <div class="container-fluid d-flex justify-content-between align-items-center">
-            <a href="../index.php">
+            <a href="dashboard.php">
                 <img src="../assets/img/company_logo.png" alt="logo" width="140" />
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -42,17 +42,17 @@ require_once("../database/db_conn.php");
     </nav>
 
     <div class="offcanvas offcanvas-start" id="offcanvasExample" tabindex="-1">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title"><i class="bi bi-person-circle fs-3"></i> Admin Dynamic</h5>
-            <button class="btn-close costum" data-bs-dismiss="offcanvas"></button>
+        <div class="offcanvas-header shadow">
+            <h5 class="offcanvas-title"><i class="bi bi-person-circle me-2"></i> <?= $_SESSION['user_name']; ?></h5>
+            <button class="btn-close costum shadow-none" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <div class="custom-button-group">
                 <a href="dashboard.php" class="btn-custom"><i class="bi bi-grid-fill"></i><span>Dashboard</span></a>
                 <a href="productsManagement.php" class="btn-custom"><i class="bi bi-car-front-fill"></i><span>Cars</span></a>
                 <a href="clientsManagement.php" class="btn-custom"><i class="bi bi-people-fill"></i><span>Clients</span></a>
-                <a href="#" class="btn-custom"><i class="bi bi-list-nested"></i><span>Models</span></a>
-                <a href="#" class="btn-custom"><i class="bi bi-box-arrow-left"></i><span>Log Out</span></a>
+                <a href="modelsManagement.php" class="btn-custom"><i class="bi bi-caret-right me-2"></i><i class="bi bi-list-nested"></i><span>Models</span></a>
+                <a href="../logout.php" class="btn-custom"><i class="bi bi-box-arrow-left"></i><span>Log Out</span></a>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@ require_once("../database/db_conn.php");
                             <input type="text" id="model" class="form-control form-control-sm py-2 shadow-none mb-2" placeholder="Enter model name" autofocus required/>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i>Add Model</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Add Model</button>
                         </div>
                     </div>
                 </form>
