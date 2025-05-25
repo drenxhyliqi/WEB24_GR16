@@ -1,10 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $full_name = trim($_POST['full-name']);
-    $email = trim($_POST['email']);
-    $number = trim($_POST['number']);
-    $message = trim($_POST['message']);
+    $full_name = filter_var(trim($_POST['full-name']), FILTER_SANITIZE_STRING);
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $number = filter_var(trim($_POST['number']), FILTER_SANITIZE_STRING);
+    $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
 
     $errors = [];
 
@@ -45,8 +45,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorMessages .= "<li>" . $error . "</li>";
         }
         $errorMessages .= "</ul>";
+
     } else {
-        $successMessage = "Your message has been successfully submitted!";
+        
+        $to = "donartspahiu@gmail.com";  
+        $subject = "New contact form submission from " . $full_name;
+
+        // email content
+        $email_message = "You have received a new message from your website contact form.\n\n";
+        $email_message .= "Name: " . $full_name . "\n";
+        $email_message .= "Email: " . $email . "\n";
+        if (!empty($number)) {
+            $email_message .= "Phone: " . $number . "\n";
+        }
+        $email_message .= "Message:\n" . $message . "\n";
+
+        // Additional headers
+        $headers = "From: " . $email . "\r\n";
+        $headers .= "Reply-To: " . $email . "\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+        // Send email
+        if (mail($to, $subject, $email_message, $headers)) {
+            $successMessage = "Your message has been successfully submitted!";
+        } else {
+            $errorMessages = "<ul><li>There was an error sending your message. Please try again later.</li></ul>";
+        }
     }
 }
 function formatPhoneNumber($number)
