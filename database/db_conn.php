@@ -2,9 +2,9 @@
 // include_once '../error_handler.php';
     $servername = "localhost";
     $username = "root";
-    $password = "";
-    // $password = "2711";
-    $password = "610913";
+    // $password = "";
+    $password = "2711";
+    // $password = "610913";
     $dbname = "carme";
 
     try {

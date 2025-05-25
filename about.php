@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-if (isset($_POST['logout'])) {
-    session_unset();     
-    session_destroy();   
-    header("Location: index.php");
-    exit();
-} 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,23 +41,6 @@ if (isset($_POST['logout'])) {
         .quick-facts {
             border-radius: 8px;
         }
-        
-        .dropdown-menu {
-            min-width: 180px; 
-            text-transform: capitalize;
-        }
-
-        .dropdown-item {
-            padding: 10px 20px;
-            font-size: 1rem;
-            text-transform: capitalize;
-        }
-
-        .dropdown-item:hover {
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
     </style>
 </head>
 
@@ -84,37 +57,17 @@ if (isset($_POST['logout'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="cars.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
-                    <?php if (isset($_SESSION['active'])): ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle fs-4"></i>
-                            </a>
-                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-                                <?php if ($_SESSION['user_role'] == 'admin'): ?>
-                                    <li><a class="dropdown-item navList" href="admin/dashboard.php">Dashboard</a></li>
-                                <?php endif; ?>
-
-                                <li><a class="dropdown-item navList" href="myProfile.php">My Profile</a></li>
-
-                                <li>
-                                    <form method="post" style="margin: 0;" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
-                                        <button type="submit" name="logout" class="logoutBtn ">Logout</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    <?php else: ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a>
-                        </li>
-                    <?php endif; ?>
-                    </li>
-                     <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
+                    <?php if (isset($_SESSION['active'])) { ?>
+                        <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

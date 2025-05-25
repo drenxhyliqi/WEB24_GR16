@@ -1,7 +1,7 @@
 <?php
-
 session_start();
 
+<<<<<<< HEAD
 if (isset($_POST['logout'])) {
     session_unset();     
     session_destroy();   
@@ -9,6 +9,9 @@ if (isset($_POST['logout'])) {
     exit();
 } 
 
+=======
+// Shembuj të dhënash (mund t’i marrësh nga databaza)
+>>>>>>> 2468a05bd5e966b6536dc02f7c45543a829b281c
 $userName = $_SESSION['user_name'] ?? 'Emri Mbiemri';
 $userEmail = $_SESSION['user_email'] ?? 'email@example.com';
 $userRole = $_SESSION['user_role'] ?? 'Përdorues';
@@ -76,27 +79,31 @@ $profileImage = 'assets/profile_default.png';
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="cars.php">Cars</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="cars.php"><i class="bi bi-cash-coin fs-4"></i></a>
+                    </li>
+
                     <?php if (isset($_SESSION['active'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle fs-4"></i>
                             </a>
-                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-                                <?php if ($_SESSION['user_role'] == 'admin'): ?>
-                                    <li><a class="dropdown-item navList" href="admin/dashboard.php">Dashboard</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <?php  if ($_SESSION['user_role'] == 'admin'): ?>
+                                    <li><button class="dropdown-item" href="admin/dashboard.php">Dashboard</button></li>
                                 <?php endif; ?>
-
-                                <li><a class="dropdown-item navList" href="#">My Profile</a></li>
-
-                                <li>
-                                    <form method="post" style="margin: 0;" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
-                                        <button type="submit" name="logout" class="logoutBtn ">Logout</button>
-                                    </form>
-                                </li>
+                                <li><button class="dropdown-item" href="myProfile.php">My Profile</button></li>
+                                <form method="post" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
+                                    <button type="submit" name="logout" class="dropdown-item">Logout</button>
+                                </form>
                             </ul>
                         </li>
                     <?php else: ?>
@@ -105,7 +112,6 @@ $profileImage = 'assets/profile_default.png';
                         </li>
                     <?php endif; ?>
                     </li>
-                     <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
                 </ul>
             </div>
         </div>
