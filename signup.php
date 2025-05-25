@@ -93,7 +93,6 @@ if (isset($_POST['signup'])) {
         <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
           <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
         </ul>
         <ul class="navbar-nav d-flex align-items-right flex-row py-1">

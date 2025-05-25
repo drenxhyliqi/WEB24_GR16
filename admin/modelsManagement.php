@@ -52,7 +52,7 @@ while ($row = $result->fetch_assoc()) {
     <div class="offcanvas offcanvas-start" id="offcanvasExample" tabindex="-1">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title"><i class="bi bi-person-circle fs-3"></i> Admin Dynamic</h5>
-            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+            <button class="btn-close costum" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <div class="custom-button-group">

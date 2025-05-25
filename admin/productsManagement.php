@@ -164,7 +164,7 @@ if (isset($_GET['refreshTable'])) {
             echo "<tr>
                 <td>" . htmlspecialchars($row['car_name']) . "</td>
                 <td>" . htmlspecialchars($row['model']) . "</td>
-                <td class='text-blue'>€" . number_format($row['price'], 2) . "</td>
+                <td class='text-blue'>€" . number_format($row['price'], 1) . "</td>
                 <td>" . $row['relased_year'] . "</td>
                 <td>" . htmlspecialchars($row['location']) . "</td>
                 <td>" . $row['fuel'] . "</td>
@@ -320,11 +320,11 @@ if (isset($_GET['refreshTable'])) {
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">
     <i class="bi bi-person-circle fs-3"> Admin Dynamic</i>
     </h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" class="btn-close costum" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>
 <div class="offcanvas-body">
     <div class="custom-button-group">
-    <a href="index.php" class="btn-custom"><i class="bi bi-grid-fill"></i> <span>Dashboard</span></a>
+    <a href="dashboard.php" class="btn-custom"><i class="bi bi-grid-fill"></i> <span>Dashboard</span></a>
     <a href="#" class="btn-custom"><i class="bi bi-car-front-fill"></i> <span>Cars</span></a>
     <a href="clientsManagement.php" class="btn-custom"><i class="bi bi-people-fill"></i> <span>Clients</span></a>
     <a href="modelsManagement.php" class="btn-custom"><i class="bi bi-list-nested"></i> <span>Models</span></a>
@@ -375,7 +375,7 @@ if (isset($_GET['refreshTable'])) {
         <!-- Price -->
         <div class="col-md-4">
         <label class="form-label">Price (€)</label>
-        <input type="number" step="0.01" name="price" class="form-control" placeholder="€25000.00" required>
+        <input type="number"  name="price" class="form-control" placeholder="€25000.00" required>
         </div>
 
         <!-- Location -->
@@ -421,20 +421,23 @@ if (isset($_GET['refreshTable'])) {
             <option value="Used">Used</option>
         </select>
         </div>
-
-        <!-- Cover Image -->
+        <!-- COVER IMAGE -->
         <div class="col-md-6">
-        <label class="form-label">Cover Image</label>
-        <input type="file" name="cover_img" class="form-control" accept="image/*" required>
+            <label class="form-label">Cover Image</label>
+            <label class="custom-file-upload">
+                <input type="file" name="cover_img" id="cover_img" accept="image/*" required />
+                <i class="bi bi-cloud-arrow-up-fill"></i> Upload Cover Image
+            </label>
         </div>
 
-        <!-- Gallery Images -->
+        <!-- GALLERY IMAGE -->
         <div class="col-md-6">
-        <label class="form-label">Gallery Images</label>
-        <input type="file" name="images[]" class="form-control" accept="image/*" multiple>
+            <label class="form-label">Gallery Images</label>
+            <label class="custom-file-upload">
+                <input type="file" name="images[]" id="gallery_img" accept="image/*" multiple />
+                <i class="bi bi-images"></i> Upload Gallery Images
+            </label>
         </div>
-
-    </div>
 
     <div class="mt-4 add-button">
         <button type="submit" class="px-4 py-2">
@@ -444,7 +447,7 @@ if (isset($_GET['refreshTable'])) {
     </form>
     </div>
     <!-- Tabela e veturave -->
-<div class="table-responsive">
+<div class="table-responsive mt-5">
     <div class="table modern-table">
         <table class="modern-table">
             <thead>
@@ -508,6 +511,17 @@ if (isset($_GET['refreshTable'])) {
     </div>
 </div>
 </div>
+
+<!-- Toast Container -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+    <div id="actionToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+        <div class="toast-body" id="toastMessage">Action successful</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
 <!-- Bootstrap Bundle JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -564,6 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const modal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
                 modal.hide();
                 refreshTable();
+                showToast("Car edited successfully!", "bg-primary");
             } else {
                 alert("Update failed: " + response);
             }
@@ -583,6 +598,7 @@ function deleteCar(id) {
                 if (response.trim() === 'success') {
                     const row = document.querySelector(`button[onclick="deleteCar(${id})"]`).closest('tr');
                     if (row) row.remove();
+                    showToast("Car deleted successfully!", "bg-primary");
                 } else {
                     alert("Delete failed: " + response);
                 }
@@ -612,6 +628,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (response.includes("success")) {
                 addForm.reset();
                 refreshTable();
+                showToast("Car added successfully!", "bg-primary");
             } else {
                 alert("Insert failed: " + response);
             }
@@ -633,6 +650,19 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.style = ''; 
     });
 });
+
+function showToast(message, color) {
+    const toast = document.getElementById('actionToast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    toast.classList.remove('bg-success', 'bg-danger', 'bg-primary');
+    toast.classList.add(color);
+    toastMessage.textContent = message;
+
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+}
+
 </script>
 
 </body>

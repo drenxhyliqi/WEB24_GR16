@@ -29,14 +29,13 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
                     <?php if (isset($_SESSION['active'])) { ?>
                         <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
                     <?php } else { ?>
@@ -60,9 +59,8 @@ session_start();
                     </h1>
                     <p class="lead text-light">Find your perfect ride or sell yours effortlessly.</p>
                     <div class="mt-4">
-                        <a href="#" class="btn btn-primary btn-lg w-100 mb-3"><i class="bi bi-car-front-fill"></i> Sell
-                            my car</a>
-                        <a href="#" class="btn btn-find btn-lg w-100"><i class="bi bi-search"></i> Find a car</a>
+                        <a href="contact.php" class="btn btn-primary btn-lg w-100 mb-3"><i class="bi bi-envelope"></i> Get in touch </a>
+                        <a href="cars.php" class="btn btn-find btn-lg w-100"><i class="bi bi-search"></i> Find a car</a>
                     </div>
                 </div>
             </div>
@@ -76,15 +74,15 @@ session_start();
                 <div class="d-flex align-items-left flex-column gap-2">
                     <h3>Browse:</h3>
                     <div class="d-flex flex-wrap gap-2">
-                        <button class="filter-btn active btn py-2 px-3"><i class="bi bi-tag"></i> Spring Sale</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-stars"></i> New cars</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-car-front"></i> Used cars</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-lightning-charge"></i>
+                        <button class="filter-btn disabled active btn py-2 px-3"><i class="bi bi-tag"></i> Spring Sale</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-stars"></i> New cars</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-car-front"></i> Used cars</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-lightning-charge"></i>
                             Electric</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-truck"></i> SUVs</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-fuel-pump"></i> Hybrids</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-eyeglasses"></i> Big boot</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-piggy-bank"></i> Below 30k</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-truck"></i> SUVs</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-fuel-pump"></i> Hybrids</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-eyeglasses"></i> Big boot</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-piggy-bank"></i> Below 30k</button>
                     </div>
                 </div>
             </div>
@@ -93,8 +91,8 @@ session_start();
 
     <!-- Our Vehicle Models -->
     <section class="container-fluid mt-5 explore">
-        <h2 class="section-title">Our vehicle models</h2>
-        <p class="fw-semibold">Below is a selection of our available models</p>
+        <h2 class="section-title mb-3">Discover Our Range of Vehicle Models</h2>
+        <p class="fw-semibold mb-4">At Carme, we offer a diverse lineup of vehicle models to match every lifestyle and preference. Whether you're looking for a family-friendly SUV, a sleek saloon, or a sporty convertible, you’ll find exactly what suits you.</p>
 
         <div class="row g-3">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2">
@@ -141,8 +139,9 @@ session_start();
         <div class="container-fluid">
             <h3><i class="bi bi-balloon-heart" style="color: #0369fc !important;"></i> With partners we trust. <i
                     class="bi bi-balloon-heart" style="color: #0369fc !important;"></i></h3>
-            <h4>We connect you with all the major manufacturers and thousands of hand-picked dealers.</h4>
-            <button class="cnt-btn fw-semibold">Contact</button>
+            <h4 class="mb-5">We connect you with all the major manufacturers and thousands of hand-picked dealers.</h4>
+            <a href="contact.php" class="cnt-btn fw-semibold">Contact</a>
+            <!-- <button class=""><a href="contact.php">Contact</a></button> -->
         </div>
     </section>
 
@@ -150,7 +149,7 @@ session_start();
     <div class="container">
         <div class="header-row">
             <h2 class="section-title mt-5">Top offers</h2>
-            <a href="#" class="view-all">
+            <a href="cars.php" class="view-all">
                 View all <i class="bi bi-chevron-right"></i>
             </a>
         </div>
@@ -220,7 +219,6 @@ session_start();
                                     <span><?php echo $vetura['gear']; ?></span>
                                 </div>
                             </div>
-                            <button class="btn-view">View Details</button>
                         </div>
                     </div>
                 </div>
@@ -413,8 +411,8 @@ session_start();
         new Lotus(),
     ];
     ?>
-    <section class="container brands">
-        <h3 class="fw-bold">Browse by car manufacturer</h3>
+    <section class="container brands" id="brands">
+        <h3 class="fw-bold">Trusted by these manufacturers</h3>
         <div class="row">
             <?php foreach (array_chunk($brands, 5) as $brandChunk): ?>
                 <div class="col-6 col-md-3">
@@ -524,11 +522,6 @@ session_start();
                 <div class="col-auto">
                     <h2>Latest Cars</h2>
                 </div>
-                <div class="col-auto mb-3">
-                    <button class="btn-all me-2">All</button>
-                    <button class="btn-new me-2">New Cars</button>
-                    <button class="btn-used">Used Cars</button>
-                </div>
             </div>
         </div>
         <div class="row align-items-center">
@@ -541,11 +534,11 @@ session_start();
                             <div class="col-auto">
                                 <p class="text-muted">30/09/2022</p>
                             </div>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
+                            <a href="favorite.php" alt="favorite" class="text-decoration-none text-muted">
                                 <i class="bi bi-heart"></i>
                             </a>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <p class="new-deal">NEW DEAL</p>
+                            <a href="contact.php" alt="" class="text-decoration-none text-muted ">
+                                <p class="new-deal">INQUIRE NOW</p>
                             </a>
                         </div>
                         <h6 class="card-title fw-bold">Porsche 911 <span class="text-muted ms-1">(2024)</span>
@@ -560,7 +553,9 @@ session_start();
                                 <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
                                 <small><i class="bi-gear me-2"></i>Automatic</small>
                             </div>
-                            <button class="view fw-semibold">View Deal</button>
+                            <!-- <button class="view fw-semibold">
+                                <a href="product.php"> View Deal</a>
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -575,11 +570,11 @@ session_start();
                             <div class="col-auto">
                                 <p class="text-muted">11/21/2023</p>
                             </div>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
+                            <a href="favorite.php" alt="favorite" class="text-decoration-none text-muted">
                                 <i class="bi bi-heart"></i>
                             </a>
                             <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <p class="new-deal">NEW DEAL</p>
+                                <p class="new-deal">INQUIRE NOW</p>
                             </a>
                         </div>
                         <h6 class="card-title fw-bold">Bmw M5 F90<span class="text-muted ms-1">(2023)</span></h6>
@@ -593,7 +588,9 @@ session_start();
                                 <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
                                 <small><i class="bi-gear me-2"></i>Automatic</small>
                             </div>
-                            <button class="view fw-semibold">View Deal</button>
+                            <!-- <button class="view fw-semibold">
+                                <a href="product.php"> View Deal</a>
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -607,11 +604,11 @@ session_start();
                             <div class="col-auto">
                                 <p class="text-muted">05/12/2019</p>
                             </div>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
+                            <a href="favorite.php" alt="favorite" class="text-decoration-none text-muted">
                                 <i class="bi bi-heart"></i>
                             </a>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <p class="new-deal">NEW DEAL</p>
+                            <a href="contact.php" alt="favorite" class="text-decoration-none text-muted">
+                                <p class="new-deal">INQUIRE NOW</p>
                             </a>
                         </div>
                         <h6 class="card-title fw-bold">Ferrari Pista 499 <span class="text-muted ms-1">(2019)</span>
@@ -626,7 +623,9 @@ session_start();
                                 <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
                                 <small><i class="bi-gear me-2"></i>Automatic</small>
                             </div>
-                            <button class="view fw-semibold">View Deal</button>
+                            <!-- <button class="view fw-semibold">
+                                <a href="product.php"> View Deal</a>
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -641,11 +640,11 @@ session_start();
                                 <p class="text-muted">12/09/2024</p>
                             </div>
                             <div class="col-auto card-icons">
-                                <a href="#" alt="favorite" class="text-decoration-none text-muted">
+                                <a href="favorite.php" alt="favorite" class="text-decoration-none text-muted">
                                     <i class="bi bi-heart"></i>
                                 </a>
-                                <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                    <p class="new-deal">NEW DEAL</p>
+                                <a href="contact.php" alt="favorite" class="text-decoration-none text-muted">
+                                    <p class="new-deal">INQUIRE NOW</p>
                                 </a>
                             </div>
                         </div>
@@ -660,7 +659,9 @@ session_start();
                                 <small><i class="bi bi-fuel-pump me-2"></i>Electric</small><br>
                                 <small><i class="bi-gear me-2"></i>Automatic</small>
                             </div>
-                            <button class="view fw-semibold">View Deal</button>
+                            <!-- <button class="view fw-semibold">
+                                <a href="product.php"> View Deal</a>
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -699,48 +700,34 @@ session_start();
         <hr>
         <div class="row d-flex justify-content-around footer-lists">
             <div class="col-6 col-md-6 col-lg-3">
-                <p>Buying & Selling</p>
+                <p>Buying</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">Find a car</a></li>
-                    <li><a href="#">Sell your car</a></li>
-                    <li><a href="#">Car dealers</a></li>
-                    <li><a href="#">Compare Cars</a></li>
-                    <li><a href="#">Online car</a></li>
+                    <li><a href="cars.php">Find a car</a></li>
+                    <li><a href="#brands">Car dealers</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md-6 col-lg-3">
                 <p>About</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">About Finder</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs & Support</a></li>
-                    <li><a href="#">Mobile app</a></li>
-                    <li><a href="#">Blog & News</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <p>Profile</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My listings</a></li>
-                    <li><a href="#">Add listings</a></li>
+                    <li><a href="login.php">My account</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <p>Download our app</p>
-                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-                <div>
-                    <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i> Google Play</button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i> App Store</button>
-                </div>
+                <p>Every buyers beliver</p>
+                <p style="font-size: small;">Explore carmee web app and join the community of car enthusiasts.</p>
             </div>
         </div>
 
         <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16"
-                target="_blank"><b>execution</b></a></p>
+                target="_blank"><b>GR16</b></a></p>
     </footer>
 
     <!-- ============= SCRIPTS ============= -->

@@ -11,7 +11,7 @@
     gap: 10px;
     text-decoration: none;
     border-bottom:1px solid #0082f5 ;
-    color: #0082f5;
+    color: #f9f9f9;
     padding: 10px 16px;
     font-weight: 700;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -19,6 +19,7 @@
 
     .btn-custom i {
     font-size: 1.2rem;
+    color: #f9f9f9;
     }
 
     .btn-custom:hover {
@@ -27,7 +28,7 @@
     }
 
     .offcanvas{
-    background-color: #000615 !important;
+    background-color:#000615 !important;
     }
     .offcanvas h5{
     color: #fff !important;
@@ -88,18 +89,10 @@
         flex: 1;
         min-width: 260px;
     }
-    .file-upload {
-        border: 2px dashed #ced4da;
-        padding: 30px;
-        text-align: center;
-        color: #6c757d;
-        font-size: 14px;
-        border-radius: 6px;
-        margin-top: 10px;
-    }
     .btn-submit {
         margin-top: 20px;
         padding: 12px 24px;
+        margin-bottom: 2rem;
         background-color: #0d6efd;
         border: none;
         border-radius: 6px;
@@ -205,4 +198,56 @@
         cursor: pointer;
     }
 
-    
+    input::placeholder,
+    textarea::placeholder {
+        color: #a0c5e7;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #023f7c;
+        box-shadow: 0 0 0 2px rgba(3, 93, 173, 0.2);
+    }
+
+    select {
+        background-color: #f9fcff;
+        color: #035dad;
+    }
+
+    .form-label {
+        color: #035dad;
+        font-weight: 500;
+    }
+
+    .custom-file-upload {
+    border: 2px dashed #035dad;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f9fcff;
+    color: #035dad;
+}
+
+.custom-file-upload:hover {
+    background-color: #e6f0fa;
+}
+
+.custom-file-upload i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+.btn-close.costum {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M2.146 2.146a.5.5 0 0 1 .708 0L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-size: 1em;
+  font-weight: 600;
+}

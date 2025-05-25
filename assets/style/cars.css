@@ -159,3 +159,33 @@ ul li a {
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
+
+/*FOOTER*/
+.admin-footer {
+    background-color: #f0f4f8;
+    border-top: 1px solid #dce3ea;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 50px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-icons a {
+    color: #035dad;
+    font-size: 1.2rem;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+    color: #023f7c;
+}

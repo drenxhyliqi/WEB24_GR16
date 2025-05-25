@@ -189,12 +189,11 @@ function __destruct()
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
-                    <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-car-front-fill fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
                     <?php if (isset($_SESSION['active'])) { ?>
                         <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
                     <?php } else { ?>
@@ -410,60 +409,36 @@ function __destruct()
                 </div>
             </div>
         </div>
-
         <hr>
-
         <div class="row d-flex justify-content-around footer-lists">
             <div class="col-6 col-md-6 col-lg-3">
-                <p>Buying & Selling</p>
+                <p>Buying</p>
                 <ul class="list-unstyled">
                     <li><a href="#">Find a car</a></li>
-                    <li><a href="#">Sell your car</a></li>
-                    <li><a href="#">Car dealers</a></li>
-                    <li><a href="#">Compare Cars</a></li>
-                    <li><a href="#">Online car</a></li>
                 </ul>
             </div>
-
             <div class="col-6 col-md-6 col-lg-3">
                 <p>About</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">About Finder</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs & Support</a></li>
-                    <li><a href="#">Mobile app</a></li>
-                    <li><a href="#">Blog & News</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
                 </ul>
             </div>
-
             <div class="col-12 col-md-6 col-lg-3">
                 <p>Profile</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My listings</a></li>
-                    <li><a href="#">Add listings</a></li>
+                    <li><a href="login.php">My account</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
                 </ul>
             </div>
-
             <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <p>Download our app</p>
-                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-                <div>
-                    <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i> Google Play
-                    </button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i> App Store
-                    </button>
-                </div>
+                <p>Every buyers beliver</p>
+                <p style="font-size: small;">Explore carmee web app and join the community of car enthusiasts.</p>
             </div>
         </div>
 
-        <p id="copyright">
-            &copy; All rights are reserved. Made by
-            <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>execution</b></a>
-        </p>
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16"
+                target="_blank"><b>GR16</b></a></p>
     </footer>
 
     <!-- Bootstrap Bundle with Popper -->
