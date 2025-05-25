@@ -9,14 +9,12 @@ if (isset($_POST['logout'])) {
     exit();
 } 
 
-
-// Shembuj të dhënash (mund t’i marrësh nga databaza)
 $userName = $_SESSION['user_name'] ?? 'Emri Mbiemri';
 $userEmail = $_SESSION['user_email'] ?? 'email@example.com';
 $userRole = $_SESSION['user_role'] ?? 'Përdorues';
 $userPhone = $_SESSION['user_phone'] ?? '+383 44 123 456';
 $joinDate = $_SESSION['created_at'] ?? '2024-01-01';
-$profileImage = 'assets/profile_default.png'; // vendos path-in sipas projektit
+$profileImage = 'assets/profile_default.png'; 
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +62,7 @@ $profileImage = 'assets/profile_default.png'; // vendos path-in sipas projektit
     </style>
 </head>
 <body>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid d-flex align-items-center justify-content-between">
@@ -111,55 +110,7 @@ $profileImage = 'assets/profile_default.png'; // vendos path-in sipas projektit
             </div>
         </div>
     </nav>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .profile-card {
-            max-width: 500px;
-            margin: 60px auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            padding: 30px;
-        }
-        .profile-card h3 {
-            margin-top: 10px;
-        }
-        .profile-icon {
-            width: 100px;
-            height: 100px;
-            background-color: #e9ecef;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            color: #6c757d;
-        }
-        .info-row {
-            margin-bottom: 15px;
-        }
-        .info-label {
-            font-weight: 500;
-            color: #6c757d;
-        }
-        .logout-btn {
-            margin-top: 30px;
-        }
-    </style>
-</head>
-<body>
-<<div class="container py-5">
+<div class="container-fluid py-5 text-left">
     <h2>Profili Im</h2>
 
     <!-- Shfaqja e mesazheve -->
@@ -178,7 +129,7 @@ $profileImage = 'assets/profile_default.png'; // vendos path-in sipas projektit
     <p><strong>Roli:</strong> <?php echo htmlspecialchars($_SESSION['user_role'] ?? ''); ?></p>
 
     <!-- Butoni për modalin -->
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+    <button class="btn" style="background-color: #035dad !important; color: #f9f9f9 !important;" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
         Ndrysho Fjalëkalimin
     </button>
 </div>
@@ -210,7 +161,7 @@ $profileImage = 'assets/profile_default.png'; // vendos path-in sipas projektit
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulo</button>
-        <button type="submit" name="change_password" class="btn btn-primary">Ndrysho</button>
+        <button type="submit" name="change_password" class="btn" style="background-color: #035dad !important; color: #f9f9f9 ;">Ndrysho</button>
       </div>
     </form>
   </div>
@@ -227,21 +178,22 @@ $profileImage = 'assets/profile_default.png'; // vendos path-in sipas projektit
 <?php endif; ?>
 
 
-<footer class="container-fluid mt-5 footer-info">
+    <!-- ============= FOOTER SECTION ============= -->
+    <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-copy me-2"></i>
                     <span class="mb-0">Over 1 million listings</span>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-search me-2"></i>
-                    <span>Personalized search</span>
+                    <span class="">Personalized search</span>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-car-front-fill me-2"></i>
                     <span class="mb-0">Online car appraisal</span>
@@ -256,48 +208,35 @@ $profileImage = 'assets/profile_default.png'; // vendos path-in sipas projektit
         </div>
         <hr>
         <div class="row d-flex justify-content-around footer-lists">
-            <div class="col-6 col-md-6 col-lg-3 ">
-                <p>Buying & Selling</p>
+            <div class="col-6 col-md-6 col-lg-3">
+                <p>Buying</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">Find a car</a></li>
-                    <li><a href="#">Sell your car</a></li>
-                    <li><a href="#">Car dealers</a></li>
-                    <li><a href="#">Compare Cars</a></li>
-                    <li><a href="#">Online car</a></li>
+                    <li><a href="cars.php">Find a car</a></li>
+                    <li><a href="#brands">Car dealers</a></li>
                 </ul>
             </div>
-            <div class="col-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-md-6 col-lg-3">
                 <p>About</p>
-                <ul class="list-unstyled ">
-                    <li><a href="#">About Finder</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs & Support</a></li>
-                    <li><a href="#">Mobile app</a></li>
-                    <li><a href="#">Blog & News</a></li>
+                <ul class="list-unstyled">
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 ">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Profile</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My listings</a></li>
-                    <li><a href="#">Add listings</a></li>
+                    <li><a href="login.php">My account</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <p>Download our app</p>
-                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-                <div>
-                    <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i> Google Play</button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i> App Store</button>
-                </div>
+                <p>Every buyers beliver</p>
+                <p style="font-size: small;">Explore carmee web app and join the community of car enthusiasts.</p>
             </div>
         </div>
 
-        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16"
+                target="_blank"><b>GR16</b></a></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
