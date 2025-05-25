@@ -53,10 +53,52 @@ if (!isset($_SESSION['active'])) {
 
     <!-- Content -->
     <div class="container-fluid">
-        <div class="mt-5">
+        <div class="mt-3">
+            <div class="mb-1 text-end">
+                <a href="clear_wishlist.php" class="btn btn-dark">Clear Wishlist!</a>
+            </div>
             <h3 class="fw-semibold">Cars favorited by you!</h3>
             <hr>
+
+            <div class="row align-items-center mt-4">
+                <?php
+                $wishlist = isset($_COOKIE['wishlist']) ? json_decode($_COOKIE['wishlist'], true) : [];
+
+                if (!empty($wishlist)) {
+                    foreach ($wishlist as $car): ?>
+                        <div class="col-12 col-md-6 col-lg-3 mb-4">
+                            <div class="card card-content">
+                                <img src="<?= htmlspecialchars($car['cover_img']) ?>" class="card-img-top" alt="<?= htmlspecialchars($car['name']) ?>">
+                                <div class="card-body">
+                                    <div class="row d-flex justify-content-between">
+                                        <div class="col-auto">
+                                            <p class="text-muted mb-1"><i class="bi bi-heart-fill text-danger"></i> Favorited</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="contact.php" class="text-decoration-none text-muted">
+                                                <p class="new-deal mb-0">INQUIRE NOW</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <h6 class="card-title fw-bold text-truncate">
+                                        <a href="car.php?id=<?= $car['id'] ?>" class="text-decoration-none text-dark">
+                                            <?= htmlspecialchars($car['name']) ?>
+                                        </a>
+                                    </h6>
+                                    <h5 class="fw-semibold">€<?= number_format($car['price'], 0) ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach;
+                } else {
+                    echo "<p class='text-muted text-center'>Your wishlist is currently empty.</p>";
+                }
+                ?>
+            </div>
+
         </div>
+    </div>
+
     <!-- ============= FOOTER SECTION ============= -->
     <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">

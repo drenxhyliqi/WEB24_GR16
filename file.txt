@@ -31,3 +31,9 @@
 [2025-05-25 20:40:17] New login attempt
 [2025-05-25 20:40:24] New login attempt
 [2025-05-25 20:40:24] User Edison Ndou ndouedison02@gmail.com logged in
+[2025-05-25 22:56:20] New login attempt
+[2025-05-25 22:56:27] New login attempt
+[2025-05-25 22:56:49] New login attempt
+[2025-05-25 22:56:49] New login attempt
+[2025-05-25 22:56:54] New login attempt
+[2025-05-25 22:56:54] User edisonndou edison@gmail.com logged in

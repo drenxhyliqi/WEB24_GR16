@@ -168,7 +168,11 @@ session_start();
                                 <div class="date-badge"><?= htmlspecialchars($car['relased_year']) ?></div>
                             </div>
                             <div class="card-body">
-                                <h3 class="car-title"><?= htmlspecialchars($car['car_name']) ?></h3>
+                                <h3 class="car-title">
+                                    <a href="car.php?id=<?= $car['id'] ?>" class="text-decoration-none text-dark">
+                                        <?= htmlspecialchars($car['car_name']) ?>
+                                    </a>
+                                </h3>
                                 <p class="car-price">€<?= number_format($car['price'], 0) ?></p>
                                 <div class="car-details-grid">
                                     <div class="car-detail"><i class="bi bi-speedometer"></i><span><?= number_format($car['km']) ?> km</span></div>
@@ -176,6 +180,17 @@ session_start();
                                     <div class="car-detail"><i class="bi bi-map"></i><span><?= htmlspecialchars(string: $car['location']) ?></span></div>
                                     <div class="car-detail"><i class="bi bi-gear"></i><span><?= htmlspecialchars($car['transmission']) ?></span></div>
                                 </div>
+                                <?php if(isset($_SESSION['active']) && $_SESSION['user_role']=='client'): ?>
+                                    <div class="mt-3">
+                                        <form method="post" action="add_to_wishlist.php">
+                                            <input type="hidden" name="car_id" value="<?= $car['id'] ?>">
+                                            <input type="hidden" name="car_name" value="<?= htmlspecialchars($car['car_name']) ?>">
+                                            <input type="hidden" name="car_price" value="<?= $car['price'] ?>">
+                                            <input type="hidden" name="cover_img" value="<?= $car['cover_img'] ?>">
+                                            <button type="submit" class="btn btn-dark text-center w-100">Add to wishlist</button>
+                                        </form>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -496,7 +511,11 @@ session_start();
                             <a href="favorite.php" class="text-decoration-none text-muted"><i class="bi bi-heart"></i></a>
                             <a href="contact.php" class="text-decoration-none text-muted"><p class="new-deal">INQUIRE NOW</p></a>
                         </div>
-                        <h6 class="card-title fw-bold"><?= htmlspecialchars($car['car_name']) ?></h6>
+                        <h6 class="card-title fw-bold">
+                            <a href="car.php?id=<?= $car['id'] ?>" class="text-decoration-none text-dark">
+                                <?= htmlspecialchars($car['car_name']) ?>
+                            </a>
+                        </h6>
                         <h5 class="fw-semibold">€<?= number_format($car['price'], 0) ?></h5>
                         <div class="row d-flex">
                             <div class="col-auto">
@@ -507,6 +526,17 @@ session_start();
                                 <small><i class="bi bi-gear me-2"></i><?= htmlspecialchars($car['transmission']) ?></small><br>
                                 <small><i class="bi bi-calendar me-2"></i><?= htmlspecialchars($car['relased_year']) ?></small>
                             </div>
+                            <?php if(isset($_SESSION['active']) && $_SESSION['user_role']=='client'): ?>
+                                <div class="mt-3">
+                                    <form method="post" action="add_to_wishlist.php">
+                                        <input type="hidden" name="car_id" value="<?= $car['id'] ?>">
+                                        <input type="hidden" name="car_name" value="<?= htmlspecialchars($car['car_name']) ?>">
+                                        <input type="hidden" name="car_price" value="<?= $car['price'] ?>">
+                                        <input type="hidden" name="cover_img" value="<?= $car['cover_img'] ?>">
+                                        <button type="submit" class="btn btn-dark text-center w-100">Add to wishlist</button>
+                                    </form>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
