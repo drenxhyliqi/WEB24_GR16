@@ -64,63 +64,33 @@ ul li a {
 }
 
 .dropdown-menu {
-    max-width: 120px ;
-    text-transform: capitalize;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 8px 0;
-    background-color: white;
+    width: 100px;
 }
 
 .dropdown-item{
-    padding: 10px 0px 0px 0px !important;
-    font-size: 1rem;
-    text-transform: capitalize;
-    color: #000;
-    margin-left: 10px;
-    font-weight: 500;
-    background: none;
-    border: none;               
-    outline: none;              
-    text-align: center;         
-    width: 90%;
-    display: block;
-    border-radius: 5px;
-    transition: background-color 0.2s ease, opacity 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
+    font-size: 14px;
+    padding: 5px 0px 10px 0px !important;
+    text-align: center;
+
 }
 
 .logoutBtn {
-    font-size: 1rem;
-    text-transform: capitalize;
-    color: #000;
-    font-weight: 600;
-    margin: 2px 0px;
-    background: none;
-    border: none;               
-    outline: none;              
-    text-align: center;         
-    width: 90%;
-    display: block;
-    border-radius: 5px;
-    transition: background-color 0.2s ease, opacity 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
+    padding-left: 49px;
+    align-items: center;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
 }
-/* 
-.navList{
-    border:2px red solid;
-} */
 
-/* Hover efekti për të dy */
-/* .dropdown-item:hover,
-.logoutBtn:hover {
-    overflow: hidden !important;
-    background-color: #f1f1f1;
-    opacity: 0.9;
-} */
-
+.dropdown-item:hover {
+    background-color: #f9f9f9;
+    color: #035dad;
+}
+.logoutBtn:hover{
+    background-color: #f9f9f9;
+    color: #035dad;
+}
 
 /* ============= MAIN BANNER SECTION ============= */
 .main-banner {
@@ -558,10 +528,10 @@ ul li a {
 
 /* For Tablets */
 @media (min-width: 768px) {
-    /* Add tablet-specific styles here */
+    
 }
 
 /* For Desktop */
 @media (min-width: 992px) {
-    /* Add desktop-specific styles here */
+    
 }

@@ -57,3 +57,14 @@
 [2025-05-25 20:48:55] New login attempt
 [2025-05-25 20:49:04] New login attempt
 [2025-05-25 20:49:04] User Dren Xhyliqi drenadmin@gmail.com logged in
+[2025-05-25 22:09:17] New login attempt
+[2025-05-25 22:38:21] New login attempt
+[2025-05-25 22:38:21] New login attempt
+[2025-05-25 22:39:31] New login attempt
+[2025-05-25 22:39:32] New login attempt
+[2025-05-25 22:39:49] New login attempt
+[2025-05-25 22:39:49] New login attempt
+[2025-05-25 22:40:59] New login attempt
+[2025-05-25 22:40:59] New login attempt
+[2025-05-25 22:41:04] Sign up attempt
+[2025-05-25 22:41:04] Sign up attempt

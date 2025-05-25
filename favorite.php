@@ -47,8 +47,6 @@ if (isset($_POST['logout'])) {
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
-                    <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
-
                     <?php if (isset($_SESSION['active'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,10 +54,10 @@ if (isset($_POST['logout'])) {
                             </a>
                             <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
                                 <?php if ($_SESSION['user_role'] == 'admin'): ?>
-                                    <li><a class="dropdown-item" href="admin/dashboard.php">Dashboard</a></li>
+                                    <li><a class="dropdown-item navList" href="admin/dashboard.php">Dashboard</a></li>
                                 <?php endif; ?>
 
-                                <li><a class="dropdown-item" href="myProfile.php">My Profile</a></li>
+                                <li><a class="dropdown-item navList" href="myProfile.php">My Profile</a></li>
 
                                 <li>
                                     <form method="post" style="margin: 0;" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
@@ -74,6 +72,7 @@ if (isset($_POST['logout'])) {
                         </li>
                     <?php endif; ?>
                     </li>
+                     <li class="nav-item"><a class="nav-link" href=""><i class="bi bi-bag-heart fs-4"></i></a></li>
                 </ul>
             </div>
         </div>
