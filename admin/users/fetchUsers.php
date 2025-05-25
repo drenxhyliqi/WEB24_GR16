@@ -2,7 +2,7 @@
 require_once("../../database/db_conn.php"); 
 
 if (isset($_POST['fetch']) && $_POST['fetch'] == "fetchUsers") {
-    $result = $con->query("SELECT * FROM users");
+    $result = $con->query("SELECT * FROM users WHERE role='client'");
 
     $output = '';
     if ($result->num_rows > 0) {
