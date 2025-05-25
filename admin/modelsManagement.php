@@ -23,7 +23,7 @@ require_once("../database/db_conn.php");
     <!-- Navbar and Sidebar -->
     <nav class="navbar navbar-expand-lg shadow-sm border-bottom">
         <div class="container-fluid d-flex justify-content-between align-items-center">
-            <a href="dashboard.php">
+            <a href="../index.php">
                 <img src="../assets/img/company_logo.png" alt="logo" width="140" />
             </a>
             <button type="button" class="btn btn-default border-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="bi bi-grid h3"></i></button>

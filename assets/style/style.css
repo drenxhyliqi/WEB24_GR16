@@ -59,6 +59,39 @@ ul li a {
     color: #035dad;
 }
 
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    width: 100px;
+}
+
+.dropdown-item{
+    font-size: 14px;
+    padding: 5px 0px 10px 0px !important;
+    text-align: center;
+
+}
+
+.logoutBtn {
+    padding-left: 49px;
+    align-items: center;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+}
+
+.dropdown-item:hover {
+    background-color: #f9f9f9;
+    color: #035dad;
+}
+.logoutBtn:hover{
+    background-color: #f9f9f9;
+    color: #035dad;
+}
+
 /* ============= MAIN BANNER SECTION ============= */
 .main-banner {
     background-color: #000615f8;
@@ -407,6 +440,7 @@ ul li a {
     background-color: #035dad;
 }
 
+
 /* ============= FOOTER SECTION ============= */
 .footer-info {
     background-color: #000615;
@@ -494,10 +528,10 @@ ul li a {
 
 /* For Tablets */
 @media (min-width: 768px) {
-    /* Add tablet-specific styles here */
+    
 }
 
 /* For Desktop */
 @media (min-width: 992px) {
-    /* Add desktop-specific styles here */
+    
 }
