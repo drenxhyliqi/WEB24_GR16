@@ -2,6 +2,10 @@
 require_once('database/db_conn.php');
 session_start();
 
+$log_file = fopen("file.txt", "a") or die("Unable to open file!");
+fwrite($log_file, "[" . date("Y-m-d H:i:s") . "] New login attempt\n");
+fclose($log_file);
+
 if (isset($_SESSION['active'])) {
   session_unset();
   session_destroy();
@@ -35,6 +39,10 @@ if (isset($_POST['login'])) {
           $_SESSION['user_email'] = $user['email'];
           $_SESSION['user_role'] = $user['role'];
           $_SESSION['active'] = true;
+
+          $log_file = fopen("file.txt", "a") or die("Unable to open file!");
+          fwrite($log_file, "[" . date("Y-m-d H:i:s") . "] User " . $user['user'] . " " . $user['email'] . " logged in\n");
+          fclose($log_file);
 
           header('Location: admin/dashboard.php?login_success=true');
           exit();
@@ -84,16 +92,15 @@ if (isset($_POST['login'])) {
         <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
           <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
         </ul>
         <ul class="navbar-nav d-flex align-items-right flex-row py-1">
           <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
           <?php if (isset($_SESSION['active'])) { ?>
             <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
           <?php } else { ?>
-            <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person-circle fs-4"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-circle fs-4"></i></a></li>
           <?php } ?>
         </ul>
       </div>

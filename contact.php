@@ -1,10 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $full_name = trim($_POST['full-name']);
-    $email = trim($_POST['email']);
-    $number = trim($_POST['number']);
-    $message = trim($_POST['message']);
+    $full_name = filter_var(trim($_POST['full-name']), FILTER_SANITIZE_STRING);
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $number = filter_var(trim($_POST['number']), FILTER_SANITIZE_STRING);
+    $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
 
     $errors = [];
 
@@ -45,8 +45,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorMessages .= "<li>" . $error . "</li>";
         }
         $errorMessages .= "</ul>";
+
     } else {
-        $successMessage = "Your message has been successfully submitted!";
+        
+        $to = "donartspahiu@gmail.com";  
+        $subject = "New contact form submission from " . $full_name;
+
+        // email content
+        $email_message = "You have received a new message from your website contact form.\n\n";
+        $email_message .= "Name: " . $full_name . "\n";
+        $email_message .= "Email: " . $email . "\n";
+        if (!empty($number)) {
+            $email_message .= "Phone: " . $number . "\n";
+        }
+        $email_message .= "Message:\n" . $message . "\n";
+
+        // Additional headers
+        $headers = "From: " . $email . "\r\n";
+        $headers .= "Reply-To: " . $email . "\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+        // Send email
+        if (mail($to, $subject, $email_message, $headers)) {
+            $successMessage = "Your message has been successfully submitted!";
+        } else {
+            $errorMessages = "<ul><li>There was an error sending your message. Please try again later.</li></ul>";
+        }
     }
 }
 function formatPhoneNumber($number)
@@ -158,12 +182,11 @@ function formatPhoneNumber($number)
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="contact.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
                     <?php if (isset($_SESSION['active'])) { ?>
                         <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
                     <?php } else { ?>
@@ -177,7 +200,7 @@ function formatPhoneNumber($number)
     <section class="container-fluid mt-4 Contact">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-12 col-md-6 contactUs">
+                <div class="col-12 col-md-4 contactUs">
                     <h1><b>Contact Us</b></h1>
                     <p class="fs-6">Write to us if you have any difficulties in working with the service. We are open to communication and want to know more about those who trust us.</p>
                     <div class="d-flex align-items-center gap-4 flex-wrap">
@@ -185,14 +208,14 @@ function formatPhoneNumber($number)
                         <div class="questionText">
                             <h2><b>Questions?</b></h2>
                             <div id="contact-info">
-                                <p>Give us a call right now at : <br><b>+383 (0)45 548 747</b></p>
+                                <p>Give us a call right now at : <br><a href=tel:045548747 style="text-decoration: none; color: #222;">+383 (0)45 548 747</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6 mb-5 contactForm">
-                    <h2><b>Get in touch</b></h2>
+                <div class="col-12 col-md-8 mb-5 contactForm">
+                    <h2 class="text-center"><b>Get in touch</b></h2>
 
                     <!-- Error message displayed at the top of the form -->
                     <?php if (isset($errorMessages)): ?>
@@ -231,27 +254,28 @@ function formatPhoneNumber($number)
                         <label for="message" class="form-label"></label>
                         <textarea id="message" name="message" class="form-control" rows="3" placeholder="Your message"></textarea>
 
-                        <button type="submit" class="btn btn-primary w-100 mt-3 mb-3">Submit</button>
+                        <button type="submit" class="btn w-100 mt-3 mb-3" style="background-color: #035dad !important; color: #f9f9f9;">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    <footer class="container-fluid footer-info">
+    <!-- ============= FOOTER SECTION ============= -->
+    <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-copy me-2"></i>
                     <span class="mb-0">Over 1 million listings</span>
                 </div>
             </div>
-            <div class="coaval-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-search me-2"></i>
                     <span class="">Personalized search</span>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-car-front-fill me-2"></i>
                     <span class="mb-0">Online car appraisal</span>
@@ -266,47 +290,34 @@ function formatPhoneNumber($number)
         </div>
         <hr>
         <div class="row d-flex justify-content-around footer-lists">
-            <div class="col-6 col-md-6 col-lg-3 ">
-                <p>Buying & Selling</p>
+            <div class="col-6 col-md-6 col-lg-3">
+                <p>Buying</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">Find a car</a></li>
-                    <li><a href="#">Sell your car</a></li>
-                    <li><a href="#">Car dealers</a></li>
-                    <li><a href="#">Compare Cars</a></li>
-                    <li><a href="#">Online car</a></li>
+                    <li><a href="cars.php">Find a car</a></li>
                 </ul>
             </div>
-            <div class="col-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-md-6 col-lg-3">
                 <p>About</p>
-                <ul class="list-unstyled ">
-                    <li><a href="#">About Finder</a></li>
+                <ul class="list-unstyled">
+                    <li><a href="about.php">About Us</a></li>
                     <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs & Support</a></li>
-                    <li><a href="#">Mobile app</a></li>
-                    <li><a href="#">Blog & News</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 ">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Profile</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My listings</a></li>
-                    <li><a href="#">Add listings</a></li>
+                    <li><a href="login.php">My account</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <p>Download our app</p>
-                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-                <div>
-                    <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i> Google Play</button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i> App Store</button>
-                </div>
+                <p>Every buyers beliver</p>
+                <p style="font-size: small;">Explore carmee web app and join the community of car enthusiasts.</p>
             </div>
         </div>
-        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
+
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16"
+                target="_blank"><b>GR16</b></a></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

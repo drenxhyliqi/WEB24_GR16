@@ -29,14 +29,13 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
                     <?php if (isset($_SESSION['active'])) { ?>
                         <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
                     <?php } else { ?>
@@ -60,9 +59,8 @@ session_start();
                     </h1>
                     <p class="lead text-light">Find your perfect ride or sell yours effortlessly.</p>
                     <div class="mt-4">
-                        <a href="#" class="btn btn-primary btn-lg w-100 mb-3"><i class="bi bi-car-front-fill"></i> Sell
-                            my car</a>
-                        <a href="#" class="btn btn-find btn-lg w-100"><i class="bi bi-search"></i> Find a car</a>
+                        <a href="contact.php" class="btn btn-primary btn-lg w-100 mb-3"><i class="bi bi-envelope"></i> Get in touch </a>
+                        <a href="cars.php" class="btn btn-find btn-lg w-100"><i class="bi bi-search"></i> Find a car</a>
                     </div>
                 </div>
             </div>
@@ -76,15 +74,15 @@ session_start();
                 <div class="d-flex align-items-left flex-column gap-2">
                     <h3>Browse:</h3>
                     <div class="d-flex flex-wrap gap-2">
-                        <button class="filter-btn active btn py-2 px-3"><i class="bi bi-tag"></i> Spring Sale</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-stars"></i> New cars</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-car-front"></i> Used cars</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-lightning-charge"></i>
+                        <button class="filter-btn disabled active btn py-2 px-3"><i class="bi bi-tag"></i> Spring Sale</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-stars"></i> New cars</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-car-front"></i> Used cars</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-lightning-charge"></i>
                             Electric</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-truck"></i> SUVs</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-fuel-pump"></i> Hybrids</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-eyeglasses"></i> Big boot</button>
-                        <button class="filter-btn btn py-2 px-3"><i class="bi bi-piggy-bank"></i> Below 30k</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-truck"></i> SUVs</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-fuel-pump"></i> Hybrids</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-eyeglasses"></i> Big boot</button>
+                        <button class="filter-btn disabled btn py-2 px-3"><i class="bi bi-piggy-bank"></i> Below 30k</button>
                     </div>
                 </div>
             </div>
@@ -93,8 +91,8 @@ session_start();
 
     <!-- Our Vehicle Models -->
     <section class="container-fluid mt-5 explore">
-        <h2 class="section-title">Our vehicle models</h2>
-        <p class="fw-semibold">Below is a selection of our available models</p>
+        <h2 class="section-title mb-3">Discover Our Range of Vehicle Models</h2>
+        <p class="fw-semibold mb-4">At Carme, we offer a diverse lineup of vehicle models to match every lifestyle and preference. Whether you're looking for a family-friendly SUV, a sleek saloon, or a sporty convertible, you’ll find exactly what suits you.</p>
 
         <div class="row g-3">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2">
@@ -141,91 +139,48 @@ session_start();
         <div class="container-fluid">
             <h3><i class="bi bi-balloon-heart" style="color: #0369fc !important;"></i> With partners we trust. <i
                     class="bi bi-balloon-heart" style="color: #0369fc !important;"></i></h3>
-            <h4>We connect you with all the major manufacturers and thousands of hand-picked dealers.</h4>
-            <button class="cnt-btn fw-semibold">Contact</button>
+            <h4 class="mb-5">We connect you with all the major manufacturers and thousands of hand-picked dealers.</h4>
+            <a href="contact.php" class="cnt-btn fw-semibold">Contact</a>
+            <!-- <button class=""><a href="contact.php">Contact</a></button> -->
         </div>
     </section>
 
     <!-- Top offers(prej databaze ma te shtrejtit) -->
     <div class="container">
         <div class="header-row">
-            <h2 class="section-title mt-5">Top offers</h2>
-            <a href="#" class="view-all">
+            <h2 class="section-title mt-5">Top offers<br> Here are the top 3 cheapest cars you can find toady!</h2>
+            <a href="cars.php" class="view-all">
                 View all <i class="bi bi-chevron-right"></i>
             </a>
         </div>
         <!--==== TOP OFFERS SECTION ======-->
         <?php
-        // Array me të dhënat e veturave
-        $veturat = [
-            [
-                "image" => "assets/img/gwagon.jpg",
-                "date" => "28/06/2024",
-                "title" => "Mereceds G Wagon 63",
-                "price" => "$273,000",
-                "location" => "L.A",
-                "mileage" => "09K mi",
-                "fuel" => "Gasoline",
-                "gear" => "Automatic"
-            ],
-            [
-                "image" => "assets/img/e63s.jpg",
-                "date" => "23/10/2024",
-                "title" => "Mercedes Benz E63s",
-                "price" => "$142,500",
-                "location" => "Chicago",
-                "mileage" => "0 mi",
-                "fuel" => "Electric",
-                "gear" => "Manual"
-            ],
-            [
-                "image" => "assets/img/m5.jpg",
-                "date" => "15/07/2024",
-                "title" => "BMW M5 F90",
-                "price" => "$122,500",
-                "location" => "NYC",
-                "mileage" => "15K mi",
-                "fuel" => "Gasoline",
-                "gear" => "Automatic"
-            ]
-        ];
-        ?>
-        <div class="row">
-            <?php foreach ($veturat as $vetura): ?>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-img-wrapper">
-                            <img src="<?php echo $vetura['image']; ?>" alt="<?php echo $vetura['title']; ?>">
-                            <div class="date-badge"><?php echo $vetura['date']; ?></div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="car-title"><?php echo $vetura['title']; ?></h3>
-                            <p class="car-price"><?php echo $vetura['price']; ?></p>
-
-                            <div class="car-details-grid">
-                                <div class="car-detail">
-                                    <i class="bi bi-geo-alt"></i>
-                                    <span><?php echo $vetura['location']; ?></span>
-                                </div>
-                                <div class="car-detail">
-                                    <i class="bi bi-speedometer"></i>
-                                    <span><?php echo $vetura['mileage']; ?></span>
-                                </div>
-                                <div class="car-detail">
-                                    <i class="bi bi-fuel-pump"></i>
-                                    <span><?php echo $vetura['fuel']; ?></span>
-                                </div>
-                                <div class="car-detail">
-                                    <i class="bi bi-gear"></i>
-                                    <span><?php echo $vetura['gear']; ?></span>
+            require_once("database/db_conn.php");
+            $topOffersQuery = "SELECT * FROM cars ORDER BY price ASC LIMIT 3";
+            $topOffers = $con->query($topOffersQuery);
+            ?>
+            <div class="row">
+                <?php while ($car = $topOffers->fetch_assoc()): ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-img-wrapper">
+                                <img src="<?= htmlspecialchars($car['cover_img']) ?>" alt="<?= htmlspecialchars($car['car_name']) ?>">
+                                <div class="date-badge"><?= htmlspecialchars($car['relased_year']) ?></div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="car-title"><?= htmlspecialchars($car['car_name']) ?></h3>
+                                <p class="car-price">€<?= number_format($car['price'], 0) ?></p>
+                                <div class="car-details-grid">
+                                    <div class="car-detail"><i class="bi bi-speedometer"></i><span><?= number_format($car['km']) ?> km</span></div>
+                                    <div class="car-detail"><i class="bi bi-fuel-pump"></i><span><?= htmlspecialchars($car['fuel']) ?></span></div>
+                                    <div class="car-detail"><i class="bi bi-map"></i><span><?= htmlspecialchars(string: $car['location']) ?></span></div>
+                                    <div class="car-detail"><i class="bi bi-gear"></i><span><?= htmlspecialchars($car['transmission']) ?></span></div>
                                 </div>
                             </div>
-                            <button class="btn-view">View Details</button>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
+                <?php endwhile; ?>
+            </div>
     </div>
 
     <!-- ============= BRANDS SECTION ============== -->
@@ -413,8 +368,8 @@ session_start();
         new Lotus(),
     ];
     ?>
-    <section class="container brands">
-        <h3 class="fw-bold">Browse by car manufacturer</h3>
+    <section class="container brands" id="brands">
+        <h3 class="fw-bold">Trusted by these manufacturers</h3>
         <div class="row">
             <?php foreach (array_chunk($brands, 5) as $brandChunk): ?>
                 <div class="col-6 col-md-3">
@@ -524,147 +479,39 @@ session_start();
                 <div class="col-auto">
                     <h2>Latest Cars</h2>
                 </div>
-                <div class="col-auto mb-3">
-                    <button class="btn-all me-2">All</button>
-                    <button class="btn-new me-2">New Cars</button>
-                    <button class="btn-used">Used Cars</button>
-                </div>
             </div>
         </div>
         <div class="row align-items-center">
+            <?php
+            $latestCarsQuery = "SELECT * FROM cars ORDER BY id DESC LIMIT 4";
+            $latestCars = $con->query($latestCarsQuery);
+            ?>
+            <?php while ($car = $latestCars->fetch_assoc()): ?>
             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <!-- Card 1 -->
-                <div class="card card-content" style="width: 100%;">
-                    <img src="assets/img/porschecar.jpg" class="card-img-top img-fluid" alt="porsche">
+                <div class="card card-content">
+                    <img src="<?= htmlspecialchars($car['cover_img']) ?>" class="card-img-top" alt="<?= htmlspecialchars($car['car_name']) ?>">
                     <div class="card-body">
                         <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <p class="text-muted">30/09/2022</p>
-                            </div>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <i class="bi bi-heart"></i>
-                            </a>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <p class="new-deal">NEW DEAL</p>
-                            </a>
+                            <div class="col-auto"><p class="text-muted"><?= htmlspecialchars($car['relased_year']) ?></p></div>
+                            <a href="favorite.php" class="text-decoration-none text-muted"><i class="bi bi-heart"></i></a>
+                            <a href="contact.php" class="text-decoration-none text-muted"><p class="new-deal">INQUIRE NOW</p></a>
                         </div>
-                        <h6 class="card-title fw-bold">Porsche 911 <span class="text-muted ms-1">(2024)</span>
-                        </h6>
-                        <h5 class="fw-semibold">$179,000</h5>
+                        <h6 class="card-title fw-bold"><?= htmlspecialchars($car['car_name']) ?></h6>
+                        <h5 class="fw-semibold">€<?= number_format($car['price'], 0) ?></h5>
                         <div class="row d-flex">
                             <div class="col-auto">
-                                <small><i class="bi bi-geo-alt me-2"></i>Boston</small><br>
-                                <small><i class="bi-speedometer me-2"></i>12K mi</small>
+                                <small><i class="bi bi-speedometer me-2"></i><?= number_format($car['km']) ?> km</small><br>
+                                <small><i class="bi bi-fuel-pump me-2"></i><?= htmlspecialchars($car['fuel']) ?></small>
                             </div>
                             <div class="col-auto mx-auto">
-                                <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
-                                <small><i class="bi-gear me-2"></i>Automatic</small>
+                                <small><i class="bi bi-gear me-2"></i><?= htmlspecialchars($car['transmission']) ?></small><br>
+                                <small><i class="bi bi-calendar me-2"></i><?= htmlspecialchars($car['relased_year']) ?></small>
                             </div>
-                            <button class="view fw-semibold">View Deal</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <!-- Card 2 -->
-                <div class="card" style="width: 100%;">
-                    <img src="assets/img/m5.jpg" class="card-img-top" alt="m5">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <p class="text-muted">11/21/2023</p>
-                            </div>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <i class="bi bi-heart"></i>
-                            </a>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <p class="new-deal">NEW DEAL</p>
-                            </a>
-                        </div>
-                        <h6 class="card-title fw-bold">Bmw M5 F90<span class="text-muted ms-1">(2023)</span></h6>
-                        <h5 class="fw-semibold">$129,000</h5>
-                        <div class="row d-flex">
-                            <div class="col-auto">
-                                <small><i class="bi bi-geo-alt me-2"></i>New York</small><br>
-                                <small><i class="bi-speedometer me-2"></i>28K mi</small>
-                            </div>
-                            <div class="col-auto mx-auto">
-                                <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
-                                <small><i class="bi-gear me-2"></i>Automatic</small>
-                            </div>
-                            <button class="view fw-semibold">View Deal</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <!-- Card 3 -->
-                <div class="card" style="width: 100%;">
-                    <img src="assets/img/pista488.jpg" class="card-img-top" alt="ferrari">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <p class="text-muted">05/12/2019</p>
-                            </div>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <i class="bi bi-heart"></i>
-                            </a>
-                            <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                <p class="new-deal">NEW DEAL</p>
-                            </a>
-                        </div>
-                        <h6 class="card-title fw-bold">Ferrari Pista 499 <span class="text-muted ms-1">(2019)</span>
-                        </h6>
-                        <h5 class="fw-semibold">$419,000</h5>
-                        <div class="row d-flex">
-                            <div class="col-auto">
-                                <small><i class="bi bi-geo-alt me-2"></i>San Diego</small><br>
-                                <small><i class="bi-speedometer me-2"></i>56K mi</small>
-                            </div>
-                            <div class="col-auto mx-auto">
-                                <small><i class="bi bi-fuel-pump me-2"></i>Gasoline</small><br>
-                                <small><i class="bi-gear me-2"></i>Automatic</small>
-                            </div>
-                            <button class="view fw-semibold">View Deal</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mb-4">
-                <!-- Card 4 -->
-                <div class="card" style="width: 100%;">
-                    <img src="assets/img/tesla.jpg" class="card-img-top" alt="benz">
-                    <div class="card-body">
-                        <div class="row d-flex justify-content-between">
-                            <div class="col-auto">
-                                <p class="text-muted">12/09/2024</p>
-                            </div>
-                            <div class="col-auto card-icons">
-                                <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                    <i class="bi bi-heart"></i>
-                                </a>
-                                <a href="#" alt="favorite" class="text-decoration-none text-muted">
-                                    <p class="new-deal">NEW DEAL</p>
-                                </a>
-                            </div>
-                        </div>
-                        <h6 class="card-title fw-bold">Tesla<span class="text-muted ms-1">(2024)</span></h6>
-                        <h5 class="fw-semibold">$69,000</h5>
-                        <div class="row d-flex">
-                            <div class="col-auto">
-                                <small><i class="bi bi-geo-alt me-2"></i>Washington</small><br>
-                                <small><i class="bi-speedometer me-2"></i>66K mi</small>
-                            </div>
-                            <div class="col-auto mx-auto">
-                                <small><i class="bi bi-fuel-pump me-2"></i>Electric</small><br>
-                                <small><i class="bi-gear me-2"></i>Automatic</small>
-                            </div>
-                            <button class="view fw-semibold">View Deal</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </div>
     </section>
 
@@ -699,48 +546,34 @@ session_start();
         <hr>
         <div class="row d-flex justify-content-around footer-lists">
             <div class="col-6 col-md-6 col-lg-3">
-                <p>Buying & Selling</p>
+                <p>Buying</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">Find a car</a></li>
-                    <li><a href="#">Sell your car</a></li>
-                    <li><a href="#">Car dealers</a></li>
-                    <li><a href="#">Compare Cars</a></li>
-                    <li><a href="#">Online car</a></li>
+                    <li><a href="cars.php">Find a car</a></li>
+                    <li><a href="#brands">Car dealers</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md-6 col-lg-3">
                 <p>About</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">About Finder</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs & Support</a></li>
-                    <li><a href="#">Mobile app</a></li>
-                    <li><a href="#">Blog & News</a></li>
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <p>Profile</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My listings</a></li>
-                    <li><a href="#">Add listings</a></li>
+                    <li><a href="login.php">My account</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <p>Download our app</p>
-                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-                <div>
-                    <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i> Google Play</button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i> App Store</button>
-                </div>
+                <p>Every buyers beliver</p>
+                <p style="font-size: small;">Explore carmee web app and join the community of car enthusiasts.</p>
             </div>
         </div>
 
         <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16"
-                target="_blank"><b>execution</b></a></p>
+                target="_blank"><b>GR16</b></a></p>
     </footer>
 
     <!-- ============= SCRIPTS ============= -->

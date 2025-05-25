@@ -1,24 +1,22 @@
 <?php
 require_once("../../database/db_conn.php");
 
-$id = $_GET['id'];
+if (isset($_POST['id']) && !empty($_POST['id'])) {
+    $id = $_POST['id'];
 
-$stmt = $con->prepare("SELECT COUNT(*) FROM models WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$stmt->bind_result($count);
-$stmt->fetch();
-$stmt->close();
+    // Prepare the delete query
+    $stmt = $con->prepare("DELETE FROM models WHERE id = ?");
+    $stmt->bind_param("i", $id);
 
-if ($count == 0) {
-    header("Location: ../modelsManagement.php?error=Model not found");
-    exit();
+    if ($stmt->execute()) {
+        echo json_encode(['status' => 'success', 'message' => 'Model deleted successfully']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Failed to delete model']);
+    }
+
+    $stmt->close();
+    $con->close();
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Model ID is required']);
 }
-
-$stmt = $con->prepare("DELETE FROM models WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-
-header("Location: ../modelsManagement.php?success=Model deleted successfully");
-exit();
 ?>

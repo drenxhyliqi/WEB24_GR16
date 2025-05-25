@@ -38,7 +38,7 @@
 }
 
 ul li a {
-    padding: 0 3rem 0 0 !important;
+    padding: 0 2rem 0 0 !important;
     text-transform: uppercase;
     font-size: 24px;
     font-weight: 600 !important;
@@ -102,6 +102,10 @@ ul li a {
 }
 
 /* ============= EXPLORE CARS SECTION ============= */
+.explore {
+    padding: 3% 10%;
+    background-color: transparent;
+}
 .car-card {
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -112,7 +116,7 @@ ul li a {
 }
 
 .car-card:hover {
-    cursor: pointer;
+    cursor: auto;
     box-shadow: 0 0 8px 1px #036bfc79;
 }
 
@@ -136,13 +140,15 @@ ul li a {
 }
 
 .cnt-btn {
+    text-decoration: none !important;
     background-color: #035dad;
-    color: #f8f7fd;
+    color: #f8f7fd !important;
     border: 0.5px solid #000615;
     padding: 0.75rem 1.25rem;
     margin-top: 2rem;
     border-radius: 0.5rem;
 }
+
 
 .cnt-btn:hover {
     background-color: transparent;
@@ -278,13 +284,17 @@ ul li a {
 
 .brands a {
     padding: 10px;
+    cursor: default !important;
 }
 
 .brands a:hover {
     border-left: 1px solid #035dad;
     background-image: linear-gradient(to left, #ffffff, #0377ad15);
+    
 }
-
+.render{
+    cursor: not-allowed;
+}
 /* ============= INFO SECTION ============= */
 .info-content {
     font-weight: 600;
@@ -298,7 +308,7 @@ ul li a {
 
 .info-content:hover {
     box-shadow: 0 0 5px 1px #036bfc79;
-    cursor: pointer;
+    cursor: default;
 }
 
 /* ============= LATEST CARS SECTION ============= */
@@ -357,9 +367,9 @@ ul li a {
 .new-deal:hover{
     background-color: #035;
 }
-/* Add this to your CSS */
+
 .bi-heart {
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .bi-heart:hover {
@@ -383,13 +393,16 @@ ul li a {
 
 .view {
     background-color: #000615;
-    color: #f9f9f9;
     border: none;
     padding: .5rem 0;
     margin-top: 2rem;
     border-radius: .5rem;
 }
 
+.view a{
+    color: #f9f9f9 !important;
+    text-decoration: none;
+}
 .view:hover {
     background-color: #035dad;
 }

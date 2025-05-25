@@ -11,7 +11,7 @@
     gap: 10px;
     text-decoration: none;
     border-bottom:1px solid #0082f5 ;
-    color: #0082f5;
+    color: #f9f9f9;
     padding: 10px 16px;
     font-weight: 700;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -19,6 +19,7 @@
 
     .btn-custom i {
     font-size: 1.2rem;
+    color: #f9f9f9;
     }
 
     .btn-custom:hover {
@@ -27,7 +28,7 @@
     }
 
     .offcanvas{
-    background-color: #000615 !important;
+    background-color:#000615 !important;
     }
     .offcanvas h5{
     color: #fff !important;
@@ -35,3 +36,218 @@
     .offcanvas .btn-close{
     color: #fff !important; /*To be fixed*/
     }
+
+    .form-card {
+        max-width: 900px;
+        margin: 30px auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .form-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .form-header h3 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #1d1d1d;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #495057;
+        display: block;
+        margin-bottom: 6px;
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 14px;
+        background-color: #f8f9fa;
+    }
+    .form-control:focus {
+        border-color: #0d6efd;
+        outline: none;
+        background-color: #fff;
+    }
+    .grid-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .grid-col {
+        flex: 1;
+        min-width: 260px;
+    }
+    .btn-submit {
+        margin-top: 20px;
+        padding: 12px 24px;
+        margin-bottom: 2rem;
+        background-color: #0d6efd;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .btn-submit:hover {
+        background-color: #0b5ed7;
+    }
+    
+    .modern-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0 8px;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fc;
+    }
+
+    .modern-table thead th {
+        background-color: #035dad;
+        color: #f9f9f9;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        padding: 14px;
+        border: none;
+    }
+
+    .modern-table tbody tr {
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .modern-table td {
+        padding: 14px;
+        font-size: 14px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .modern-table .text-blue {
+        color: #035dad;
+        font-weight: 500;
+    }
+
+    .modern-table .badge-new {
+        background-color: #035ead63;
+        color: #024077;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 50px;
+    }
+
+    .modern-table .badge-used {
+        background-color: #d027277f;
+        color: #3f0d0de0;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 50px;
+    }
+
+    .modern-table tbody tr:hover {
+    background-color: #f2f2f268;
+    }
+
+    .desc {
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        color: #555;
+    }
+
+    .pagination {
+        margin-top: 20px;
+        display: flex;
+        justify-content: end;
+        gap: 5px;
+    }
+
+    .pagination .page-link {
+        border: none;
+        background-color: #f8f9fa;
+        color: #333;
+        padding: 8px 12px;
+        border-radius: 4px;
+    }
+
+    .pagination .active {
+        background-color: #035dad;
+        color: #fff;
+    }
+
+    .add-button button {
+        background-color: #035dad !important;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #a0c5e7;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #023f7c;
+        box-shadow: 0 0 0 2px rgba(3, 93, 173, 0.2);
+    }
+
+    select {
+        background-color: #f9fcff;
+        color: #035dad;
+    }
+
+    .form-label {
+        color: #035dad;
+        font-weight: 500;
+    }
+
+    .custom-file-upload {
+    border: 2px dashed #035dad;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f9fcff;
+    color: #035dad;
+}
+
+.custom-file-upload:hover {
+    background-color: #e6f0fa;
+}
+
+.custom-file-upload i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+.btn-close.costum {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M2.146 2.146a.5.5 0 0 1 .708 0L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-size: 1em;
+  font-weight: 600;
+}

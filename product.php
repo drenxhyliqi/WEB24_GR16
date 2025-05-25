@@ -266,12 +266,11 @@
                 <ul class="navbar-nav mx-auto d-flex align-items-left gap-1 py-2">
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="products.php">Cars</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav d-flex align-items-right flex-row py-1">
                     <li class="nav-item"><a class="nav-link" href="cars.php"><i class="bi bi-car-front-fill fs-4"></i></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cash-coin fs-4"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="favorite.php"><i class="bi bi-bag-heart fs-4"></i></a></li>
                     <?php if (isset($_SESSION['active'])) { ?>
                         <li class="nav-item"><a class="nav-link" href="admin/dashboard.php"><i class="bi bi-person-circle fs-4"></i></a></li>
                     <?php } else { ?>
@@ -312,14 +311,12 @@
                             class="img-hover-product main-img shadow-sm">
                     </div>
                     <div class="col-3">
-                        <img src="assets/img/prod4.jpg" alt="main-img-4" id="main-img-4"
+                        <img src="assets/img/prod1.jpg" alt="main-img-4" id="main-img-4"
                             class="img-hover-product main-img shadow-sm">
                     </div>
                 </div>
                 <hr>
-
-                <!-- Specifications Table -->
-                <div class="table-container">
+                <!-- <div class="table-container">
                     <table style="width: 100%; border-color: #f0f0f0;" cellspacing="10" cellpadding="8">
                         <thead>
                             <tr>
@@ -355,9 +352,10 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
 
-                <!-- Infos Card -->
+
+                <!--Info Cards-->
                 <div class="row margin-top-3">
                     <div class="col-6 col-md-3 col-lg-3 mb-3">
                         <div class="info-card">
@@ -386,7 +384,7 @@
                 </div>
 
                 <!-- Features -->
-                <h3>Features</h3>
+                <!-- <h3>Features</h3>
                 <button class="accordion-btn" id="accordion-btn1"><i class="bi bi-arrow-right me-2"></i>Exterior</button>
                 <div class="accordion-content" id="accordion-content1" style="display: none;">
                     <ol>
@@ -463,11 +461,10 @@
                         <li>Bluetooth</li>
                         <li>Remote Start</li>
                     </ol>
-                </div>
+                </div> -->
 
                 <!-- Full Description -->
-                <h3 class="margin-top-3" id="description">Description</h3>
-                <div id="content" class="margin-bottom-3">
+                <!-- <div id="content" class="margin-bottom-3">
                     <p>This stunning convertible blends luxury with performance, featuring a sleek design, advanced
                         technology, and a powerful engine. Enjoy open-air driving with premium comfort and the
                         unmistakable elegance of Mercedes-Benz. Impeccably maintained and ready to provide an
@@ -508,7 +505,7 @@
 
                     </div>
 
-                </div>
+                </div> -->
             </div>
 
             <!-- Product Info -->
@@ -529,7 +526,7 @@
                     </ul>
                     <div class="user-info">
                         <div id="profile">
-                            <img src="assets/img/seller.jpg" alt="user-image" id="user-img">
+                            <img src="assets/img/team/person1.jpg" alt="user-image" id="user-img">
                             <div class="profile-info">
                                 <span class="font-weight-semibold"><u>Darrell Steward</u></span><br>
                                 <small><i class="bi bi-star-fill text-warning me-2"></i><strong>4.9</strong> (5
@@ -703,22 +700,22 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- ============= FOOTER SECTION ============= -->
     <footer class="container-fluid mt-5 footer-info">
         <div class="row d-flex align-items-center footer-info-content">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-copy me-2"></i>
                     <span class="mb-0">Over 1 million listings</span>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-search me-2"></i>
                     <span class="">Personalized search</span>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center">
                     <i class="bi bi-car-front-fill me-2"></i>
                     <span class="mb-0">Online car appraisal</span>
@@ -733,49 +730,34 @@
         </div>
         <hr>
         <div class="row d-flex justify-content-around footer-lists">
-            <div class="col-6 col-md-6 col-lg-3 ">
-                <p>Buying & Selling</p>
+            <div class="col-6 col-md-6 col-lg-3">
+                <p>Buying</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">Find a car</a></li>
-                    <li><a href="#">Sell your car</a></li>
-                    <li><a href="#">Car dealers</a></li>
-                    <li><a href="#">Compare Cars</a></li>
-                    <li><a href="#">Online car</a></li>
+                    <li><a href="cars.php">Find a car</a></li>
                 </ul>
             </div>
-            <div class="col-6 col-md-6 col-lg-3 ">
+            <div class="col-6 col-md-6 col-lg-3">
                 <p>About</p>
-                <ul class="list-unstyled ">
-                    <li><a href="#">About Finder</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">FAQs & Support</a></li>
-                    <li><a href="#">Mobile app</a></li>
-                    <li><a href="#">Blog & News</a></li>
+                <ul class="list-unstyled">
+                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="contact.php">Contact us</a></li>
                 </ul>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 ">
+            <div class="col-12 col-md-6 col-lg-3">
                 <p>Profile</p>
                 <ul class="list-unstyled">
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                    <li><a href="#">My listings</a></li>
-                    <li><a href="#">Add listings</a></li>
+                    <li><a href="login.php">My account</a></li>
+                    <li><a href="favorite.php">Favorite</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-                <p>Download our app</p>
-                <p style="font-size: small;">Download Finder app and join the community of car enthusiasts.</p>
-                <div>
-                    <button class="btn btn-primary me-2">
-                        <i class="bi bi-google-play"></i> Google Play</button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-apple"></i> App Store</button>
-                </div>
+                <p>Every buyers beliver</p>
+                <p style="font-size: small;">Explore carmee web app and join the community of car enthusiasts.</p>
             </div>
         </div>
 
-        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16" target="_blank"><b>Gr.16</b></a></p>
-
+        <p id="copyright">&copy; All rights are reserved. Made by <a href="https://github.com/drenxhyliqi/WEB24_GR16"
+                target="_blank"><b>GR16</b></a></p>
     </footer>
 
 
