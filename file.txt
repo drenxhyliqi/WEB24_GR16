@@ -28,3 +28,6 @@
 [2025-05-25 19:06:43] New login attempt
 [2025-05-25 19:06:50] New login attempt
 [2025-05-25 19:06:50] User Dren Xhyliqi drenadmin@gmail.com logged in
+[2025-05-25 20:40:17] New login attempt
+[2025-05-25 20:40:24] New login attempt
+[2025-05-25 20:40:24] User Edison Ndou ndouedison02@gmail.com logged in
