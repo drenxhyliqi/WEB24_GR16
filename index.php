@@ -535,7 +535,6 @@ if (isset($_POST['logout'])) {
                     <div class="card-body">
                         <div class="row d-flex justify-content-between">
                             <div class="col-auto"><p class="text-muted"><?= htmlspecialchars($car['relased_year']) ?></p></div>
-                            <a href="favorite.php" class="text-decoration-none text-muted"><i class="bi bi-heart"></i></a>
                             <a href="contact.php" class="text-decoration-none text-muted"><p class="new-deal">INQUIRE NOW</p></a>
                         </div>
                         <h6 class="card-title fw-bold">
