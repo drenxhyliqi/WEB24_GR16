@@ -1,10 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $full_name = trim($_POST['full-name']);
-    $email = trim($_POST['email']);
-    $number = trim($_POST['number']);
-    $message = trim($_POST['message']);
+    $full_name = filter_var(trim($_POST['full-name']), FILTER_SANITIZE_STRING);
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $number = filter_var(trim($_POST['number']), FILTER_SANITIZE_STRING);
+    $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
 
     $errors = [];
 
