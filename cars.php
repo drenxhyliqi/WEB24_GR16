@@ -146,25 +146,6 @@ if ($carRef !== null) {
     <link rel="stylesheet" href="assets/style/style.css">
 
 </head>
-<style>
-    .dropdown-menu {
-        min-width: 180px; 
-        text-transform: capitalize;
-    }
-
-    .dropdown-item {
-        padding: 10px 20px;
-        font-size: 1rem;
-        text-transform: capitalize;
-    }
-
-    .dropdown-item:hover {
-        opacity: 0.7;
-        transition: opacity 0.3s ease;
-    }
-
-</style>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
@@ -190,14 +171,18 @@ if ($carRef !== null) {
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle fs-4"></i>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <?php  if ($_SESSION['user_role'] == 'admin'): ?>
-                                    <li><button class="dropdown-item" href="admin/dashboard.php">Dashboard</button></li>
+                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                <?php if ($_SESSION['user_role'] == 'admin'): ?>
+                                    <li><a class="dropdown-item" href="admin/dashboard.php">Dashboard</a></li>
                                 <?php endif; ?>
-                                <li><button class="dropdown-item" href="myProfile.php">My Profile</button></li>
-                                <form method="post" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
-                                    <button type="submit" name="logout" class="dropdown-item">Logout</button>
-                                </form>
+
+                                <li><a class="dropdown-item" href="myProfile.php">My Profile</a></li>
+
+                                <li>
+                                    <form method="post" style="margin: 0;" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
+                                        <button type="submit" name="logout" class="logoutBtn ">Logout</button>
+                                    </form>
+                                </li>
                             </ul>
                         </li>
                     <?php else: ?>
