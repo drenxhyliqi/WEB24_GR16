@@ -1,6 +1,39 @@
 <?php
 
 session_start();
+require_once("database/db_conn.php");
+class Car {
+    public $image;
+    public $makeModel;
+    public $variant;
+    public $price;
+    public $savings;
+    public $year;
+    public $mileage;
+    public $status;
+
+    public function __construct($image, $makeModel, $variant, $price, $savings, $year, $mileage, $status) {
+        $this->image = $image;
+        $this->makeModel = $makeModel;
+        $this->variant = $variant;
+        $this->price = $price;
+        $this->savings = $savings;
+        $this->year = $year;
+        $this->mileage = $mileage;
+        $this->status = $status;
+    }
+
+    public function getImage()       { return $this->image; }
+    public function getMakeModel()   { return $this->makeModel; }
+    public function getVariant()     { return $this->variant; }
+    public function getPrice()       { return $this->price; }
+    public function getSavings()     { return $this->savings; }
+    public function getYear()        { return $this->year; }
+    public function getMileage()     { return $this->mileage; }
+    public function getStatus()      { return $this->status; }
+}
+
+
 function countVisits()
 {
     if (isset($_SESSION['count_visit'])) {
@@ -14,148 +47,28 @@ function countVisits()
 
 $visits = countVisits();
 
-// Nga ketu teposhte mund te fshini
 
-class Car
-{
-    private $image;
-    private $makeModel;
-    private $variant;
-    private $price;
-    private $savings;
-    private $year;
-    private $mileage;
-    private $status;
-
-    public function __construct($image, $makeModel, $variant, $price, $savings, $year, $mileage, $status)
-    {
-        $this->setImage($image);
-        $this->setMakeModel($makeModel);
-        $this->setVariant($variant);
-        $this->setPrice($price);
-        $this->setSavings($savings);
-        $this->setYear($year);
-        $this->setMileage($mileage);
-        $this->setStatus($status);
-    }
-
-    public function getImage()
-    {
-        return $this->image;
-    }
-    public function getMakeModel()
-    {
-        return $this->makeModel;
-    }
-    public function getVariant()
-    {
-        return $this->variant;
-    }
-    public function getPrice()
-    {
-        return $this->price;
-    }
-    public function getSavings()
-    {
-        return $this->savings;
-    }
-    public function getYear()
-    {
-        return $this->year;
-    }
-    public function getMileage()
-    {
-        return $this->mileage;
-    }
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-    public function setMakeModel($makeModel)
-    {
-        $this->makeModel = $makeModel;
-    }
-    public function setVariant($variant)
-    {
-        $this->variant = $variant;
-    }
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-    public function setSavings($savings)
-    {
-        $this->savings = $savings;
-    }
-    public function setYear($year)
-    {
-        $this->year = $year;
-    }
-    public function setMileage($mileage)
-    {
-        $this->mileage = $mileage;
-    }
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-}
-
+//Vendosja e veturave nga Admini ne cars.php
 $cars = [];
+$query = "SELECT c.*, m.model FROM cars c 
+        LEFT JOIN models m ON c.model_id = m.id 
+        ORDER BY c.id DESC";
+$result = $con->query($query);
 
-$car1 = new Car("", "", "", "", "", "", "", "");
-$car1->setImage("assets/img/m5.jpg");
-$car1->setMakeModel("BMW M5");
-$car1->setVariant("Automatic • Gasoline • 4.4 L");
-$car1->setPrice("€119,995");
-$car1->setSavings("Saving €5,000 off RRP");
-$car1->setYear("2023");
-$car1->setMileage("0 miles");
-$car1->setStatus("New (Pre-Reg)");
-$cars[] = $car1;
-
-$car2 = new Car("", "", "", "", "", "", "", "");
-$car2->setImage("assets/img/pista488.jpg");
-$car2->setMakeModel("Ferrari 488 Pista");
-$car2->setVariant("Automatic • Gasoline • 3.9 L");
-$car2->setPrice("€289,000");
-$car2->setSavings("Saving €15,000 off RRP");
-$car2->setYear("2022");
-$car2->setMileage("10 miles");
-$car2->setStatus("New (Pre-Reg)");
-$cars[] = $car2;
-
-$car3 = new Car("", "", "", "", "", "", "", "");
-$car3->setImage("assets/img/gwagon.jpg");
-$car3->setMakeModel("Mercedes G-Wagon G63");
-$car3->setVariant("Automatic • Gasoline • 6.2 L");
-$car3->setPrice("$311,999");
-$car3->setSavings("Saving $5,050 off RRP");
-$car3->setYear("2021");
-$car3->setMileage("0 miles");
-$car3->setStatus("Used");
-$cars[] = $car3;
-
-$car4 = new Car("", "", "", "", "", "", "", "");
-$car4->setImage("assets/img/porsche.jpg");
-$car4->setMakeModel("Porsche 911 Turbo S");
-$car4->setVariant("Automatic • Gasoline • 3.8 L");
-$car4->setPrice("€174,995");
-$car4->setSavings("Saving €20,000 off RRP");
-$car4->setYear("2021");
-$car4->setMileage("2,000 miles");
-$car4->setStatus("Used");
-$cars[] = $car4;
-
-
-function __destruct()
-{
-    echo "Object destroyed";
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $car = new Car(
+            $row['cover_img'],
+            $row['car_name'] . ' ' . $row['model'],
+            $row['fuel'] . ' • ' . $row['transmission'],
+            '€' . number_format($row['price'], 0),
+            'Saving €0 off RRP',
+            $row['relased_year'],
+            number_format($row['km']) . ' km',
+            $row['status']
+        );
+        $cars[] = $car;
+    }
 }
 
 ?>
@@ -210,7 +123,7 @@ function __destruct()
 
             <!-- Header section -->
             <div class="mb-4">
-                <h1 class="fw-bold">19,074 Cars Available</h1>
+                <h1 class="fw-bold"><?= $result->num_rows ?> Cars Available</h1>
                 <small>You visited this page : <b><?= $visits; ?></b> times</small>
             </div>
 
@@ -346,36 +259,29 @@ function __destruct()
                 <section class="col-md-9">
                     <div class="row g-4">
                         <!-- Display the cars -->
-                        <?php foreach ($cars as $car): ?>
-                            <div class="col-md-6">
-                                <div class="card h-100 shadow-sm hover-shadow">
-                                    <!-- Car Image -->
-                                    <div class="position-relative">
-                                        <img src="<?= $car->getImage() ?>" class="card-img-top" alt="<?= $car->getMakeModel() ?>"
-                                            style="height: 180px; object-fit: cover;">
-                                        <div class="position-absolute top-0 start-0 m-2 badge bg-dark"><?= $car->getStatus() ?></div>
+                        <?php while ($car = $result->fetch_assoc()): ?>
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm hover-shadow">
+                                <div class="position-relative">
+                                    <img src="<?= $car['cover_img'] ?>" class="card-img-top" alt="<?= $car['car_name'] ?>" style="height: 180px; object-fit: cover;">
+                                    <div class="position-absolute top-0 start-0 m-2 badge bg-dark"><?= $car['status'] ?></div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text small text-muted mb-1"><?= $car['fuel'] ?> • <?= $car['transmission'] ?></p>
+                                    <h5 class="card-title fw-bold mb-1"><?= $car['car_name'] . ' ' . $car['model'] ?></h5>
+                                    <div class="mb-2">
+                                        <div class="fs-4 fw-bold">€<?= number_format($car['price']) ?></div>
+                                        <div class="text-success small">Saving €0 off RRP</div>
                                     </div>
-
-                                    <!-- Car Details -->
-                                    <div class="card-body">
-                                        <p class="card-text small text-muted mb-1"><?= $car->getVariant() ?></p>
-
-                                        <h5 class="card-title fw-bold mb-1"><?= $car->getMakeModel() ?></h5>
-
-                                        <div class="mb-2">
-                                            <div class="fs-4 fw-bold"><?= $car->getPrice() ?></div>
-                                            <div class="text-success small"><?= $car->getSavings() ?></div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center small text-secondary mt-3">
-                                            <span><?= $car->getYear() ?></span>
-                                            <span class="mx-2">•</span>
-                                            <span><?= $car->getMileage() ?></span>
-                                        </div>
+                                    <div class="d-flex align-items-center small text-secondary mt-3">
+                                        <span><?= $car['relased_year'] ?></span>
+                                        <span class="mx-2">•</span>
+                                        <span><?= number_format($car['km']) ?> km</span>
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
+                    <?php endwhile; ?>
                     </div>
                 </section>
             </div>

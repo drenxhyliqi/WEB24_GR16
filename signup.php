@@ -58,7 +58,7 @@ if (isset($_POST['signup'])) {
             exit();
           }
 
-          mysqli_stmt_close($stmt);
+          // mysqli_stmt_close($stmt);
         } else {
           echo "Error preparing the query: " . mysqli_error($con);
         }
