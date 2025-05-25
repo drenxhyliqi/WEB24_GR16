@@ -54,14 +54,18 @@ if (isset($_POST['logout'])) {
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle fs-4"></i>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <?php  if ($_SESSION['user_role'] == 'admin'): ?>
-                                    <li><button class="dropdown-item" href="admin/dashboard.php">Dashboard</button></li>
+                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                <?php if ($_SESSION['user_role'] == 'admin'): ?>
+                                    <li><a class="dropdown-item" href="admin/dashboard.php">Dashboard</a></li>
                                 <?php endif; ?>
-                                <li><button class="dropdown-item" href="myProfile.php">My Profile</button></li>
-                                <form method="post" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
-                                    <button type="submit" name="logout" class="dropdown-item">Logout</button>
-                                </form>
+
+                                <li><a class="dropdown-item" href="myProfile.php">My Profile</a></li>
+
+                                <li>
+                                    <form method="post" style="margin: 0;" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
+                                        <button type="submit" name="logout" class="logoutBtn ">Logout</button>
+                                    </form>
+                                </li>
                             </ul>
                         </li>
                     <?php else: ?>

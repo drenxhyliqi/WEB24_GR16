@@ -303,25 +303,6 @@ function renderProducts($products)
             color: red;
         }
 
-        .dropdown-toggle::after {
-            display: none;
-        }
-
-        .dropdown-menu {
-            min-width: 180px; 
-            text-transform: capitalize;
-        }
-
-        .dropdown-item {
-            padding: 10px 20px;
-            font-size: 1rem;
-            text-transform: capitalize;
-        }
-
-        .dropdown-item:hover {
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
 
     </style>
 </head>
@@ -353,9 +334,9 @@ function renderProducts($products)
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <?php  if ($_SESSION['user_role'] == 'admin'): ?>
-                                    <li><button class="dropdown-item" href="admin/dashboard.php">Dashboard</button></li>
+                                    <li><a class="dropdown-item" href="admin/dashboard.php">Dashboard</a></li>
                                 <?php endif; ?>
-                                <li><button class="dropdown-item" href="myProfile.php">My Profile</button></li>
+                                <li><a class="dropdown-item" href="myProfile.php">My Profile</a></li>
                                 <form method="post" onsubmit="return confirm('A jeni i sigurt që doni të dilni?');">
                                     <button type="submit" name="logout" class="dropdown-item">Logout</button>
                                 </form>
