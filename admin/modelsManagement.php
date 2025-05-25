@@ -26,18 +26,7 @@ require_once("../database/db_conn.php");
             <a href="dashboard.php">
                 <img src="../assets/img/company_logo.png" alt="logo" width="140" />
             </a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                <span class="bi bi-list fs-2"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
-                            <i class="bi bi-list fs-4"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <button type="button" class="btn btn-default border-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="bi bi-grid h3"></i></button>
         </div>
     </nav>
 
