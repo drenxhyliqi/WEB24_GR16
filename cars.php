@@ -175,6 +175,15 @@ if ($result && $result->num_rows > 0) {
                 </aside>
 
                 <!-- Mobile Filter Panel -->
+                
+                <!-- Mobile Filter Toggle Button -->
+                <div class="col-12 d-md-none mb-3">
+                    <button class="btn btn-outline-secondary w-100 d-flex justify-content-between align-items-center"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#mobileFilter" aria-expanded="false" aria-controls="mobileFilter">
+                        <span class="fw-medium">Filters</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                </div>
                 <div class="collapse mb-3 d-md-none" id="mobileFilter">
                     <div class="bg-white p-3 rounded shadow-sm">
                         <!-- Condition Filter -->
@@ -222,7 +231,7 @@ if ($result && $result->num_rows > 0) {
                 <!-- Car Listings Section -->
                 <section class="col-md-9">
                     <div class="row g-4" id="carsContainer">
-                        <!-- Veturat AJAX do ngarkohen këtu -->
+                        <!-- Veturat vendosen me AJAX -->
                     </div>
                 </section>
             </div>
@@ -320,7 +329,7 @@ if ($result && $result->num_rows > 0) {
 
         let minPrice = $('#priceMin').val() || $('#priceMinMobile').val() || 500;
         let maxPrice = $('#priceMax').val() || $('#priceMaxMobile').val() || 800000;
-        
+
         $('#minPriceValue, #minPriceValueMobile').text(minPrice);
         $('#maxPriceValue, #maxPriceValueMobile').text(maxPrice);
 
