@@ -2,6 +2,10 @@
 require_once('database/db_conn.php');
 session_start();
 
+$log_file = fopen("file.txt", "a") or die("Unable to open file!");
+fwrite($log_file, "[" . date("Y-m-d H:i:s") . "] Sign up attempt\n");
+fclose($log_file);
+
 if (isset($_SESSION['active'])) {
   session_unset();
   session_destroy();
@@ -40,6 +44,11 @@ if (isset($_POST['signup'])) {
           mysqli_stmt_bind_param($stmt, "sss", $user, $email, $hashedPassword);
 
           if (mysqli_stmt_execute($stmt)) {
+            
+            $log_file = fopen("file.txt", "a") or die("Unable to open log file!");
+            fwrite($log_file, "[" . date("Y-m-d H:i:s") . "] User " . $user . " " . $email . " signed up\n");
+            fclose($log_file);
+            
             header('Location: login.php?register_success=true');
             exit();
           } else {
