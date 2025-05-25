@@ -2,6 +2,8 @@
 require_once("../../database/db_conn.php");
 
 if (isset($_GET['getCar'])) {
+
+    //Mbrojtja nga SQL Injection "?"
     $id = intval($_GET['getCar']);
     $stmt = $con->prepare("SELECT * FROM cars WHERE id = ?");
     $stmt->bind_param("i", $id);

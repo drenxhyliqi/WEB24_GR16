@@ -11,17 +11,21 @@ class Car {
     public $year;
     public $mileage;
     public $status;
+    public $highlighted = false; // default
 
-    public function __construct($image, $models, $variant, $price, $savings, $year, $mileage, $status) {
-        $this->image = $image;
-        $this->models = $models;
-        $this->variant = $variant;
-        $this->price = $price;
-        $this->savings = $savings;
-        $this->year = $year;
-        $this->mileage = $mileage;
-        $this->status = $status;
-    }
+
+    public function __construct($image, $models, $variant, $price, $savings, $year, $mileage, $status, $highlighted = false) {
+    $this->image = $image;
+    $this->models = $models;
+    $this->variant = $variant;
+    $this->price = $price;
+    $this->savings = $savings;
+    $this->year = $year;
+    $this->mileage = $mileage;
+    $this->status = $status;
+    $this->highlighted = $highlighted;
+}
+
 
     public function getImage()       { return $this->image; }
     public function getModels()   { return $this->models; }
@@ -55,21 +59,53 @@ $query = "SELECT c.*, m.model FROM cars c
         ORDER BY c.id DESC";
 $result = $con->query($query);
 
+
+//Funksioni me reference 
+function formatValue(&$value, $prefix = '', $suffix = '')
+{
+    $value = $prefix . number_format($value) . $suffix;
+    return $value;
+}
+
+
 if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $rowPrice = $row['price'];
+        $rowKm = $row['km'];
+
+        formatValue($rowPrice, '€');
+        formatValue($rowKm, '', ' km');
+
         $car = new Car(
             $row['cover_img'],
             $row['car_name'] . ' ' . $row['model'],
             $row['fuel'] . ' • ' . $row['transmission'],
-            '€' . number_format($row['price'], 0),
+            //Percjellja vleres permes references
+            $rowPrice,
             'Saving €1000 off RRP',
             $row['relased_year'],
-            number_format($row['km']) . ' km',
+            $rowKm,
             $row['status']
         );
         $cars[] = $car;
     }
 }
+
+
+
+function &getCarReferenceByIndex(array &$cars, int $index) {
+    if (isset($cars[$index])) {
+        return $cars[$index];
+    }
+    static $empty = null;
+    return $empty;
+}
+
+$carRef = &getCarReferenceByIndex($cars, 0);
+if ($carRef !== null) {
+    $carRef->highlighted = true;
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -175,15 +211,6 @@ if ($result && $result->num_rows > 0) {
                 </aside>
 
                 <!-- Mobile Filter Panel -->
-                
-                <!-- Mobile Filter Toggle Button -->
-                <div class="col-12 d-md-none mb-3">
-                    <button class="btn btn-outline-secondary w-100 d-flex justify-content-between align-items-center"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#mobileFilter" aria-expanded="false" aria-controls="mobileFilter">
-                        <span class="fw-medium">Filters</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                </div>
                 <div class="collapse mb-3 d-md-none" id="mobileFilter">
                     <div class="bg-white p-3 rounded shadow-sm">
                         <!-- Condition Filter -->

@@ -1,38 +1,22 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Warning popup
-    const warningElement = document.getElementById('warning');
-    if (warningElement) {
-        warningElement.addEventListener('click', function (e) {
-            e.preventDefault();
+function formatPrice(val) {
+    return "€" + parseInt(val).toLocaleString();
+}
 
-            Swal.fire({
-                icon: 'warning',
-                title: 'Kujdes',
-                text: 'Kërkimi i avancuar nuk është i disponueshëm!'
-            });
-        });
+$('#minPriceRange, #maxPriceRange').on('input change', function () {
+    let minVal = parseInt($('#minPriceRange').val());
+    let maxVal = parseInt($('#maxPriceRange').val());
+
+    if (minVal > maxVal - 1000) {
+        minVal = maxVal - 1000;
+        $('#minPriceRange').val(minVal);
+    }
+    if (maxVal < minVal + 1000) {
+        maxVal = minVal + 1000;
+        $('#maxPriceRange').val(maxVal);
     }
 
-// Countdown timer
-const timerElement = document.getElementById("timer");
-if (timerElement) {
-    const targetDate = new Date("January 28, 2025 23:59:59").getTime();
-    const countdownTimer = setInterval(function () {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
+    $('#minPriceDisplay').text(formatPrice(minVal));
+    $('#maxPriceDisplay').text(formatPrice(maxVal));
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        timerElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-        if (distance < 0) {
-            clearInterval(countdownTimer);
-            timerElement.innerHTML = "Oferta ka perfunduar!";
-            setTimeout(timerElement, 3000);
-        }
-    }, 1000);
-}
+    applyFilters();
 });
