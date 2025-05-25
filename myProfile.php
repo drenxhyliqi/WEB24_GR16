@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-<<<<<<< HEAD
 if (isset($_POST['logout'])) {
     session_unset();     
     session_destroy();   
@@ -9,9 +8,6 @@ if (isset($_POST['logout'])) {
     exit();
 } 
 
-=======
-// Shembuj të dhënash (mund t’i marrësh nga databaza)
->>>>>>> 2468a05bd5e966b6536dc02f7c45543a829b281c
 $userName = $_SESSION['user_name'] ?? 'Emri Mbiemri';
 $userEmail = $_SESSION['user_email'] ?? 'email@example.com';
 $userRole = $_SESSION['user_role'] ?? 'Përdorues';
